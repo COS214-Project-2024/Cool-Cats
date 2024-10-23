@@ -12,6 +12,9 @@ private:
 public:
     Taxes(float one, float two);
     virtual ~Taxes() ;
+    void collection();
+    void allocation();
+    void impact() ;
     virtual void get() ;
     virtual void set() ;
     TaxMemento* createMemento();

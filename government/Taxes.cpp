@@ -25,3 +25,15 @@ return one;
 void Taxes::setMemento(TaxMemento* s){
     std::cout<<"set TaxMemento for Taxes class\n";
 }
+
+void Taxes::collection(){
+    std::cout<<"collect taxes\n";
+}
+
+void Taxes::allocation(){
+    std::cout<<"allocate taxes\n";
+}
+
+void Taxes::impact(){
+  std::cout<<"impact on citizen\n";
+}

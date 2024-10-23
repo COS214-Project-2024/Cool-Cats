@@ -25,3 +25,11 @@ void Government::allocateBudget(float amount) {
         std::cout << "Allocated " << amount << " to city services. Remaining budget: " << budget << std::endl;
     }
 }
+
+void Government::get(){
+     std::cout<<"getting government\n";
+}
+
+void Government::set(){
+     std::cout<<"setting government\n";
+}

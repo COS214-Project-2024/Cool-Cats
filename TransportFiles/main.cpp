@@ -15,35 +15,21 @@
 
 using namespace std;
 
-void testingTransport(){
-    
-    
-}
+void testingTransportationSystem(){
 
-int main(){
-
-    // PublicVehicle* bus1 = new Bus();
-    // bus1->setName("Test bus 1");
-    // bus1->setCapacity(20);// remember to make bus logic for when there are more people than the bus can handle to then subtract and make the res wait
-    // bus1->setMaxCapacity(50);
-    // //Idea, instead of get name make a get details function to return the vehicles details about capacity and name;
-    // bus1->isFull();
-    // // Transport* testPublic = new PublicTransport(bus1);
-    // // Transportation* transport1 = new Transportation(testPublic);
-    // // transport1->travel();
-    
-
-    //cout << "Hello world" << endl;
-    //testingTransport();
-
-
-
+    //creating road
     Road* road = new Road("123 Street", 111, 222, 333);
     RoadSubject* Road = road;
+
+    //creating road states
     RoadState* UC = new UnderConstruction();
     RoadState* work = new Working();
+
+    //creating vehicles to travel down that road
     PublicVehicle* bus = new Bus();
     Transport* publicT = new PublicTransport(bus);
+
+    //creating transportation observer that monitors that specific road
     Transportation* trans1 = new ConcreteObserver(road, publicT);
 
 
@@ -53,19 +39,23 @@ int main(){
     << "Resource consumption: "<< Road->getResourceConsumption() << endl 
     << "Citizen Satisfaction: "<< Road->getCitizenSatisfactionImpact() << std::endl;
 
+    //attaching the observer to the road
     Road->attach(trans1);
+    //setting current road state to working and ready to travel on
     road->setState(work);
-    //road->checkState();
+    //traveling
     trans1->travel();
     std::cout << "Oh no, something went wrong" << std::endl;
+    //changing current road state to under construction and unable to be traveled on
     road->setState(UC);
+    //notifying all observers
+    Road->notify();
+    //traveling
     trans1->travel();
+}
 
-
-    
-    
-    
-
+int main(){
+    testingTransportationSystem();
     return 0;
 }
 

@@ -3,6 +3,7 @@
 ConcreteObserver::ConcreteObserver(Road* subject, Transport* transport) {
     this->subject = subject;
     this->transport = transport;
+    this->status = true;
 }
 
 ConcreteObserver::~ConcreteObserver() {
@@ -16,7 +17,6 @@ void ConcreteObserver::update(){
 }
 
 void ConcreteObserver::travel(){
-    update();
     if(this->status == true){
         this->transport->travel();
     }

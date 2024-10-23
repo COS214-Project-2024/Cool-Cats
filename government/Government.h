@@ -19,6 +19,8 @@ public:
     void allocateBudget(float amount);
     void get();
     void set();
+    void storeMemento(TaxMemento* one);
+    TaxMemento* getMemento();
 };
 
 #endif

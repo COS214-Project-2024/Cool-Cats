@@ -33,3 +33,11 @@ void Government::get(){
 void Government::set(){
      std::cout<<"setting government\n";
 }
+void Government::storeMemento(TaxMemento* One){
+     std::cout<<"TaxMemento is stored\n";
+}
+
+TaxMemento* Government::getMemento(){
+TaxMemento* one = new TaxMemento();
+return one;
+}

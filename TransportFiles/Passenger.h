@@ -1,22 +1,22 @@
-#ifndef FREIGHT_H
-#define FREIGHT_H
+#ifndef PASSENGER_H
+#define PASSENGER_H
 
 #include <iostream>
-#include "TrainVehicle.h"
+#include "AirVehicle.h"
 
 using namespace std;
 
 
-class Freight : public TrainVehicle
+class Passenger : public AirVehicle
 {
     private:
         int capacity;
         int maxCapacity;
-        string name = "General Freight";
+        string name = "General Passenger";
     public:
-        Freight();
-        ~Freight();
-        TrainVehicle* clone();
+        Passenger();
+        ~Passenger();
+        AirVehicle* clone();
         bool isFull();
         void setCapacity(int cap);
         void setMaxCapacity(int cap);

@@ -1,4 +1,4 @@
-ofiles = main.o Transport.o Transportation.o PublicVehicle.o PublicTransport.o Bus.o RoadState.o RoadState.o Road.o UnderConstruction.o ConcreteObserver.o RoadSubject.o Working.o
+ofiles = main.o Transport.o Transportation.o PublicVehicle.o PublicTransport.o Bus.o Taxi.o TrainTransport.o TrainVehicle.o Metro.o Tram.o Freight.o AirportTransport.o AirVehicle.o Passenger.o Cargo.o RoadState.o RoadState.o Road.o UnderConstruction.o ConcreteObserver.o RoadSubject.o Working.o
 gpp_o = g++ -c -std=c++11 -fprofile-arcs -ftest-coverage
 
 main: $(ofiles)
@@ -13,6 +13,8 @@ Transport.o: Transport.cpp Transport.h
 Transportation.o: Transportation.cpp Transportation.h Transport.h
 	$(gpp_o) Transportation.cpp
 
+
+
 PublicVehicle.o: PublicVehicle.cpp PublicVehicle.h
 	$(gpp_o) PublicVehicle.cpp
 
@@ -21,6 +23,41 @@ PublicTransport.o: PublicTransport.cpp PublicTransport.h Transport.h PublicVehic
 
 Bus.o: Bus.cpp Bus.h PublicVehicle.h
 	$(gpp_o) Bus.cpp
+
+Taxi.o: Taxi.cpp Taxi.h PublicVehicle.h
+	$(gpp_o) Taxi.cpp
+
+
+
+TrainVehicle.o: TrainVehicle.cpp TrainVehicle.h
+	$(gpp_o) TrainVehicle.cpp
+
+TrainTransport.o: TrainTransport.cpp TrainTransport.h Transport.h TrainVehicle.h
+	$(gpp_o) TrainTransport.cpp
+
+Metro.o: Metro.cpp Metro.h TrainVehicle.h
+	$(gpp_o) Metro.cpp
+
+Tram.o: Tram.cpp Tram.h TrainVehicle.h
+	$(gpp_o) Tram.cpp
+
+Freight.o: Freight.cpp Freight.h TrainVehicle.h
+	$(gpp_o) Freight.cpp
+
+
+
+AirVehicle.o: AirVehicle.cpp AirVehicle.h
+	$(gpp_o) AirVehicle.cpp
+
+AirportTransport.o: AirportTransport.cpp AirportTransport.h Transport.h AirVehicle.h
+	$(gpp_o) AirportTransport.cpp
+
+Passenger.o: Passenger.cpp Passenger.h AirVehicle.h
+	$(gpp_o) Passenger.cpp
+
+Cargo.o: Cargo.cpp Cargo.h AirVehicle.h
+	$(gpp_o) Cargo.cpp
+
 
 
 RoadSubject.o: RoadSubject.cpp RoadSubject.h Transportation.h
@@ -40,8 +77,6 @@ Working.o: Working.cpp Working.h RoadState.h
 
 ConcreteObserver.o: ConcreteObserver.cpp ConcreteObserver.h Transportation.h Road.h
 	$(gpp_o) ConcreteObserver.cpp
-
-
 
 
 run: main

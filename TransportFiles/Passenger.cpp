@@ -1,22 +1,22 @@
-#include "Metro.h"
+#include "Passenger.h"
 
-Metro::Metro() {}
+Passenger::Passenger() {}
 
-Metro::~Metro() {}
+Passenger::~Passenger() {}
 
-TrainVehicle* Metro::clone(){
+AirVehicle* Passenger::clone(){
     return this;
 }
 
-void Metro::setCapacity(int cap){
+void Passenger::setCapacity(int cap){
     this->capacity = cap;
 }
 
-void Metro::setMaxCapacity(int cap){
+void Passenger::setMaxCapacity(int cap){
     this->maxCapacity = cap;
 }
 
-bool Metro::isFull(){
+bool Passenger::isFull(){
     if(this->capacity >= this->maxCapacity){
         std::cout << "This bus is now full." << std::endl;
         return true;
@@ -25,10 +25,10 @@ bool Metro::isFull(){
     return false;
 }
 
-string Metro::getName(){
+string Passenger::getName(){
     return this->name;
 }
 
-void Metro::setName(string name){
+void Passenger::setName(string name){
     this->name = name;
 }

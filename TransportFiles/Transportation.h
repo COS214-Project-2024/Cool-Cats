@@ -11,10 +11,8 @@ class Transportation
     private:
         Transport* transport;
     public:
-        Transportation(Transport* transport);
-        ~Transportation();
-        void travel();
-        //virtual void update() = 0;
+        virtual void travel() = 0;
+        virtual void update() = 0;
 
 };
 

@@ -1,4 +1,4 @@
-ofiles = main.o Transport.o Transportation.o PublicVehicle.o PublicTransport.o Bus.o
+ofiles = main.o Transport.o Transportation.o PublicVehicle.o PublicTransport.o Bus.o RoadState.o RoadState.o Road.o UnderConstruction.o ConcreteObserver.o RoadSubject.o Working.o
 gpp_o = g++ -c -std=c++11 -fprofile-arcs -ftest-coverage
 
 main: $(ofiles)
@@ -21,6 +21,25 @@ PublicTransport.o: PublicTransport.cpp PublicTransport.h Transport.h PublicVehic
 
 Bus.o: Bus.cpp Bus.h PublicVehicle.h
 	$(gpp_o) Bus.cpp
+
+
+RoadSubject.o: RoadSubject.cpp RoadSubject.h Transportation.h
+	$(gpp_o) RoadSubject.cpp
+
+RoadState.o: RoadState.cpp RoadState.h 
+	$(gpp_o) RoadState.cpp
+
+Road.o: Road.cpp Road.h RoadSubject.h
+	$(gpp_o) Road.cpp
+
+UnderConstruction.o: UnderConstruction.cpp UnderConstruction.h RoadState.h
+	$(gpp_o) UnderConstruction.cpp
+
+Working.o: Working.cpp Working.h RoadState.h
+	$(gpp_o) Working.cpp
+
+ConcreteObserver.o: ConcreteObserver.cpp ConcreteObserver.h Transportation.h Road.h
+	$(gpp_o) ConcreteObserver.cpp
 
 
 

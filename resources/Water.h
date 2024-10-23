@@ -8,6 +8,9 @@ private:
 public:
     Water();
     void supplyWater(int amount);
+    void produceWater(int amount);
+    void consumeWater(int amount);
+    double waterStored();
 };
 
 #endif 

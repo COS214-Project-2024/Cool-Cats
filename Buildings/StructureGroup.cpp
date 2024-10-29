@@ -1,7 +1,25 @@
 #include "StructureGroup.h"
 
 vector<Structure*> StructureGroup::getChildren() {
-    return {}; 
+    return structures; 
+}
+
+StructureGroup::StructureGroup(const string& groupName) : name(groupName){}
+
+void StructureGroup::add(Structure* structure)
+{
+    structures.push_back(structure);
+}
+
+void StructureGroup::remove(Structure* structure)
+{
+    auto it = std::remove(structures.begin(), structures.end(), structure);
+    structures.erase(it, structures.end());
+}
+
+StructureIterator* StructureGroup::createIterator()
+{
+    return new CStructIterator(structures);
 }
 
 float StructureGroup::getMaintenance() {
@@ -29,4 +47,16 @@ float StructureGroup::getCitizenSatisfactionImpact() {
         totalSatisfaction += child->getCitizenSatisfactionImpact();
     }
     return totalSatisfaction;
+}
+
+StructureGroup::~StructureGroup() 
+{
+    for(auto* structure : structures){
+        delete structure;
+    }
+}
+
+string StructureGroup::getName() 
+{
+    return name;
 }

@@ -9,8 +9,8 @@ using namespace std;
 
 class StructureDecorator : public Structure
 {
-    private:
-        Structure* decoratedStructure;
+    // private:
+    //     Structure* decoratedStructure;
 
     protected:
         Structure* decoratedStructure;

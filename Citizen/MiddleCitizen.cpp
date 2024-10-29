@@ -4,6 +4,7 @@
 #include "MiddleCitizen.h"
 #include "Mayor.h"
 #include "Income.h"
+#include "AllCitizenIterator.h"
 
 using namespace std;
 
@@ -66,10 +67,11 @@ Income* MiddleCitizen::getIncome()
     return income;
 }
 
-//TO-DO
+/// @brief Returns an all citizen iterator object that allows a user to iterate through all citizens, regardless of type
+/// @return An AllCitizenIterator Object
 CitizenIterator* MiddleCitizen::createCitizenIterator()
 {
-    
+    return new AllCitizenIterator(citizens);
 }
 
 MiddleCitizen::~MiddleCitizen()

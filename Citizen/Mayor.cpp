@@ -2,6 +2,7 @@
 #include <memory>
 
 #include "Mayor.h"
+#include "MayorIterator.h"
 
 using namespace std;
 
@@ -103,9 +104,12 @@ Income* Mayor::getIncome()
     return income;
 }
 
-//TO-DO
+/// @brief Returns a new mayor iterator object which allows a user to iterator through the mayors
+/// @return A mayor iterator object
 CitizenIterator* Mayor::createCitizenIterator()
 {
+    vector<Mayor*> mayors = Citizen::getMayors();
+    return new MayorIterator(mayors);
 
 }
 

@@ -24,6 +24,7 @@ class Citizen
         std::string getEmploymentStatus();
         void setEmploymentStatus(std::string employment);
         void determineMayor();
+        std::vector<Mayor*> getMayors();
         virtual CitizenIterator* createCitizenIterator() = 0;
         // PopulationMemento* createMemento();
         // void setMemento(PopulationMemento* memento);
@@ -32,7 +33,6 @@ class Citizen
     protected:
         std::vector<std::string> services;
         static std::vector<std::unique_ptr<Citizen>> citizens;
-        std::vector<Mayor*> getMayors();
 
     private:
         std::string employmentStatus;

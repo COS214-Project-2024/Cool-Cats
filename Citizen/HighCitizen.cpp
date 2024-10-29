@@ -4,6 +4,7 @@
 
 #include "HighCitizen.h"
 #include "Mayor.h"
+#include "AllCitizenIterator.h"
 
 using namespace std;
 
@@ -67,10 +68,11 @@ Income* HighCitizen::getIncome()
 }
 
 
-//TO-DO
+/// @brief Returns a all citizen iterator object that allows a user to iterate through all citizens, regardless of type
+/// @return A AllCitizenIterator object
 CitizenIterator* HighCitizen::createCitizenIterator()
 {
-
+    return new AllCitizenIterator(citizens);
 }
 
 HighCitizen::~HighCitizen()

@@ -12,7 +12,6 @@ using namespace std;
 #include "BasicStructure.h"
 #include "StructureIterator.h"
 
-
 void testStructure(){
     // Creating basic structures
     BasicStructure* school = new BasicStructure("School", 100, 50, 80);
@@ -24,6 +23,8 @@ void testStructure(){
     cityStructures->add(school);
     cityStructures->add(hospital);
     cityStructures->add(park);
+
+
 
     // Display individual structure details
     std::cout << "Individual Structures:" << std::endl;
@@ -87,21 +88,21 @@ void Decoratortest(){
               << ", Citizen Satisfaction: " << library->getCitizenSatisfactionImpact() << std::endl;
 
     // Step 2: Apply a MaintenanceCostReducer decorator
-    MaintenanceCostReducer* costReducedLibrary = new MaintenanceCostReducer(library);
+    MaintenanceCostReducer* costReducedLibrary = new MaintenanceCostReducer(library,10);
     std::cout << "\nAfter applying MaintenanceCostReducer:" << std::endl;
     std::cout << "Maintenance: " << costReducedLibrary->getMaintenance()
               << ", Resource Consumption: " << costReducedLibrary->getResourceConsumption()
               << ", Citizen Satisfaction: " << costReducedLibrary->getCitizenSatisfactionImpact() << std::endl;
 
     // Step 3: Apply a ResourceEfficiencyEnhancer decorator
-    ResourceEfficiencyEnhancer* efficientLibrary = new ResourceEfficiencyEnhancer(costReducedLibrary);
+    ResourceEfficiencyEnhancer* efficientLibrary = new ResourceEfficiencyEnhancer(costReducedLibrary,20);
     std::cout << "\nAfter applying ResourceEfficiencyEnhancer:" << std::endl;
     std::cout << "Maintenance: " << efficientLibrary->getMaintenance()
               << ", Resource Consumption: " << efficientLibrary->getResourceConsumption()
               << ", Citizen Satisfaction: " << efficientLibrary->getCitizenSatisfactionImpact() << std::endl;
 
     // Step 4: Apply a SatisfactionEnhancer decorator
-    SatisfactionEnhancer* enhancedLibrary = new SatisfactionEnhancer(efficientLibrary);
+    SatisfactionEnhancer* enhancedLibrary = new SatisfactionEnhancer(efficientLibrary,20);
     std::cout << "\nAfter applying SatisfactionEnhancer:" << std::endl;
     std::cout << "Maintenance: " << enhancedLibrary->getMaintenance()
               << ", Resource Consumption: " << enhancedLibrary->getResourceConsumption()
@@ -113,7 +114,8 @@ void Decoratortest(){
 
 int main(){
     cout << "Testing << endl";
-    testStructure();
+    //testStructure();
+    Decoratortest();
 
     return 0;
 }

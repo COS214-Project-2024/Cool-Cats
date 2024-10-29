@@ -22,8 +22,10 @@ class StructureDecorator : public Structure
         virtual float getMaintenance() override;
         virtual float getResourceConsumption() override;
         virtual float getCitizenSatisfactionImpact() override;
+         void add(Structure* structure) override {}            // No-op
+        void remove(Structure* structure) override {}         // No-op
+        vector<Structure*> getChildren() override { return {}; } // Returns an empty vector
         
-
 };
 
 #endif

@@ -3,17 +3,22 @@
 
 #include "Citizen.h"
 #include "CitizenIterator.h"
+#include "Income.h"
 
 #include <iostream>
 
 class LowCitizen : public Citizen{
      public:
         LowCitizen();
-        void addService(std::string newService);
-        void removeService(std::string oldService);
+        LowCitizen(std::string employmentStatus, double satisfaction, std::shared_ptr<Structure> home);
+        void vote();
+        static int getLowClassCitizenCount();
+        Income* getIncome();
         CitizenIterator* createCitizenIterator();
+        ~LowCitizen();
     
     private:
         static int lowClassCitizenCount;
+        Income* income;
 };
 #endif

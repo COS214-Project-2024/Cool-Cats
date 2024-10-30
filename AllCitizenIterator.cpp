@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <algorithm>
 #include "AllCitizenIterator.h"
 
 using namespace std;

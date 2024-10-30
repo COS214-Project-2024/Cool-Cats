@@ -2,8 +2,20 @@
 #include <string>
 
 using namespace std;
+void errorMessage();
+
+void exit();
+void viewCity();
+
 void createCityHall();
+
 void createGovernment();
+
+void createStructureGroup();
+void createStructure();
+
+void addTransport();
+void printLines();
 
 int main(){
     cout << "WELCOME TO THE COOL CATS CITY SIMULATOR" << endl;
@@ -23,7 +35,7 @@ int main(){
         createCityHall();
         createGovernment();
     }
-
+    printLines();
     cout << "Great you have created the city hall and government. From here on out there will be an option to view details of your city :)" << endl;
     bool cond = true;
     while(cond){
@@ -46,6 +58,7 @@ int main(){
                 break;
             case 4:
                 exit();
+                cond = false;
                 break;
             default:
                 errorMessage();
@@ -59,12 +72,16 @@ int main(){
     return 0;
 }
 
+void printLines(){
+    cout << "---------------------------------------------------------------" << endl;
+}
+
 void errorMessage(){
 
 }
 
 void exit(){
-
+    
 }
 void viewCity(){
 

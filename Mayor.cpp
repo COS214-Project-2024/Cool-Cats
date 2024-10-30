@@ -1,6 +1,6 @@
 #include <iostream>
 #include <memory>
-
+#include <algorithm>
 #include "Mayor.h"
 #include "MayorIterator.h"
 

@@ -2,7 +2,7 @@
 #define WATERUTILITY_H
 
 #include "Utilities.h"
-#include "resources/Water.h"
+#include "Water.h"
 #include <string>
 
 class WaterUtility : public Utilities {

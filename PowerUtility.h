@@ -2,7 +2,7 @@
 #define POWERUTILITY_H
 
 #include "Utilities.h"
-#include "resources/Energy.h"
+#include "Energy.h"
 #include <string>
 
 class PowerUtility : public Utilities {

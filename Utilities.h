@@ -8,7 +8,7 @@ using namespace std;
 class Utilities {
 public:
     Utilities();
-    virtual ~Utilities() = default;
+    // /virtual ~Utilities() = default;
 
     // Set the next handler in the chain
     void setNext(Utilities* nextHandler);

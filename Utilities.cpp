@@ -13,6 +13,3 @@ void Utilities::processRequest(const std::string& request){
         next->processRequest(request);
     }
 }
-Utilities::~Utilities(){
-
-}

@@ -3,7 +3,7 @@
 
 Government::Government()  {
     budget = 10000;
-    tax->setTaxRate(0.10);
+    tax = new Taxes(0.10);
 }
 
 void Government::setTaxRate(float newRate) {

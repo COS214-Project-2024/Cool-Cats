@@ -1,12 +1,15 @@
 #include "Government.h"
 #include <iostream>
 
-Government::Government() : taxRate(0.10), budget(10000) {}
+Government::Government()  {
+    budget = 10000;
+    tax->setTaxRate(0.10);
+}
 
 void Government::setTaxRate(float newRate) {
-    taxRate = newRate;
-    std::cout << "Tax rate set to: " << taxRate << std::endl;
-    budget += taxRate * 1000; 
+    tax->setTaxRate(newRate);
+    std::cout << "Tax rate set to: " << tax->getTaxRate() << std::endl;
+    budget += tax->getTaxRate() * 1000; 
 }
 
 void Government::implementPolicy(const std::string& policy) {
@@ -26,18 +29,17 @@ void Government::allocateBudget(float amount) {
     }
 }
 
-void Government::get(){
-     std::cout<<"getting government\n";
-}
 
-void Government::set(){
-     std::cout<<"setting government\n";
-}
 void Government::storeMemento(TaxMemento* One){
-     std::cout<<"TaxMemento is stored\n";
+     if (One) {  
+            taxMementos.push_back(One);  
+        }
 }
 
 TaxMemento* Government::getMemento(){
-TaxMemento* one = new TaxMemento();
-return one;
+if (taxMementos.empty()) {
+            return nullptr;  
+        }
+        return taxMementos.back();
+
 }

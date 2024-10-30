@@ -1,31 +1,29 @@
 #include"Taxes.h"
 #include"TaxMemento.cpp"
+#include<iostream>
 
-Taxes::Taxes(float one , float two){
+Taxes::Taxes(float one ){
     taxRate = one;
-    utilityCharge = two;
+    //utilityCharge = two;
 }
 
 Taxes::~Taxes(){
     std::cout<<"destroying Taxes\n";
 }
-void Taxes::get(){
-     std::cout<<"getting Taxes\n";
-}
- void Taxes::set(){
-     std::cout<<"setting Taxes\n";
-}
+
 
 TaxMemento* Taxes::createMemento(){
-TaxMemento* one = new TaxMemento();
-return one;
+return  new TaxMemento(this);
+
 
 }
 
-void Taxes::setMemento(TaxMemento* s){
-    std::cout<<"set TaxMemento for Taxes class\n";
+void Taxes::setTaxRate(float n){
+    taxRate = n;
 }
-
+float Taxes::getTaxRate(){
+    return taxRate;
+}
 void Taxes::collection(){
     std::cout<<"collect taxes\n";
 }

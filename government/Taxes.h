@@ -1,24 +1,23 @@
 #ifndef TAXES
 #define TAXES
-#include "GovernmentColleague.h"
+
 class TaxMemento;
 
-class Taxes: public GovernmentColleague {
+class Taxes {
 private:
     float taxRate;
-    float utilityCharge;
-
+    // float utilityCharge;
+    // float serviceFees;
 
 public:
-    Taxes(float one, float two);
+    Taxes(float one);
     virtual ~Taxes() ;
     void collection();
     void allocation();
     void impact() ;
-    virtual void get() ;
-    virtual void set() ;
+    float getTaxRate();
+    void setTaxRate(float n);
     TaxMemento* createMemento();
-    void setMemento(TaxMemento* memento);
     friend class TaxMemento;
 };
 

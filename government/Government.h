@@ -1,13 +1,13 @@
 #ifndef GOVERNMENT_H
 #define GOVERNMENT_H
-#include"GovernmentColleague.h"
+
 #include"TaxMemento.h"
 #include <string>
 #include <vector>
 
-class Government : public GovernmentColleague {
+class Government  {
 private:
-    float taxRate;
+    Taxes* tax;
     float budget;
     std::vector<TaxMemento*> taxMementos;
 
@@ -17,8 +17,6 @@ public:
     void implementPolicy(const std::string& policy);
     float getBudget() const;
     void allocateBudget(float amount);
-    void get();
-    void set();
     void storeMemento(TaxMemento* one);
     TaxMemento* getMemento();
 };

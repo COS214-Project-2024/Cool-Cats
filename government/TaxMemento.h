@@ -10,9 +10,9 @@ private:
 
 
 public:
-    TaxMemento();
+    TaxMemento(Taxes* s);
     virtual ~TaxMemento() ;
-    void getState();
+    TaxMemento* getState();
     void setState(Taxes* s);
     
 };

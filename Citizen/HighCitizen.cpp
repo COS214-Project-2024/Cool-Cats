@@ -8,6 +8,8 @@
 
 using namespace std;
 
+int HighCitizen::highClassCitizenCount = 0;
+
 /// @brief Creates a new basic citizen object
 HighCitizen::HighCitizen() : Citizen()
 {
@@ -68,8 +70,8 @@ Income* HighCitizen::getIncome()
 }
 
 
-/// @brief Returns a all citizen iterator object that allows a user to iterate through all citizens, regardless of type
-/// @return A AllCitizenIterator object
+/// @brief Returns an all citizen iterator object that allows a user to iterate through all citizens, regardless of type
+/// @return An AllCitizenIterator object
 CitizenIterator* HighCitizen::createCitizenIterator()
 {
     return new AllCitizenIterator(citizens);

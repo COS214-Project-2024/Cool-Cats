@@ -2,11 +2,14 @@
 #define CITIZEN_H
 
 #include <vector>
+#include <memory>
+#include <string>
 
-#include "Structure.h"
+#include "../Buildings/Structure.h"
 // #include "PopulationMemento"
-#include "CitizenIterator.h"
 
+class Mayor;
+class CitizenIterator;
 
 class Citizen
 {
@@ -16,9 +19,9 @@ class Citizen
         static void addCitizen(std::unique_ptr<Citizen> newCitizen);
         static void removeCitizen(Citizen* target);
         static int getPopulationCount();
-        virtual void addService(std::string newService);
-        virtual void removeService(std::string oldService);
-        virtual void moveHomes(std::shared_ptr<Structure> newHome);
+        void addService(std::string newService);
+        void removeService(std::string oldService);
+        void moveHomes(std::shared_ptr<Structure> newHome);
         double getSatisfaction();
         void setSatisfaction(double satisfaction);
         std::string getEmploymentStatus();

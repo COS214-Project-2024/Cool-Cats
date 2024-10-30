@@ -1,5 +1,5 @@
 #ifndef CITIZENITERATOR_H
-#define CITIIZENITERATOR_H
+#define CITIZENITERATOR_H
 
 #include "Citizen.h"
 

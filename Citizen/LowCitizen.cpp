@@ -8,6 +8,7 @@
 
 using namespace std;
 
+int LowCitizen::lowClassCitizenCount = 0;
 
 /// @brief Creates a new basic low-class citizen object
 LowCitizen::LowCitizen() : Citizen()

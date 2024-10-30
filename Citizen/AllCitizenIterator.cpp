@@ -6,9 +6,8 @@ using namespace std;
 
 /// @brief Creates a new AllCitizen Iterator object that allows iteration through a list of citizens
 /// @param citizens The vector of all current citizens in the city
-AllCitizenIterator::AllCitizenIterator(vector<unique_ptr<Citizen>>& citizens)
+AllCitizenIterator::AllCitizenIterator(vector<unique_ptr<Citizen>>& citizens) : citizens(citizens)
 {
-    this->citizens = citizens;
     if(!citizens.empty())
     {
         current = citizens[0].get();

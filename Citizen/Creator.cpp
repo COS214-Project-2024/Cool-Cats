@@ -11,10 +11,10 @@ Creator::Creator(){}
 /// @return The new citizen that was created
 unique_ptr<Citizen> Creator::basicCitizenOperation()
 {
-    return basicCitizenOperation();
+    return basicCitizenMethod();
 }
 unique_ptr<Citizen> Creator::specificCitizenOperation(string employmentStatus, double satisfaction, shared_ptr<Structure> home)
 {
-    return specificCitizenOperation(employmentStatus, satisfaction, home);
+    return specificCitizenMethod(employmentStatus, satisfaction, home);
 }
 Creator::~Creator(){ }

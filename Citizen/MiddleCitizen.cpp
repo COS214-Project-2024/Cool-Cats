@@ -8,6 +8,8 @@
 
 using namespace std;
 
+int MiddleCitizen::middleClassCitizenCount = 0;
+
 /// @brief Creates a new basic citizen object
 MiddleCitizen::MiddleCitizen() : Citizen()
 {

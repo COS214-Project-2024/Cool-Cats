@@ -14,6 +14,10 @@ unique_ptr<Citizen> MayorCreator::basicCitizenMethod()
 {
     return make_unique<Mayor>();
 }
+unique_ptr<Citizen> MayorCreator::specificCitizenMethod(std::string employmentStatus, double satisfaction,  std::shared_ptr<Structure> home)
+{
+    return make_unique<Mayor>(employmentStatus, satisfaction, home, " ");
+}
 unique_ptr<Citizen> MayorCreator::specificCitizenMethod(std::string employmentStatus, double satisfaction,  std::shared_ptr<Structure> home, string name)
 {
     return make_unique<Mayor>(employmentStatus, satisfaction, home, name);

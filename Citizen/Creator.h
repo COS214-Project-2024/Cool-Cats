@@ -13,7 +13,7 @@ class Creator{
         ~Creator();
 
     protected:
-        virtual std::unique_ptr<Citizen> basicCitizenOperation() = 0;
-        virtual std::unique_ptr<Citizen> specificCitizenOperation(std::string employmentStatus, double satisfaction, std::shared_ptr<Structure> home) = 0;
+        virtual std::unique_ptr<Citizen> basicCitizenMethod() = 0;
+        virtual std::unique_ptr<Citizen> specificCitizenMethod(std::string employmentStatus, double satisfaction, std::shared_ptr<Structure> home) = 0;
 };
 #endif

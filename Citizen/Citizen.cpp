@@ -1,5 +1,6 @@
 #include <iostream>
 #include <memory>
+#include <vector>
 #include <cctype>
 #include <algorithm>
 #include <typeinfo>
@@ -12,12 +13,22 @@
 
 using namespace std;
 
+vector<unique_ptr<Citizen>> Citizen::citizens;
+
 /// @brief Creates a new basic citizen object, with the citizen being unemployed, have a satisfaction of 50 and no home
 Citizen::Citizen() 
 { 
     employmentStatus = "Unemployed";
     satisfaction = 50;
     home = nullptr;
+}
+
+//Helper function
+bool isValidService(const string& service)
+{
+    return std::all_of(service.begin(), service.end(), [](char c) {
+        return std::isalnum(c) || c == '-' || c == ' ';
+    });
 }
 
 /// @brief Creates a new citizen object
@@ -115,20 +126,13 @@ void Citizen::removeService(string oldService)
     }
 }
 
-bool isValidService(const string& service)
-{
-    return std::all_of(service.begin(), service.end(), [](char c) {
-        return std::isalnum(c) || c == '-' || c == ' ';
-    });
-}
-
 /// @brief Moves where the citizen lives to a different structure, Creates a deep copy of the new home
 /// @param newHome The new Structure where the citizen will live
 void Citizen::moveHomes(shared_ptr<Structure> newHome)
 {
     if(newHome != nullptr)
     {
-        home = std::make_shared<Structure>(*newHome);
+        home = newHome;
     }
 }
 

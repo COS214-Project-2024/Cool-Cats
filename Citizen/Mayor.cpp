@@ -6,6 +6,8 @@
 
 using namespace std;
 
+int Mayor::MayorCount = 0;
+
 /// @brief Creates a new basic mayor, with them not being elected and having 0 votes
 Mayor::Mayor() : Citizen() 
 { 
@@ -15,13 +17,21 @@ Mayor::Mayor() : Citizen()
     income = new Income(10000, 15000, 5.5, 2.5);
 };
 
+//Helper function
+bool isValidName(const string& name)
+{
+    return std::all_of(name.begin(), name.end(), [](char c) {
+        return std::isalnum(c) || c == '-' || c == ' ';
+    });
+}
+
 /// @brief Creates a new mayor object
 /// @param employmentStatus The employment status of the mayor, may only be 'unemployed', 'employed' or 'self-employed'
 /// @param satisfaction The overall satisfaction the mayor has with the city, may only be between 0-100
 /// @param home The structure where the mayor lives
 Mayor::Mayor(string employmentStatus, double satisfaction, std::shared_ptr<Structure> home, string name) : Citizen(employmentStatus, satisfaction, home)
 {
-    if(!isValidName(name))
+    if(!isValidName(name) || name == " ")
     {
         this->name = "Mayor " + (++MayorCount);
     }
@@ -51,13 +61,6 @@ void Mayor::setMayorName(string newName)
         return;
     }
     this->name = newName;
-}
-
-bool isValidName(const string& name)
-{
-    return std::all_of(name.begin(), name.end(), [](char c) {
-        return std::isalnum(c) || c == '-' || c == ' ';
-    });
 }
 
 /// @brief Increases the number of votes the mayor has received

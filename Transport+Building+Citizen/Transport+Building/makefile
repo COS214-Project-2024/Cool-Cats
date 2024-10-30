@@ -1,4 +1,4 @@
-ofiles = main.o Transport.o Transportation.o PublicVehicle.o PublicTransport.o Bus.o Taxi.o TrainTransport.o TrainVehicle.o Metro.o Tram.o Freight.o AirportTransport.o AirVehicle.o Passenger.o Cargo.o RoadState.o RoadState.o Road.o UnderConstruction.o ConcreteObserver.o RoadSubject.o Working.o BasicStructure.o CStructIterator.o MaintenanceCostReducer.o ResourceEfficiencyEnhancer.o SatisfactionEnhancer.o StructureDecorator.o StructureGroup.o
+ofiles = main.o Transport.o Transportation.o PublicVehicle.o PublicTransport.o Bus.o Taxi.o TrainTransport.o TrainVehicle.o Metro.o Tram.o Freight.o AirportTransport.o AirVehicle.o Passenger.o Cargo.o RoadState.o RoadState.o Road.o UnderConstruction.o ConcreteObserver.o RoadSubject.o Working.o BasicStructure.o CStructIterator.o MaintenanceCostReducer.o ResourceEfficiencyEnhancer.o SatisfactionEnhancer.o StructureDecorator.o StructureGroup.o AllCitizenIterator.o Citizen.o CitizenIterator.o Creator.o HighCitizen.o HighCitizenCreator.o Income.o LowCitizen.o LowCitizenCreator.o MainCitizen.o Mayor.o MayorCreator.o MayorIterator.o MiddleCitizen.o MiddleCitizenCreator.o
 gpp_o = g++ -c -std=c++11 -fprofile-arcs -ftest-coverage
 
 main: $(ofiles)
@@ -99,6 +99,52 @@ StructureDecorator.o: StructureDecorator.cpp StructureDecorator.h Structure.h
 
 StructureGroup.o: StructureGroup.cpp StructureGroup.h Structure.h StructureIterator.h
 	$(gpp_o) StructureGroup.cpp
+
+#sean Citizen stuff
+MainCitizen.o: MainCitizen.cpp 
+	$(gpp_o) MainCitizen.cpp
+
+AllCitizenIterator.o: AllCitizenIterator.cpp
+	$(gpp_o) AllCitizenIterator.cpp
+
+Citizen.o: Citizen.cpp
+	$(gpp_o) Citizen.cpp
+
+CitizenIterator.o: CitizenIterator.cpp
+	$(gpp_o) CitizenIterator.cpp
+
+Creator.o: Creator.cpp
+	$(gpp_o) Creator.cpp
+
+HighCitizen.o: HighCitizen.cpp
+	$(gpp_o) HighCitizen.cpp
+
+HighCitizenCreator.o: HighCitizenCreator.cpp
+	$(gpp_o) HighCitizenCreator.cpp
+
+Income.o: Income.cpp
+	$(gpp_o) Income.cpp
+
+LowCitizen.o: LowCitizen.cpp
+	$(gpp_o) LowCitizen.cpp
+
+LowCitizenCreator.o: LowCitizenCreator.cpp
+	$(gpp_o) LowCitizenCreator.cpp
+
+Mayor.o: Mayor.cpp
+	$(gpp_o) Mayor.cpp
+
+MayorCreator.o: MayorCreator.cpp
+	$(gpp_o) MayorCreator.cpp
+
+MayorIterator.o: MayorIterator.cpp
+	$(gpp_o) MayorIterator.cpp
+
+MiddleCitizen.o: MiddleCitizen.cpp
+	$(gpp_o) MiddleCitizen.cpp
+
+MiddleCitizenCreator.o: MiddleCitizenCreator.cpp
+	$(gpp_o) MiddleCitizenCreator.cpp
 
 
 run: main

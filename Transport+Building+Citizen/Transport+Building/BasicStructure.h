@@ -3,12 +3,14 @@
 
 #include <iostream>
 #include "Structure.h"
+#include "Citizen.h"
 
 using namespace std;
 
 class BasicStructure : public Structure {
 
     private:
+        int numCitizen;
         string name;
         float maintenanceCost;
         float ResourceConsumption;
@@ -23,6 +25,7 @@ class BasicStructure : public Structure {
         void add(Structure* structure) override;
         void remove(Structure* structure) override;
         vector<Structure*> getChildren() override;
+
 
         ~BasicStructure();
 

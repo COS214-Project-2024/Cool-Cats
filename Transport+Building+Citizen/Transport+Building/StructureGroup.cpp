@@ -17,7 +17,7 @@ void StructureGroup::remove(Structure* structure)
     structures.erase(it, structures.end());
 }
 
-StructureIterator* StructureGroup::createIterator()
+CStructIterator* StructureGroup::createIterator()
 {
     return new CStructIterator(structures);
 }

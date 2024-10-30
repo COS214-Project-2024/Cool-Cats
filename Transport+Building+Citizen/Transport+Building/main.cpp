@@ -60,7 +60,7 @@ void testStructure(){
 
     // Step 2: Create an iterator for the structure group
     // Step 2: Create a CStructIterator for the structure group
-    CStructIterator* iterator = dynamic_cast<CStructIterator*>(cityStructures->createIterator());
+    CStructIterator* iterator = cityStructures->createIterator();
 
     if (iterator == nullptr) {
         std::cerr << "Failed to create iterator." << std::endl;
@@ -165,7 +165,7 @@ void testingTransportationSystem(){
 
 int main(){
     //testingTransportationSystem();
-    // testStructure();
+    testStructure();
     // Decoratortest();
 
 

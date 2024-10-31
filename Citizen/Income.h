@@ -12,6 +12,7 @@ class Income
         void setTaxRate(float taxRate);
         float getUtilityCharges();
         void setUtilityCharges(float newUtilityCharge);
+        ~Income();
 
     private:
         double lowest;

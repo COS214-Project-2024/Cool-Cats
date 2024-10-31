@@ -1,5 +1,6 @@
 #include <iostream>
-#include <memory>
+#include <algorithm>
+#include <string>
 
 #include "Mayor.h"
 #include "MayorIterator.h"
@@ -29,11 +30,12 @@ bool isValidName(const string& name)
 /// @param employmentStatus The employment status of the mayor, may only be 'unemployed', 'employed' or 'self-employed'
 /// @param satisfaction The overall satisfaction the mayor has with the city, may only be between 0-100
 /// @param home The structure where the mayor lives
-Mayor::Mayor(string employmentStatus, double satisfaction, std::shared_ptr<Structure> home, string name) : Citizen(employmentStatus, satisfaction, home)
+Mayor::Mayor(string employmentStatus, double satisfaction, Structure* home, string name) : Citizen(employmentStatus, satisfaction, home)
 {
     if(!isValidName(name) || name == " ")
     {
-        this->name = "Mayor " + (++MayorCount);
+        MayorCount++;
+        this->name = "Mayor " + std::to_string(MayorCount);
     }
     else
     {

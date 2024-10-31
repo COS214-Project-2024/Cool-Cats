@@ -18,5 +18,6 @@ class MayorIterator : public CitizenIterator{
     private:
         std::vector<Mayor*> mayors;
         Mayor* current;
+        int index;
 };
 #endif

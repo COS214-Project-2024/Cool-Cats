@@ -10,7 +10,7 @@
 class MiddleCitizen : public Citizen{
      public:
         MiddleCitizen();
-        MiddleCitizen(std::string employmentStatus, double satisfaction, std::shared_ptr<Structure> home);
+        MiddleCitizen(std::string employmentStatus, double satisfaction, Structure* home);
         void vote();
         static int getMiddleClassCitizenCount();
         Income* getIncome();

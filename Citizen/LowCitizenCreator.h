@@ -9,7 +9,9 @@
 class LowCitizenCreator : public Creator{
     public:
         LowCitizenCreator();
-        std::unique_ptr<Citizen> basicCitizenMethod();
-        std::unique_ptr<Citizen> specificCitizenMethod(std::string employmentStatus, double satisfaction, std::shared_ptr<Structure> home) override;
+
+    protected:
+        Citizen* basicCitizenMethod();
+        Citizen* specificCitizenMethod(std::string employmentStatus, double satisfaction, Structure* home) override;
 };
 #endif

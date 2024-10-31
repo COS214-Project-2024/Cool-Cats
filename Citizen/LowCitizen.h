@@ -10,7 +10,7 @@
 class LowCitizen : public Citizen{
      public:
         LowCitizen();
-        LowCitizen(std::string employmentStatus, double satisfaction, std::shared_ptr<Structure> home);
+        LowCitizen(std::string employmentStatus, double satisfaction, Structure* home);
         void vote();
         static int getLowClassCitizenCount();
         Income* getIncome();

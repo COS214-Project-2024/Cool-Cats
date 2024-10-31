@@ -1,5 +1,4 @@
 #include <iostream>
-#include <memory>
 
 #include "MayorCreator.h"
 #include "Mayor.h"
@@ -8,17 +7,26 @@ using namespace std;
 
 MayorCreator::MayorCreator() : Creator() { };
 
-/// @brief Creates a new Mayor for the city, there may be multiple mayors
+/// @brief Creates a new basic Mayor for the city, there may be multiple mayors
 /// @return A new Mayor object
-unique_ptr<Citizen> MayorCreator::basicCitizenMethod()
+Citizen* MayorCreator::basicCitizenMethod()
 {
-    return make_unique<Mayor>();
+    return new Mayor();
 }
-unique_ptr<Citizen> MayorCreator::specificCitizenMethod(std::string employmentStatus, double satisfaction,  std::shared_ptr<Structure> home)
+
+//Method needed for inheritance, empty
+Citizen* MayorCreator::specificCitizenMethod(std::string employmentStatus, double satisfaction,  Structure* home)
 {
-    return make_unique<Mayor>(employmentStatus, satisfaction, home, " ");
+    return nullptr;
 }
-unique_ptr<Citizen> MayorCreator::specificCitizenMethod(std::string employmentStatus, double satisfaction,  std::shared_ptr<Structure> home, string name)
+
+/// @brief Creates and returns a new specified Mayor citizen
+/// @param employmentStatus The employment status of the mayor, either 'unemployed', 'employed' or 'self-employed' 
+/// @param satisfaction The satisfaction the Mayor has with the city, between 0-100
+/// @param home The assigned home of the mayor
+/// @param name The name of the mayor
+/// @return A new mayor object
+Citizen* MayorCreator::specificCitizenOperation(std::string employmentStatus, double satisfaction,  Structure* home, string name)
 {
-    return make_unique<Mayor>(employmentStatus, satisfaction, home, name);
+    return new Mayor(employmentStatus, satisfaction, home, name);
 }

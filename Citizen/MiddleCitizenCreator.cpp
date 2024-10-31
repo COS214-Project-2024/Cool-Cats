@@ -1,5 +1,4 @@
 #include <iostream>
-#include <memory>
 
 #include "MiddleCitizenCreator.h"
 #include "MiddleCitizen.h"
@@ -8,11 +7,11 @@ MiddleCitizenCreator::MiddleCitizenCreator() : Creator() { };
 
 /// @brief Creates a new middle class citizen
 /// @return a new middle class citizen object
-std::unique_ptr<Citizen> MiddleCitizenCreator::basicCitizenMethod()
+Citizen* MiddleCitizenCreator::basicCitizenMethod()
 {
-    return make_unique<MiddleCitizen>();
+    return new MiddleCitizen();
 }
-std::unique_ptr<Citizen> MiddleCitizenCreator::specificCitizenMethod(std::string employmentStatus, double satisfaction, std::shared_ptr<Structure> home)
+Citizen* MiddleCitizenCreator::specificCitizenMethod(std::string employmentStatus, double satisfaction, Structure* home)
 {
-    return make_unique<MiddleCitizen>(employmentStatus, satisfaction, home);
+    return new MiddleCitizen(employmentStatus, satisfaction, home);
 }

@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/LowCitizenTest.dir/tests/LowCitizenTest.cpp.o -o LowCitizenTest  lib/libgtest.a lib/libgtest_main.a libCitizen.a lib/libgtest.a 

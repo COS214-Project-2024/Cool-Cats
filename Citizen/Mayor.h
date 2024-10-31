@@ -10,7 +10,7 @@
 class Mayor : public Citizen{
     public:
         Mayor();
-        Mayor(std::string employmentStatus, double satisfaction, std::shared_ptr<Structure> home, std::string name);
+        Mayor(std::string employmentStatus, double satisfaction, Structure* home, std::string name);
         std::string getMayorName();
         void setMayorName(std::string newName);
         void receiveVote();

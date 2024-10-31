@@ -1,6 +1,6 @@
 #include <iostream>
-#include <memory>
 #include <vector>
+#include <cstdlib>
 
 #include "HighCitizen.h"
 #include "Mayor.h"
@@ -14,45 +14,36 @@ int HighCitizen::highClassCitizenCount = 0;
 HighCitizen::HighCitizen() : Citizen()
 {
     highClassCitizenCount++;
-    income = new Income(20000, 1000000, 3.5, 1);
+    income = new Income(20000, 1000000, 3.5, 2.75);
 }
 
 /// @brief Creates a new high-class citizen object
 /// @param employmentStatus the employment status of the high-class citizen, may only be either 'unemployed', 'employed' or 'self-employed'
 /// @param satisfaction the satisfaction of the high-class citizen, may only be between 0-100
 /// @param home the home where the high-class citizen lives
-HighCitizen::HighCitizen(string employmentStatus, double satisfaction, shared_ptr<Structure> home) : Citizen(employmentStatus, satisfaction, home)
+HighCitizen::HighCitizen(string employmentStatus, double satisfaction, Structure* home) : Citizen(employmentStatus, satisfaction, home)
 {
     highClassCitizenCount++;
-    income = new Income(6000, 10000, 3.5, 1);
+    income = new Income(20000, 1000000, 3.5, 2.75);
 }
 
-/// @brief Allows a high-class citizen to vote for their choice of mayor
+/// @brief Makes a high-class citizen vote for a random mayor
 void HighCitizen::vote()
 {
+    if(Mayor::getMayorCount() <= 0)
+    {
+        return;
+    }
+    
     vector<Mayor*> mayors = Citizen::getMayors();
 
-    cout << "Salutation High-Class citizen\n";
-    cout << "Please choose the mayor you wish to vote for by typing the specific number associated with their name:\n";
-    int index = 0;
-    for(auto i = mayors.begin(); i != mayors.end(); i++)
+    if(mayors.empty())
     {
-        cout << index << ". " << i[index]->getMayorName() << endl;
-    }
-    cout << endl;
-
-    int choice = 0;
-    cin >> choice;
-
-    while(choice < 0 || choice > index)
-    {
-        cout << "Invalid choice, Please try again\n";
-        cin >> choice;
+        return;
     }
 
-    mayors[choice]->receiveVote();
-
-    cout << "Thank you for voting!\n";
+    int random = rand() % mayors.size();
+    mayors[random]->receiveVote();
 }
 
 /// @brief Static method that returns the number of active high class citizens in the city

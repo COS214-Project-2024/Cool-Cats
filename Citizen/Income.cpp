@@ -38,7 +38,7 @@ Income::Income(double lowest, double highest, float taxRate, float utilityCharge
         this->taxRate = taxRate;
     }
     
-    if(utilityCharge < 0 || utilityCharge > 0)
+    if(utilityCharge < 0 || utilityCharge > 100)
     {
         this->utilityCharge = 0;
     }
@@ -87,4 +87,8 @@ void Income::setUtilityCharges(float newUtilityCharge)
         return;
     }
     this->utilityCharge = newUtilityCharge;
+}
+Income::~Income()
+{
+    
 }

@@ -1,5 +1,4 @@
 #include <iostream>
-#include <memory>
 #include <vector>
 #include <cctype>
 #include <algorithm>
@@ -13,14 +12,15 @@
 
 using namespace std;
 
-vector<unique_ptr<Citizen>> Citizen::citizens;
+vector<Citizen*> Citizen::citizens;
 
-/// @brief Creates a new basic citizen object, with the citizen being unemployed, have a satisfaction of 50 and no home
+/// @brief Creates a new basic citizen object, with the citizen being unemployed, have a satisfaction of 50 and no home, automatically adds the citizen to the citizens vector
 Citizen::Citizen() 
 { 
     employmentStatus = "Unemployed";
     satisfaction = 50;
     home = nullptr;
+    addCitizen(this);
 }
 
 //Helper function
@@ -31,11 +31,11 @@ bool isValidService(const string& service)
     });
 }
 
-/// @brief Creates a new citizen object
+/// @brief Creates a new citizen object, automatically adds the citizen to the citizens vector
 /// @param employmentStatus The employment status of the citizen, can only be 'unemployed', 'employed', 'self-employed'
 /// @param satisfaction The overall satisfaction the citizen has with the city, can only be a value between 0 and 100
 /// @param home The structure where the citizen lives
-Citizen::Citizen(string employmentStatus, double satisfaction, shared_ptr<Structure> home)
+Citizen::Citizen(string employmentStatus, double satisfaction, Structure* home)
 {
     if(!isValidService(employmentStatus))
     {
@@ -59,15 +59,17 @@ Citizen::Citizen(string employmentStatus, double satisfaction, shared_ptr<Struct
         this->satisfaction = satisfaction;
     }
     this->home = home;
+
+    addCitizen(this);
 }
 
 /// @brief Adds a new Citizen to a hierarchy of citizens
 /// @param newCitizen The new citizen to be added into the array
-void Citizen::addCitizen(unique_ptr<Citizen> newCitizen)
+void Citizen::addCitizen(Citizen* newCitizen)
 {
     if(newCitizen != nullptr)
     {
-        citizens.push_back(std::move(newCitizen));
+        citizens.push_back(newCitizen);
     }
 }
 
@@ -77,11 +79,11 @@ void Citizen::removeCitizen(Citizen* target)
 {
     if(target != nullptr)
     {
-        auto it = std::remove_if(citizens.begin(), citizens.end(), [target](const std::unique_ptr<Citizen>& ptr){
-            return ptr.get() == target;
+        auto it = std::remove_if(citizens.begin(), citizens.end(), [target](const Citizen* ptr){
+            return ptr == target;
         });
 
-        citizens.erase(it, citizens.end());
+        citizens.erase(it);
     }
 }
 /// @brief Returns the number of citizens registered to the city, includes mayors, high class citizens, middle class citizens and low class citizens 
@@ -126,9 +128,23 @@ void Citizen::removeService(string oldService)
     }
 }
 
+/// @brief Returns the list of services that a citizen provides
+/// @return the vector array of services
+vector<string> Citizen::getServices()
+{
+    return services;
+}
+
+/// @brief Returns the current home of the citizen
+/// @return a shared pointer to the Structure object
+Structure* Citizen::getHome()
+{
+    return home;
+}
+
 /// @brief Moves where the citizen lives to a different structure, Creates a deep copy of the new home
 /// @param newHome The new Structure where the citizen will live
-void Citizen::moveHomes(shared_ptr<Structure> newHome)
+void Citizen::moveHomes(Structure* newHome)
 {
     if(newHome != nullptr)
     {
@@ -170,7 +186,7 @@ void Citizen::setEmploymentStatus(string employment)
         return;
     }
 
-    if(employment != "unemployed" || employment != "employed" || employment != "self-employed")
+    if(employment != "unemployed" && employment != "employed" && employment != "self-employed")
     {
         return;
     }
@@ -182,9 +198,9 @@ void Citizen::determineMayor()
     Mayor* candidate = nullptr;
     Mayor *currMayor = nullptr;
 
-    for(auto m = citizens.begin(); m != citizens.end(); m++)
+    for(Citizen* m : citizens)
     {
-        Mayor* c =  dynamic_cast<Mayor*>(m->get());
+        Mayor* c =  dynamic_cast<Mayor*>(m);
 
         if(c && c->getVoteCount() > maxVote)
         {
@@ -213,9 +229,9 @@ void Citizen::determineMayor()
 vector<Mayor*> Citizen::getMayors()
 {
     vector<Mayor*> mayors;
-    for(auto c = citizens.begin(); c != citizens.end(); c++)
+    for(Citizen* c : citizens)
     {
-        Mayor *m = dynamic_cast<Mayor*>(c->get());
+        Mayor *m = dynamic_cast<Mayor*>(c);
 
         if(m)
         {
@@ -236,3 +252,7 @@ vector<Mayor*> Citizen::getMayors()
 
 // }
 
+Citizen::~Citizen()
+{
+    removeCitizen(this);
+}

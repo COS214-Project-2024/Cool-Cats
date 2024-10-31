@@ -1,8 +1,40 @@
 #include "BasicStructure.h"
 
-BasicStructure::BasicStructure(const string& name, float maintenance, float resource, float satisfaction ) : name(name), maintenanceCost(maintenance), ResourceConsumption(resource), citizenSatisfactionImpact(satisfaction)
+BasicStructure::BasicStructure(const string& name, string type, float maintenance, float resource, float satisfaction , int capacity)
 {
+    this->name = name;
+    this->type = type;
+    if (maintenance <= 0 || resource <= 0 || satisfaction < 0 || capacity <= 0){
+        throw invalid_argument("Invalid values for BasicStructure");
+    }
+    this->numCitizen = capacity;
+    this->maintenanceCost = maintenance;
+    this->ResourceConsumption = resource;
+    this->citizenSatisfactionImpact = satisfaction;
+}
+
+void BasicStructure::addcitizen(Citizen* c )
+{
+    if( c == NULL){
+        throw invalid_argument("Citizen cannot be NULL"); 
+    }
+
+    // Check if there is enough space in the structure
+    if(numCitizen >= this->numCitizen){
+        throw invalid_argument("Structure is already full");
+    }
     
+    numCitizen++;
+}
+
+string BasicStructure::getType()
+{
+    return type;
+}
+
+void BasicStructure::removeCitizen()
+{
+    numCitizen--;
 }
 
 void BasicStructure::add(Structure* structure) {

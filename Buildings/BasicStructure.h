@@ -20,6 +20,9 @@ class BasicStructure : public Structure {
         float getMaintenance() override;
         float getResourceConsumption() override;
         float getCitizenSatisfactionImpact() override;
+        void add(Structure* structure) override;
+        void remove(Structure* structure) override;
+        vector<Structure*> getChildren() override;
 
         ~BasicStructure();
 

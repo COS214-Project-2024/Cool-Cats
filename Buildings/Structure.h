@@ -11,6 +11,7 @@ class Structure
     private:
 
     public:
+        virtual ~Structure() = default;
         virtual string getName() = 0;
         virtual float getMaintenance() =0;
         virtual float getResourceConsumption() =0;      

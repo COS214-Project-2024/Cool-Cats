@@ -23,7 +23,7 @@ class StructureGroup : public Structure
         float getMaintenance() override;
         float getResourceConsumption() override;
         float getCitizenSatisfactionImpact() override;
-        StructureIterator* createIterator();
+        CStructIterator* createIterator();
 
         ~StructureGroup() ;
 

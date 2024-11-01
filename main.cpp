@@ -13,7 +13,7 @@
 
 using namespace std;
 void errorMessage();
-
+CStructIterator* createIteratorForGroup();
 void exit();
 void viewCity(vector<StructureGroup*> s);
 
@@ -29,6 +29,7 @@ void printLines();
 void addMayor();
 
 vector<StructureGroup*> arr;
+CStructIterator *cityHallIterator ;
 
 
 int main(){
@@ -52,6 +53,7 @@ int main(){
 
 
         arr.push_back(createCityHall());
+        cityHallIterator = createIteratorForGroup(arr.front()); // potential erros can arise from here
         //createGovernment();
     }
     printLines();
@@ -118,6 +120,11 @@ void viewCity(vector<StructureGroup*> arr){
         
     }
     printLines();
+}
+
+CStructIterator* createIteratorForGroup(StructureGroup* s ){
+    CStructIterator *newIterator = s->createIterator();
+    return newIterator;
 }
 
 StructureGroup* createCityHall(){
@@ -195,6 +202,7 @@ void createStructureGroup(){
 
 }
 void createStructure(){
+    
     //configure government should be allowed
     //add citizens
     //add decorator

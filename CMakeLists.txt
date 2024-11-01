@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(Citizen)
+project(City)
 
 # Add Google Test as a subdirectory
 add_subdirectory(googletest)
@@ -8,7 +8,7 @@ add_subdirectory(googletest)
 enable_testing()
 
 # Add the source files for your project
-add_library(Citizen 
+add_library(City 
     Citizen/AllCitizenIterator.cpp 
     Citizen/CitizenIterator.cpp
     Citizen/Citizen.cpp

@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/MayorTest.dir/tests/MayorTest.cpp.o -o MayorTest  lib/libgtest.a lib/libgtest_main.a libCitizen.a lib/libgtest.a 

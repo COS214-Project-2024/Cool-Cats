@@ -7,6 +7,9 @@
 class MiddleCitizenCreator : public Creator{
     public:
         MiddleCitizenCreator();
-        Citizen* citizenMethod();
+
+    protected:
+        Citizen* basicCitizenMethod();
+        Citizen* specificCitizenMethod(std::string employmentStatus, double satisfaction, Structure* home);
 };
 #endif

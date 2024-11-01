@@ -1,0 +1,8 @@
+AllCitizenIteratorTest 1 0.00295347
+CreatorTest 1 0.00260534
+HighCitizenTest 1 0.00206313
+LowCitizenTest 1 0.00258766
+MayorIteratorTest 1 0.00294837
+MayorTest 1 0.00265212
+MiddleCitizenTest 1 0.00306526
+---

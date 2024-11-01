@@ -1,10 +1,11 @@
 #ifndef CITIZENITERATOR_H
-#define CITIIZENITERATOR_H
+#define CITIZENITERATOR_H
 
 #include "Citizen.h"
 
 class CitizenIterator{
     public:
+        CitizenIterator();
         virtual void first() = 0;
         virtual void next() = 0;
         virtual bool isDone() const = 0;

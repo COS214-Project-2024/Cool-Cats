@@ -1,18 +1,23 @@
 #ifndef MAYORITERATOR_H
 #define MAYORITERATOR_H
 
-#include "Citizen.h"
+#include "Mayor.h"
 #include "CitizenIterator.h"
 
-#include <list>
+#include <vector>
 
 class MayorIterator : public CitizenIterator{
     public:
-        MayorIterator(std::list<Citizen*> citizens);
+        MayorIterator(std::vector<Mayor*> mayors);
         void first();
         void next();
         bool isDone() const;
-        Citizen* currentItem();
+        Mayor* currentItem();
         ~MayorIterator();
+
+    private:
+        std::vector<Mayor*> mayors;
+        Mayor* current;
+        int index;
 };
 #endif

@@ -1,16 +1,19 @@
 #ifndef CREATOR_H
 #define CREATOR_H
 
+#include <memory>
+
 #include "Citizen.h"
 
 class Creator{
     public:
-        void citizenOperation();
+        Creator();
+        Citizen* basicCitizenOperation();
+        Citizen* specificCitizenOperation(std::string employmentStatus, double satisfaction, Structure* home);
+        ~Creator();
 
     protected:
-        virtual Citizen* citizenMethod() = 0;
-
-    private:
-        Citizen* citizen;
+        virtual Citizen* basicCitizenMethod() = 0;
+        virtual Citizen* specificCitizenMethod(std::string employmentStatus, double satisfaction, Structure* home) = 0;
 };
 #endif

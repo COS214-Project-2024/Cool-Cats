@@ -4,15 +4,21 @@
 #include "CitizenIterator.h"
 #include "Citizen.h"
 
-#include <list>
+#include <vector>
+#include <memory>
 
 class AllCitizenIterator : public CitizenIterator{
     public:
-        AllCitizenIterator(std::list<Citizen*> citizens);
+        AllCitizenIterator(std::vector<Citizen*>& citizens);
         void first();
         void next();
         bool isDone() const;
         Citizen* currentItem();
         ~AllCitizenIterator();
+
+    private:
+        std::vector<Citizen*>& citizens;
+        Citizen* current;
+        int index;
 };
 #endif

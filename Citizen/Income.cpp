@@ -7,7 +7,6 @@
 /// @param lowest the lowest threshold for the type of citizen 
 /// @param hightest the highest threshold for the type of citizen
 /// @param taxRate the taxRate for the citizen, expressed as a percentage
-/// @param utilityCharge the utility charge for each citizen based on their home
 Income::Income(double lowest, double highest, float taxRate, float utilityCharge)
 {
     if(lowest < 0)
@@ -38,14 +37,6 @@ Income::Income(double lowest, double highest, float taxRate, float utilityCharge
         this->taxRate = taxRate;
     }
     
-    if(utilityCharge < 0 || utilityCharge > 100)
-    {
-        this->utilityCharge = 0;
-    }
-    else
-    {
-        this->utilityCharge = utilityCharge;
-    }
 }
 
 /// @brief Returns the range of income threshold for the type of citizen in an array
@@ -73,21 +64,6 @@ void Income::setTaxRate(float taxRate)
     this->taxRate = taxRate;
 }
 
-/// @brief Returns the utility charge depending on the citizen type
-/// @return the utility charge
-float Income::getUtilityCharges()
-{
-    return utilityCharge;
-}
-
-void Income::setUtilityCharges(float newUtilityCharge)
-{
-    if(newUtilityCharge < 0 || newUtilityCharge > 100)
-    {
-        return;
-    }
-    this->utilityCharge = newUtilityCharge;
-}
 Income::~Income()
 {
     

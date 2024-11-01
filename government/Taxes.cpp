@@ -2,7 +2,7 @@
 #include"TaxMemento.cpp"
 #include<iostream>
 
-Taxes::Taxes(float one ){
+Taxes::Taxes(float one ){ 
     taxRate = one;
     //utilityCharge = two;
 }

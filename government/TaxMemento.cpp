@@ -2,16 +2,17 @@
 /// @brief 
 /// @param s 
 TaxMemento::TaxMemento(Taxes* s){
-    state = s;
+    state = new Taxes(s->getTaxRate()) ;
 }
 /// @brief 
 TaxMemento::~TaxMemento(){
-    std::cout<<"destroyed taxMemento\n";
+    delete state;
 }
  /// @brief 
  /// @return 
- TaxMemento* TaxMemento::getState(){
-  return this;
+ Taxes* TaxMemento::getState(){
+  return state;
+  //state = nullptr;
 }
 /// @brief 
 /// @param s 

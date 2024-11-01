@@ -13,10 +13,14 @@ private:
 
 public:
     Government();
+    ~Government();
     void setTaxRate(float newRate);
+    void setTaxRate(Taxes* newRate);
+    Taxes* getTax();
     void implementPolicy(const std::string& policy);
     float getBudget() const;
     void allocateBudget(float amount);
+    void collection();
     void storeMemento(TaxMemento* one);
     TaxMemento* getMemento();
 };

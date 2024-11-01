@@ -7,13 +7,14 @@
 class TaxMemento {
 private:
     Taxes* state;
-
-
-public:
     TaxMemento(Taxes* s);
+    friend class Taxes;
+public:
+   
     virtual ~TaxMemento() ;
-    TaxMemento* getState();
+    Taxes* getState();
     void setState(Taxes* s);
+    
     
 };
 

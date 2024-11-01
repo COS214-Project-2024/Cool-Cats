@@ -1,14 +1,15 @@
 #include"Taxes.h"
-#include"TaxMemento.cpp"
+#include"TaxMemento.h"
 #include<iostream>
-
+/// @brief this is the constructor of the Taxes function
+/// @param one is a float that then initialize
 Taxes::Taxes(float one ){ 
     taxRate = one;
     //utilityCharge = two;
 }
 
 Taxes::~Taxes(){
-    std::cout<<"destroying Taxes\n";
+    
 }
 
 
@@ -24,14 +25,7 @@ void Taxes::setTaxRate(float n){
 float Taxes::getTaxRate(){
     return taxRate;
 }
-void Taxes::collection(){
-    std::cout<<"collect taxes\n";
-}
 
-void Taxes::allocation(){
-    std::cout<<"allocate taxes\n";
-}
-
-void Taxes::impact(){
-  std::cout<<"impact on citizen\n";
+void Taxes::reinstateMemento(TaxMemento* n){
+    taxRate = n->getState()->getTaxRate();
 }

@@ -12,13 +12,11 @@ private:
 public:
     Taxes(float one);
     virtual ~Taxes() ;
-    void collection();
-    void allocation();
-    void impact() ;
     float getTaxRate();
     void setTaxRate(float n);
     TaxMemento* createMemento();
-    friend class TaxMemento;
+    void reinstateMemento(TaxMemento* n);
+    
 };
 
 #endif

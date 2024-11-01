@@ -7,7 +7,7 @@
 /// @param lowest the lowest threshold for the type of citizen 
 /// @param hightest the highest threshold for the type of citizen
 /// @param taxRate the taxRate for the citizen, expressed as a percentage
-Income::Income(double lowest, double highest, float taxRate, float utilityCharge)
+Income::Income(double lowest, double highest, float taxRate)
 {
     if(lowest < 0)
     {

@@ -1,8 +1,8 @@
 #include "CStructIterator.h"
 
 CStructIterator::CStructIterator(const vector<Structure*>& structures) : structures(structures), currentPosition(0) 
-{
-
+{   
+    
 }
 
 void CStructIterator::first() 

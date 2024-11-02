@@ -11,6 +11,8 @@
 #include "BasicStructure.h"
 #include "StructureIterator.h"
 
+#include <limits>
+
 using namespace std;
 void errorMessage();
 CStructIterator* createIteratorForGroup(StructureGroup* s );
@@ -67,7 +69,7 @@ int main(){
         cout << "2 : Create Structure " << endl;
         cout << "3 : View City" << endl;
         cout << "4 : Exit" << endl;
-        cout << "5 :Edit structure" << endl;
+        cout << "5 : Edit structure" << endl;
         cout << "Select NUMBER: ";
 
         cin >> option;
@@ -202,7 +204,95 @@ void createStructureGroup(){
 
 }
 void createStructure(){
-    
+    printLines();
+    cout << "Please type the name of the are you would like to add the structure group you would like to add a structure to: " << endl;
+
+    viewCity(arr);
+
+    string option;
+    cout << "Enter name Here: ";
+    cin >> option;
+    int index = 0;
+    bool cond = false;
+    for(int i = 0; i < static_cast<int>(arr.size()); i++){
+        cout << "we got here " << endl;
+        if(arr[i]->getName() == option){
+            cond = true;
+
+            index = i;
+        }
+    }
+
+    if(cond == false){
+        cout << "No such area exists" << endl;
+    }
+    else{
+        cout << "Area is available !! " << endl;
+        printLines();
+        cout << "Enter the name of the structure you would like to add: ";
+        cin >> option;
+
+        printLines();
+        int option2;
+        char type;
+
+        while(cond){
+            cout << "Enter the type of struture you would like your structure to be. This type will affect how it will be treated as an industry will be different from a residential area" << endl;
+            cout << "Choose from the Menu: " << endl;
+            cout << "1: Residential" << endl;
+            cout << "2: Commercial" << endl;
+            cout << "3: Industrial" << endl;
+            cout << "4: Landmarks" << endl;
+            cin >> option2;
+
+            switch (option2)
+            {
+            case 1:
+                type = 'R';
+                break;
+            case 2:
+                type = 'C';
+                break;
+            case 3:
+                type = 'I';
+                break;
+            case 4 :
+                type = 'L';
+                break;
+
+            
+            default:
+                break;
+            }
+
+            printLines();
+            bool conditionForCapacity = true;
+            int optionForCapacity;
+            while(conditionForCapacity){
+                cout << "To finalise creation of structure you will now need to select add capcity" << endl;
+                cout << "Make sure that your value is a whole number greater than 0 but smaller than 1001" << endl;
+                cin >> optionForCapacity;
+
+                if(cin.fail()){
+
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                conditionForCapacity = false;
+                cond = false;
+                cin >> option2;
+
+            }
+            
+        }
+        
+
+
+    }
+
+
+
+
     //configure government should be allowed
     //add citizens
     //add decorator

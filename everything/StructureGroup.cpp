@@ -8,14 +8,33 @@ StructureGroup::StructureGroup(const string& groupName) : name(groupName){}
 
 void StructureGroup::add(Structure* structure)
 {
+    if (!structure) {
+        throw std::invalid_argument("Cannot add a null structure.");
+    }
+
+    //if structure is already in the group
+    if (std::find(structures.begin(), structures.end(), structure) != structures.end()) {
+        throw std::runtime_error("Cannot add duplicate structure to the group.");
+    }
+
     structures.push_back(structure);
 }
 
+
 void StructureGroup::remove(Structure* structure)
 {
-    auto it = std::remove(structures.begin(), structures.end(), structure);
-    structures.erase(it, structures.end());
+    if (!structure) {
+        throw std::invalid_argument("Cannot remove a null structure.");
+    }
+
+    auto it = std::find(structures.begin(), structures.end(), structure);
+    if (it == structures.end()) {
+        throw std::runtime_error("Structure not found in the group.");
+    }
+
+    structures.erase(it);
 }
+
 
 CStructIterator* StructureGroup::createIterator()
 {

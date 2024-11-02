@@ -11,14 +11,15 @@ class BasicStructure : public Structure {
 
     private:
         int numCitizen;
-        string type;
+        int maxCitizen;
+        char type;
         string name;
         float maintenanceCost;
         float ResourceConsumption;
         float citizenSatisfactionImpact;
 
     public:
-        BasicStructure(const string& name, string type, float maintenance, float resource, float satisfaction , int capacity);
+        BasicStructure(const string& name, char Btype, int capacity);
         void addcitizen(Citizen *c);
         string getType();
         void removeCitizen();

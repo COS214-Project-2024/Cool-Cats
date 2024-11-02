@@ -2,6 +2,8 @@
 #define STRUCTUREDECORATOR_H
 
 #include <iostream>
+#include <stdexcept>
+#include <algorithm>
 #include "Structure.h"
 
 

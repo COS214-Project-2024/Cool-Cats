@@ -1,8 +1,10 @@
 #include "StructureDecorator.h"
 
-StructureDecorator::StructureDecorator(Structure* structure) : decoratedStructure(structure) 
+StructureDecorator::StructureDecorator(Structure* structure) : decoratedStructure(structure)
 {
-
+    if (!decoratedStructure) {
+        throw std::invalid_argument("Cannot decorate a null structure.");
+    }
 }
 
 StructureDecorator::~StructureDecorator() 

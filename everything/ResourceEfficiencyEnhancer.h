@@ -2,6 +2,7 @@
 #define RESOURCEEFFICIENCYENHANCER_H
 
 #include <iostream>
+#include <stdexcept>
 #include "StructureDecorator.h"
 
 using namespace std;

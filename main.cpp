@@ -14,6 +14,21 @@
 #include <limits>
 
 using namespace std;
+
+//gerneral funcitons:
+
+
+//for buildings:
+void editStructureGroup();
+void addStructureGroup();
+void removeStructureGroup();
+
+void editStructure();
+void addStructure();
+void removeStructure();
+
+//other
+
 void errorMessage();
 CStructIterator* createIteratorForGroup(StructureGroup* s );
 void exit();
@@ -23,15 +38,14 @@ StructureGroup* createCityHall();
 
 void createGovernment();
 
-void createStructureGroup();
-void createStructure();
+
 
 void addTransport();
 void printLines();
 void addMayor();
 
-vector<StructureGroup*> arr;
-vector<CStructIterator*> iteratorArr ;
+vector<StructureGroup*> arr; // this keeps track of all the stucture groups that have been created
+vector<CStructIterator*> iteratorArr ; // this keeps track of iterators that have been created ie each structure is in a structure group and we can iterate over each structure in each structure group through this.
 
 
 int main(){
@@ -43,7 +57,7 @@ int main(){
 
     cout << "Press 1 to create City hall and government" << endl;
 
-    
+    //NB City hall and Government are created by default.s
 
     //utilites for this should be added
     int option;
@@ -63,23 +77,36 @@ int main(){
     bool cond = true;
 
     
+
+    //this will be our main screen
+
+    //When a user click one of these numbers, then they should be able to stuff based on the number added
+    //we will need to do some error handling here
+    //we use a while loop so whenever we break from one of the cases so that this menu will get shown after
+    //You can printlines if you would like to seperate for clarity
+    //You can exit to end program
+
+
     while(cond){
         printLines();
-        cout << "1 : Create new area" << endl;
-        cout << "2 : Create Structure " << endl;
+        cout << "1 : Edit Structure groups" << endl;
+        cout << "2 : Edit Structures" << endl;
         cout << "3 : View City" << endl;
         cout << "4 : Exit" << endl;
-        cout << "5 : Edit structure" << endl;
+        cout << "5 : Add Transport" << endl;
+        cout << "6 : Edit Govenment" << endl;
+        cout << "7 : Add utilities" << endl;
         cout << "Select NUMBER: ";
 
         cin >> option;
 
         switch (option){
             case 1:
-                createStructureGroup();
+                cout << "We got here" << endl;
+                editStructureGroup();
                 break;
             case 2:
-                createStructure();
+                editStructure();
                 break;
             case 3:
                 viewCity(arr);
@@ -87,6 +114,16 @@ int main(){
             case 4:
                 exit();
                 cond = false;
+                break;
+            case 5:
+                //Add Transport
+                break;
+            case 6:
+                //Edit Government
+
+                break;
+            case 7:
+                //Add utilities
                 break;
             default:
                 errorMessage();
@@ -101,6 +138,8 @@ int main(){
     return 0;
 }
 
+//general funcitons
+
 void printLines(){
     cout << "---------------------------------------------------------------" << endl;
 }
@@ -111,9 +150,11 @@ void errorMessage(){
 
 void exit(){
     viewCity(arr);
-    exit(1);
+    // exit(1);
+    // cout << "We got here" << endl;
 
 }
+
 void viewCity(vector<StructureGroup*> arr){
     printLines();
     for(StructureGroup* str : arr){
@@ -124,28 +165,35 @@ void viewCity(vector<StructureGroup*> arr){
     printLines();
 }
 
-CStructIterator* createIteratorForGroup(StructureGroup* s ){
-    CStructIterator *newIterator = s->createIterator();
-    return newIterator;
-}
 
-StructureGroup* createCityHall(){
+//building funcitons
+void editStructureGroup(){
 
-    StructureGroup * cityhallGroup = new StructureGroup("CityHallGroup");
-    BasicStructure* cityHall = new BasicStructure("CityHall", "Type1", 100, 100, 100, 100);
-    cityhallGroup->add(cityHall);
+    //this will allow us to add and remove structure groups from the array
 
-    return cityhallGroup;
-}
-
-void createGovernment(){
-    
-}
-
-void createStructureGroup(){
-
-    //road from main hall is created in the background
+    int option;
     printLines();
+    cout << "Edit structure group Menu" << endl;
+
+    cout << "1: Add" << endl;
+    cout << "2: remove" << endl;
+    cout << "3: view city" << endl;
+    cout << "4: return to main" << endl;
+    //add more if you see fit
+
+    cin >> option; //get input from user
+
+    //handle cases here
+    //also note you will need to create a new iterator for this .There is an vector for iterator which we will use a 1:1 location for the iterator and groups array. SO position 1 of the iterator will correspond to group in postion 1 of the structure group.
+
+
+    printLines();
+
+}
+
+void addStructureGroup(){
+    //this will add a structure group to the vector arr
+    //you can edit here as you see fit. once you are done you shouldnt need to anything as it will go back to main screen automatically howver you could call view city and print lines to show that the new thing has been indeed added to the array
     string name;
     cout << "Enter Name of area you would like to add" << endl;
     cin >> name;
@@ -156,54 +204,52 @@ void createStructureGroup(){
     printLines();
     
     cout << "YOU have created a new area: " << name << endl;
+}
+
+void removeStructureGroup(){
+    //this will remove a structure group to the vector arr
+    //make sure after something is removed, the vector postion doesnt become empty and everything ahead is brought back.
+}
+
+void editStructure(){
+
+    int option;
+    printLines();
+    cout << "Edit structure group Menu" << endl;
+
+    cout << "1: Add" << endl;
+    cout << "2: remove" << endl;
+    cout << "3: view city" << endl;
+    cout << "4: return to main" << endl;
+    //add more if you see fit
+
+    cin >> option; //get input from user
+
+    //handle cases here
+    //also note you will need to create a new iterator for this .There is an vector for iterator which we will use a 1:1 location for the iterator and groups array. SO position 1 of the iterator will correspond to group in postion 1 of the structure group.
+
+
+    printLines();
+    
 
     
-    bool cond = true;
-    while(cond){
-        printLines();
 
-        cout << "Menu" << endl;
-        cout << "1: Create Transport system" << endl;
-        cout << "2: Return back" << endl;
-        cout << "3: Add mayor" << endl;
-        cout << "4: Exit" << endl;
-        cout << "5: View City" << endl;
-
-        int option;
-        cout << "Select NUMBER: ";
-        cin>> option;
-        switch (option){
-            case 1:
-            addTransport();
-        break;
-        case 2:
-            return;
-            break;
-
-        case 3:
-            addMayor();
-            break;
-    
-        case 4:
-            exit();
-            break;
-        case 5:
-            viewCity(arr);
-            break;
-        default:
-            break;
-        }
-    }
-    
-    
-    //need to be able to go back
-    //create trasport system
-    //add mayor
-    
-    //utilities are added 
 
 }
-void createStructure(){
+
+void addStructure(){
+    //ask the user for the group you would like 
+    //then check if that group is available if not send a message and have them retype the name. 
+    //if the name is correct then get the name of the structrue they would want to create
+    //get the type
+    //get the capacity
+    //call the constructor of creating structures
+    //add this new structure to the group
+    //NB print view city wont work at the moment as i have not added a print structures to the view city its still just structure groups
+
+    //feel free to add whatever you think is best
+
+    //some demo code that i was working on before however its not really what i want anymore so feel free to look at it for inspiration but the psuedo is more better
     printLines();
     cout << "Please type the name of the are you would like to add the structure group you would like to add a structure to: " << endl;
 
@@ -289,18 +335,35 @@ void createStructure(){
 
 
     }
-
-
-
-
-    //configure government should be allowed
-    //add citizens
-    //add decorator
-    //add transport
-    //return to structure group 
-    //exit
-    //error handling
 }
+
+void removeStructure(){
+    //will work similar to add except remove is used instead.
+}
+
+
+
+
+//other
+CStructIterator* createIteratorForGroup(StructureGroup* s ){
+    CStructIterator *newIterator = s->createIterator();
+    return newIterator;
+}
+
+StructureGroup* createCityHall(){
+    //this is default created, so its done in the before the main menu
+    StructureGroup * cityhallGroup = new StructureGroup("CityHallGroup");
+    BasicStructure* cityHall = new BasicStructure("CityHall", "Type1", 100, 100, 100, 100);
+    cityhallGroup->add(cityHall);
+
+    return cityhallGroup;
+}
+
+void createGovernment(){
+    
+}
+
+
 
 void addTransport(){
     //return

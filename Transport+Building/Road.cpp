@@ -27,7 +27,7 @@ string Road::getName(){
     return this->name;
 }
 
-float Road::getMaintenanceCost(){
+float Road::getMaintenance(){
     return this->MaintenanceCost;
 }
 

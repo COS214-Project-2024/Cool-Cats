@@ -12,6 +12,7 @@ void Bus::setCapacity(int cap){
     this->capacity = cap;
 }
 
+
 void Bus::setMaxCapacity(int cap){
     this->maxCapacity = cap;
 }

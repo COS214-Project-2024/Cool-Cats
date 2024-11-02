@@ -22,6 +22,8 @@
 #include "BasicStructure.h"
 #include "StructureIterator.h"
 
+#include <tuple>
+
 
 using namespace std;
 void testStructure(){
@@ -36,7 +38,7 @@ void testStructure(){
     cityStructures->add(hospital);
     cityStructures->add(park);
 
-
+    
 
     // Display individual structure details
     std::cout << "Individual Structures:" << std::endl;
@@ -144,7 +146,7 @@ void testingTransportationSystem(){
 
     std::cout << "This road's details are: "<< endl
     << "Street name: " << Road->getName() << endl 
-    << "Maintenance cost: " << Road->getMaintenanceCost() << endl 
+    << "Maintenance cost: " << Road->getMaintenance() << endl 
     << "Resource consumption: "<< Road->getResourceConsumption() << endl 
     << "Citizen Satisfaction: "<< Road->getCitizenSatisfactionImpact() << std::endl;
 
@@ -163,12 +165,105 @@ void testingTransportationSystem(){
     trans1->travel();
 }
 
+void travelBetweenStructures(const std::string& fromName, const std::string& toName,std::tuple<CStructIterator*, Road**, CStructIterator*>& cityTuple,Transportation** cityTrans) {
+    CStructIterator* fromIter = std::get<0>(cityTuple);
+    CStructIterator* toIter = std::get<2>(cityTuple);
+
+    int fromIndex = 0;
+    int toIndex = 0;
+    bool fromFound = false;
+    bool toFound = false;
+
+    std::cout << "Traveling from " << fromName << " to " << toName << ": " << std::endl;
+
+    // Find the from structure
+    for (fromIter->first(); !fromIter->isDone(); fromIter->next()) {
+        Structure* fromStructure = fromIter->currentItem();
+        if (fromStructure && fromStructure->getName() == fromName) {
+            fromFound = true;
+            toIndex = 0;
+
+            // Find the to structure
+            for (toIter->first(); !toIter->isDone(); toIter->next()) {
+                Structure* toStructure = toIter->currentItem();
+                if (toStructure && toStructure->getName() == toName) {
+                    toFound = true;
+                    int dist = fromIndex - toIndex;
+
+                    // Execute travel logic based on distance
+                    if (dist < 0) {
+                        for (int i = toIndex; i > fromIndex; i--) {
+                            cityTrans[i]->travel();
+                        }
+                    } else if (dist == 0) {
+                        std::cout << "We are walking within the same location." << std::endl;
+                    } else {
+                        for (int i = toIndex; i < fromIndex; i++) {
+                            cityTrans[i]->travel();
+                        }
+                    }
+                    break; // Stop searching for 'to' structure
+                }
+                toIndex++;
+            }
+            if (!toFound) {
+                std::cout << "Destination structure '" << toName << "' not found." << std::endl;
+            }
+            break; // Stop searching for 'from' structure
+        }
+        fromIndex++;
+    }
+
+    if (!fromFound) {
+        std::cout << "Starting structure '" << fromName << "' not found." << std::endl;
+    }
+}
+
 int main(){
     //testingTransportationSystem();
     // testStructure();
     // Decoratortest();
 
+    // Creating basic structures
+    BasicStructure* school = new BasicStructure("School", 100, 50, 80);
+    BasicStructure* hospital = new BasicStructure("Hospital", 200, 150, 95);
+    BasicStructure* park = new BasicStructure("Park", 30, 10, 120);
 
+    //structuregroup
+    StructureGroup* cityStructures = new StructureGroup("City Structures");
+    cityStructures->add(school);
+    cityStructures->add(hospital);
+    cityStructures->add(park);
+
+    Road** CityStructRoads = new Road*[3];
+    CityStructRoads[0] = new Road("248 Lunnin Road", 1, 11, 111);
+    CityStructRoads[1] = new Road("249 Lunnin Road", 2, 22, 222);
+    CityStructRoads[2] = new Road("250 Lunnin Road", 3, 33, 333);
+    RoadState* UC = new UnderConstruction();
+    RoadState* work = new Working();
+
+    
+    PublicVehicle* bus = new Bus();
+    Transport* publicT = new PublicTransport(bus);
+
+    Transportation** cityTrans = new Transportation*[3];
+    for(int i = 0; i < 3; i++){
+        cityTrans[i] = new ConcreteObserver(CityStructRoads[i], publicT);
+    }
+
+    RoadSubject** cityRS = new RoadSubject*[3];
+    Structure** cityRStruct = new Structure*[3];
+    for(int i = 0; i < 3; i++){
+        cityRS[i] = (CityStructRoads[i]);
+        cityRS[i]->attach(cityTrans[i]);
+        CityStructRoads[i]->setState(work);
+        cityRS[i]->notify();
+    }
+
+    CStructIterator* cityIterator = dynamic_cast<CStructIterator*>(cityStructures->createIterator());
+    std::tuple <CStructIterator*, Road**, CStructIterator*> cityTuple(cityIterator, CityStructRoads, cityIterator);
+
+    travelBetweenStructures("School", "Park", cityTuple, cityTrans);
     
     return 0;
 }

@@ -21,7 +21,7 @@ class Road : public RoadSubject
         RoadState* getState();
         bool checkState();
         string getName();
-        float getMaintenanceCost();
+        float getMaintenance();
         float getResourceConsumption();
         float getCitizenSatisfactionImpact();
         ~Road();

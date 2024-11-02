@@ -60,7 +60,7 @@ Cargo.o: Cargo.cpp Cargo.h AirVehicle.h
 
 
 
-RoadSubject.o: RoadSubject.cpp RoadSubject.h Transportation.h
+RoadSubject.o: RoadSubject.cpp RoadSubject.h Transportation.h Structure.h
 	$(gpp_o) RoadSubject.cpp
 
 RoadState.o: RoadState.cpp RoadState.h 

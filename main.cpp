@@ -16,6 +16,7 @@
 using namespace std;
 
 //gerneral funcitons:
+void chooseFromMenu();
 
 
 //for buildings:
@@ -26,6 +27,18 @@ void removeStructureGroup();
 void editStructure();
 void addStructure();
 void removeStructure();
+
+
+//for transport
+void editTransport();
+void editTransportGroups();
+void addTransportGroups();
+void removeTransportGroups();
+void editTransportInGroups();
+void addTransportInGroups();
+void removeTransportInGroups();
+
+
 
 //other
 
@@ -40,7 +53,7 @@ void createGovernment();
 
 
 
-void addTransport();
+void editTransport();
 void printLines();
 void addMayor();
 
@@ -93,7 +106,7 @@ int main(){
         cout << "2 : Edit Structures" << endl;
         cout << "3 : View City" << endl;
         cout << "4 : Exit" << endl;
-        cout << "5 : Add Transport" << endl;
+        cout << "5 : Edit Transport" << endl;
         cout << "6 : Edit Govenment" << endl;
         cout << "7 : Add utilities" << endl;
         cout << "Select NUMBER: ";
@@ -116,7 +129,7 @@ int main(){
                 cond = false;
                 break;
             case 5:
-                //Add Transport
+                editTransport();
                 break;
             case 6:
                 //Edit Government
@@ -164,6 +177,29 @@ void viewCity(vector<StructureGroup*> arr){
     }
     printLines();
 }
+
+CStructIterator* createIteratorForGroup(StructureGroup* s ){
+    CStructIterator *newIterator = s->createIterator();
+    return newIterator;
+}
+
+StructureGroup* createCityHall(){
+    //this is default created, so its done in the before the main menu
+    StructureGroup * cityhallGroup = new StructureGroup("CityHallGroup");
+    BasicStructure* cityHall = new BasicStructure("CityHall", "Type1", 100, 100, 100, 100);
+    cityhallGroup->add(cityHall);
+
+    return cityhallGroup;
+}
+
+void createGovernment(){
+    
+}
+
+void chooseFromMenu(){
+    cout << "Choose from the menu" << endl;
+}
+
 
 
 //building funcitons
@@ -342,34 +378,87 @@ void removeStructure(){
 }
 
 
+//Transport functions
+void editTransport(){
+    //return
+    //add transport route from one place to another and mode
+    printLines();
+    chooseFromMenu();
+    cout << "Transport Menu" << endl;
+    cout << "1: Edit Transport from one city group to another city group" << endl;
+    cout << "2: Edit Transport in a city" << endl;
+    cout << "3: Return" << endl;
+    cout << "4: view city" << endl;
 
+    //get user input and from there call the function required for that
+    //view city has already be implemented for city groups it will still need to be implemented for structures
 
-//other
-CStructIterator* createIteratorForGroup(StructureGroup* s ){
-    CStructIterator *newIterator = s->createIterator();
-    return newIterator;
+    //we will need to get input from the user, ie from what place to what place. 
+    //three things will need to be shown here:
+        //how the observer will notify 
+        //how we use state to consider which form of transportation route to create, maybe we could use the capacity of the structure group to determine what transport options are available 
+    
+    cout << "Enter the structure group you would like to build transport system from" << endl;
+    
+    
+    
+
 }
 
-StructureGroup* createCityHall(){
-    //this is default created, so its done in the before the main menu
-    StructureGroup * cityhallGroup = new StructureGroup("CityHallGroup");
-    BasicStructure* cityHall = new BasicStructure("CityHall", "Type1", 100, 100, 100, 100);
-    cityhallGroup->add(cityHall);
+void editTransportGroups(){
+    //this will be between groups
+    printLines();
+    void chooseFromMenu();
+    cout << "1: Add Transport from one area to another" << endl;
+    cout << "2: Remove Transport from one area to another" << endl;
+    cout << "3: Return" << endl;
 
-    return cityhallGroup;
+
 }
 
-void createGovernment(){
+void addTransportGroups(){
+    printLines();
+    //you might need to create a global tuple that will keep track of all these transport systems that we will be adding
+    //you could have one for between groups and another for inbetween areas
+    cout << "Enter the area you would like to add a transport system to" << endl;
+
+    // get this input
+    //validate that it is part of the structture. You can use a for loop to loop through the StructuresGroup array called "arr" and use the get name to check if the input is in that group
+    //if not tell the user 
+    //if yes continue
+
+    cout << "Enter the structure group you would like to build a transport system to" << endl;
+    //same user input validation
+
+    //since its between groups you can use flight and railway 
+    //add to the tuple
     
 }
 
-
-
-void addTransport(){
-    //return
-    //add transport route from one place to another and mode
-
+void removeTransportGroups(){
+    printLines();
+    //similar to add except remove at the end
 }
+
+void editTransportInGroups(){
+    //similar to edit transport groups 
+}
+
+void addTransportInGroups(){
+    //get structre group
+    //check if structure group is there
+    //get structure from.
+    //check if its there 
+    //get structure to 
+    //check if its there
+    //add to tuple
+}
+
+void removeTransportInGroups(){
+    //similar to add except remove
+}
+
+
 
 void additizen(){
     //return

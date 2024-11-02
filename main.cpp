@@ -31,12 +31,18 @@ void removeStructure();
 
 //for transport
 void editTransport();
+
 void editTransportGroups();
 void addTransportGroups();
 void removeTransportGroups();
+
 void editTransportInGroups();
 void addTransportInGroups();
 void removeTransportInGroups();
+
+
+//for citizens
+void addCitizens();
 
 
 
@@ -109,6 +115,7 @@ int main(){
         cout << "5 : Edit Transport" << endl;
         cout << "6 : Edit Govenment" << endl;
         cout << "7 : Add utilities" << endl;
+        cout << "8 : Add citizens" << endl;
         cout << "Select NUMBER: ";
 
         cin >> option;
@@ -137,6 +144,9 @@ int main(){
                 break;
             case 7:
                 //Add utilities
+                break;
+            case 8:
+                addCitizens();
                 break;
             default:
                 errorMessage();
@@ -460,13 +470,26 @@ void removeTransportInGroups(){
 
 
 
+//Add citizen
 void additizen(){
-    //return
-    //citizen satisfaction 
-    //no of citizens
-    //etc
+    printLines();
+    chooseFromMenu();
+    cout << "1: Add citizens" << endl;
+    cout << "2: Add mayor" << endl;
+    cout << "3: return" << endl;
+
+    //handle use input
 }
 
 void addMayor(){
+    //this should add a mayor to a city group
+    //we have a vector that keeps track of all the areas that have been created called arr however i have not crea
+    printLines();
+    viewCity(arr); // this will print out all the city groups that have been created
+    cout << "Enter the area you would like to add a mayor to" << endl;
+
+    //get user input
+    //validate that the area si there, consult view city to see how 
+
 
 }

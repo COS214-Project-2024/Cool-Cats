@@ -14,7 +14,7 @@ int LowCitizen::lowClassCitizenCount = 0;
 LowCitizen::LowCitizen() : Citizen()
 {
     lowClassCitizenCount++;
-    income = new Income(0, 10000, 2.5, 1);
+    income = new Income(0, 10000, 2.5);
 }
 
 /// @brief Creates a new low-class citizen object
@@ -24,7 +24,7 @@ LowCitizen::LowCitizen() : Citizen()
 LowCitizen::LowCitizen(string employmentStatus, double satisfaction, Structure* home) : Citizen(employmentStatus, satisfaction, home)
 {
     lowClassCitizenCount++;
-    income = new Income(0, 10000, 2.5, 1);
+    income = new Income(0, 10000, 2.5);
 }
 
 /// @brief Makes a low-class citizen vote for a random mayor

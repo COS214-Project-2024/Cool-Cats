@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <string>
 
+#include "Citizen.h"
 #include "Mayor.h"
 #include "MayorIterator.h"
 
@@ -15,7 +16,7 @@ Mayor::Mayor() : Citizen()
     name = "Mayor " + (++MayorCount);
     electedMayor = false;
     voteCount = 0;
-    income = new Income(10000, 15000, 5.5, 2.5);
+    income = new Income(10000, 15000, 5.5);
 };
 
 //Helper function
@@ -44,7 +45,7 @@ Mayor::Mayor(string employmentStatus, double satisfaction, Structure* home, stri
     }
     electedMayor = false;
     voteCount = 0;
-    income = new Income(8000, 12000, 5.5, 2.5);
+    income = new Income(8000, 12000, 5.5);
 }
 
 /// @brief Returns the name of the mayor, used when voting for a specific mayor
@@ -69,6 +70,12 @@ void Mayor::setMayorName(string newName)
 void Mayor::receiveVote()
 {
     voteCount++;
+}
+
+/// @brief Does nothing as mayors are not allowed to vote
+void vote()
+{
+    
 }
 
 /// @brief Returns the number of votes a mayor has received from different citizens

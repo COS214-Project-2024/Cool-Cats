@@ -32,7 +32,6 @@ TEST(MiddleCitizenTest, Income)
     EXPECT_EQ(in->getRange().at(0), 10000);
     EXPECT_EQ(in->getRange().at(1), 19999);
     EXPECT_EQ(in->getTaxRate(), 4.5);
-    EXPECT_EQ(in->getUtilityCharges(), 2);
 
     delete mc;
 }

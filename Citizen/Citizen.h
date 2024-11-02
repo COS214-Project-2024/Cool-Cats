@@ -26,6 +26,7 @@ class Citizen
         void setSatisfaction(double satisfaction);
         std::string getEmploymentStatus();
         void setEmploymentStatus(std::string employment);
+        virtual void vote() = 0;
         static void determineMayor();
         std::vector<Mayor*> getMayors();
         virtual CitizenIterator* createCitizenIterator() = 0;

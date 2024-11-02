@@ -160,7 +160,6 @@ TEST(MayorTest, GetIncome)
     EXPECT_EQ(income->getRange().at(0), 10000);
     EXPECT_EQ(income->getRange().at(1), 15000);
     EXPECT_EQ(income->getTaxRate(), 5.5);
-    EXPECT_EQ(income->getUtilityCharges(), 2.5);
     
     delete m1;
 }

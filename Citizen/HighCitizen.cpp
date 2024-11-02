@@ -14,7 +14,7 @@ int HighCitizen::highClassCitizenCount = 0;
 HighCitizen::HighCitizen() : Citizen()
 {
     highClassCitizenCount++;
-    income = new Income(20000, 1000000, 3.5, 2.75);
+    income = new Income(20000, 1000000, 3.5);
 }
 
 /// @brief Creates a new high-class citizen object
@@ -24,7 +24,7 @@ HighCitizen::HighCitizen() : Citizen()
 HighCitizen::HighCitizen(string employmentStatus, double satisfaction, Structure* home) : Citizen(employmentStatus, satisfaction, home)
 {
     highClassCitizenCount++;
-    income = new Income(20000, 1000000, 3.5, 2.75);
+    income = new Income(20000, 1000000, 3.5);
 }
 
 /// @brief Makes a high-class citizen vote for a random mayor

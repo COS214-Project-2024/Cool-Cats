@@ -65,6 +65,14 @@ TEST_F(CitizenIteratorTest, IterateAllTest)
 
     ASSERT_TRUE(iterate->isDone());
 
+    iterate->first();
+
+    while(!iterate->isDone())
+    {
+        iterate->next();
+    }
+    ASSERT_TRUE(iterate->isDone());
+
     delete iterate;
 }
 TEST_F(CitizenIteratorTest, testFirst)

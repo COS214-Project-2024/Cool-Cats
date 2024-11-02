@@ -35,7 +35,6 @@ TEST(HighCitizenTest, Income)
     EXPECT_EQ(in->getRange().at(0), 20000);
     EXPECT_EQ(in->getRange().at(1), 1000000);
     EXPECT_EQ(in->getTaxRate(), 3.5);
-    EXPECT_EQ(in->getUtilityCharges(), 2.75);
 
     delete hc;
 }

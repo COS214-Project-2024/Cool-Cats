@@ -33,7 +33,6 @@ TEST(LowCitizenTest, Income)
     EXPECT_EQ(in->getRange().at(0), 0);
     EXPECT_EQ(in->getRange().at(1), 10000);
     EXPECT_EQ(in->getTaxRate(), 2.5);
-    EXPECT_EQ(in->getUtilityCharges(), 1);
 
     delete lc;
 }

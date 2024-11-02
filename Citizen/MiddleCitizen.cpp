@@ -14,7 +14,7 @@ int MiddleCitizen::middleClassCitizenCount = 0;
 MiddleCitizen::MiddleCitizen() : Citizen()
 {
     middleClassCitizenCount++;
-    income = new Income(10000, 19999, 4.5, 2);
+    income = new Income(10000, 19999, 4.5);
 }
 
 /// @brief Creates a new middle-class citizen object
@@ -24,7 +24,7 @@ MiddleCitizen::MiddleCitizen() : Citizen()
 MiddleCitizen::MiddleCitizen(string employmentStatus, double satisfaction, Structure* home) : Citizen(employmentStatus, satisfaction, home)
 {
     middleClassCitizenCount++;
-    income = new Income(10000, 19999, 4.5, 2);
+    income = new Income(10000, 19999, 4.5);
 }
 
 /// @brief Makes a middle-class citizen vote for a random mayor

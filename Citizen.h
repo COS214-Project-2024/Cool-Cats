@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-#include "../Buildings/Structure.h"
+#include "Structure.h"
 // #include "PopulationMemento"
 
 class Mayor;

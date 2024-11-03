@@ -1,6 +1,8 @@
 #include "Taxi.h"
 
-Taxi::Taxi() {}
+Taxi::Taxi(string name) {
+    this->name = name;
+}
 
 Taxi::~Taxi() {}
 
@@ -29,6 +31,3 @@ string Taxi::getName(){
     return this->name;
 }
 
-void Taxi::setName(string name){
-    this->name = name;
-}

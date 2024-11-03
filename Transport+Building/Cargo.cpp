@@ -1,6 +1,8 @@
 #include "Cargo.h"
 
-Cargo::Cargo() {}
+Cargo::Cargo(string name) {
+    this->name = name;
+}
 
 Cargo::~Cargo() {}
 
@@ -27,8 +29,4 @@ bool Cargo::isFull(){
 
 string Cargo::getName(){
     return this->name;
-}
-
-void Cargo::setName(string name){
-    this->name = name;
 }

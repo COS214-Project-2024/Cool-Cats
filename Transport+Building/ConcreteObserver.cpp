@@ -11,6 +11,7 @@ ConcreteObserver::~ConcreteObserver() {
     delete this->transport;
 
 }
+
 void ConcreteObserver::update(){
     status = this->subject->checkState();
 }
@@ -18,7 +19,6 @@ void ConcreteObserver::update(){
 void ConcreteObserver::travel(){
     if(this->status == true){
         this->transport->travel();
-        std::cout << " down " << this->subject->getName() << std::endl;
     }
     else{
         std::cout << "We cannot travel down this road" << std::endl;

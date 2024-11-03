@@ -1,6 +1,8 @@
 #include "Bus.h"
 
-Bus::Bus() {}
+Bus::Bus() {
+    this->name = name;
+}
 
 Bus::~Bus() {}
 
@@ -11,7 +13,6 @@ PublicVehicle* Bus::clone(){
 void Bus::setCapacity(int cap){
     this->capacity = cap;
 }
-
 
 void Bus::setMaxCapacity(int cap){
     this->maxCapacity = cap;
@@ -28,8 +29,4 @@ bool Bus::isFull(){
 
 string Bus::getName(){
     return this->name;
-}
-
-void Bus::setName(string name){
-    this->name = name;
 }

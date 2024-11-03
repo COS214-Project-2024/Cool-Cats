@@ -14,14 +14,13 @@ class Metro : public TrainVehicle
         int maxCapacity;
         string name = "General Metro";
     public:
-        Metro();
+        Metro(string name);
         ~Metro();
         TrainVehicle* clone();
         bool isFull();
         void setCapacity(int cap);
         void setMaxCapacity(int cap);
         string getName();
-        void setName(string name);
 
     protected:
         

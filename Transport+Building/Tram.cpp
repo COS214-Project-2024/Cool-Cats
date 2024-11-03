@@ -1,6 +1,8 @@
 #include "Tram.h"
 
-Tram::Tram() {}
+Tram::Tram(string name) {
+    this->name = name;
+}
 
 Tram::~Tram() {}
 
@@ -29,6 +31,3 @@ string Tram::getName(){
     return this->name;
 }
 
-void Tram::setName(string name){
-    this->name = name;
-}

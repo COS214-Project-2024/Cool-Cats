@@ -1,6 +1,8 @@
 #include "Passenger.h"
 
-Passenger::Passenger() {}
+Passenger::Passenger(string name) {
+    this->name = name;
+}
 
 Passenger::~Passenger() {}
 
@@ -27,8 +29,4 @@ bool Passenger::isFull(){
 
 string Passenger::getName(){
     return this->name;
-}
-
-void Passenger::setName(string name){
-    this->name = name;
 }

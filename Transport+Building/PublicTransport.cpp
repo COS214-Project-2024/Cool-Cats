@@ -9,5 +9,5 @@ PublicTransport::~PublicTransport() {
 }
 
 void PublicTransport::travel(){
-    cout << "Traveling with " << this->vehicle->getName();
+    cout << "Traveling with " << this->vehicle->getName() << endl;
 }

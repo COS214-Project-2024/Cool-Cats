@@ -14,14 +14,13 @@ class Tram : public TrainVehicle
         int maxCapacity;
         string name = "General Tram";
     public:
-        Tram();
+        Tram(string name);
         ~Tram();
         TrainVehicle* clone();
         bool isFull();
         void setCapacity(int cap);
         void setMaxCapacity(int cap);
         string getName();
-        void setName(string name);
 
     protected:
         

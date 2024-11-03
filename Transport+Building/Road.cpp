@@ -1,10 +1,8 @@
 #include "Road.h"
 
-Road::Road(string name, float maintenance, float resource, float satisfaction) {
+Road::Road(string name) {
     this->name = name;
-    this->MaintenanceCost = maintenance;
-    this->ResourceConsumption = resource;
-    this->CitizenSatisfaction = satisfaction;
+
 }
 
 Road::~Road() {
@@ -27,14 +25,3 @@ string Road::getName(){
     return this->name;
 }
 
-float Road::getMaintenance(){
-    return this->MaintenanceCost;
-}
-
-float Road::getResourceConsumption(){
-    return this->ResourceConsumption;
-}
-
-float Road::getCitizenSatisfactionImpact(){
-    return this->CitizenSatisfaction;
-}

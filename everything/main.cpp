@@ -1,5 +1,6 @@
 #include <iostream>   // Include input-output stream library
 #include <string>
+#include <vector>
 
 #include "Structure.h"
 #include "StructureGroup.h"
@@ -10,6 +11,36 @@
 #include "ResourceEfficiencyEnhancer.h"
 #include "BasicStructure.h"
 #include "StructureIterator.h"
+
+#include "RoadSubject.h"
+#include "Road.h"
+#include "RoadState.h"
+#include "UnderConstruction.h"
+#include "Working.h"
+#include "ConcreteObserver.h"
+
+#include "Transportation.h"
+#include "Transport.h"
+
+#include "PublicTransport.h"
+#include "PublicVehicle.h"
+#include "Bus.h"
+#include "Taxi.h"
+
+#include "TrainTransport.h"
+#include "TrainVehicle.h"
+#include "Metro.h"
+#include "Tram.h"
+#include "Freight.h"
+
+#include "AirportTransport.h"
+#include "AirVehicle.h"
+#include "Passenger.h"
+#include "Cargo.h"
+
+
+
+
 
 using namespace std;
 void errorMessage();
@@ -29,7 +60,8 @@ void printLines();
 void addMayor();
 
 vector<StructureGroup*> arr;
-vector<CStructIterator*> iteratorArr ;
+vector<CStructIterator*> iteratorArr;
+
 
 
 int main(){
@@ -211,6 +243,7 @@ void createStructure(){
     //exit
     //error handling
 }
+
 
 void addTransport(){
     //return

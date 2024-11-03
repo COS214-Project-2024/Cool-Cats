@@ -12,18 +12,12 @@ class Road : public RoadSubject
     private:
         RoadState* roadState;
         string name;
-        float MaintenanceCost;
-        float ResourceConsumption;
-        float CitizenSatisfaction;
     public:
-        Road(string name, float maintenance, float resource, float satisfaction);
+        Road(string name);
         void setState(RoadState* state);
         RoadState* getState();
         bool checkState();
         string getName();
-        float getMaintenanceCost();
-        float getResourceConsumption();
-        float getCitizenSatisfactionImpact();
         ~Road();
 
 };

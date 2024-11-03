@@ -14,14 +14,13 @@ class Bus : public PublicVehicle
         int maxCapacity;
         string name = "General Bus";
     public:
-        Bus();
+        Bus(string name);
         ~Bus();
         PublicVehicle* clone();
         bool isFull();
         void setCapacity(int cap);
         void setMaxCapacity(int cap);
         string getName();
-        void setName(string name);
 
     protected:
         

@@ -1,8 +1,6 @@
 #include <iostream>
+#include <memory>
 #include <algorithm>
-#include <string>
-
-#include "Citizen.h"
 #include "Mayor.h"
 #include "MayorIterator.h"
 
@@ -16,7 +14,7 @@ Mayor::Mayor() : Citizen()
     name = "Mayor " + (++MayorCount);
     electedMayor = false;
     voteCount = 0;
-    income = new Income(10000, 15000, 5.5);
+    income = new Income(10000, 15000, 5.5, 2.5);
 };
 
 //Helper function
@@ -31,12 +29,11 @@ bool isValidName(const string& name)
 /// @param employmentStatus The employment status of the mayor, may only be 'unemployed', 'employed' or 'self-employed'
 /// @param satisfaction The overall satisfaction the mayor has with the city, may only be between 0-100
 /// @param home The structure where the mayor lives
-Mayor::Mayor(string employmentStatus, double satisfaction, Structure* home, string name) : Citizen(employmentStatus, satisfaction, home)
+Mayor::Mayor(string employmentStatus, double satisfaction, std::shared_ptr<Structure> home, string name) : Citizen(employmentStatus, satisfaction, home)
 {
     if(!isValidName(name) || name == " ")
     {
-        MayorCount++;
-        this->name = "Mayor " + std::to_string(MayorCount);
+        this->name = "Mayor " + (++MayorCount);
     }
     else
     {
@@ -45,7 +42,7 @@ Mayor::Mayor(string employmentStatus, double satisfaction, Structure* home, stri
     }
     electedMayor = false;
     voteCount = 0;
-    income = new Income(8000, 12000, 5.5);
+    income = new Income(8000, 12000, 5.5, 2.5);
 }
 
 /// @brief Returns the name of the mayor, used when voting for a specific mayor
@@ -72,22 +69,11 @@ void Mayor::receiveVote()
     voteCount++;
 }
 
-/// @brief Does nothing as mayors are not allowed to vote
-void Mayor::vote()
-{
-    
-}
-
 /// @brief Returns the number of votes a mayor has received from different citizens
 /// @return the number of votes a mayor received
 int Mayor::getVoteCount()
 {
     return voteCount;
-}
-
-void Mayor::resetVoteCount()
-{
-
 }
 
 /// @brief Returns whether the mayor is elected or not

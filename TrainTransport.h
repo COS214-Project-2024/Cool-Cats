@@ -14,6 +14,7 @@ class TrainTransport: public Transport
     public:
         TrainTransport(TrainVehicle* vehicle);
         ~TrainTransport();
+        TrainVehicle* getVehicle();
         void travel();
 
 };

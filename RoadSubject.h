@@ -18,9 +18,6 @@ class RoadSubject
         void detach(Transportation* observer);
         void notify();
         virtual string getName() = 0;
-        virtual float getMaintenanceCost() = 0;
-        virtual float getResourceConsumption() = 0;
-        virtual float getCitizenSatisfactionImpact() = 0;
         //~RoadSubject();
 
 };

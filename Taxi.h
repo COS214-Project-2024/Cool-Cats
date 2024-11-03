@@ -14,14 +14,13 @@ class Taxi : public PublicVehicle
         int maxCapacity;
         string name = "General Taxi";
     public:
-        Taxi();
+        Taxi(string name);
         ~Taxi();
         PublicVehicle* clone();
         bool isFull();
         void setCapacity(int cap);
         void setMaxCapacity(int cap);
         string getName();
-        void setName(string name);
 
     protected:
         

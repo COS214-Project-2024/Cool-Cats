@@ -150,7 +150,8 @@ int main(){
 
 void mainMenu() {
     int option = 0;
-    while (option != 4) {  // Keep showing the menu until "Exit" is chosen
+    bool condition = true;
+    while (option != 4 && condition)  {  // Keep showing the menu until "Exit" is chosen
         printLines();
         cout << "Main Menu" << endl;
         cout << "1 : Edit Structure Groups" << endl;
@@ -183,11 +184,13 @@ void mainMenu() {
 
             case 3:
                 viewCity();
+                mainMenu();
                 break;
 
             case 4:
                 cout << "Exiting..." << endl;
                 exit();
+                condition = false;
                 break;
 
             case 5:
@@ -210,8 +213,9 @@ void mainMenu() {
                 cout << "Invalid option. Please try again." << endl;
                 break;
         }
-        
-        printLines();
+        //cout << "we have broken out of the final" << endl;
+        condition = false;
+        // printLines();
     }
 }
 
@@ -225,8 +229,7 @@ void errorMessage(){
 
 void exit(){
     viewCity();
-    // exit(1);
-    // cout << "We got here" << endl;
+
 
 }
 
@@ -262,7 +265,7 @@ void viewCity() {
         printLines();
     }
 
-    printLines();
+    //printLines();
 }
 
 CStructIterator* createIteratorForGroup(StructureGroup* s ){
@@ -368,7 +371,7 @@ void addCititoBuild(Citizen* c) {
 }
 
 void editStructureGroup(){
-
+    printLines();
     //this will allow us to add and remove structure groups from the array
 
     int option = 0;
@@ -408,6 +411,7 @@ void editStructureGroup(){
 
         case 3: 
             viewCity();
+            editStructureGroup();
             break;
             
         case 4:
@@ -422,7 +426,7 @@ void editStructureGroup(){
     //also note you will need to create a new iterator for this .There is an vector for iterator which we will use a 1:1 location for the iterator and groups array. SO position 1 of the iterator will correspond to group in postion 1 of the structure group.
 
 
-    printLines();
+    //printLines();
 
 }
 
@@ -510,7 +514,8 @@ void editStructure(){
             break;
         
         case 3:
-          viewCity();
+            viewCity();
+            editStructure();
             break;
             
         case 4:

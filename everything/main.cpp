@@ -246,8 +246,7 @@ void createStructure(){
 
 
 void addTransport(){
-    //return
-    //add transport route from one place to another and mode
+
 
 }
 

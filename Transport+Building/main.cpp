@@ -81,11 +81,13 @@ void testingTransportationSystem(){
     //traveling
     trans1->travel();
 }
+
 vector<StructureGroup*> arr;
 vector<PublicTransport*> PT; // To hold all the Public transport
 vector<TrainTransport*> TT; // To hold all the Train transport
 vector<AirportTransport*> AT; // To hold all the Air transport
 map<string, pair<vector<Road*>, vector<RoadSubject*>>> cityRoads; // To assign a road and roadSubject to a specific city group name
+map<string, vector<Transportation*>> transLines;
 
 void createPublicType(int type, string name){
     switch (type)
@@ -152,23 +154,64 @@ void createRoad(const std::string& roadName, const std::string& structureGroupNa
     std::cout << "Road " << roadName << " added to structure group: " << structureGroupName << "\n";
 }
 
-void createInCityTransportRoute(int TransType, string CityStruct, BasicStructure* starting, BasicStructure* end, string transName){
+int structureIndex(StructureGroup* group, Structure* name){
+    int i = 0;
+    StructureIterator* iterate = group->createIterator();
+    while(iterate->isDone() == false){
+        if(iterate->currentItem() == name){
+            return i;
+        }
+        iterate->next();
+        i++;
+    }
+    return -1;
+    
+}
+
+void createInCityTransportRoute(int TransType, string CityName, BasicStructure* starting, BasicStructure* ending, string transName, string routeName){
     switch(TransType){
         case 1:
             for (PublicTransport* PublicTrans : PT) {
                 if(PublicTrans->getVehicle()->getName() == transName){
-                    
+                    for (StructureGroup* Cities : arr){
+                        if(Cities->getName() == CityName){
+                            int startIdx = structureIndex(Cities, starting);
+                            int endIdx = structureIndex(Cities, ending);
+                            if (startIdx != -1 && endIdx != -1 && cityRoads.count(CityName)) {
+                                auto& roads = cityRoads[CityName].first;
+                                std::vector<Road*> route;
+                                if (startIdx <= endIdx) {
+                                    for (int i = startIdx; i <= endIdx; ++i) {
+                                        observers.push_back(new ConcreteObserver(roads[i],PublicTrans))
+                                    }
+                                } else {
+                                    for (int i = startIdx; i >= endIdx; --i) {
+                                        route.push_back(roads[i]);
+                                    }
+                                }
+                                vector<Transportation*> observers;
+                                for(int i = 0; i < route.size(); i++){
+                                    
+                                }
+                            }
+                        }
+                    }
                 }
             }
     }
 }
 
-
-
-
-
-
 int main(){
+
+    BasicStructure* school0 = new BasicStructure("School0", 'c', 500);
+    BasicStructure* school1 = new BasicStructure("School1", 'c', 500);
+    BasicStructure* school2 = new BasicStructure("School2", 'c', 500);
+
+    StructureGroup* city1 = new StructureGroup("City1");
+    city1->add(school0);
+    city1->add(school1);
+    city1->add(school2);
+
 
 
     std::cout << "Hello World" << std::endl;

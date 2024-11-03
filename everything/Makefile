@@ -14,6 +14,7 @@ run: $(TARGET)
 	
 clean:
 	rm -f $(TARGET) $(OBJS)
+	clear
 
 valgrind:
 	valgrind --leak-check=full ./$(TARGET)

@@ -50,18 +50,18 @@ BasicStructure::BasicStructure(const string& name, char Btype, int capacity)
 /// @brief Adds a citizen to the structure if space allows.
 /// @param c Pointer to the Citizen to add.
 /// @throws std::invalid_argument If the citizen is null or the structure is at max capacity.
-void BasicStructure::addcitizen(Citizen* c )
+void BasicStructure::addcitizen(int number)
 {
-    if( c == NULL){
-        throw invalid_argument("Citizen cannot be NULL"); 
+    if( number < 0){
+        throw invalid_argument("Citizen cannot be negative"); 
     }
 
     // Check if there is enough space in the structure
-    if((numCitizen + 1) > maxCitizen ){
+    if((numCitizen + number) > maxCitizen ){
         throw invalid_argument("Structure is already full");
     }
     
-    numCitizen++;
+    numCitizen += number;
 }
 
 /// @brief Gets the type of building as a string representation.

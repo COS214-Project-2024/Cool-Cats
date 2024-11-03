@@ -6,11 +6,19 @@ WasteUtility::WasteUtility(){
 }
 
 void WasteUtility::processRequest(const std::string& request){
-    if (request == "garbage collection") {
+    bool condition = false;
+    for(char ch : request) {
+        if(ch == 'B'){
+            condition = true;
+        }
+    }
+    if (condition) {
         std::cout << "WasteUtility: Handling garbage collection.\n";
-    } else {
-        std::cout << "WasteUtility: Can't handle, passing the request along.\n";
-        Utilities::processRequest(request); // Pass to the next handler
+    }
+
+    if(next){
+        cout << "going on to next" << endl;
+        next->processRequest(request);
     }
 }
 

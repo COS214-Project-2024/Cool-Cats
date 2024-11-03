@@ -71,3 +71,42 @@ float BasicStructure::getCitizenSatisfactionImpact() {
 BasicStructure::~BasicStructure(){
     // No resources to deallocate, so no code needed here
 }
+
+float BasicStructure::getKilowatts() {
+    return kilowatts;
+}
+
+// Setter for kilowatts
+void BasicStructure::setKilowatts(float kw) {
+    kilowatts = kw;
+}
+
+// Getter for availableWater
+float BasicStructure::getAvailableWater() {
+    return availableWater;
+}
+
+// Setter for availableWater
+void BasicStructure::setAvailableWater(float water) {
+    availableWater = water;
+}
+
+// Getter for sewageAmount
+float BasicStructure::getSewageAmount() {
+    return sewageThere;
+}
+
+// Setter for sewageAmount
+void BasicStructure::setSewageAmount(float sewage) {
+    sewageThere = sewage;
+}
+
+// Getter for wasteAmount
+float BasicStructure::getWasteAmount() {
+    return wasteThere;
+}
+
+// Setter for wasteAmount
+void BasicStructure::setWasteAmount(float waste) {
+    wasteThere = waste;
+}

@@ -16,6 +16,10 @@ class BasicStructure : public Structure {
         float maintenanceCost;
         float ResourceConsumption;
         float citizenSatisfactionImpact;
+        float kilowatts;
+        float availableWater;
+        float sewageThere;
+        float wasteThere;
 
     public:
         BasicStructure(const string& name, string type, float maintenance, float resource, float satisfaction , int capacity);
@@ -29,6 +33,15 @@ class BasicStructure : public Structure {
         void add(Structure* structure) override;
         void remove(Structure* structure) override;
         vector<Structure*> getChildren() override;
+        float getKilowatts();
+        float getAvailableWater();
+        float getSewageAmount();
+        float getWasteAmount();
+
+        void setKilowatts(float kw);
+        void setAvailableWater(float water);
+        void setSewageAmount(float sewage);
+        void setWasteAmount(float waste);
 
 
         ~BasicStructure();

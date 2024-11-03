@@ -10,6 +10,10 @@
 #include "ResourceEfficiencyEnhancer.h"
 #include "BasicStructure.h"
 #include "StructureIterator.h"
+#include "PowerUtility.h"
+#include "WaterUtility.h"
+#include "WasteUtility.h"
+#include "SewageUtility.h"
 
 #include <limits>
 
@@ -67,7 +71,7 @@ vector<StructureGroup*> arr; // this keeps track of all the stucture groups that
 vector<CStructIterator*> iteratorArr ; // this keeps track of iterators that have been created ie each structure is in a structure group and we can iterate over each structure in each structure group through this.
 
 
-int main(){
+ int main(){
     cout << "WELCOME TO THE COOL CATS CITY SIMULATOR" << endl;
 
     cout << "-------------------------------------------" << endl;
@@ -157,6 +161,20 @@ int main(){
  
 
     }
+
+    Utilities *ut = new Utilities();
+    Utilities *pt = new PowerUtility();
+    Utilities *wt = new WaterUtility();
+    Utilities *wst = new WasteUtility();
+    Utilities *st = new SewageUtility();
+    ut->setNext(pt);
+    pt->setNext(wt);
+    wt->setNext(wst);
+    wst->setNext(st);
+
+    ut->processRequest("PWC");
+
+    
 
     return 0;
 }
@@ -471,7 +489,7 @@ void removeTransportInGroups(){
 
 
 //Add citizen
-void additizen(){
+void addCitizens(){
     printLines();
     chooseFromMenu();
     cout << "1: Add citizens" << endl;

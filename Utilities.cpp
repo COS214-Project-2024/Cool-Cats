@@ -9,6 +9,7 @@ void Utilities::setNext(Utilities* nextHandler){
 }
 
 void Utilities::processRequest(const std::string& request){
+    cout << "We got to the first in chain" << endl;
     if(next){
         next->processRequest(request);
     }

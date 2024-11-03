@@ -603,6 +603,9 @@ void addStructure(){
 
     BasicStructure* newStructure = new BasicStructure(structureName, structuretype, maxCap);
 
+
+
+    
     arr[groupIndex]->add(newStructure);
 
     CStructIterator* newIterator = arr[groupIndex]->createIterator();

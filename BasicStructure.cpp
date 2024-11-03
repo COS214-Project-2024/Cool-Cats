@@ -44,6 +44,11 @@ BasicStructure::BasicStructure(const string& name, char Btype, int capacity)
     default:
         break;
     }
+
+    kilowatts = 0;
+    availableWater = 0;
+    sewageThere = 100;
+    wasteThere = 100;
 }
 
 
@@ -142,45 +147,62 @@ float BasicStructure::getCitizenSatisfactionImpact() {
     return citizenSatisfactionImpact;
 }
 
+/// @brief Destructor for BasicStructure.
 BasicStructure::~BasicStructure(){
-    // No resources to deallocate, so no code needed here
+    // No resources to deallocate
 }
 
+/// @return get kilowatts
 float BasicStructure::getKilowatts() {
     return kilowatts;
 }
 
-// Setter for kilowatts
+/// @brief  Setter for kilowatts
 void BasicStructure::setKilowatts(float kw) {
     kilowatts = kw;
 }
 
-// Getter for availableWater
+/// @return  Getter for availableWater
 float BasicStructure::getAvailableWater() {
     return availableWater;
 }
 
-// Setter for availableWater
+/// @brief Setter for availableWater
 void BasicStructure::setAvailableWater(float water) {
     availableWater = water;
 }
 
-// Getter for sewageAmount
+/// @return  Getter for sewageAmount
 float BasicStructure::getSewageAmount() {
     return sewageThere;
 }
 
-// Setter for sewageAmount
+/// @brief Setter for sewageAmount
 void BasicStructure::setSewageAmount(float sewage) {
     sewageThere = sewage;
 }
 
-// Getter for wasteAmount
+/// @brief Getter for wasteAmount
 float BasicStructure::getWasteAmount() {
     return wasteThere;
 }
 
-// Setter for wasteAmount
+/// @brief Setter for wasteAmount
 void BasicStructure::setWasteAmount(float waste) {
     wasteThere = waste;
+    // No resources to deallocate
+}
+
+/// @brief Adds utilities to a specific building
+void BasicStructure::addUtilities(string &request, BasicStructure* s){
+    Utilities *ut = new Utilities(s);
+    Utilities *pt = new PowerUtility(s);
+    Utilities *wt = new WaterUtility(s);
+    Utilities *wst = new WasteUtility(s);
+    Utilities *st = new SewageUtility(s);
+    ut->setNext(pt);
+    pt->setNext(wt);
+    wt->setNext(wst);
+    wst->setNext(st);
+    ut->processRequest(request);
 }

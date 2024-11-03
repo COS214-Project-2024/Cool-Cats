@@ -1,7 +1,7 @@
 #include "PowerUtility.h"
 
 
-PowerUtility::PowerUtility() {
+PowerUtility::PowerUtility(BasicStructure* s) : Utilities(s) {
 
 }
 
@@ -25,6 +25,9 @@ void PowerUtility::processRequest(const std::string& request){
 
 void PowerUtility::generatePower(){
     cout << "generatingPower";
+
+    powerMega += 50;
+    struc->setKilowatts(powerMega);
     // if(energy->getEnergyStored() < 50){
     //     energy->produceEnergy(100);
     // }

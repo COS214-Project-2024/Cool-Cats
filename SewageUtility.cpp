@@ -1,7 +1,7 @@
 #include "SewageUtility.h"
 
 
-SewageUtility::SewageUtility(){
+SewageUtility::SewageUtility(BasicStructure* s) : Utilities(s){
 
 }
 
@@ -23,6 +23,6 @@ void SewageUtility::processRequest(const std::string& request){
 }
 
 void SewageUtility::treatSewage(){
-    cout << "treating sewage" << endl;
+    struc->setSewageAmount(0);
 }
 

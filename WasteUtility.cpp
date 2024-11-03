@@ -1,7 +1,7 @@
 #include "WasteUtility.h"
 
 
-WasteUtility::WasteUtility(){
+WasteUtility::WasteUtility(BasicStructure* s) : Utilities(s){
 
 }
 
@@ -14,6 +14,7 @@ void WasteUtility::processRequest(const std::string& request){
     }
     if (condition) {
         std::cout << "WasteUtility: Handling garbage collection.\n";
+        collectWaste();
     }
 
     if(next){
@@ -23,6 +24,7 @@ void WasteUtility::processRequest(const std::string& request){
 }
 
 void WasteUtility::collectWaste(){
+    struc->setWasteAmount(0);
     cout << "collecting waste" << endl;
 }
 

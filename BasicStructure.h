@@ -4,6 +4,11 @@
 #include <iostream>
 #include "Structure.h"
 #include "Citizen.h"
+#include "Utilities.h"
+#include "PowerUtility.h"
+#include "SewageUtility.h"
+#include "WasteUtility.h"
+#include "WaterUtility.h"
 
 using namespace std;
 
@@ -17,13 +22,14 @@ class BasicStructure : public Structure {
         float maintenanceCost;
         float ResourceConsumption;
         float citizenSatisfactionImpact;
+
         float kilowatts;
         float availableWater;
         float sewageThere;
         float wasteThere;
 
     public:
-        BasicStructure(const string& name, string type, float maintenance, float resource, float satisfaction , int capacity);
+        BasicStructure(const string& name, char Btype, int capacity);
         void addcitizen(Citizen *c);
         string getType();
         void removeCitizen();
@@ -34,6 +40,9 @@ class BasicStructure : public Structure {
         void add(Structure* structure) override;
         void remove(Structure* structure) override;
         vector<Structure*> getChildren() override;
+
+        void addUtilities(string &request, BasicStructure* s);
+
         float getKilowatts();
         float getAvailableWater();
         float getSewageAmount();
@@ -43,8 +52,6 @@ class BasicStructure : public Structure {
         void setAvailableWater(float water);
         void setSewageAmount(float sewage);
         void setWasteAmount(float waste);
-
-
         ~BasicStructure();
 
 };

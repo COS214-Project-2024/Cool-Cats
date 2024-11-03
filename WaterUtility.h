@@ -13,7 +13,7 @@ private:
     int puritylevels;
 
 public:
-    WaterUtility();
+    WaterUtility(BasicStructure* s);
 
     // Handles water-related requests; if not handled, passes it down the chain
     void processRequest(const std::string &request) override;

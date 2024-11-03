@@ -89,6 +89,7 @@ vector<AirportTransport*> AT; // To hold all the Air transport
 map<string, pair<vector<Road*>, vector<RoadSubject*>>> cityRoads; // To assign a road and roadSubject to a specific city group name
 map<string, vector<Transportation*>> transLines;
 
+
 void createPublicType(int type, string name){
     switch (type)
     {
@@ -139,8 +140,10 @@ void createAirportType(int type, string name){
     }
 }
 void createRoad(const std::string& roadName, const std::string& structureGroupName) {
+    RoadState* UC = new UnderConstruction();
     Road* road = new Road(roadName);
     RoadSubject* rs = road;
+    road->setState(UC);
 
     auto it = cityRoads.find(structureGroupName);
     if (it != cityRoads.end()) {
@@ -170,6 +173,7 @@ int structureIndex(StructureGroup* group, Structure* name){
 
 void createInCityTransportRoute(int TransType, string CityName, BasicStructure* starting, BasicStructure* ending, string transName, string routeName){
     switch(TransType){
+        //Public Transport
         case 1:
             for (PublicTransport* PublicTrans : PT) {
                 if(PublicTrans->getVehicle()->getName() == transName){
@@ -179,27 +183,88 @@ void createInCityTransportRoute(int TransType, string CityName, BasicStructure* 
                             int endIdx = structureIndex(Cities, ending);
                             if (startIdx != -1 && endIdx != -1 && cityRoads.count(CityName)) {
                                 auto& roads = cityRoads[CityName].first;
-                                std::vector<Road*> route;
+                                auto& roadSubjects = cityRoads[CityName].second;
+                                vector<Transportation*> observers;
+                                vector<RoadSubject*> subjects;
                                 if (startIdx <= endIdx) {
                                     for (int i = startIdx; i <= endIdx; ++i) {
-                                        observers.push_back(new ConcreteObserver(roads[i],PublicTrans))
+                                        observers.push_back(new ConcreteObserver(roads[i],PublicTrans));
+                                        roadSubjects[i]->notify();
                                     }
                                 } else {
                                     for (int i = startIdx; i >= endIdx; --i) {
-                                        route.push_back(roads[i]);
+                                        observers.push_back(new ConcreteObserver(roads[i],PublicTrans));
+                                        roadSubjects[i]->notify();
                                     }
                                 }
-                                vector<Transportation*> observers;
-                                for(int i = 0; i < route.size(); i++){
-                                    
-                                }
+                                transLines.insert({routeName, observers});
                             }
+                        }
+                        else{
+                            std::cout << "No such City name" << std::endl;
+                            return;
                         }
                     }
                 }
+                else{
+                    std::cout << "No such Public Transport Name" << std::endl;
+                    return;
+                }
             }
+            break;
+            //Train transport
+            case 2:
+                for (TrainTransport* TrainTrans : TT) {
+                    if(TrainTrans->getVehicle()->getName() == transName){
+                        for (StructureGroup* Cities : arr){
+                            if(Cities->getName() == CityName){
+                                int startIdx = structureIndex(Cities, starting);
+                                int endIdx = structureIndex(Cities, ending);
+                                if (startIdx != -1 && endIdx != -1 && cityRoads.count(CityName)) {
+                                    auto& roads = cityRoads[CityName].first;
+                                    auto& roadSubjects = cityRoads[CityName].second;
+                                    vector<Transportation*> observers;
+                                    vector<RoadSubject*> subjects;
+                                    if (startIdx <= endIdx) {
+                                        for (int i = startIdx; i <= endIdx; ++i) {
+                                            observers.push_back(new ConcreteObserver(roads[i],TrainTrans));
+                                            roadSubjects[i]->notify();
+                                        }
+                                    } else {
+                                        for (int i = startIdx; i >= endIdx; --i) {
+                                            observers.push_back(new ConcreteObserver(roads[i],TrainTrans));
+                                            roadSubjects[i]->notify();
+                                        }
+                                    }
+                                    transLines.insert({routeName, observers});
+                                }
+                            }
+                            else{
+                                std::cout << "No such City name" << std::endl;
+                                return;
+                            }
+                        }
+                    }
+                    else{
+                        std::cout << "No such Train Transport Name" << std::endl;
+                        return;
+                    }
+                }
+            break;
+            default:
+            std::cout << "Incorrect Transport type" << std::endl;
+            break;
+            
     }
 }
+
+void travelRoute(string routeName){
+    vector<Transportation*> travelLine = transLines.find(routeName)->second;
+    for(int i = 0; i < travelLine.size(); i++){
+        travelLine[i]->travel();
+    }
+}
+
 
 int main(){
 

@@ -1,6 +1,8 @@
 #include "Freight.h"
 
-Freight::Freight() {}
+Freight::Freight(string name) {
+    this->name = name;
+}
 
 Freight::~Freight() {}
 
@@ -29,6 +31,3 @@ string Freight::getName(){
     return this->name;
 }
 
-void Freight::setName(string name){
-    this->name = name;
-}

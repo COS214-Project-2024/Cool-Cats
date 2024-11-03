@@ -1,6 +1,8 @@
 #include "Metro.h"
 
-Metro::Metro() {}
+Metro::Metro(string name) {
+    this->name = name;
+}
 
 Metro::~Metro() {}
 
@@ -27,8 +29,4 @@ bool Metro::isFull(){
 
 string Metro::getName(){
     return this->name;
-}
-
-void Metro::setName(string name){
-    this->name = name;
 }

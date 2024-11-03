@@ -14,14 +14,13 @@ class Freight : public TrainVehicle
         int maxCapacity;
         string name = "General Freight";
     public:
-        Freight();
+        Freight(string name);
         ~Freight();
         TrainVehicle* clone();
         bool isFull();
         void setCapacity(int cap);
         void setMaxCapacity(int cap);
         string getName();
-        void setName(string name);
 
     protected:
         

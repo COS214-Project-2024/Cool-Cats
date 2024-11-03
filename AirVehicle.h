@@ -16,7 +16,6 @@ class AirVehicle
         virtual void setCapacity(int cap) = 0;
         virtual void setMaxCapacity(int cap) = 0;
         virtual string getName() = 0;
-        virtual void setName(string name) = 0;
     protected:
         
 };

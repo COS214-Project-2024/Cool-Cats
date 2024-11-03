@@ -14,6 +14,7 @@ class PublicTransport: public Transport
     public:
         PublicTransport(PublicVehicle* vehicle);
         ~PublicTransport();
+        PublicVehicle* getVehicle();
         void travel();
 
 };

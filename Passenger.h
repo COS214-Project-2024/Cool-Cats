@@ -14,14 +14,13 @@ class Passenger : public AirVehicle
         int maxCapacity;
         string name = "General Passenger";
     public:
-        Passenger();
+        Passenger(string name);
         ~Passenger();
         AirVehicle* clone();
         bool isFull();
         void setCapacity(int cap);
         void setMaxCapacity(int cap);
         string getName();
-        void setName(string name);
 
     protected:
         

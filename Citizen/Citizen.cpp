@@ -192,8 +192,10 @@ void Citizen::setEmploymentStatus(string employment)
     }
     this->employmentStatus = employment;
 }
+
+/// @brief Determines the mayor based on the mayor with the highest votes 
 void Citizen::determineMayor()
-{
+{ 
     int maxVote = 0;
     Mayor* candidate = nullptr;
     Mayor *currMayor = nullptr;
@@ -222,6 +224,13 @@ void Citizen::determineMayor()
     {
         currMayor->setElectionStatus(false);
     }
+
+    //Reset mayor vote count for next election
+    vector<Mayor*> allMayors = getMayors();
+    for(Mayor* m : allMayors)
+    {
+        m->resetVoteCount();
+    }
 }
 
 /// @brief Helper method for derived classes, used to get all active mayors of the city
@@ -240,18 +249,6 @@ vector<Mayor*> Citizen::getMayors()
     }
     return mayors;
 }
-
-//TO-DO 
-//Thabiso needs to implement the memento functions into citizen
-// PopulationMemento* Citizen::createMemento()
-// {
-
-// }
-// void Citizen::setMemento(PopulationMemento* memento)
-// {
-
-// }
-
 Citizen::~Citizen()
 {
     removeCitizen(this);

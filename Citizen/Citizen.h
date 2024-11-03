@@ -2,7 +2,6 @@
 #define CITIZEN_H
 
 #include <vector>
-#include <memory>
 #include <string>
 
 #include "../Buildings/Structure.h"
@@ -28,7 +27,7 @@ class Citizen
         void setEmploymentStatus(std::string employment);
         virtual void vote() = 0;
         static void determineMayor();
-        std::vector<Mayor*> getMayors();
+        static std::vector<Mayor*> getMayors();
         virtual CitizenIterator* createCitizenIterator() = 0;
         // PopulationMemento* createMemento();
         // void setMemento(PopulationMemento* memento);

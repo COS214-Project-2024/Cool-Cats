@@ -1,5 +1,6 @@
 #include <iostream>   // Include input-output stream library
 #include <string>
+#include <regex>
 
 #include "Structure.h"
 #include "StructureGroup.h"
@@ -65,14 +66,14 @@ void makeCitizensVote();
 void currentMayor();
 void currentSatisfaction();
 
-//Global variables for addCitizen
+//Global variables for Citizen
 bool citizenIntro = false;
 bool votedOnce = false;
 int previousPopulation = 0;
 double previousSatisfaction = 0;
 Citizen * SENTINEL = new LowCitizen();
-
-
+Mayor * SENTINEL_MAYOR = new Mayor();
+regex escape_characters(R"(\\[nt\\\"'])");
 
 //other
 
@@ -569,28 +570,212 @@ void addCitizen(){
     }
 }
 
+//Ask KTO how to add a citizen to a basic structure
+//parameter?
+void addCitizensToBuildings()
+{
+    //Add citizen to a basicStructure, similar to add Mayor, first ask user which area and then how many
+
+    printLines();
+
+    string cityChoice;
+    viewCity(arr);
+    cout << "Enter the area you would like to add citizens to\n";
+
+    cin >> cityChoice;
+
+    while(!foundCity(cityChoice))
+    {
+        cout << "Invalid choice inputted, please try again\n";
+        cin >> cityChoice;
+    }
+    int indexArea = getCityIndex(cityChoice);
+
+    //Ask user which type of citizens they would like to add
+    int typeCitizenChoice;
+    cout << "Which type of citizens would you like to add to the building\n";
+    cout << "Note: the type of citizen you choose impacts maintainence costs and satisfaction\n";
+    cout << "1. High-class citizens\n";
+    cout << "2. Middle-class citizens\n";
+    cout << "3. Low-class citizens\n";
+    cout << "4. Return\n";
+
+    switch(typeCitizenChoice)
+    {
+        int amountCitizens;
+        case 1:
+            cout << "How many high-class citizens do you want?\n";
+            cin >> amountCitizens;
+
+            //Add check to see if amount is more than structure capacity
+            while(amountCitizens < 0)
+            {
+                cout << "Invalid number of citizens added, please try again\n";
+                cin >> amountCitizens;
+            }
+            Citizen** highClassCitizenArr = new Citizen*[amountCitizens];
+            Creator *highClassCreator = new HighCitizenCreator();
+
+            for(int i = 0; i < amountCitizens; i++)
+            {
+                highClassCitizenArr[i] = highClassCreator->specificCitizenOperation("employed", 75, existingStructure);
+
+                //Add high-class citizens to structure, ask if correct
+                // existingStructure.addCitizen(highClassCitizenArr[i]);
+            }
+
+            cout << amountCitizens << " of High-class citizens successfully added to the building\n";
+
+            delete highClassCreator;
+            break;
+
+        case 2:
+            cout << "How many middle-class citizens do you want\n";
+            cin >> amountCitizens;
+
+            //Add check to see if amount is more than structure capacity
+            while(amountCitizens < 0)
+            {
+                cout << "Invalid number of citizens added, please try again\n";
+                cin >> amountCitizens;
+            }
+
+            Citizen** midClassCitizenArr = new Citizen*[amountCitizens];
+            Creator *midClassCreator = new MiddleCitizenCreator();
+
+            for(int i = 0; i < amountCitizens; i++)
+            {
+                midClassCitizenArr[i] = midClassCreator->specificCitizenOperation("employed", 65, existingStructure);
+
+                //Add mid-class citizen to structure, ask if correct
+                // existingStructure.addCitizen(midClassCitizenArr[i]);
+            }
+
+            cout << amountCitizens << " of Middle-class citizens successfully added to the building\n";
+            delete midClassCreator;
+            break;
+        
+        case 3:
+            cout << "How many low-class citizens do you want\n";
+            cin >> amountCitizens;
+
+            //Add check to see if amount is more than structure capacity
+            while(amountCitizens < 0)
+            {
+                cout << "Invalid number of citizens added, please try again\n";
+                cin >> amountCitizens;
+            }
+
+            Citizen** lowClassCitizenArr = new Citizen*[amountCitizens];
+            Creator *lowClassCreator = new LowCitizenCreator();
+
+            for(int i = 0; i < amountCitizens; i++)
+            {
+                lowClassCitizenArr[i] = lowClassCreator->specificCitizenOperation("employed", 55, existingStructure);
+
+                //Add low-class citizen to structure, ask if correct
+                // existingStructure.addCitizen(lowClassCitizenArr[i]);
+            }
+
+            cout << amountCitizens << " of Low-class citizens successfully added to the building\n";
+            delete lowClassCreator;
+            break;
+
+        case 4:
+            return;
+
+        default:
+            while(typeCitizenChoice < 1 || typeCitizenChoice > 4)
+            {
+                cout << "Invalid choice inputted, please try again\n";
+                cin >> typeCitizenChoice;
+            }
+    }
+}
+
+//Ask KTO if I need to add mayor to a specific building
 void addMayor(){
     //this should add a mayor to a city group
     //we have a vector that keeps track of all the areas that have been created called arr however i have not crea
     printLines();
+
+    string cityChoice;
+
     viewCity(arr); // this will print out all the city groups that have been created
     cout << "Enter the area you would like to add a mayor to" << endl;
 
     //get user input
-    //validate that the area si there, consult view city to see how 
+    //validate that the area is there, consult view city to see how 
+    cin >> cityChoice;
 
+    while(!foundCity(cityChoice))
+    {
+        cout << "Invalid choice inputted, please try again\n";
+        cin >> cityChoice;
+    }
 
+    //Get index of city area
+    int indexArea = getCityIndex(cityChoice);
+
+    //Create actual mayor
+    string newMayorName = "";
+    cout << "Enter the name of the mayor\n";
+    cin >> newMayorName;
+
+    while(newMayorName == " " || regex_search(newMayorName, escape_characters))
+    {
+        cout << "Invalid name inputted, please try again\n";
+        cin >> newMayorName;
+    }
+
+    MayorCreator *mc;
+    Citizen *newMayor = mc->specificCitizenOperation("employed", 70, arr[indexArea], newMayorName);
+
+    cout << newMayorName << " has been created\n";
+    cout << "You can make all citizens vote for a mayor by going to the 'Make citizens vote for the new mayor' option\n";
 }
-void currentPopulation()
+
+//Helper function for add citizen and add mayor
+bool foundCity(string city)
 {
-    //-1 is for the sentinel node
-    int currPop = Citizen::getPopulationCount()-1;
+    if(city == "" || regex_search(city,escape_characters))
+    {
+        return false;
+    }
+
+    for(StructureGroup* g : arr)
+    {
+        if(city == g->getName())
+        {
+            return true;
+        }
+    }
+    return false;
+}
+int getCityIndex(string city)
+{
+    int idx = 0;
+    for(StructureGroup* g : arr)
+    {
+        if(city == g->getName())
+        {
+            return idx;
+        }
+        idx++;
+    }
+    return -1;
+}
+void currentCitizenPopulation()
+{
+    //-2 is for the sentinel nodes
+    int currPop = Citizen::getPopulationCount()-2;
     previousPopulation = currPop - previousPopulation;
 
     cout << "The current population of all cities is: " << currPop << endl;
 }
 void makeCitizensVote()
 {
+    votedOnce = true;
     CitizenIterator* iterate = SENTINEL->createCitizenIterator();
 
     while(!iterate->isDone())
@@ -600,8 +785,14 @@ void makeCitizensVote()
     }
 
     int seeMayorResult;
-    cout << "All citizens have now voted for their choice of mayor, Press 1 to see the results\n";
+    cout << "All citizens have now voted for their choice of mayor, Press 1 to see the results, press 2 to return\n";
     cin >> seeMayorResult;
+
+    if(seeMayorResult == 2)
+    {
+        delete iterate;
+        return;
+    }
 
     while(seeMayorResult != 1)
     {
@@ -615,9 +806,48 @@ void makeCitizensVote()
 }
 void currentMayor()
 {
+    if(!votedOnce)
+    {
+        cout << "You have not made your citizens vote yet, please make them vote before seeing results\n";
+        return;
+    }
+    Citizen::determineMayor();
 
+    vector<Mayor*> mayors = SENTINEL_MAYOR->getMayors(); 
+    MayorIterator* iterate = new MayorIterator(mayors);
+    vector<Mayor*> electedMayors = SENTINEL_MAYOR->getMayors(); 
+
+    while(!iterate->isDone())
+    {
+        if(iterate->currentItem()->getElectionStatus())
+        {
+            electedMayors.push_back(iterate->currentItem());
+        }
+        iterate->next();
+    }
+
+    for(Mayor* m : electedMayors)
+    {
+        cout << m->getMayorName() << " is the mayor for " << m->getHome() << " with " << m->getVoteCount() << endl;
+    }
+
+    delete iterate;
 }
 void currentSatisfaction()
 {
+    double currSatisfaction = 0;
+    CitizenIterator *iterate = SENTINEL_MAYOR->createCitizenIterator();
+    
+    while(!iterate->isDone())
+    {
+        currSatisfaction += iterate->currentItem()->getSatisfaction();
+        iterate->next();
+    }
 
+    currSatisfaction = currSatisfaction/(Citizen::getPopulationCount()-2);
+    previousSatisfaction = currSatisfaction - previousSatisfaction;
+
+    cout << "The current satisfaction of all citizens is " << currSatisfaction << endl;
+
+    delete iterate;
 }

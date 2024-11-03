@@ -73,7 +73,7 @@ void Mayor::receiveVote()
 }
 
 /// @brief Does nothing as mayors are not allowed to vote
-void vote()
+void Mayor::vote()
 {
     
 }
@@ -83,6 +83,11 @@ void vote()
 int Mayor::getVoteCount()
 {
     return voteCount;
+}
+
+void Mayor::resetVoteCount()
+{
+
 }
 
 /// @brief Returns whether the mayor is elected or not

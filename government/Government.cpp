@@ -36,10 +36,10 @@ void Government::requestResource(const std::string& resourceType, double amount)
 }
 
 void Government::revokePolicy(const std::string& policy) {
-    auto it = std::find(policies.begin(), policies.end(), policy);
+     auto it = std::find(policies.begin(), policies.end(), policy);
     if (it != policies.end()) {
         policies.erase(it);
-        std::cout << "Revoked policy: " << policy << std::endl;
+        std::cout << "Revoking policy: " << policy << std::endl;
     } else {
         std::cout << "Policy not found: " << policy << std::endl;
     }

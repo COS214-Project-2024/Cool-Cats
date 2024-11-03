@@ -6,17 +6,15 @@
 class Income
 {
     public:
-        Income(double lowest, double highest, float taxRate, float utilityCharge);
+        Income(double lowest, double highest, float taxRate);
         std::array<double, 2> getRange();
         float getTaxRate();
         void setTaxRate(float taxRate);
-        float getUtilityCharges();
-        void setUtilityCharges(float newUtilityCharge);
+        ~Income();
 
     private:
         double lowest;
         double highest;
         float taxRate;
-        float utilityCharge;
 };
 #endif

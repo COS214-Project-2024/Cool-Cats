@@ -10,7 +10,7 @@
 class HighCitizen : public Citizen{
     public:
         HighCitizen();
-        HighCitizen(std::string employmentStatus, double satisfaction, std::shared_ptr<Structure> home);
+        HighCitizen(std::string employmentStatus, double satisfaction, Structure* home);
         void vote();
         static int getHighClassCitizenCount();
         Income* getIncome();

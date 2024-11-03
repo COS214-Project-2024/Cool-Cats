@@ -8,12 +8,12 @@
 class Creator{
     public:
         Creator();
-        std::unique_ptr<Citizen> basicCitizenOperation();
-        std::unique_ptr<Citizen> specificCitizenOperation(std::string employmentStatus, double satisfaction, std::shared_ptr<Structure> home);
+        Citizen* basicCitizenOperation();
+        Citizen* specificCitizenOperation(std::string employmentStatus, double satisfaction, Structure* home);
         ~Creator();
 
     protected:
-        virtual std::unique_ptr<Citizen> basicCitizenMethod() = 0;
-        virtual std::unique_ptr<Citizen> specificCitizenMethod(std::string employmentStatus, double satisfaction, std::shared_ptr<Structure> home) = 0;
+        virtual Citizen* basicCitizenMethod() = 0;
+        virtual Citizen* specificCitizenMethod(std::string employmentStatus, double satisfaction, Structure* home) = 0;
 };
 #endif

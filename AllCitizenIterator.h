@@ -9,7 +9,7 @@
 
 class AllCitizenIterator : public CitizenIterator{
     public:
-        AllCitizenIterator(std::vector<std::unique_ptr<Citizen>>& citizens);
+        AllCitizenIterator(std::vector<Citizen*>& citizens);
         void first();
         void next();
         bool isDone() const;
@@ -17,7 +17,8 @@ class AllCitizenIterator : public CitizenIterator{
         ~AllCitizenIterator();
 
     private:
-        std::vector<std::unique_ptr<Citizen>>& citizens;
+        std::vector<Citizen*>& citizens;
         Citizen* current;
+        int index;
 };
 #endif

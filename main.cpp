@@ -1,5 +1,7 @@
 #include <iostream>   // Include input-output stream library
 #include <string>
+#include <vector>
+
 
 #include "Structure.h"
 #include "StructureGroup.h"
@@ -19,6 +21,9 @@
 
 using namespace std;
 
+//main menu
+void mainMenu();
+
 //gerneral funcitons:
 void chooseFromMenu();
 
@@ -31,6 +36,9 @@ void removeStructureGroup();
 void editStructure();
 void addStructure();
 void removeStructure();
+
+void addCititoBuild(Citizen* c);
+void decorateStructure();
 
 
 //for transport
@@ -55,7 +63,7 @@ void addCitizens();
 void errorMessage();
 CStructIterator* createIteratorForGroup(StructureGroup* s );
 void exit();
-void viewCity(vector<StructureGroup*> s);
+void viewCity();
 
 StructureGroup* createCityHall();
 
@@ -71,7 +79,7 @@ vector<StructureGroup*> arr; // this keeps track of all the stucture groups that
 vector<CStructIterator*> iteratorArr ; // this keeps track of iterators that have been created ie each structure is in a structure group and we can iterate over each structure in each structure group through this.
 
 
- int main(){
+int main(){
     cout << "WELCOME TO THE COOL CATS CITY SIMULATOR" << endl;
 
     cout << "-------------------------------------------" << endl;
@@ -93,14 +101,11 @@ vector<CStructIterator*> iteratorArr ; // this keeps track of iterators that hav
 
         arr.push_back(createCityHall());
         iteratorArr.push_back(createIteratorForGroup(arr.front())); // potential erros can arise from here
-        //createGovernment();
+        createGovernment();
     }
     printLines();
     cout << "Great you have created the city hall and government. From here on out there will be an option to view details of your city :)" << endl;
-    bool cond = true;
-
     
-
     //this will be our main screen
 
     //When a user click one of these numbers, then they should be able to stuff based on the number added
@@ -109,77 +114,98 @@ vector<CStructIterator*> iteratorArr ; // this keeps track of iterators that hav
     //You can printlines if you would like to seperate for clarity
     //You can exit to end program
 
+    mainMenu();
 
-    while(cond){
-        printLines();
-        cout << "1 : Edit Structure groups" << endl;
-        cout << "2 : Edit Structures" << endl;
-        cout << "3 : View City" << endl;
-        cout << "4 : Exit" << endl;
-        cout << "5 : Edit Transport" << endl;
-        cout << "6 : Edit Govenment" << endl;
-        cout << "7 : Add utilities" << endl;
-        cout << "8 : Add citizens" << endl;
-        cout << "Select NUMBER: ";
+    //pseudo code
+    // StructureGroup* grouptest = new StructureGroup("Test Group");
+    // arr.push_back(grouptest);
+    // BasicStructure* testStructure = new BasicStructure("test1",'R',100);
+    // BasicStructure* testStructure2 = new BasicStructure("test2",'R',100);
+    // BasicStructure* testStructure3 = new BasicStructure("test3",'R',100);
+    // grouptest->add(testStructure);
+    // grouptest->add(testStructure2);
+    // grouptest->add(testStructure3);
 
-        cin >> option;
-
-        switch (option){
-            case 1:
-                cout << "We got here" << endl;
-                editStructureGroup();
-                break;
-            case 2:
-                editStructure();
-                break;
-            case 3:
-                viewCity(arr);
-                break;
-            case 4:
-                exit();
-                cond = false;
-                break;
-            case 5:
-                editTransport();
-                break;
-            case 6:
-                //Edit Government
-
-                break;
-            case 7:
-                //Add utilities
-                break;
-            case 8:
-                addCitizens();
-                break;
-            default:
-                errorMessage();
-        }
-        printLines();
-
-
- 
-
-    }
-
-    Utilities *ut = new Utilities();
-    Utilities *pt = new PowerUtility();
-    Utilities *wt = new WaterUtility();
-    Utilities *wst = new WasteUtility();
-    Utilities *st = new SewageUtility();
-    ut->setNext(pt);
-    pt->setNext(wt);
-    wt->setNext(wst);
-    wst->setNext(st);
-
-    ut->processRequest("PWC");
-
+    // HighCitizenCreator high;
+    // Citizen *citizen = high.specificCitizenOperation("unemployed",65 ,nullptr);
+    // addCititoBuild(citizen);
     
 
     return 0;
 }
 
 //general funcitons
+
+void mainMenu() {
+    int option = 0;
+    bool condition = true;
+    while (option != 4 && condition)  {  // Keep showing the menu until "Exit" is chosen
+        printLines();
+        cout << "Main Menu" << endl;
+        cout << "1 : Edit Structure Groups" << endl;
+        cout << "2 : Edit Structures" << endl;
+        cout << "3 : View City" << endl;
+        cout << "4 : Exit" << endl;
+        cout << "5 : Edit Transport" << endl;
+        cout << "6 : Edit Government" << endl;
+        cout << "7 : Add Utilities" << endl;
+        cout << "8 : Add Citizens" << endl;
+        cout << "Select NUMBER: ";
+
+        //validate user input
+        while (!(cin >> option) || option < 1 || option > 8) {
+            cout << "Invalid input. Please enter a number between 1 and 8." << endl;
+            cin.clear();  // Clear the error 
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');  // invalid input
+            cout << "Select NUMBER: ";
+        }
+
+        // Process the user's choice
+        switch (option) {
+            case 1:
+                editStructureGroup();
+                break;
+
+            case 2:
+                editStructure();
+                break;
+
+            case 3:
+                viewCity();
+                mainMenu();
+                break;
+
+            case 4:
+                cout << "Exiting..." << endl;
+                exit();
+                condition = false;
+                break;
+
+            case 5:
+                editTransport();
+                break;
+
+            case 6:
+                // Call editGovernment function
+                break;
+
+            case 7:
+                // Call addUtilities function
+                break;
+
+            case 8:
+                addCitizens();
+                break;
+
+            default:
+                cout << "Invalid option. Please try again." << endl;
+                break;
+        }
+        //cout << "we have broken out of the final" << endl;
+        condition = false;
+        // printLines();
+    }
+}
 
 void printLines(){
     cout << "---------------------------------------------------------------" << endl;
@@ -190,20 +216,44 @@ void errorMessage(){
 }
 
 void exit(){
-    viewCity(arr);
-    // exit(1);
-    // cout << "We got here" << endl;
+    viewCity();
+
 
 }
 
-void viewCity(vector<StructureGroup*> arr){
+void viewCity() { 
     printLines();
-    for(StructureGroup* str : arr){
+
+    // ANSI color code for bold blue (change as needed)
+    const string groupColor = "\033[1;34m";
+    const string resetColor = "\033[0m";
+
+    for (StructureGroup* group : arr) {
+        if (!group) continue; // Skip any null groups
+
+        // Print the structure group name in bold bluen
+        cout << groupColor << group->getName() << resetColor << endl;
+
+        // Create an iterator to go through each structure in the group
+        CStructIterator* iterator = group->createIterator();
+
+        // Traverse each structure within the group
+        for (iterator->first(); !iterator->isDone(); iterator->next()) {
+            Structure* currentStructure = iterator->currentItem();
+            BasicStructure* basicStructure = dynamic_cast<BasicStructure*>(currentStructure);
+
+            if (basicStructure) {
+                // Print each structure's name and type
+                cout << "- " << basicStructure->getName() 
+                     << " (" << basicStructure->getType() << ")" << endl;
+            }
+        }
+
+        delete iterator; // Clean up iterator
         printLines();
-        std::cout << str->getName() << endl;
-        
     }
-    printLines();
+
+    //printLines();
 }
 
 CStructIterator* createIteratorForGroup(StructureGroup* s ){
@@ -214,7 +264,7 @@ CStructIterator* createIteratorForGroup(StructureGroup* s ){
 StructureGroup* createCityHall(){
     //this is default created, so its done in the before the main menu
     StructureGroup * cityhallGroup = new StructureGroup("CityHallGroup");
-    BasicStructure* cityHall = new BasicStructure("CityHall", "Type1", 100, 100, 100, 100);
+    BasicStructure* cityHall = new BasicStructure("CityHall", 'L',100);
     cityhallGroup->add(cityHall);
 
     return cityhallGroup;
@@ -231,27 +281,140 @@ void chooseFromMenu(){
 
 
 //building funcitons
-void editStructureGroup(){
 
+//function to add citizen to building:
+void addCititoBuild(Citizen* c) {
+    if (!c) {
+        throw std::invalid_argument("Citizen cannot be null.");
+    }
+
+    bool structureFound = false;
+
+    // Display all available structures in each StructureGroup
+    for (auto* group : arr) {
+        if (!group) continue; // null groups
+
+        cout << "-------------------------------" << endl;
+        cout << "Structures available in Area (" << group->getName() << "):" << endl;
+
+        // Create an iterator for the current StructureGroup
+        CStructIterator* iterator = group->createIterator();
+
+        // Traverse through each structure 
+        for (iterator->first(); !iterator->isDone(); iterator->next()) {
+            Structure* currentStructure = iterator->currentItem();
+            BasicStructure* basicStructure = dynamic_cast<BasicStructure*>(currentStructure);
+
+            if (basicStructure) {
+                // Print the structure's name and type (e.g., Commercial, Residential)
+                cout << "- " << basicStructure->getName() << " (" << basicStructure->getType() << ")" << endl;
+                structureFound = true;
+            }
+        }
+
+        delete iterator; // Clean up iterator after use
+    }
+
+    if (!structureFound) {
+        cout << "No available structures found in any StructureGroup." << endl;
+        return;
+    }
+
+    // Prompt the user to enter the name of the building to add the citizen
+    cout << "Enter the name of the structure/building to add the citizen to: ";
+    string buildingName;
+    getline(cin, buildingName);
+
+    // Search for the specified building by name
+    for (auto* group : arr) {
+        if (!group) continue; // null groups
+
+        // Create an iterator for the current StructureGroup
+        CStructIterator* iterator = group->createIterator();
+
+        // Traverse each structure within the group
+        for (iterator->first(); !iterator->isDone(); iterator->next()) {
+            Structure* currentStructure = iterator->currentItem();
+            BasicStructure* basicStructure = dynamic_cast<BasicStructure*>(currentStructure);
+
+            if (basicStructure && basicStructure->getName() == buildingName) {
+                // Add the citizen to the found building
+                try {
+                    basicStructure->addcitizen(c);
+                    cout << "Citizen added successfully to " << buildingName << "." << endl;
+                } catch (const std::exception& e) {
+                    cout << "Error adding citizen: " << e.what() << endl;
+                }
+
+                delete iterator; // Clean up iterator before returning
+                return;
+            }
+        }
+
+        delete iterator; // Clean up iterator after checking each group
+    }
+
+    // If no structure with the specified name is found
+    cout << "Structure with the name '" << buildingName << "' not found." << endl;
+}
+
+void editStructureGroup(){
+    printLines();
     //this will allow us to add and remove structure groups from the array
 
-    int option;
+    int option = 0;
+    
+    while(true) {
+        printLines();
+        cout << "Edit Structure Group Menu" << endl;
+        cout << "1: Add" << endl;
+        cout << "2: Remove" << endl;
+        cout << "3: View City" << endl;
+        cout << "4: Return to Main Menu" << endl;
+        cout << "Please enter an option (1-4): ";
+
+        cin >> option;
+
+        if(cin.fail() || option < 1 || option > 4){
+            cout << "Invalid input. Please enter a number between 1 and 4." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }else {
+            break; //input valid
+        }
+    }
+    
     printLines();
-    cout << "Edit structure group Menu" << endl;
 
-    cout << "1: Add" << endl;
-    cout << "2: remove" << endl;
-    cout << "3: view city" << endl;
-    cout << "4: return to main" << endl;
-    //add more if you see fit
+    switch(option) {
+        case 1:
+            cout << "Adding structure group:" << endl;
+            addStructureGroup();
+            break;
+        
+        case 2:
+            cout<< "Remove structure group" << endl;
+            removeStructureGroup();
+            break;
 
-    cin >> option; //get input from user
+        case 3: 
+            viewCity();
+            editStructureGroup();
+            break;
+            
+        case 4:
+            mainMenu();
+            break;
+
+    }
+
+    
 
     //handle cases here
     //also note you will need to create a new iterator for this .There is an vector for iterator which we will use a 1:1 location for the iterator and groups array. SO position 1 of the iterator will correspond to group in postion 1 of the structure group.
 
 
-    printLines();
+    //printLines();
 
 }
 
@@ -268,142 +431,340 @@ void addStructureGroup(){
     printLines();
     
     cout << "YOU have created a new area: " << name << endl;
+    editStructureGroup();
 }
 
 void removeStructureGroup(){
     //this will remove a structure group to the vector arr
     //make sure after something is removed, the vector postion doesnt become empty and everything ahead is brought back.
+    if( arr.empty()){
+        cout << "No structure groups available to remove." << endl;
+        return;
+    }
+
+    string name;
+    cout << "Enter the name of the Structuregroup to remove: ";
+    cin.ignore();
+    getline(cin, name);
+
+    auto it = find_if(arr.begin(), arr.end(), [&name](StructureGroup* group){
+        return group->getName() == name;
+    });
+
+    if( it != arr.end() ){
+        delete *it;
+        arr.erase(it);
+
+        cout << "Structture group \"" << name << "\" removed successfully." << endl;
+    }else {
+        cout << "No structure group found with the name \"" << name << "\"." << endl;
+    }
+
+    editStructureGroup();
 }
 
 void editStructure(){
 
-    int option;
+    int option = 0;
+   
+    while(true) {
+        printLines();
+        cout << "Edit structure Menu" << endl;
+        cout << "1: Add" << endl;
+        cout << "2: Remove" << endl;
+        cout << "3: View city" << endl;
+        cout << "4: Return to Main Menu" << endl;
+        cout << "5: Update structures" << endl;
+        cout << "Please enter an option (1-5): ";
+
+        cin >> option;
+
+        if(cin.fail() || option < 1 || option > 5){
+            cout << "Invalid input. Please enter a number between 1 and 4." << endl;
+            cin.clear(); // Clear error
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // ignore invalid input 
+        }else {
+            break; //input valid
+        }
+    }
+
     printLines();
-    cout << "Edit structure group Menu" << endl;
 
-    cout << "1: Add" << endl;
-    cout << "2: remove" << endl;
-    cout << "3: view city" << endl;
-    cout << "4: return to main" << endl;
-    //add more if you see fit
+    switch (option) {
+        case 1:
+            cout << "ADD structure..." << endl;
+            addStructure();
+            break;
 
-    cin >> option; //get input from user
+        case 2:
+            cout << "Remove structure..." << endl;
+            removeStructure();
+            break;
+        
+        case 3:
+            viewCity();
+            editStructure();
+            break;
+            
+        case 4:
+            mainMenu(); 
+            break;
 
-    //handle cases here
-    //also note you will need to create a new iterator for this .There is an vector for iterator which we will use a 1:1 location for the iterator and groups array. SO position 1 of the iterator will correspond to group in postion 1 of the structure group.
+        case 5:
+            break;
 
-
-    printLines();
-    
-
-    
-
+        default:
+            break;
+    }
+     
 
 }
 
 void addStructure(){
-    //ask the user for the group you would like 
-    //then check if that group is available if not send a message and have them retype the name. 
-    //if the name is correct then get the name of the structrue they would want to create
-    //get the type
-    //get the capacity
-    //call the constructor of creating structures
-    //add this new structure to the group
-    //NB print view city wont work at the moment as i have not added a print structures to the view city its still just structure groups
+    if ( arr.empty()){
+        cout << "No structure groups avialable. Please create a structure group first." << endl;
+        return;
+    }
 
-    //feel free to add whatever you think is best
+    cout << "Select a Structure Group to add the new structure to:" << endl;
+    for (size_t i = 0; i < arr.size(); ++i) {
+        cout << i << ": " << arr[i]->getName() << endl;
+    }
 
-    //some demo code that i was working on before however its not really what i want anymore so feel free to look at it for inspiration but the psuedo is more better
-    printLines();
-    cout << "Please type the name of the are you would like to add the structure group you would like to add a structure to: " << endl;
+    int groupIndex;
+    cout << "Enter the index of the Structure group: ";
+    while ( !(cin >> groupIndex) || groupIndex < 0 || groupIndex >= arr.size()) {
+        cout << "Invalid input. Please enter a valid group index. " << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
 
-    viewCity(arr);
+    string structureName;
+    cout << "Enter the name of the new structure: ";
+    cin.ignore();
+    getline(cin, structureName);
 
-    string option;
-    cout << "Enter name Here: ";
-    cin >> option;
-    int index = 0;
-    bool cond = false;
-    for(int i = 0; i < static_cast<int>(arr.size()); i++){
-        cout << "we got here " << endl;
-        if(arr[i]->getName() == option){
-            cond = true;
+    char structuretype;
+    cout << "Choose from the Menu: " << endl;
+    cout << "R: Residential" << endl;
+    cout << "C: Commercial" << endl;
+    cout << "I: Industrial" << endl;
+    cout << "L: Landmarks" << endl;
 
-            index = i;
+    while(true) {
+        cout << "Enter the structure type ( R, C, I, L) :";
+        cin >> structuretype;
+        if (structuretype == 'R' || structuretype == 'C' || structuretype == 'I' || structuretype == 'L'){
+            break;
+        }else {
+            cout << "Invalid input. Please enter R, C, I, or L." << endl;
         }
     }
 
-    if(cond == false){
-        cout << "No such area exists" << endl;
-    }
-    else{
-        cout << "Area is available !! " << endl;
-        printLines();
-        cout << "Enter the name of the structure you would like to add: ";
-        cin >> option;
+    int maxCap;
 
-        printLines();
-        int option2;
-        char type;
-
-        while(cond){
-            cout << "Enter the type of struture you would like your structure to be. This type will affect how it will be treated as an industry will be different from a residential area" << endl;
-            cout << "Choose from the Menu: " << endl;
-            cout << "1: Residential" << endl;
-            cout << "2: Commercial" << endl;
-            cout << "3: Industrial" << endl;
-            cout << "4: Landmarks" << endl;
-            cin >> option2;
-
-            switch (option2)
-            {
-            case 1:
-                type = 'R';
-                break;
-            case 2:
-                type = 'C';
-                break;
-            case 3:
-                type = 'I';
-                break;
-            case 4 :
-                type = 'L';
-                break;
-
-            
-            default:
-                break;
+    switch (structuretype) {
+        case 'R':
+            cout << "Enter the maximum capacity for Residential structure (up to 300): ";
+            while (!(cin >> maxCap) || maxCap < 1 || maxCap > 300){
+                cout << "Invalid capacity. Please enter a value between 1 and 300." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
             }
+            break;
 
-            printLines();
-            bool conditionForCapacity = true;
-            int optionForCapacity;
-            while(conditionForCapacity){
-                cout << "To finalise creation of structure you will now need to select add capcity" << endl;
-                cout << "Make sure that your value is a whole number greater than 0 but smaller than 1001" << endl;
-                cin >> optionForCapacity;
-
-                if(cin.fail()){
-
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                }
-                conditionForCapacity = false;
-                cond = false;
-                cin >> option2;
-
+        case 'C':
+            cout << "Enter the maximum capacity for Commercial structure (up to 1000): ";
+            while (!(cin >> maxCap) || maxCap < 1 || maxCap > 1000) {
+                cout << "Invalid capacity. Please enter a value between 1 and 1000." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
             }
-            
-        }
+            break;
+
+        case 'I':
+            cout << "Enter the maximum capacity for Industrial structure (up to 1000): ";
+            while (!(cin >> maxCap) || maxCap < 1 || maxCap > 1000) {
+                cout << "Invalid capacity. Please enter a value between 1 and 1000." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            break;
         
-
-
+        case 'L':
+            cout << "Enter the maximum capacity for Landmark structure (up to 700): ";
+            while (!(cin >> maxCap) || maxCap < 1 || maxCap > 700) {
+                cout << "Invalid capacity. Please enter a value between 1 and 700." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            break;
     }
+
+    BasicStructure* newStructure = new BasicStructure(structureName, structuretype, maxCap);
+
+    arr[groupIndex]->add(newStructure);
+
+    CStructIterator* newIterator = arr[groupIndex]->createIterator();
+
+    cout << "Structure added. Available structures in area \"" << arr[groupIndex]->getName() << "\":" << endl;
+    for (newIterator->first(); !newIterator->isDone(); newIterator->next()){
+        Structure* structure = newIterator->currentItem();
+        if (structure){
+            cout << "- " << structure->getName() << endl;
+        }
+    }
+
+    delete newIterator;
+
+    editStructure();
+
+
 }
 
 void removeStructure(){
-    //will work similar to add except remove is used instead.
+    if (arr.empty()) {
+        cout << "No structure groups available. Please create a structure group first." << endl;
+        return;
+    }
+
+    cout << "Select a StructureGroup to remove a structure from:" << endl;
+    for (size_t i = 0; i < arr.size(); ++i) {
+        cout << i << ": " << arr[i]->getName() << endl;
+    }
+
+    int groupIndex;
+    cout << "Enter the index of the StructureGroup: ";
+    while (!(cin >> groupIndex) || groupIndex < 0 || groupIndex >= arr.size()) {
+        cout << "Invalid input. Please enter a valid index." << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
+    CStructIterator* iterator = arr[groupIndex]->createIterator();
+
+    cout << "Structures available in \"" << arr[groupIndex]->getName() << "\":" << endl;
+    vector<Structure*> structures; // To store structure pointers for easy lookup
+    for (iterator->first(); !iterator->isDone(); iterator->next()) {
+        Structure* structure = iterator->currentItem();
+        if (structure) {
+            cout << "- " << structure->getName() << endl;
+            structures.push_back(structure);
+        }
+    }
+    delete iterator;
+
+    if (structures.empty()) {
+        cout << "No structures available to remove in this group." << endl;
+        return;
+    }
+
+    string structureName;
+    cout << "Enter the name of the structure to remove: ";
+    cin.ignore();
+    getline(cin, structureName);
+
+    bool found = false;
+    for (Structure* structure : structures) {
+        if (structure->getName() == structureName) {
+            arr[groupIndex]->remove(structure);
+            delete structure; 
+            cout << "Structure \"" << structureName << "\" removed successfully." << endl;
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
+        cout << "Structure with name \"" << structureName << "\" not found in the group." << endl;
+    }
+
+    editStructure();
+
+
 }
+
+void decorateStructure(){
+    cout << "Select a structure to decorate:" << endl;
+
+    bool structureFound = false;
+
+    //avialable structures
+    for (auto* group : arr){
+        if (!group) continue;
+
+        CStructIterator* iterator = group->createIterator();
+
+        for (iterator->first(); !iterator->isDone(); iterator->next()) {
+            Structure* currentStructure = iterator->currentItem();
+            BasicStructure* basicStructure = dynamic_cast<BasicStructure*>(currentStructure);
+
+            if (basicStructure) {
+                cout << "- " << basicStructure->getName() << " (" << basicStructure->getType() << ")" << endl;
+                structureFound = true;
+            }
+        }
+
+        delete iterator;
+    }
+
+    if(!structureFound){
+        cout << "No structures available for decoration." << endl;
+        return;
+    }
+
+    //get structure from user:
+    cout << "Enter the name of the structure to decorate: ";
+    string buildingName;
+    cin.ignore(); // Clear input buffer
+    getline(cin, buildingName);
+
+    Structure* selectedStructure = nullptr;
+
+    for (auto* group : arr){
+        if (!group) continue;
+
+        CStructIterator* iterator = group->createIterator();
+
+        for (iterator->first(); !iterator->isDone(); iterator->next()){
+            Structure* currentStructure = iterator->currentItem();
+            BasicStructure* basicStructure = dynamic_cast<BasicStructure*>(currentStructure);
+
+            if (basicStructure && basicStructure->getName() == buildingName) {
+                selectedStructure = basicStructure;
+                break;
+            }
+        }
+
+        delete iterator;
+        if(selectedStructure) break; // structure found
+    }
+
+    if(!selectedStructure){
+         cout << "Select decoration type:" << endl;
+        cout << "1: Satisfaction Enhancer" << endl;
+        cout << "2: Resource Efficiency Enhancer" << endl;
+        cout << "3: Maintenance Cost Reducer" << endl;
+        int decorationOption;
+        cin >> decorationOption;
+
+        // switch (decorationOption) {
+        //     case 1:
+        //         selectedStructure = new SatisfactionEnhancer(selectedStructure);
+        //         break;
+        //     case 2:
+        //         selectedStructure = new ResourceEfficiencyEnhancer(selectedStructure);
+        //         break;
+        //     case 3:
+        //         selectedStructure = new MaintenanceCostReducer(selectedStructure);
+        //         break;
+        //     default:
+        //         cout << "Invalid decoration option." << endl;
+        //         return;
+        // }
+    }
+}
+
 
 
 //Transport functions
@@ -503,7 +864,7 @@ void addMayor(){
     //this should add a mayor to a city group
     //we have a vector that keeps track of all the areas that have been created called arr however i have not crea
     printLines();
-    viewCity(arr); // this will print out all the city groups that have been created
+    viewCity(); // this will print out all the city groups that have been created
     cout << "Enter the area you would like to add a mayor to" << endl;
 
     //get user input

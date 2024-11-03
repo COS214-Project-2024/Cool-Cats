@@ -1,5 +1,4 @@
 #include <iostream>
-#include <memory>
 
 #include "Creator.h"
 
@@ -7,13 +6,19 @@ using namespace std;
 
 Creator::Creator(){}
 
-/// @brief Returns the new citizen being created
-/// @return The new citizen that was created
-unique_ptr<Citizen> Creator::basicCitizenOperation()
+/// @brief Creates and returns a new basic citizen object 
+/// @return A new citizen that was created
+Citizen* Creator::basicCitizenOperation()
 {
     return basicCitizenMethod();
 }
-unique_ptr<Citizen> Creator::specificCitizenOperation(string employmentStatus, double satisfaction, shared_ptr<Structure> home)
+
+/// @brief Creates and returns a new specified citizen object
+/// @param employmentStatus The employment status of the citizen, either 'unemployed', 'employed' or 'self-employed' 
+/// @param satisfaction The satisfaction the citizen has with the city, between 0-100
+/// @param home The assigned home of the citizen
+/// @return A new citizen object
+Citizen* Creator::specificCitizenOperation(string employmentStatus, double satisfaction, Structure* home)
 {
     return specificCitizenMethod(employmentStatus, satisfaction, home);
 }

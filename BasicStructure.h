@@ -11,7 +11,8 @@ class BasicStructure : public Structure {
 
     private:
         int numCitizen;
-        string type;
+        int maxCitizen;
+        char type;
         string name;
         float maintenanceCost;
         float ResourceConsumption;

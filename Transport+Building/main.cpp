@@ -1,15 +1,34 @@
 #include <iostream>
-#include "Transportation.h"
-#include "Transport.h"
-#include "PublicTransport.h"
-#include "PublicVehicle.h"
-#include "Bus.h"
+#include <vector>
+#include <array>
+#include <map>
+
+
 #include "RoadSubject.h"
 #include "Road.h"
 #include "RoadState.h"
 #include "UnderConstruction.h"
 #include "Working.h"
 #include "ConcreteObserver.h"
+
+#include "Transportation.h"
+#include "Transport.h"
+
+#include "PublicTransport.h"
+#include "PublicVehicle.h"
+#include "Bus.h"
+#include "Taxi.h"
+
+#include "TrainTransport.h"
+#include "TrainVehicle.h"
+#include "Metro.h"
+#include "Tram.h"
+#include "Freight.h"
+
+#include "AirportTransport.h"
+#include "AirVehicle.h"
+#include "Passenger.h"
+#include "Cargo.h"
 
 //Building imports
 #include "Structure.h"
@@ -23,116 +42,14 @@
 #include "StructureIterator.h"
 
 
+
 using namespace std;
 
-
-
-void testStructure(){
-    // Creating basic structures
-    BasicStructure* school = new BasicStructure("School", 100, 50, 80);
-    BasicStructure* hospital = new BasicStructure("Hospital", 200, 150, 95);
-    BasicStructure* park = new BasicStructure("Park", 30, 10, 120);
-
-    //structuregroup
-    StructureGroup* cityStructures = new StructureGroup("City Structures");
-    cityStructures->add(school);
-    cityStructures->add(hospital);
-    cityStructures->add(park);
-
-
-
-    // Display individual structure details
-    std::cout << "Individual Structures:" << std::endl;
-    std::cout << "School - Maintenance: " << school->getMaintenance()
-              << ", Resource Consumption: " << school->getResourceConsumption()
-              << ", Citizen Satisfaction: " << school->getCitizenSatisfactionImpact() << std::endl;
-
-    std::cout << "Hospital - Maintenance: " << hospital->getMaintenance()
-              << ", Resource Consumption: " << hospital->getResourceConsumption()
-              << ", Citizen Satisfaction: " << hospital->getCitizenSatisfactionImpact() << std::endl;
-
-    std::cout << "Park - Maintenance: " << park->getMaintenance()
-              << ", Resource Consumption: " << park->getResourceConsumption()
-              << ", Citizen Satisfaction: " << park->getCitizenSatisfactionImpact() << std::endl;
-
-     // Display aggregate information from the structure group
-    std::cout << "\nStructure Group - " << cityStructures->getName() << ":" << std::endl;
-    std::cout << "Total Maintenance: " << cityStructures->getMaintenance() << std::endl;
-    std::cout << "Total Resource Consumption: " << cityStructures->getResourceConsumption() << std::endl;
-    std::cout << "Total Citizen Satisfaction Impact: " << cityStructures->getCitizenSatisfactionImpact() << std::endl;
-
-    // Step 2: Create an iterator for the structure group
-    // Step 2: Create a CStructIterator for the structure group
-    //CStructIterator* iterator = dynamic_cast<CStructIterator*>(cityStructures->createIterator());
-    CStructIterator* iterator = cityStructures->createIterator();
-    
-
-    if (iterator == nullptr) {
-        std::cerr << "Failed to create iterator." << std::endl;
-        return;
-    }
-
-    // Step 3: Use the iterator to print each structure's details
-    std::cout << "Iterating through structures in " << cityStructures->getName() << ":" << std::endl;
-    for (iterator->first(); !iterator->isDone(); iterator->next()) {
-        Structure* structure = iterator->currentItem();
-        if (structure != nullptr) {
-            std::cout << "Structure Name: " << structure->getName() << std::endl;
-            std::cout << "Maintenance: " << structure->getMaintenance()
-                      << ", Resource Consumption: " << structure->getResourceConsumption()
-                      << ", Citizen Satisfaction: " << structure->getCitizenSatisfactionImpact() << std::endl;
-        }
-    }
-
-    // Clean up allocated memory
-    delete iterator;
-
-
-    // Clean up allocated memory
-    delete cityStructures;
-
-
-}
-
-void Decoratortest(){
-    // Step 1: Create a basic structure
-    BasicStructure* library = new BasicStructure("Library", 100, 50, 70);
-    
-    // Display the initial structure's properties
-    std::cout << "Initial Structure: " << library->getName() << std::endl;
-    std::cout << "Maintenance: " << library->getMaintenance()
-              << ", Resource Consumption: " << library->getResourceConsumption()
-              << ", Citizen Satisfaction: " << library->getCitizenSatisfactionImpact() << std::endl;
-
-    // Step 2: Apply a MaintenanceCostReducer decorator
-    MaintenanceCostReducer* costReducedLibrary = new MaintenanceCostReducer(library,10);
-    std::cout << "\nAfter applying MaintenanceCostReducer:" << std::endl;
-    std::cout << "Maintenance: " << costReducedLibrary->getMaintenance()
-              << ", Resource Consumption: " << costReducedLibrary->getResourceConsumption()
-              << ", Citizen Satisfaction: " << costReducedLibrary->getCitizenSatisfactionImpact() << std::endl;
-
-    // Step 3: Apply a ResourceEfficiencyEnhancer decorator
-    ResourceEfficiencyEnhancer* efficientLibrary = new ResourceEfficiencyEnhancer(costReducedLibrary,20);
-    std::cout << "\nAfter applying ResourceEfficiencyEnhancer:" << std::endl;
-    std::cout << "Maintenance: " << efficientLibrary->getMaintenance()
-              << ", Resource Consumption: " << efficientLibrary->getResourceConsumption()
-              << ", Citizen Satisfaction: " << efficientLibrary->getCitizenSatisfactionImpact() << std::endl;
-
-    // Step 4: Apply a SatisfactionEnhancer decorator
-    SatisfactionEnhancer* enhancedLibrary = new SatisfactionEnhancer(efficientLibrary,20);
-    std::cout << "\nAfter applying SatisfactionEnhancer:" << std::endl;
-    std::cout << "Maintenance: " << enhancedLibrary->getMaintenance()
-              << ", Resource Consumption: " << enhancedLibrary->getResourceConsumption()
-              << ", Citizen Satisfaction: " << enhancedLibrary->getCitizenSatisfactionImpact() << std::endl;
-
-    // Clean up allocated memory
-    delete enhancedLibrary;
-}
 
 void testingTransportationSystem(){
 
     //creating road
-    Road* road = new Road("123 Street", 111, 222, 333);
+    Road* road = new Road("123 Street");
     RoadSubject* Road = road;
 
     //creating road states
@@ -140,7 +57,7 @@ void testingTransportationSystem(){
     RoadState* work = new Working();
 
     //creating vehicles to travel down that road
-    PublicVehicle* bus = new Bus();
+    PublicVehicle* bus = new Bus("Na");
     Transport* publicT = new PublicTransport(bus);
 
     //creating transportation observer that monitors that specific road
@@ -148,10 +65,7 @@ void testingTransportationSystem(){
 
 
     std::cout << "This road's details are: "<< endl
-    << "Street name: " << Road->getName() << endl 
-    << "Maintenance cost: " << Road->getMaintenanceCost() << endl 
-    << "Resource consumption: "<< Road->getResourceConsumption() << endl 
-    << "Citizen Satisfaction: "<< Road->getCitizenSatisfactionImpact() << std::endl;
+    << "Street name: " << Road->getName() << endl;
 
     //attaching the observer to the road
     Road->attach(trans1);
@@ -168,13 +82,204 @@ void testingTransportationSystem(){
     trans1->travel();
 }
 
-int main(){
-    //testingTransportationSystem();
-    testStructure();
-    // Decoratortest();
+vector<StructureGroup*> arr;
+vector<PublicTransport*> PT; // To hold all the Public transport
+vector<TrainTransport*> TT; // To hold all the Train transport
+vector<AirportTransport*> AT; // To hold all the Air transport
+map<string, pair<vector<Road*>, vector<RoadSubject*>>> cityRoads; // To assign a road and roadSubject to a specific city group name
+map<string, vector<Transportation*>> transLines;
 
 
+void createPublicType(int type, string name){
+    switch (type)
+    {
+        case 1:
+            PT.push_back((new PublicTransport(new Bus(name))));
+            std::cout << "Added Successfully" << std::endl;
+            break;
+        case 2:
+            PT.push_back(new PublicTransport(new Taxi(name)));
+            std::cout << "Added Successfully" << std::endl;
+            break;
+        default:
+            std::cout << "Invalid Public transport type" << std::endl;
+    }
+} 
+void createTrainType(int type, string name){
+    switch (type)
+    {
+        case 1:
+            TT.push_back(new TrainTransport(new Metro(name)));
+            std::cout << "Added Successfully" << std::endl;
+            break;
+        case 2:
+            TT.push_back(new TrainTransport(new Tram(name)));
+            std::cout << "Added Successfully" << std::endl;
+            break;
+        case 3:
+            TT.push_back(new TrainTransport(new Freight(name)));
+            std::cout << "Added Successfully" << std::endl;
+            break;
+        default:
+            std::cout << "Invalid Train Transport Type" << std::endl;;
+    }
+} 
+void createAirportType(int type, string name){
+    switch (type)
+    {
+        case 1:
+            AT.push_back(new AirportTransport(new Passenger(name)));
+            std::cout << "Added Successfully" << std::endl;
+            break;
+        case 2:
+            AT.push_back(new AirportTransport(new Cargo(name)));
+            std::cout << "Added Successfully" << std::endl;
+            break;
+        default:
+            std::cout << "Invalid Airport Transport Type" << std::endl;;
+    }
+}
+void createRoad(const std::string& roadName, const std::string& structureGroupName) {
+    RoadState* UC = new UnderConstruction();
+    Road* road = new Road(roadName);
+    RoadSubject* rs = road;
+    road->setState(UC);
+
+    auto it = cityRoads.find(structureGroupName);
+    if (it != cityRoads.end()) {
+        it->second.first.push_back(road);    // Add Road* to the first vector
+        it->second.second.push_back(rs);     // Add RoadSubject* to the second vector
+    } else {
+        // Structure group does not exist; create a new entry with initialized vectors
+        cityRoads[structureGroupName] = { {road}, {rs} };
+    }
+
+    std::cout << "Road " << roadName << " added to structure group: " << structureGroupName << "\n";
+}
+
+int structureIndex(StructureGroup* group, Structure* name){
+    int i = 0;
+    StructureIterator* iterate = group->createIterator();
+    while(iterate->isDone() == false){
+        if(iterate->currentItem() == name){
+            return i;
+        }
+        iterate->next();
+        i++;
+    }
+    return -1;
     
+}
+
+void createInCityTransportRoute(int TransType, string CityName, BasicStructure* starting, BasicStructure* ending, string transName, string routeName){
+    switch(TransType){
+        //Public Transport
+        case 1:
+            for (PublicTransport* PublicTrans : PT) {
+                if(PublicTrans->getVehicle()->getName() == transName){
+                    for (StructureGroup* Cities : arr){
+                        if(Cities->getName() == CityName){
+                            int startIdx = structureIndex(Cities, starting);
+                            int endIdx = structureIndex(Cities, ending);
+                            if (startIdx != -1 && endIdx != -1 && cityRoads.count(CityName)) {
+                                auto& roads = cityRoads[CityName].first;
+                                auto& roadSubjects = cityRoads[CityName].second;
+                                vector<Transportation*> observers;
+                                vector<RoadSubject*> subjects;
+                                if (startIdx <= endIdx) {
+                                    for (int i = startIdx; i <= endIdx; ++i) {
+                                        observers.push_back(new ConcreteObserver(roads[i],PublicTrans));
+                                        roadSubjects[i]->notify();
+                                    }
+                                } else {
+                                    for (int i = startIdx; i >= endIdx; --i) {
+                                        observers.push_back(new ConcreteObserver(roads[i],PublicTrans));
+                                        roadSubjects[i]->notify();
+                                    }
+                                }
+                                transLines.insert({routeName, observers});
+                            }
+                        }
+                        else{
+                            std::cout << "No such City name" << std::endl;
+                            return;
+                        }
+                    }
+                }
+                else{
+                    std::cout << "No such Public Transport Name" << std::endl;
+                    return;
+                }
+            }
+            break;
+            //Train transport
+            case 2:
+                for (TrainTransport* TrainTrans : TT) {
+                    if(TrainTrans->getVehicle()->getName() == transName){
+                        for (StructureGroup* Cities : arr){
+                            if(Cities->getName() == CityName){
+                                int startIdx = structureIndex(Cities, starting);
+                                int endIdx = structureIndex(Cities, ending);
+                                if (startIdx != -1 && endIdx != -1 && cityRoads.count(CityName)) {
+                                    auto& roads = cityRoads[CityName].first;
+                                    auto& roadSubjects = cityRoads[CityName].second;
+                                    vector<Transportation*> observers;
+                                    vector<RoadSubject*> subjects;
+                                    if (startIdx <= endIdx) {
+                                        for (int i = startIdx; i <= endIdx; ++i) {
+                                            observers.push_back(new ConcreteObserver(roads[i],TrainTrans));
+                                            roadSubjects[i]->notify();
+                                        }
+                                    } else {
+                                        for (int i = startIdx; i >= endIdx; --i) {
+                                            observers.push_back(new ConcreteObserver(roads[i],TrainTrans));
+                                            roadSubjects[i]->notify();
+                                        }
+                                    }
+                                    transLines.insert({routeName, observers});
+                                }
+                            }
+                            else{
+                                std::cout << "No such City name" << std::endl;
+                                return;
+                            }
+                        }
+                    }
+                    else{
+                        std::cout << "No such Train Transport Name" << std::endl;
+                        return;
+                    }
+                }
+            break;
+            default:
+            std::cout << "Incorrect Transport type" << std::endl;
+            break;
+            
+    }
+}
+
+void travelRoute(string routeName){
+    vector<Transportation*> travelLine = transLines.find(routeName)->second;
+    for(int i = 0; i < travelLine.size(); i++){
+        travelLine[i]->travel();
+    }
+}
+
+
+int main(){
+
+    BasicStructure* school0 = new BasicStructure("School0", 'c', 500);
+    BasicStructure* school1 = new BasicStructure("School1", 'c', 500);
+    BasicStructure* school2 = new BasicStructure("School2", 'c', 500);
+
+    StructureGroup* city1 = new StructureGroup("City1");
+    city1->add(school0);
+    city1->add(school1);
+    city1->add(school2);
+
+
+
+    std::cout << "Hello World" << std::endl;
     return 0;
 }
 

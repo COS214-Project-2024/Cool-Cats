@@ -957,6 +957,8 @@ void addCitizens(){
         }
         citizenIntro = true;
         cout << endl;
+
+        printLines();
     }
 
     while(true)
@@ -1002,6 +1004,7 @@ void addCitizens(){
                 currentSatisfaction();
                 break;
             case 7:
+                mainMenu();
                 return;
             default:
                 cout << "Invalid choice inputted, please try again\n";
@@ -1219,8 +1222,10 @@ void addMayor(){
     //Ask if we want to add a mayor to a citizen
     // addCititoBuild(newMayor);
 
+    cout << endl;
     cout << newMayorName << " has been created\n";
     cout << "You can make all citizens vote for a mayor by going to the 'Make citizens vote for the new mayor' option\n";
+    cout << endl;
 }
 
 //Helper function for add citizen and add mayor
@@ -1312,13 +1317,32 @@ void currentMayor()
 {
     if(!votedOnce)
     {
-        cout << "\nYou have not made your citizens vote yet, please make them vote before seeing results\n";
+        cout << "\nYou never allowed your citizens vote yet, please allow them vote before seeing results\n";
         cout << endl;
         return;
     }
     Citizen::determineMayor();
 
     vector<Mayor*> mayors = SENTINEL_MAYOR->getMayors(); 
+
+    bool noVotes = false;
+    for(Mayor* m : mayors)
+    {
+        if(m->getVoteCount() > 0)
+        {
+            noVotes = true;
+            break;
+        }
+    }
+
+    //Mayors were created but citizens weren't
+    if(!noVotes)
+    {
+        cout << "No citizens have been added to the city, please add citizens before allowing them to vote\n";
+        cout << endl;
+        return;
+    }
+
     MayorIterator* iterate = new MayorIterator(mayors);
     vector<Mayor*> electedMayors;
 

@@ -2,30 +2,30 @@
 #include <string>
 #include <regex>
 
-#include "Structure.h"
-#include "StructureGroup.h"
-#include "StructureDecorator.h"
-#include "CStructIterator.h"
-#include "SatisfactionEnhancer.h"
-#include "MaintenanceCostReducer.h"
-#include "ResourceEfficiencyEnhancer.h"
-#include "BasicStructure.h"
-#include "StructureIterator.h"
+#include "../Buildings/Structure.h"
+#include "../Buildings/StructureGroup.h"
+#include "../Buildings/StructureDecorator.h"
+#include "../Buildings/CStructIterator.h"
+#include "../Buildings/SatisfactionEnhancer.h"
+#include "../Buildings/MaintenanceCostReducer.h"
+#include "../Buildings/ResourceEfficiencyEnhancer.h"
+#include "../Buildings/BasicStructure.h"
+#include "../Buildings/StructureIterator.h"
 
-#include "Citizen/AllCitizenIterator.h"
-#include "Citizen/Citizen.h"
-#include "Citizen/CitizenIterator.h"
-#include "Citizen/Creator.h"
-#include "Citizen/HighCitizen.h"
-#include "Citizen/HighCitizenCreator.h"
-#include "Citizen/Income.h"
-#include "Citizen/LowCitizen.h"
-#include "Citizen/LowCitizenCreator.h"
-#include "Citizen/Mayor.h"
-#include "Citizen/MayorCreator.h"
-#include "Citizen/MayorIterator.h"
-#include "Citizen/MiddleCitizen.h"
-#include "Citizen/MiddleCitizenCreator.h"
+#include "AllCitizenIterator.h"
+#include "Citizen.h"
+#include "CitizenIterator.h"
+#include "Creator.h"
+#include "HighCitizen.h"
+#include "HighCitizenCreator.h"
+#include "Income.h"
+#include "LowCitizen.h"
+#include "LowCitizenCreator.h"
+#include "Mayor.h"
+#include "MayorCreator.h"
+#include "MayorIterator.h"
+#include "MiddleCitizen.h"
+#include "MiddleCitizenCreator.h"
 
 #include <limits>
 
@@ -60,8 +60,9 @@ void removeTransportInGroups();
 //for citizens
 void addCitizens();
 void addMayor();
-vector<Citizen*> addCitizenToBuildings();
+void addCitizenToBuildings();
 void currentCitizenPopulation();
+int getCitizenPopulation();
 void makeCitizensVote();
 void currentMayor();
 void currentSatisfaction();
@@ -74,11 +75,13 @@ double previousSatisfaction = 0;
 Citizen * SENTINEL = new LowCitizen();
 Mayor * SENTINEL_MAYOR = new Mayor();
 regex escape_characters(R"(\\[nt\\\"'])");
+bool foundCity(string cityChoice);
+int getCityIndex(string cityChoice);
 
 //other
 
 void errorMessage();
-CStructIterator* createIteratorForGroup(StructureGroup* s );
+// CStructIterator* createIteratorForGroup(StructureGroup* s );
 void exit();
 void viewCity(vector<StructureGroup*> s);
 
@@ -117,7 +120,7 @@ int main(){
 
 
         arr.push_back(createCityHall());
-        iteratorArr.push_back(createIteratorForGroup(arr.front())); // potential erros can arise from here
+        // iteratorArr.push_back(createIteratorForGroup(arr.front())); // potential erros can arise from here
         //createGovernment();
     }
     printLines();
@@ -217,18 +220,18 @@ void viewCity(vector<StructureGroup*> arr){
     printLines();
 }
 
-CStructIterator* createIteratorForGroup(StructureGroup* s ){
-    CStructIterator *newIterator = s->createIterator();
-    return newIterator;
-}
+// CStructIterator* createIteratorForGroup(StructureGroup* s ){
+//     CStructIterator *newIterator = s->createIterator();
+//     return newIterator;
+// }
 
 StructureGroup* createCityHall(){
     //this is default created, so its done in the before the main menu
-    StructureGroup * cityhallGroup = new StructureGroup("CityHallGroup");
-    BasicStructure* cityHall = new BasicStructure("CityHall", "Type1", 100, 100, 100, 100);
-    cityhallGroup->add(cityHall);
+    // StructureGroup * cityhallGroup = new StructureGroup("CityHallGroup");
+    // BasicStructure* cityHall = new BasicStructure("CityHall", "Type1", 100, 100, 100, 100);
+    // cityhallGroup->add(cityHall);
 
-    return cityhallGroup;
+    // return cityhallGroup;
 }
 
 void createGovernment(){
@@ -269,16 +272,16 @@ void editStructureGroup(){
 void addStructureGroup(){
     //this will add a structure group to the vector arr
     //you can edit here as you see fit. once you are done you shouldnt need to anything as it will go back to main screen automatically howver you could call view city and print lines to show that the new thing has been indeed added to the array
-    string name;
-    cout << "Enter Name of area you would like to add" << endl;
-    cin >> name;
+    // string name;
+    // cout << "Enter Name of area you would like to add" << endl;
+    // cin >> name;
 
-    StructureGroup* newStructureGroup = new StructureGroup(name);
-    arr.push_back(newStructureGroup);
+    // StructureGroup* newStructureGroup = new StructureGroup(name);
+    // arr.push_back(newStructureGroup);
 
-    printLines();
+    // printLines();
     
-    cout << "YOU have created a new area: " << name << endl;
+    // cout << "YOU have created a new area: " << name << endl;
 }
 
 void removeStructureGroup(){
@@ -499,7 +502,7 @@ void removeTransportInGroups(){
 
 
 //Add citizen
-void addCitizen(){
+void addCitizens(){
     printLines();
 
     //Intro/Tutorial
@@ -518,178 +521,235 @@ void addCitizen(){
 
         while(introChoice != 1)
         {
-            cout << "I dont think your ready to continue, try pressing 1 again";
-            cin >> introChoice;    
+
+            if(!(cin >> introChoice))
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "I dont think your ready to continue, try pressing 1 again.\n";
+            }    
+            else if(introChoice != 1)
+            {
+                cout << "\nI dont think your ready to continue, try pressing 1 again.\n";
+            }
         }
         citizenIntro = true;
         cout << endl;
     }
 
-    chooseFromMenu();
-    int citizenMenuChoice;
-    cout << "1: Add citizens" << endl;
-    cout << "2: Add mayor" << endl;
-    cout << "3. See current population\n";
-    cout << "4. Make citizens vote for the new mayor\n";
-    cout << "5. See who is the current mayor\n";
-    cout << "6. See current satisfaction level of citizens\n";
-    cout << "7: Return" << endl;
-
-    cin >> citizenMenuChoice;
-
-    //handle use input
-    switch(citizenMenuChoice)
+    while(true)
     {
-        case 1:
-            addCitizenToBuildings();
-            break;
-        case 2:
-            addMayor();
-            break;
-        case 3:
-            currentCitizenPopulation();
-            break;
-        case 4:
-            makeCitizensVote();
-            break;
-        case 5:
-            currentMayor();
-            break;
-        case 6:
-            currentSatisfaction();
-            break;
-        case 7:
-            return;
-        default:
-            while(citizenMenuChoice < 1 || citizenMenuChoice > 7)
-            {
-                cout << "Invalid choice inputted, please try again\n";
-                cin >> citizenMenuChoice;
-            }
+        chooseFromMenu();
+        int citizenMenuChoice;
+        cout << "1: Add citizens" << endl;
+        cout << "2: Add mayor" << endl;
+        cout << "3. See current population\n";
+        cout << "4. Make citizens vote for the new mayor\n";
+        cout << "5. See who is the current mayor\n";
+        cout << "6. See current satisfaction level of citizens\n";
+        cout << "7: Return" << endl;
 
+        cin >> citizenMenuChoice;
+
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input, Please enter a number between 1 and 7.\n";
+        }
+
+        //handle use input
+        switch(citizenMenuChoice)
+        {
+            case 1:
+                addCitizenToBuildings();
+                break;
+            case 2:
+                addMayor();
+                break;
+            case 3:
+                currentCitizenPopulation();
+                break;
+            case 4:
+                makeCitizensVote();
+                break;
+            case 5:
+                currentMayor();
+                break;
+            case 6:
+                currentSatisfaction();
+                break;
+            case 7:
+                return;
+            default:
+                cout << "Invalid choice inputted, please try again\n";
+                break;
+        }
     }
 }
 
 //Ask KTO how to add a citizen to a basic structure
 //parameter?
-void addCitizensToBuildings()
+void addCitizenToBuildings()
 {
     //Add citizen to a basicStructure, similar to add Mayor, first ask user which area and then how many
 
     printLines();
 
     string cityChoice;
-    viewCity(arr);
+    // viewCity(arr);
     cout << "Enter the area you would like to add citizens to\n";
 
     cin >> cityChoice;
 
     while(!foundCity(cityChoice))
     {
-        cout << "Invalid choice inputted, please try again\n";
-        cin >> cityChoice;
+        if(!(cin >> cityChoice))
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid choice inputted, please try again\n";
+        }
     }
     int indexArea = getCityIndex(cityChoice);
 
     //Ask user which type of citizens they would like to add
-    int typeCitizenChoice;
-    cout << "Which type of citizens would you like to add to the building\n";
-    cout << "Note: the type of citizen you choose impacts maintainence costs and satisfaction\n";
-    cout << "1. High-class citizens\n";
-    cout << "2. Middle-class citizens\n";
-    cout << "3. Low-class citizens\n";
-    cout << "4. Return\n";
-
-    switch(typeCitizenChoice)
+    while(true)
     {
-        int amountCitizens;
-        case 1:
-            cout << "How many high-class citizens do you want?\n";
-            cin >> amountCitizens;
+        int typeCitizenChoice;
+        cout << "Which type of citizens would you like to add to the building\n";
+        cout << "Note: the type of citizen you choose impacts maintainence costs and satisfaction\n";
+        cout << "1. High-class citizens\n";
+        cout << "2. Middle-class citizens\n";
+        cout << "3. Low-class citizens\n";
+        cout << "4. Return\n";
 
-            //Add check to see if amount is more than structure capacity
-            while(amountCitizens < 0)
+        cin >> typeCitizenChoice;
+
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input, Please enter a number between 1 and 4.\n";
+        }
+
+        switch(typeCitizenChoice)
+        {
+            int amountCitizens;
+            case 1:
             {
-                cout << "Invalid number of citizens added, please try again\n";
+                cout << "How many high-class citizens do you want?\n";
                 cin >> amountCitizens;
+
+                //Add check to see if amount is more than structure capacity
+                while(amountCitizens <= 0)
+                {
+                    if(!(cin >> amountCitizens))
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        cout << "Invalid number of citizens added, please try again\n";
+                    }
+                    else if(amountCitizens <= 0)
+                    {
+                        cout << "Invalid number of citizens added, please try again\n";
+                    }
+                }
+                Citizen** highClassCitizenArr = new Citizen*[amountCitizens];
+                Creator *highClassCreator = new HighCitizenCreator();
+
+                for(int i = 0; i < amountCitizens; i++)
+                {
+                    highClassCitizenArr[i] = highClassCreator->specificCitizenOperation("employed", 75, nullptr);
+
+                    //Add high-class citizens to structure, ask if correct
+                    addCititoBuild(highClassCitizenArr[i]);
+                }
+
+                cout << amountCitizens << " of High-class citizens successfully added to the building\n";
+
+                delete highClassCreator;
+                break;
             }
-            Citizen** highClassCitizenArr = new Citizen*[amountCitizens];
-            Creator *highClassCreator = new HighCitizenCreator();
 
-            for(int i = 0; i < amountCitizens; i++)
+            case 2:
             {
-                highClassCitizenArr[i] = highClassCreator->specificCitizenOperation("employed", 75, existingStructure);
-
-                //Add high-class citizens to structure, ask if correct
-                // existingStructure.addCitizen(highClassCitizenArr[i]);
-            }
-
-            cout << amountCitizens << " of High-class citizens successfully added to the building\n";
-
-            delete highClassCreator;
-            break;
-
-        case 2:
-            cout << "How many middle-class citizens do you want\n";
-            cin >> amountCitizens;
-
-            //Add check to see if amount is more than structure capacity
-            while(amountCitizens < 0)
-            {
-                cout << "Invalid number of citizens added, please try again\n";
+                cout << "How many middle-class citizens do you want\n";
                 cin >> amountCitizens;
+
+                //Add check to see if amount is more than structure capacity
+                while(amountCitizens <= 0)
+                {
+                    if(!(cin >> amountCitizens))
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        cout << "Invalid number of citizens added, please try again\n";
+                    }
+                    else if(amountCitizens <= 0)
+                    {
+                        cout << "Invalid number of citizens added, please try again\n";
+                    }
+                }
+                Citizen** midClassCitizenArr = new Citizen*[amountCitizens];
+                Creator *midClassCreator = new MiddleCitizenCreator();
+
+                for(int i = 0; i < amountCitizens; i++)
+                {
+                    midClassCitizenArr[i] = midClassCreator->specificCitizenOperation("employed", 65, nullptr);
+
+                    //Add mid-class citizen to structure, ask if correct
+                    addCititoBuild(midClassCitizenArr[i]);
+                }
+
+                cout << amountCitizens << " of Middle-class citizens successfully added to the building\n";
+                delete midClassCreator;
+                break;
             }
-
-            Citizen** midClassCitizenArr = new Citizen*[amountCitizens];
-            Creator *midClassCreator = new MiddleCitizenCreator();
-
-            for(int i = 0; i < amountCitizens; i++)
+            
+            case 3:
             {
-                midClassCitizenArr[i] = midClassCreator->specificCitizenOperation("employed", 65, existingStructure);
-
-                //Add mid-class citizen to structure, ask if correct
-                // existingStructure.addCitizen(midClassCitizenArr[i]);
-            }
-
-            cout << amountCitizens << " of Middle-class citizens successfully added to the building\n";
-            delete midClassCreator;
-            break;
-        
-        case 3:
-            cout << "How many low-class citizens do you want\n";
-            cin >> amountCitizens;
-
-            //Add check to see if amount is more than structure capacity
-            while(amountCitizens < 0)
-            {
-                cout << "Invalid number of citizens added, please try again\n";
+                cout << "How many low-class citizens do you want\n";
                 cin >> amountCitizens;
+
+                //Add check to see if amount is more than structure capacity
+                while(amountCitizens <= 0)
+                {
+                    if(!(cin >> amountCitizens))
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        cout << "Invalid number of citizens added, please try again\n";
+                    }
+                    else if(amountCitizens <= 0)
+                    {
+                        cout << "Invalid number of citizens added, please try again\n";
+                    }
+                }
+
+                Citizen** lowClassCitizenArr = new Citizen*[amountCitizens];
+                Creator *lowClassCreator = new LowCitizenCreator();
+
+                for(int i = 0; i < amountCitizens; i++)
+                {
+                    lowClassCitizenArr[i] = lowClassCreator->specificCitizenOperation("employed", 55, nullptr);
+
+                    //Add low-class citizen to structure, ask if correct
+                    addCititoBuild(lowClassCitizenArr[i]);
+                }
+
+                cout << amountCitizens << " of Low-class citizens successfully added to the building\n";
+                delete lowClassCreator;
+                break;
             }
 
-            Citizen** lowClassCitizenArr = new Citizen*[amountCitizens];
-            Creator *lowClassCreator = new LowCitizenCreator();
+            case 4:
+                return;
 
-            for(int i = 0; i < amountCitizens; i++)
-            {
-                lowClassCitizenArr[i] = lowClassCreator->specificCitizenOperation("employed", 55, existingStructure);
-
-                //Add low-class citizen to structure, ask if correct
-                // existingStructure.addCitizen(lowClassCitizenArr[i]);
-            }
-
-            cout << amountCitizens << " of Low-class citizens successfully added to the building\n";
-            delete lowClassCreator;
-            break;
-
-        case 4:
-            return;
-
-        default:
-            while(typeCitizenChoice < 1 || typeCitizenChoice > 4)
-            {
+            default:
                 cout << "Invalid choice inputted, please try again\n";
-                cin >> typeCitizenChoice;
-            }
+                break;
+        }
     }
 }
 
@@ -701,7 +761,7 @@ void addMayor(){
 
     string cityChoice;
 
-    viewCity(arr); // this will print out all the city groups that have been created
+    // viewCity(arr); // this will print out all the city groups that have been created
     cout << "Enter the area you would like to add a mayor to" << endl;
 
     //get user input
@@ -710,8 +770,12 @@ void addMayor(){
 
     while(!foundCity(cityChoice))
     {
-        cout << "Invalid choice inputted, please try again\n";
-        cin >> cityChoice;
+        if(!(cin >> cityChoice))
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid choice inputted, please try again\n";
+        }
     }
 
     //Get index of city area
@@ -724,12 +788,18 @@ void addMayor(){
 
     while(newMayorName == " " || regex_search(newMayorName, escape_characters))
     {
-        cout << "Invalid name inputted, please try again\n";
-        cin >> newMayorName;
+        if(!(cin >> newMayorName))
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid name inputted, please try again\n";
+        }
+        
     }
 
     MayorCreator *mc;
     Citizen *newMayor = mc->specificCitizenOperation("employed", 70, arr[indexArea], newMayorName);
+    addCititoBuild(newMayor);
 
     cout << newMayorName << " has been created\n";
     cout << "You can make all citizens vote for a mayor by going to the 'Make citizens vote for the new mayor' option\n";
@@ -771,10 +841,21 @@ void currentCitizenPopulation()
     int currPop = Citizen::getPopulationCount()-2;
     previousPopulation = currPop - previousPopulation;
 
-    cout << "The current population of all cities is: " << currPop << endl;
+    cout << "\nThe current population of all cities is: " << currPop << endl;
+    cout << endl;
+}
+int getCitizenPopulation()
+{
+    return Citizen::getPopulationCount()-2;
 }
 void makeCitizensVote()
 {
+    if(getCitizenPopulation() == 0)
+    {
+        cout << "No citizens have been added to your city. Please try adding citizens to your city before trying to get them to vote.\n";
+        cout << endl;
+        return;
+    }
     votedOnce = true;
     CitizenIterator* iterate = SENTINEL->createCitizenIterator();
 
@@ -796,8 +877,12 @@ void makeCitizensVote()
 
     while(seeMayorResult != 1)
     {
-        cout << "Invalid choice inputted, please try again\n";
-        cin >> seeMayorResult;
+        if(!(cin >> seeMayorResult))
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid choice inputted, please try again\n";
+        }
     }
 
     delete iterate;
@@ -808,33 +893,49 @@ void currentMayor()
 {
     if(!votedOnce)
     {
-        cout << "You have not made your citizens vote yet, please make them vote before seeing results\n";
+        cout << "\nYou have not made your citizens vote yet, please make them vote before seeing results\n";
         return;
     }
     Citizen::determineMayor();
 
     vector<Mayor*> mayors = SENTINEL_MAYOR->getMayors(); 
     MayorIterator* iterate = new MayorIterator(mayors);
-    vector<Mayor*> electedMayors = SENTINEL_MAYOR->getMayors(); 
+    vector<Mayor*> electedMayors;
 
     while(!iterate->isDone())
     {
         if(iterate->currentItem()->getElectionStatus())
         {
-            electedMayors.push_back(iterate->currentItem());
+            if(iterate->currentItem() != SENTINEL_MAYOR)
+            {
+                electedMayors.push_back(iterate->currentItem());
+            }
         }
         iterate->next();
     }
 
+    if(electedMayors.empty())
+    {
+        cout << "\nYou have not added any mayor to any area. Please add new mayors to the areas you have created before making your citizens vote\n";
+        return;
+    }
+
+
     for(Mayor* m : electedMayors)
     {
-        cout << m->getMayorName() << " is the mayor for " << m->getHome() << " with " << m->getVoteCount() << endl;
+        cout << m->getMayorName() << " is the mayor for " << m->getHome() << " with " << m->getVoteCount() << " votes." << endl;
     }
 
     delete iterate;
 }
 void currentSatisfaction()
 {
+    if(getCitizenPopulation() == 0)
+    {
+        cout << "\nNo citizens have been added to your city. Please try adding citizens to your city before trying to get their satisfaction.\n\n";
+        return;
+    }
+
     double currSatisfaction = 0;
     CitizenIterator *iterate = SENTINEL_MAYOR->createCitizenIterator();
     
@@ -847,7 +948,8 @@ void currentSatisfaction()
     currSatisfaction = currSatisfaction/(Citizen::getPopulationCount()-2);
     previousSatisfaction = currSatisfaction - previousSatisfaction;
 
-    cout << "The current satisfaction of all citizens is " << currSatisfaction << endl;
+    cout << "\nThe current satisfaction of all citizens is " << currSatisfaction << endl;
+    cout << endl;
 
     delete iterate;
 }

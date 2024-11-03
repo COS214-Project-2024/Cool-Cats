@@ -1,4 +1,4 @@
-ofiles = AllCitizenIterator.o Citizen.o CitizenIterator.o Creator.o HighCitizen.o HighCitizenCreator.o Income.o LowCitizen.o LowCitizenCreator.o MainCitizen.o Mayor.o MayorCreator.o MayorIterator.o MiddleCitizen.o MiddleCitizenCreator.o
+ofiles = AllCitizenIterator.o Citizen.o CitizenIterator.o Creator.o HighCitizen.o HighCitizenCreator.o Income.o LowCitizen.o LowCitizenCreator.o main.o Mayor.o MayorCreator.o MayorIterator.o MiddleCitizen.o MiddleCitizenCreator.o
 gpp_o = g++ -c -std=c++23 -fprofile-arcs -ftest-coverage
 MAIN_BINARY = main
 
@@ -40,6 +40,9 @@ LowCitizen.o: LowCitizen.cpp
 
 LowCitizenCreator.o: LowCitizenCreator.cpp
 	$(gpp_o) LowCitizenCreator.cpp
+
+main.o : main.cpp
+	$(gpp_o) main.cpp
 
 Mayor.o: Mayor.cpp
 	$(gpp_o) Mayor.cpp

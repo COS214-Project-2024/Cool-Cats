@@ -2,10 +2,9 @@
 #define CITIZEN_H
 
 #include <vector>
-#include <memory>
 #include <string>
 
-#include "Structure.h"
+#include "../Buildings/Structure.h"
 // #include "PopulationMemento"
 
 class Mayor;
@@ -15,31 +14,34 @@ class Citizen
 {
     public:
         Citizen();
-        Citizen(std::string employmentStatus, double satisfaction, std::shared_ptr<Structure> home);
-        static void addCitizen(std::unique_ptr<Citizen> newCitizen);
-        static void removeCitizen(Citizen* target);
+        Citizen(std::string employmentStatus, double satisfaction, Structure* home);
         static int getPopulationCount();
         void addService(std::string newService);
         void removeService(std::string oldService);
-        void moveHomes(std::shared_ptr<Structure> newHome);
+        std::vector<std::string> getServices();
+        void moveHomes(Structure* newHome);
+        Structure* getHome();
         double getSatisfaction();
         void setSatisfaction(double satisfaction);
         std::string getEmploymentStatus();
         void setEmploymentStatus(std::string employment);
-        void determineMayor();
-        std::vector<Mayor*> getMayors();
+        virtual void vote() = 0;
+        static void determineMayor();
+        static std::vector<Mayor*> getMayors();
         virtual CitizenIterator* createCitizenIterator() = 0;
         // PopulationMemento* createMemento();
         // void setMemento(PopulationMemento* memento);
-        
+        virtual ~Citizen();
         
     protected:
         std::vector<std::string> services;
-        static std::vector<std::unique_ptr<Citizen>> citizens;
+        static std::vector<Citizen*> citizens;
 
     private:
         std::string employmentStatus;
-        std::shared_ptr<Structure> home;
+        Structure* home;
         double satisfaction;
+        static void addCitizen(Citizen* newCitizen);
+        static void removeCitizen(Citizen* target);
 };
 #endif

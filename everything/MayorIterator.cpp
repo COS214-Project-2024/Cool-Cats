@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+
 #include "MayorIterator.h"
 
 using namespace std;
@@ -12,6 +13,7 @@ MayorIterator::MayorIterator(vector<Mayor*> mayors)
     {
         this->mayors = mayors;
         this->current = mayors[0];
+        index = 0;
     }
 }
 /// @brief Makes the iterator start at the first mayor
@@ -27,12 +29,11 @@ void MayorIterator::first()
 /// @brief Moves the iterator to the next mayor
 void MayorIterator::next()
 {
-    if(current != nullptr)
+    if(current != nullptr && !mayors.empty())
     {
-        auto it = find(mayors.begin(), mayors.end(), current);
-        if(it != mayors.end() && ++it != mayors.end())
+        if(index+1 < mayors.size())
         {
-            current = *it;
+            current = mayors[++index];
         }
         else
         {

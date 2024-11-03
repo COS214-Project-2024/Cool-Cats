@@ -1,21 +1,24 @@
 #include <iostream>
 #include <algorithm>
+#include <vector>
+
 #include "AllCitizenIterator.h"
 
 using namespace std;
 
 /// @brief Creates a new AllCitizen Iterator object that allows iteration through a list of citizens
 /// @param citizens The vector of all current citizens in the city
-AllCitizenIterator::AllCitizenIterator(vector<unique_ptr<Citizen>>& citizens) : citizens(citizens)
+AllCitizenIterator::AllCitizenIterator(vector<Citizen*>& citizens) : citizens(citizens)
 {
     if(!citizens.empty())
     {
-        current = citizens[0].get();
+        current = citizens[0];
     }
     else
     {
         current = nullptr;
     }
+    index = 0;
 }
 
 /// @brief Makes the iterator start at the first citizen
@@ -23,7 +26,7 @@ void AllCitizenIterator::first()
 {
     if(!citizens.empty())
     {
-        current = citizens[0].get();
+        current = citizens[0];
         return;
     }
     current = nullptr;
@@ -32,15 +35,11 @@ void AllCitizenIterator::first()
 /// @brief Moves the iterator to the next citizen
 void AllCitizenIterator::next()
 {
-    if(current != nullptr)
+    if(current != nullptr && !citizens.empty())
     {
-        auto it = find_if(citizens.begin(), citizens.end(), [this](const unique_ptr<Citizen>& citizen){
-            return citizen.get() == current;
-        });
-        
-        if(it != citizens.end() && ++it != citizens.end())
+        if(index+1 < citizens.size())
         {
-            current = it->get();
+            current = citizens[++index];
         }
         else
         {

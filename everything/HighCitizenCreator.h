@@ -9,7 +9,9 @@
 class HighCitizenCreator : public Creator{
     public:
         HighCitizenCreator();
-        std::unique_ptr<Citizen> basicCitizenOperation();
-        std::unique_ptr<Citizen> specificCitizenOperation(std::string employmentStatus, double satisfaction, std::shared_ptr<Structure> home);
+
+    protected:
+        Citizen* basicCitizenMethod();
+        Citizen* specificCitizenMethod(std::string employmentStatus, double satisfaction, Structure* home);
 };
 #endif

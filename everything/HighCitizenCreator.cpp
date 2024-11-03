@@ -5,14 +5,19 @@
 
 HighCitizenCreator::HighCitizenCreator() : Creator() { };
 
-/// @brief Creates a new high class citizen
-/// @return a new high citizen object
-std::unique_ptr<Citizen> HighCitizenCreator::basicCitizenOperation()
+/// @brief Creates and returns a new basic high class citizen
+/// @return A new high citizen object
+Citizen* HighCitizenCreator::basicCitizenMethod()
 {
-    return std::make_unique<HighCitizen>();
+    return new HighCitizen();
 }
 
-std::unique_ptr<Citizen> specificCitizenOperation(std::string employmentStatus, double satisfaction, std::shared_ptr<Structure> home)
+/// @brief Creates and returns a new specified high class citizen
+/// @param employmentStatus The employment status of the citizen, either 'unemployed', 'employed' or 'self-employed' 
+/// @param satisfaction The satisfaction the citizen has with the city, between 0-100
+/// @param home The assigned home of the citizen
+/// @return A new citizen object
+Citizen* HighCitizenCreator::specificCitizenMethod(std::string employmentStatus, double satisfaction, Structure* home)
 {  
-    return std::make_unique<HighCitizen>(employmentStatus, satisfaction, home);
+    return new HighCitizen(employmentStatus, satisfaction, home);
 }

@@ -90,6 +90,20 @@ void addMayor();
 vector<StructureGroup*> arr; // this keeps track of all the stucture groups that have been created
 vector<CStructIterator*> iteratorArr ; // this keeps track of iterators that have been created ie each structure is in a structure group and we can iterate over each structure in each structure group through this.
 
+//decorations
+void printOption(const string& icon, const string& color, const string& text);
+
+const string RESET_COLOR = "\033[0m";
+const string RED_COLOR = "\033[1;31m";
+const string GREEN_COLOR = "\033[1;32m";
+const string YELLOW_COLOR = "\033[1;33m";
+const string BLUE_COLOR = "\033[1;34m";
+const string MAGENTA_COLOR = "\033[1;35m";
+const string CYAN_COLOR = "\033[1;36m";
+
+void printOption(const string& icon, const string& color, const string& text) {
+    cout << color << icon << " " << text << RESET_COLOR << endl;
+}
 
 int main(){
     cout << "WELCOME TO THE COOL CATS CITY SIMULATOR" << endl;
@@ -154,14 +168,14 @@ void mainMenu() {
     while (option != 4 && condition)  {  // Keep showing the menu until "Exit" is chosen
         printLines();
         cout << "Main Menu" << endl;
-        cout << "1 : Edit Structure Groups" << endl;
-        cout << "2 : Edit Structures" << endl;
-        cout << "3 : View City" << endl;
-        cout << "4 : Exit" << endl;
-        cout << "5 : Edit Transport" << endl;
-        cout << "6 : Edit Government" << endl;
-        cout << "7 : Add Utilities" << endl;
-        cout << "8 : Add Citizens" << endl;
+        printOption("🏗️", BLUE_COLOR, "1 : Edit Structure Groups");
+        printOption("🏢", GREEN_COLOR, "2 : Edit Structures");
+        printOption("🌆", CYAN_COLOR, "3 : View City");
+        printOption("🚪", RED_COLOR, "4 : Exit");
+        printOption("🚋", YELLOW_COLOR, "5 : Edit Transport");
+        printOption("🏛️", MAGENTA_COLOR, "6 : Edit Government");
+        printOption("🔌", BLUE_COLOR, "7 : Add Utilities");
+        printOption("👥", GREEN_COLOR, "8 : Add Citizens");
         cout << "Select NUMBER: ";
 
         //validate user input
@@ -379,10 +393,10 @@ void editStructureGroup(){
     while(true) {
         printLines();
         cout << "Edit Structure Group Menu" << endl;
-        cout << "1: Add" << endl;
-        cout << "2: Remove" << endl;
-        cout << "3: View City" << endl;
-        cout << "4: Return to Main Menu" << endl;
+        printOption("➕", GREEN_COLOR, "1: Add");
+        printOption("➖", RED_COLOR, "2: Remove");
+        printOption("👀", CYAN_COLOR, "3: View City");
+        printOption("🔙", YELLOW_COLOR, "4: Return to Main Menu");
         cout << "Please enter an option (1-4): ";
 
         cin >> option;
@@ -481,12 +495,12 @@ void editStructure(){
    
     while(true) {
         printLines();
-        cout << "Edit structure Menu" << endl;
-        cout << "1: Add" << endl;
-        cout << "2: Remove" << endl;
-        cout << "3: View city" << endl;
-        cout << "4: Return to Main Menu" << endl;
-        cout << "5: Update structures" << endl;
+        cout << "Edit Structure Menu" << endl;
+        printOption("➕", GREEN_COLOR, "1: Add");
+        printOption("➖", RED_COLOR, "2: Remove");
+        printOption("👀", CYAN_COLOR, "3: View City");
+        printOption("🔙", YELLOW_COLOR, "4: Return to Main Menu");
+        printOption("🔄", BLUE_COLOR, "5: Update Structures");
         cout << "Please enter an option (1-5): ";
 
         cin >> option;

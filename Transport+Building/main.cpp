@@ -181,11 +181,13 @@ void createInCityTransportRoute(int TransType, string CityName, BasicStructure* 
                         if(Cities->getName() == CityName){
                             int startIdx = structureIndex(Cities, starting);
                             int endIdx = structureIndex(Cities, ending);
+                            //std::cout << "We here" << std::endl;
                             if (startIdx != -1 && endIdx != -1 && cityRoads.count(CityName)) {
                                 auto& roads = cityRoads[CityName].first;
                                 auto& roadSubjects = cityRoads[CityName].second;
                                 vector<Transportation*> observers;
                                 vector<RoadSubject*> subjects;
+                                
                                 if (startIdx <= endIdx) {
                                     for (int i = startIdx; i <= endIdx; ++i) {
                                         observers.push_back(new ConcreteObserver(roads[i],PublicTrans));
@@ -276,7 +278,18 @@ int main(){
     city1->add(school0);
     city1->add(school1);
     city1->add(school2);
+    arr.push_back(city1);
 
+    createPublicType(1, "City-2-City");
+    createTrainType(1, "Gautrain");
+    createAirportType(1, "Boeing 747");
+
+    createRoad("123 Lunnin Street", "City1");
+    createRoad("284 KepmtonPark", "City1");
+    createRoad("285 Shxta road", "City1");
+
+    createInCityTransportRoute(1,"City1",school0,school2,"City-2-City","TestRoute");
+    travelRoute("TestRoute");
 
 
     std::cout << "Hello World" << std::endl;

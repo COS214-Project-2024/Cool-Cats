@@ -51,7 +51,7 @@ void editStructure();
 void addStructure();
 void removeStructure();
 
-void addCititoBuild(Citizen* c);
+void addCititoBuild(int number);
 void decorateStructure();
 
 
@@ -319,9 +319,9 @@ void chooseFromMenu(){
 //building funcitons
 
 //function to add citizen to building:
-void addCititoBuild(Citizen* c) {
-    if (!c) {
-        throw std::invalid_argument("Citizen cannot be null.");
+void addCititoBuild(int number) {
+    if (number < 0) {
+        throw std::invalid_argument("amount of citizens cannot be negative");
     }
 
     bool structureFound = false;
@@ -376,10 +376,10 @@ void addCititoBuild(Citizen* c) {
             if (basicStructure && basicStructure->getName() == buildingName) {
                 // Add the citizen to the found building
                 try {
-                    basicStructure->addcitizen(c);
-                    cout << "Citizen added successfully to " << buildingName << "." << endl;
+                    basicStructure->addcitizen(number);
+                    cout << "Citizens added successfully to " << buildingName << "." << endl;
                 } catch (const std::exception& e) {
-                    cout << "Error adding citizen: " << e.what() << endl;
+                    cout << "Error adding citizens: " << e.what() << endl;
                 }
 
                 delete iterator; // Clean up iterator before returning

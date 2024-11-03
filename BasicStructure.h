@@ -20,7 +20,7 @@ class BasicStructure : public Structure {
 
     public:
         BasicStructure(const string& name, char Btype, int capacity);
-        void addcitizen(Citizen *c);
+        void addcitizen(int number);
         string getType();
         void removeCitizen();
         string getName() override;

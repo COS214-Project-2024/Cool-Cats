@@ -11,3 +11,7 @@ TrainTransport::~TrainTransport() {
 void TrainTransport::travel(){
     cout << "Traveling with " << this->vehicle->getName() << endl;
 }
+
+TrainVehicle* TrainTransport::getVehicle(){
+    return this->vehicle;
+}

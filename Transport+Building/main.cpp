@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <array>
+#include <map>
+
 
 #include "RoadSubject.h"
 #include "Road.h"
@@ -39,7 +41,6 @@
 #include "BasicStructure.h"
 #include "StructureIterator.h"
 
-#include <tuple>
 
 
 using namespace std;
@@ -80,14 +81,11 @@ void testingTransportationSystem(){
     //traveling
     trans1->travel();
 }
-
-vector<PublicTransport*> PT;
-vector<TrainTransport*> TT;
-vector<AirportTransport*> AT;
-
-vector<RoadSubject*> RS;
-vector<Road*> R;
-array<vector<Transport*>,3> transportArray;
+vector<StructureGroup*> arr;
+vector<PublicTransport*> PT; // To hold all the Public transport
+vector<TrainTransport*> TT; // To hold all the Train transport
+vector<AirportTransport*> AT; // To hold all the Air transport
+map<string, pair<vector<Road*>, vector<RoadSubject*>>> cityRoads; // To assign a road and roadSubject to a specific city group name
 
 void createPublicType(int type, string name){
     switch (type)
@@ -138,17 +136,36 @@ void createAirportType(int type, string name){
             std::cout << "Invalid Airport Transport Type" << std::endl;;
     }
 }
-void createRoad(string name){
-    Road* road = new Road(name);
-    R.push_back(road);
+void createRoad(const std::string& roadName, const std::string& structureGroupName) {
+    Road* road = new Road(roadName);
     RoadSubject* rs = road;
-    RS.push_back(rs);
-    std::cout << "Road Added Successfully" << std::endl;
+
+    auto it = cityRoads.find(structureGroupName);
+    if (it != cityRoads.end()) {
+        it->second.first.push_back(road);    // Add Road* to the first vector
+        it->second.second.push_back(rs);     // Add RoadSubject* to the second vector
+    } else {
+        // Structure group does not exist; create a new entry with initialized vectors
+        cityRoads[structureGroupName] = { {road}, {rs} };
+    }
+
+    std::cout << "Road " << roadName << " added to structure group: " << structureGroupName << "\n";
 }
 
-void createTransportLine(int numRoads, int transportTypeIndex, int mainTransport ){
-    
+void createInCityTransportRoute(int TransType, string CityStruct, BasicStructure* starting, BasicStructure* end, string transName){
+    switch(TransType){
+        case 1:
+            for (PublicTransport* PublicTrans : PT) {
+                if(PublicTrans->getVehicle()->getName() == transName){
+                    
+                }
+            }
+    }
 }
+
+
+
+
 
 
 int main(){

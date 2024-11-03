@@ -14,6 +14,7 @@ class AirportTransport: public Transport
     public:
         AirportTransport(AirVehicle* vehicle);
         ~AirportTransport();
+        AirVehicle* getVehicle();
         void travel();
 
 };

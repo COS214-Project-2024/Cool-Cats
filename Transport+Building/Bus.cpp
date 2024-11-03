@@ -1,6 +1,6 @@
 #include "Bus.h"
 
-Bus::Bus() {
+Bus::Bus(string name) {
     this->name = name;
 }
 

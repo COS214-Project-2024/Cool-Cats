@@ -11,3 +11,7 @@ PublicTransport::~PublicTransport() {
 void PublicTransport::travel(){
     cout << "Traveling with " << this->vehicle->getName() << endl;
 }
+
+PublicVehicle* PublicTransport::getVehicle(){
+    return this->vehicle;
+}

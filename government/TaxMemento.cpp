@@ -1,21 +1,15 @@
-#include"TaxMemento.h"
-/// @brief 
-/// @param s 
-TaxMemento::TaxMemento(Taxes* s){
-    state = new Taxes(s->getTaxRate()) ;
-}
-/// @brief 
-TaxMemento::~TaxMemento(){
+#include "TaxMemento.h"
+
+TaxMemento::TaxMemento(Taxes* s) : state(new Taxes(*s)) {}
+
+TaxMemento::~TaxMemento() {
     delete state;
 }
- /// @brief 
- /// @return 
- Taxes* TaxMemento::getState(){
-  return state;
-  //state = nullptr;
+
+TaxMemento* TaxMemento::getState() {
+    return this;
 }
-/// @brief 
-/// @param s 
-void TaxMemento::setState(Taxes* s){
- state =s;
+
+void TaxMemento::setState(Taxes* s) {
+    *state = *s;
 }

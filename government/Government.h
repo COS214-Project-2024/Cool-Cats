@@ -1,27 +1,32 @@
 #ifndef GOVERNMENT_H
 #define GOVERNMENT_H
 
-#include"TaxMemento.h"
 #include <string>
 #include <vector>
+#include "ResourceMediator.h"
+#include "TaxMemento.h"
 
-class Government  {
+class Government {
 private:
-    Taxes* tax;
-    float budget;
+    int taxRate;
+    double budget;
+    std::vector<std::string> policies;
+    ResourceMediator* mediator;
     std::vector<TaxMemento*> taxMementos;
 
 public:
-    Government();
+    Government(ResourceMediator* mediator);
     ~Government();
-    void setTaxRate(float newRate);
-    void setTaxRate(Taxes* newRate);
-    Taxes* getTax();
-    void implementPolicy(const std::string& policy);
-    float getBudget() const;
-    void allocateBudget(float amount);
-    void collection();
-    void storeMemento(TaxMemento* one);
+
+    void setTaxRate(int rate);
+    void allocateBudget(double amount);
+    void enforcePolicy(const std::string& policy);
+    void revokePolicy(const std::string& policy);
+    
+    void requestResource(const std::string& resourceType, double amount);
+    void supplyResource(const std::string& resourceType, double amount);
+
+    void storeMemento(TaxMemento* memento);
     TaxMemento* getMemento();
 };
 

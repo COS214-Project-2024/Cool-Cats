@@ -1,81 +1,66 @@
 #include "Government.h"
+#include "ResourceMediator.h"
 #include <iostream>
+#include <algorithm>
 
-Government::Government()
-{
-    budget = 10000;
-    tax = new Taxes(0.10);
-}
-Government::~Government()
-{
-    delete tax;
-    tax = nullptr;
+Government::Government(ResourceMediator* mediator) : taxRate(10), budget(10000), mediator(mediator) {}
 
-   
-    for (auto& TaxMemento : taxMementos)
-    {
-        if (TaxMemento)
-        {                   // Check for nullptr
-            delete TaxMemento; 
-            TaxMemento = nullptr;// Safely delete each pointer
-        }
+Government::~Government() {
+    for (auto memento : taxMementos) {
+        delete memento;
     }
-    taxMementos.clear();
-}
-void Government::setTaxRate(float newRate)
-{
-    tax->setTaxRate(newRate);
-    std::cout << "Tax rate set to: " << tax->getTaxRate() << std::endl;
-    budget += tax->getTaxRate() * 1000;
-}
-void Government::collection(){
-
-}
-void Government::implementPolicy(const std::string &policy)
-{
-    std::cout << "Implementing policy: " << policy << std::endl;
 }
 
-float Government::getBudget() const
-{
-    return budget;
+void Government::setTaxRate(int rate) {
+    taxRate = rate;
+    std::cout << "Tax rate set to: " << taxRate << "%" << std::endl;
 }
 
-void Government::allocateBudget(float amount)
-{
-    if (amount > budget)
-    {
+void Government::allocateBudget(double amount) {
+    if (amount > budget) {
         std::cout << "Insufficient budget to allocate." << std::endl;
-    }
-    else
-    {
+    } else {
         budget -= amount;
         std::cout << "Allocated " << amount << " to city services. Remaining budget: " << budget << std::endl;
     }
 }
 
-void Government::storeMemento(TaxMemento *One)
-{
-    if (One)
-    {
-        taxMementos.push_back(One);
+void Government::enforcePolicy(const std::string& policy) {
+    policies.push_back(policy);
+    std::cout << "Enforcing policy: " << policy << std::endl;
+}
+
+void Government::requestResource(const std::string& resourceType, double amount) {
+    std::cout << "Requesting " << amount << " of " << resourceType << std::endl;
+    mediator->requestResource(this, resourceType, amount);
+}
+
+void Government::revokePolicy(const std::string& policy) {
+    auto it = std::find(policies.begin(), policies.end(), policy);
+    if (it != policies.end()) {
+        policies.erase(it);
+        std::cout << "Revoked policy: " << policy << std::endl;
+    } else {
+        std::cout << "Policy not found: " << policy << std::endl;
     }
 }
 
-TaxMemento *Government::getMemento()
-{
-    if (taxMementos.empty())
-    {
-        return nullptr;
+void Government::supplyResource(const std::string& resourceType, double amount) {
+    std::cout << "Supplying " << amount << " of " << resourceType << std::endl;
+    mediator->supplyResource(this, resourceType, amount);
+}
+
+void Government::storeMemento(TaxMemento* memento) {
+    taxMementos.push_back(memento);
+    std::cout << "Stored tax memento." << std::endl;
+}
+
+TaxMemento* Government::getMemento() {
+    if (!taxMementos.empty()) {
+        TaxMemento* memento = taxMementos.back();
+        taxMementos.pop_back();
+        std::cout << "Retrieved tax memento." << std::endl;
+        return memento;
     }
-    return taxMementos.back();
-}
-
-Taxes *Government::getTax()
-{
-    return tax;
-}
-
-void Government::setTaxRate(Taxes* one){
-    tax = new Taxes (one->getTaxRate());
+    return nullptr;
 }

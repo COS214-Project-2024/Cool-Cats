@@ -1,16 +1,20 @@
 #ifndef TAXATIONCOMMAND_H
 #define TAXATIONCOMMAND_H
-#include "Command.h"
+
+#include "GovernmentCommand.h"
 #include "Government.h"
 
-class TaxationCommand : public Command {
+class TaxationCommand : public GovernmentCommand {
 private:
-    Government& government;
-    float taxRate;
+    int taxRate;
+    Government* government;
 
 public:
-    TaxationCommand(Government& govt, float rate);
+    TaxationCommand(Government* gov, Citizen* citizen, int rate)
+        : GovernmentCommand(citizen), taxRate(rate), government(gov) {}
+
     void execute() override;
+    void undo() override;
 };
 
 #endif

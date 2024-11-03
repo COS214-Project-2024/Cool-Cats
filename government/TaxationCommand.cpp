@@ -1,7 +1,16 @@
 #include "TaxationCommand.h"
-
-TaxationCommand::TaxationCommand(Government& govt, float rate) : government(govt), taxRate(rate) {}
+#include <iostream>
 
 void TaxationCommand::execute() {
-    government.setTaxRate(taxRate);
+    std::cout << "Applying tax rate of " << taxRate << "% to citizen." << std::endl;
+    government->setTaxRate(taxRate);
+    double currentSatisfaction = myCitizen->getSatisfaction();
+    myCitizen->setSatisfaction(currentSatisfaction - taxRate * 0.1); 
+}
+
+void TaxationCommand::undo() {
+    std::cout << "Reverting tax rate of " << taxRate << "% for citizen." << std::endl;
+    government->setTaxRate(0); 
+    double currentSatisfaction = myCitizen->getSatisfaction();
+    myCitizen->setSatisfaction(currentSatisfaction + taxRate * 0.1);
 }

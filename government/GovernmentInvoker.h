@@ -1,15 +1,17 @@
 #ifndef GOVERNMENTINVOKER_H
 #define GOVERNMENTINVOKER_H
-#include <memory>
-#include "Command.h"
+#include "GovernmentCommand.h"
 #include "GovernmentInvoker.h"
+#include <memory>
+
+
 
 class GovernmentInvoker {
 private:
-    std::unique_ptr<Command> currentCommand;
+    std::unique_ptr<GovernmentCommand> currentCommand;
 
 public:
-    void setCommand(std::unique_ptr<Command> command);
+    void setCommand(std::unique_ptr<GovernmentCommand> command);
     void executeCommand();
 };
 

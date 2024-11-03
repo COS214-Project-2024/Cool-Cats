@@ -1,30 +1,60 @@
 # Compiler
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall -Wextra
+
+# Compiler flags
+CXXFLAGS = -Wall -std=c++17
+
+# Executable name
+EXEC = city_simulation
 
 # Source files
-SRCS = Taxes.cpp TaxMemento.cpp Government.cpp main.cpp
+SOURCES = main.cpp \
+          Government.cpp \
+          GovernmentInvoker.cpp \
+          TaxationCommand.cpp \
+          PolicyImplementationCommand.cpp \
+          Materials.cpp \
+          Energy.cpp \
+          Water.cpp \
+          CityResourceMediator.cpp \
+          Budget.cpp \
+          BudgetAllocationCommand.cpp \
+          Taxes.cpp \
+          TaxMemento.cpp 
+
+# Header files
+HEADERS = Government.h \
+          GovernmentInvoker.h \
+          GovernmentCommand.h \
+          TaxationCommand.h \
+          PolicyImplementationCommand.h \
+          Materials.h \
+          Energy.h \
+          Water.h \
+          CityResourceMediator.h \
+          Budget.h \
+          BudgetAllocationCommand.h \
+          Taxes.h \
+          TaxMemento.h 
 
 # Object files
-OBJS = $(SRCS:.cpp=.o)
+OBJECTS = $(SOURCES:.cpp=.o)
 
-# Executable
-TARGET = program
+# Build the executable
+$(EXEC): $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $(EXEC) $(OBJECTS)
 
-# Default target to build the executable
-all: $(TARGET)
-
-# Link object files to create the executable
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
-
-# Compile each source file into an object file
-%.o: %.cpp %.h
+# Compile .cpp files into .o files
+%.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Clean up object files and the executable
+# Clean up object files and executable
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJECTS) $(EXEC)
 
-# Phony targets to avoid conflicts with files named 'all' or 'clean'
-.PHONY: all clean
+# Run the program
+run: $(EXEC)
+	./$(EXEC)
+
+# Phony targets
+.PHONY: clean run

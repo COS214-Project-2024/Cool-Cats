@@ -19,6 +19,6 @@ class AllCitizenIterator : public CitizenIterator{
     private:
         std::vector<Citizen*>& citizens;
         Citizen* current;
-        int index;
+        size_t index;
 };
 #endif

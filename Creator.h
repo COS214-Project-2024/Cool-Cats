@@ -10,7 +10,7 @@ class Creator{
         Creator();
         Citizen* basicCitizenOperation();
         Citizen* specificCitizenOperation(std::string employmentStatus, double satisfaction, Structure* home);
-        ~Creator();
+        virtual ~Creator();
 
     protected:
         virtual Citizen* basicCitizenMethod() = 0;

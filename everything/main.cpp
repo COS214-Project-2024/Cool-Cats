@@ -530,6 +530,7 @@ void editStructure(){
             break;
 
         case 5:
+            decorateStructure();
             break;
 
         default:
@@ -767,20 +768,57 @@ void decorateStructure(){
         int decorationOption;
         cin >> decorationOption;
 
-        // switch (decorationOption) {
-        //     case 1:
-        //         selectedStructure = new SatisfactionEnhancer(selectedStructure);
-        //         break;
-        //     case 2:
-        //         selectedStructure = new ResourceEfficiencyEnhancer(selectedStructure);
-        //         break;
-        //     case 3:
-        //         selectedStructure = new MaintenanceCostReducer(selectedStructure);
-        //         break;
-        //     default:
-        //         cout << "Invalid decoration option." << endl;
-        //         return;
-        // }
+        switch (decorationOption) {
+            case 1:
+                float boost;
+                cout << "Enter satisfaction boost value: ";
+                cin >> boost;
+
+                if(cin.fail() || boost < 0.0f || boost >100){
+                    cout << "Invalid boost value. It must be a non-negative number nad less than 100." << endl;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }else {
+                    selectedStructure = new SatisfactionEnhancer(selectedStructure, boost);
+                    cout << "Satisfaction enhancer applied with a boost of " << boost << "!" << endl;
+                }
+                
+                break;
+
+            case 2:
+                float effboost;
+                cout << "Enter Resource efficiency boost: ";
+                cin >> effboost;
+
+                if(cin.fail() || effboost < 0.0f || effboost >100){
+                    cout << "Invalid boost value. It must be a non-negative number nad less than 100." << endl;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }else{
+                    selectedStructure = new ResourceEfficiencyEnhancer(selectedStructure, effboost);
+                    cout << "Resource efficiency enhancer applied with a boost of " << effboost << "!" << endl;
+                }
+
+                break;
+
+            case 3:
+                float reduction;
+                cout << "Enter Maintencance cost reduction perscentage: ";
+                cin >> reduction;
+
+                if(cin.fail() || reduction < 0.0f || reduction > 100){
+                    cout << "Invalid reduction percentage. It must be a non-negative number nad less than 100." << endl;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }else {
+                    selectedStructure = new MaintenanceCostReducer(selectedStructure,reduction);
+                    cout << "Maintenance enhancer applied with a reduction of " << reduction << "!" << endl;
+                }
+                break;
+            default:
+                cout << "Invalid decoration option." << endl;
+                return;
+        }
     }
 }
 

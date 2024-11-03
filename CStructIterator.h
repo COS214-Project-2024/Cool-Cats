@@ -19,6 +19,7 @@ class CStructIterator : public StructureIterator
         void next();
         bool isDone();
         Structure* currentItem();
+        virtual ~CStructIterator();
 
 };
 

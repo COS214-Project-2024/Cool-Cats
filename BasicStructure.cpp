@@ -90,9 +90,13 @@ string BasicStructure::getType()
 }
 
 /// @brief Removes a citizen from the structure, decrementing the count.
-void BasicStructure::removeCitizen()
+void BasicStructure::removeCitizen(int number)
 {
-    numCitizen--;
+    if((numCitizen -= number) < 0){
+        throw invalid_argument("amount to be removed is more than amount of citizens in building");  // Throw an error if the number of citizens to be removed is negative
+    }else{
+        numCitizen -= number;  // Decrement the number of citizens in the building
+    }
 }
 
 /// @brief Throws an exception because BasicStructure is a leaf node and cannot contain children.

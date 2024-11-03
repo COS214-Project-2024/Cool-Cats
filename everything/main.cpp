@@ -33,6 +33,8 @@ void editStructure();
 void addStructure();
 void removeStructure();
 
+void addCititoBuild(Citizen* c);
+
 
 //for transport
 void editTransport();
@@ -73,31 +75,31 @@ vector<CStructIterator*> iteratorArr ; // this keeps track of iterators that hav
 
 
 int main(){
-    cout << "WELCOME TO THE COOL CATS CITY SIMULATOR" << endl;
+    // cout << "WELCOME TO THE COOL CATS CITY SIMULATOR" << endl;
 
-    cout << "-------------------------------------------" << endl;
+    // cout << "-------------------------------------------" << endl;
 
-    cout << "We will need to start by creating the city hall, this a deafult standard and the government will be created as well. If you want to make changes to government options will appear as you build the city :)" << endl;
+    // cout << "We will need to start by creating the city hall, this a deafult standard and the government will be created as well. If you want to make changes to government options will appear as you build the city :)" << endl;
 
-    cout << "Press 1 to create City hall and government" << endl;
+    // cout << "Press 1 to create City hall and government" << endl;
 
     //NB City hall and Government are created by default.s
 
     //utilites for this should be added
-    int option;
-    cin >> option;
-    if(option != 1){
-        return 0;
-    }
-    else{
+    // int option;
+    // cin >> option;
+    // if(option != 1){
+    //     return 0;
+    // }
+    // else{
 
 
         arr.push_back(createCityHall());
         iteratorArr.push_back(createIteratorForGroup(arr.front())); // potential erros can arise from here
         //createGovernment();
-    }
-    printLines();
-    cout << "Great you have created the city hall and government. From here on out there will be an option to view details of your city :)" << endl;
+    //}
+    // printLines();
+    // cout << "Great you have created the city hall and government. From here on out there will be an option to view details of your city :)" << endl;
     
     //this will be our main screen
 
@@ -107,7 +109,19 @@ int main(){
     //You can printlines if you would like to seperate for clarity
     //You can exit to end program
 
-    mainMenu();
+    // mainMenu();
+    StructureGroup* grouptest ;
+    arr.push_back(grouptest);
+    BasicStructure* testStructure = new BasicStructure("test1",'R',100);
+    BasicStructure* testStructure2 = new BasicStructure("test2",'R',100);
+    BasicStructure* testStructure3 = new BasicStructure("test3",'R',100);
+    grouptest->add(testStructure);
+    grouptest->add(testStructure2);
+    grouptest->add(testStructure3);
+
+    HighCitizenCreator high;
+    Citizen *citizen = high.specificCitizenOperation("unemployed",65 ,nullptr);
+    addCititoBuild(citizen);
     
 
     return 0;
@@ -232,6 +246,84 @@ void chooseFromMenu(){
 
 
 //building funcitons
+
+//function to add citizen to building:
+void addCititoBuild(Citizen* c) {
+    if (!c) {
+        throw std::invalid_argument("Citizen cannot be null.");
+    }
+
+    bool structureFound = false;
+
+    // Display all available structures in each StructureGroup
+    for (auto* group : arr) {
+        if (!group) continue; // Skip null groups
+
+        cout << "-------------------------------" << endl;
+        cout << "Structures available in Area (" << group->getName() << "):" << endl;
+
+        // Create an iterator for the current StructureGroup
+        CStructIterator* iterator = group->createIterator();
+
+        // Traverse through each structure in the group using the iterator
+        for (iterator->first(); !iterator->isDone(); iterator->next()) {
+            Structure* currentStructure = iterator->currentItem();
+            BasicStructure* basicStructure = dynamic_cast<BasicStructure*>(currentStructure);
+
+            if (basicStructure) {
+                // Print the structure's name and type (e.g., Commercial, Residential)
+                cout << "- " << basicStructure->getName() << " (" << basicStructure->getType() << ")" << endl;
+                structureFound = true;
+            }
+        }
+
+        delete iterator; // Clean up iterator after use
+    }
+
+    if (!structureFound) {
+        cout << "No available structures found in any StructureGroup." << endl;
+        return;
+    }
+
+    // Prompt the user to enter the name of the building to add the citizen
+    cout << "Enter the name of the structure/building to add the citizen to: ";
+    string buildingName;
+    cin.ignore();
+    getline(cin, buildingName);
+
+    // Search for the specified building by name
+    for (auto* group : arr) {
+        if (!group) continue; // Skip null groups
+
+        // Create an iterator for the current StructureGroup
+        CStructIterator* iterator = group->createIterator();
+
+        // Traverse each structure within the group
+        for (iterator->first(); !iterator->isDone(); iterator->next()) {
+            Structure* currentStructure = iterator->currentItem();
+            BasicStructure* basicStructure = dynamic_cast<BasicStructure*>(currentStructure);
+
+            if (basicStructure && basicStructure->getName() == buildingName) {
+                // Add the citizen to the found building
+                try {
+                    basicStructure->addcitizen(c);
+                    cout << "Citizen added successfully to " << buildingName << "." << endl;
+                } catch (const std::exception& e) {
+                    cout << "Error adding citizen: " << e.what() << endl;
+                }
+
+                delete iterator; // Clean up iterator before returning
+                return;
+            }
+        }
+
+        delete iterator; // Clean up iterator after checking each group
+    }
+
+    // If no structure with the specified name is found
+    cout << "Structure with the name '" << buildingName << "' not found." << endl;
+}
+
 void editStructureGroup(){
 
     //this will allow us to add and remove structure groups from the array

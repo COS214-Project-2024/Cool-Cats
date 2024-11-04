@@ -19,9 +19,7 @@ public:
     void processRequest(const std::string &request) override;
     void extractWater();
     // Additional water-specific methods
-    void purifyWater();
-    void manageDistribution(const std::string &buildingType, int amount);
-    void checkPipeIntegrity();
+
 };
 
 #endif

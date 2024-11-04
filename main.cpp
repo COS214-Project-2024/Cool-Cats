@@ -373,8 +373,13 @@ StructureGroup* createCityHall(){
     return cityhallGroup;
 }
 
-void createGovernment(){
-    
+void createGovernment() {
+    resourceMediator = new CityResourceMediator();
+    government = new Government(resourceMediator);
+    invoker = new GovernmentInvoker();
+    materials = new Materials();
+    energy = new Energy();
+    water = new Water();
 }
 
 void displayMenu() {

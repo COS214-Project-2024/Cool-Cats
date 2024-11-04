@@ -165,10 +165,6 @@ void printLines();
 
 vector<StructureGroup*> arr; // this keeps track of all the stucture groups that have been created
 vector<CStructIterator*> iteratorArr ; // this keeps track of iterators that have been created ie each structure is in a structure group and we can iterate over each structure in each structure group through this.
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of df66c51 (Merge branch 'main' of https://github.com/COS214-Project-2024/Cool-Cats)
 int main(){
     cout << "WELCOME TO THE COOL CATS CITY SIMULATOR" << endl;
 
@@ -363,7 +359,6 @@ void createGovernment(){
     
 }
 
-<<<<<<< HEAD
 void displayMenu() {
     cout << "\nCity Builder Simulation Menu:\n";
     cout << "1. Set Tax Rate\n";
@@ -377,110 +372,108 @@ void displayMenu() {
 }
 
 void editGovernment() {
-    int choice;
-    while (true) {
-        displayMenu();
-        while (!(cin >> choice) || choice < 1 || choice > 7) {
-            cin.clear(); // clear the error flag
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
-            cout << "Invalid choice. Please select an option from the menu: ";
-        }
-        switch (choice) {
-            case 1: {  // Set Tax Rate
-                float taxRate;
-                cout << "Enter new tax rate (e.g., 0.15 for 15%): ";
-                while (!(cin >> taxRate) || taxRate < 0 || taxRate > 1) {
-                    cin.clear(); // clear the error flag
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
-                    cout << "Invalid tax rate. Please enter a value between 0 and 1: ";
-                }
-                government->setTaxRate(taxRate); // Update tax rate
-                TaxMemento* one = government->getTax()->createMemento();
-                government->storeMemento(one);
-                break;
-            }
-            case 2: {  // Implement Policy
-                string policy;
-                cout << "Enter policy name (e.g., Green Energy Initiative): ";
-                cin.ignore();  
-                getline(cin, policy);
-                if (policy.empty()) {
-                    cout << "Policy name cannot be empty.\n";
-                    break;
-                }
-                auto policyCommand = make_unique<PolicyImplementationCommand>(nullptr, policy, government);
-                invoker->setCommand(move(policyCommand));
-                invoker->executeCommand();
-                break;
-            }
-            case 3: {  // Allocate Government Budget
-                double amount;
-                cout << "Enter amount to allocate from budget: ";
-                while (!(cin >> amount) || amount < 0) {
-                    cin.clear(); // clear the error flag
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
-                    cout << "Invalid amount. Please enter a positive value: ";
-                }
-                auto budgetCommand = make_unique<BudgetAllocationCommand>(nullptr, amount, government);
-                invoker->setCommand(move(budgetCommand));
-                invoker->executeCommand();
-                break;
-            }
-            case 4: {  // Coordinate Resources for a Project
-                string projectType;
-                int materialsAmount, energyAmount, waterAmount;
-                cout << "Enter project name (e.g., Residential Expansion): ";
-                cin.ignore();
-                getline(cin, projectType);
-                if (projectType.empty()) {
-                    cout << "Project name cannot be empty.\n";
-                    break;
-                }
-                cout << "Enter amount of materials required: ";
-                while (!(cin >> materialsAmount) || materialsAmount < 0) {
-                    cin.clear(); // clear the error flag
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
-                    cout << "Invalid amount. Please enter a positive value: ";
-                }
-                cout << "Enter amount of energy required: ";
-                while (!(cin >> energyAmount) || energyAmount < 0) {
-                    cin.clear(); // clear the error flag
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
-                    cout << "Invalid amount. Please enter a positive value: ";
-                }
-                cout << "Enter amount of water required: ";
-                while (!(cin >> waterAmount) || waterAmount < 0) {
-                    cin.clear(); // clear the error flag
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
-                    cout << "Invalid amount. Please enter a positive value: ";
-                }
-                resourceMediator->coordinateResources(projectType, materialsAmount, energyAmount, waterAmount);
-                break;
-            }
-            case 5: {
-                AllCitizenIterator* iterate = SENTINEL->createCitizenIterator();
-                government->collection(iterate);
-                cout << "Taxes have been collected\n";
-                delete iterate;
-                break;
-            }
-            case 6: {
-                cout << "This is the current tax rate " << government->getTax()->getTaxRate() << endl;
-                government->setTaxRate(government->getMemento()->getState()->getTaxRate());
-                cout << "Taxes have been restored to " << government->getTax()->getTaxRate() << endl;
-                break;
-            }
-            case 7:
-                cout << "Exiting the government menu.\n";
-                return;
-            default:
-                cout << "Invalid choice. Please select an option from the menu.\n";
-        }
-    }
+    // int choice;
+    // while (true) {
+    //     displayMenu();
+    //     while (!(cin >> choice) || choice < 1 || choice > 7) {
+    //         cin.clear(); // clear the error flag
+    //         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
+    //         cout << "Invalid choice. Please select an option from the menu: ";
+    //     }
+    //     switch (choice) {
+    //         case 1: {  // Set Tax Rate
+    //             float taxRate;
+    //             cout << "Enter new tax rate (e.g., 0.15 for 15%): ";
+    //             while (!(cin >> taxRate) || taxRate < 0 || taxRate > 1) {
+    //                 cin.clear(); // clear the error flag
+    //                 cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
+    //                 cout << "Invalid tax rate. Please enter a value between 0 and 1: ";
+    //             }
+    //             government->setTaxRate(taxRate); // Update tax rate
+    //             TaxMemento* one = government->getTax()->createMemento();
+    //             government->storeMemento(one);
+    //             break;
+    //         }
+    //         case 2: {  // Implement Policy
+    //             string policy;
+    //             cout << "Enter policy name (e.g., Green Energy Initiative): ";
+    //             cin.ignore();  
+    //             getline(cin, policy);
+    //             if (policy.empty()) {
+    //                 cout << "Policy name cannot be empty.\n";
+    //                 break;
+    //             }
+    //             auto policyCommand = make_unique<PolicyImplementationCommand>(nullptr, policy, government);
+    //             invoker->setCommand(move(policyCommand));
+    //             invoker->executeCommand();
+    //             break;
+    //         }
+    //         case 3: {  // Allocate Government Budget
+    //             double amount;
+    //             cout << "Enter amount to allocate from budget: ";
+    //             while (!(cin >> amount) || amount < 0) {
+    //                 cin.clear(); // clear the error flag
+    //                 cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
+    //                 cout << "Invalid amount. Please enter a positive value: ";
+    //             }
+    //             auto budgetCommand = make_unique<BudgetAllocationCommand>(nullptr, amount, government);
+    //             invoker->setCommand(move(budgetCommand));
+    //             invoker->executeCommand();
+    //             break;
+    //         }
+    //         case 4: {  // Coordinate Resources for a Project
+    //             string projectType;
+    //             int materialsAmount, energyAmount, waterAmount;
+    //             cout << "Enter project name (e.g., Residential Expansion): ";
+    //             cin.ignore();
+    //             getline(cin, projectType);
+    //             if (projectType.empty()) {
+    //                 cout << "Project name cannot be empty.\n";
+    //                 break;
+    //             }
+    //             cout << "Enter amount of materials required: ";
+    //             while (!(cin >> materialsAmount) || materialsAmount < 0) {
+    //                 cin.clear(); // clear the error flag
+    //                 cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
+    //                 cout << "Invalid amount. Please enter a positive value: ";
+    //             }
+    //             cout << "Enter amount of energy required: ";
+    //             while (!(cin >> energyAmount) || energyAmount < 0) {
+    //                 cin.clear(); // clear the error flag
+    //                 cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
+    //                 cout << "Invalid amount. Please enter a positive value: ";
+    //             }
+    //             cout << "Enter amount of water required: ";
+    //             while (!(cin >> waterAmount) || waterAmount < 0) {
+    //                 cin.clear(); // clear the error flag
+    //                 cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
+    //                 cout << "Invalid amount. Please enter a positive value: ";
+    //             }
+    //             resourceMediator->coordinateResources(projectType, materialsAmount, energyAmount, waterAmount);
+    //             break;
+    //         }
+    //         case 5: {
+    //             AllCitizenIterator* iterate = SENTINEL->createCitizenIterator();
+    //             government->collection(iterate);
+    //             cout << "Taxes have been collected\n";
+    //             delete iterate;
+    //             break;
+    //         }
+    //         case 6: {
+    //             cout << "This is the current tax rate " << government->getTax()->getTaxRate() << endl;
+    //             government->setTaxRate(government->getMemento()->getState()->getTaxRate());
+    //             cout << "Taxes have been restored to " << government->getTax()->getTaxRate() << endl;
+    //             break;
+    //         }
+    //         case 7:
+    //             cout << "Exiting the government menu.\n";
+    //             return;
+    //         default:
+    //             cout << "Invalid choice. Please select an option from the menu.\n";
+    //     }
+    // }
 }
 
-=======
->>>>>>> parent of df66c51 (Merge branch 'main' of https://github.com/COS214-Project-2024/Cool-Cats)
 void chooseFromMenu(){
     cout << "Choose from the menu" << endl;
 }

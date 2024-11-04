@@ -88,26 +88,33 @@ void decorateStructure();
 
 
 //for transport
+vector<PublicTransport*> PT; // To hold all the Public transport
+vector<TrainTransport*> TT; // To hold all the Train transport
+vector<AirportTransport*> AT; // To hold all the Air transport
+map<string, pair<vector<Road*>, vector<RoadSubject*>>> cityRoads; // To assign a road and roadSubject to a specific city group name
+map<string, vector<Transportation*>> transLines; // To hold all the transport routes
+
 void editTransport();
 
 void editTransportGroups();
 void addTransportGroups();
 void removeTransportGroups();
-
 void editTransportInGroups();
 void addTransportInGroups();
 void removeTransportInGroups();
-
 void createPublicType(int type, string name);
 void createTrainType(int type, string name);
 void createAirportType(int type, string name);
 void createRoad(const std::string& roadName, const std::string& structureGroupName);
 int structureIndex(StructureGroup* group, Structure* name);
-void createInCityTransportRoute(int TransType, string CityName, BasicStructure* starting, BasicStructure* ending, string transName, string routeName);
+void createInCityTransportRoute(int TransType, const std::string& CityName, BasicStructure* starting, BasicStructure* ending, const std::string& transName, const std::string& routeName);
 void travelRoute(string routeName);
-void createTransportation(int num);
+void createTransportation();
 int error(int min, int max);
+string stringError();
 void newTransportMenu();
+void newRouteMenu();
+void createInRoute();
 
 
 //for citizens
@@ -151,12 +158,6 @@ void printLines();
 
 vector<StructureGroup*> arr; // this keeps track of all the stucture groups that have been created
 vector<CStructIterator*> iteratorArr ; // this keeps track of iterators that have been created ie each structure is in a structure group and we can iterate over each structure in each structure group through this.
-vector<PublicTransport*> PT; // To hold all the Public transport
-vector<TrainTransport*> TT; // To hold all the Train transport
-vector<AirportTransport*> AT; // To hold all the Air transport
-map<string, pair<vector<Road*>, vector<RoadSubject*>>> cityRoads; // To assign a road and roadSubject to a specific city group name
-map<string, vector<Transportation*>> transLines; // To hold all the transport routes
-
 int main(){
     cout << "WELCOME TO THE COOL CATS CITY SIMULATOR" << endl;
 
@@ -799,14 +800,18 @@ void decorateStructure(){
     cout << "Select a structure to decorate:" << endl;
 
     bool structureFound = false;
+    int selectedGroupIndex = -1;
+    int selectedStructureIndex = -1;
 
-    //avialable structures
-    for (auto* group : arr){
+    // Display available structures
+    for (int groupIndex = 0; groupIndex < arr.size(); ++groupIndex) {
+        StructureGroup* group = arr[groupIndex];
         if (!group) continue;
 
         CStructIterator* iterator = group->createIterator();
+        int structureIndex = 0;
 
-        for (iterator->first(); !iterator->isDone(); iterator->next()) {
+        for (iterator->first(); !iterator->isDone(); iterator->next(), ++structureIndex) {
             Structure* currentStructure = iterator->currentItem();
             BasicStructure* basicStructure = dynamic_cast<BasicStructure*>(currentStructure);
 
@@ -819,99 +824,124 @@ void decorateStructure(){
         delete iterator;
     }
 
-    if(!structureFound){
+    if (!structureFound) {
         cout << "No structures available for decoration." << endl;
         return;
     }
 
-    //get structure from user:
+    // Get the structure name from the user
     cout << "Enter the name of the structure to decorate: ";
     string buildingName;
     cin.ignore(); // Clear input buffer
     getline(cin, buildingName);
 
-    Structure* selectedStructure = nullptr;
+    BasicStructure* selectedStructure = nullptr;
 
-    for (auto* group : arr){
+    // Search for the structure by name and keep track of group and structure indices
+    for (int groupIndex = 0; groupIndex < arr.size(); ++groupIndex) {
+        StructureGroup* group = arr[groupIndex];
         if (!group) continue;
 
         CStructIterator* iterator = group->createIterator();
+        int structureIndex = 0;
 
-        for (iterator->first(); !iterator->isDone(); iterator->next()){
+        for (iterator->first(); !iterator->isDone(); iterator->next(), ++structureIndex) {
             Structure* currentStructure = iterator->currentItem();
             BasicStructure* basicStructure = dynamic_cast<BasicStructure*>(currentStructure);
 
             if (basicStructure && basicStructure->getName() == buildingName) {
                 selectedStructure = basicStructure;
+                selectedGroupIndex = groupIndex; // Save group index
+                selectedStructureIndex = structureIndex; // Save structure index
                 break;
             }
         }
 
         delete iterator;
-        if(selectedStructure) break; // structure found
+        if (selectedStructure) break; // Break outer loop if structure is found
     }
 
-    if(!selectedStructure){
-         cout << "Select decoration type:" << endl;
-        cout << "1: Satisfaction Enhancer" << endl;
-        cout << "2: Resource Efficiency Enhancer" << endl;
-        cout << "3: Maintenance Cost Reducer" << endl;
-        int decorationOption;
-        cin >> decorationOption;
+    if (!selectedStructure) {
+        cout << "Structure with the name '" << buildingName << "' not found." << endl;
+        return;
+    }
 
-        switch (decorationOption) {
-            case 1:
-                float boost;
-                cout << "Enter satisfaction boost value: ";
-                cin >> boost;
+    // Prompt for the decoration type
+    cout << "Select decoration type:" << endl;
+    cout << "1: Satisfaction Enhancer" << endl;
+    cout << "2: Resource Efficiency Enhancer" << endl;
+    cout << "3: Maintenance Cost Reducer" << endl;
+    int decorationOption;
+    cin >> decorationOption;
 
-                if(cin.fail() || boost < 0.0f || boost >100){
-                    cout << "Invalid boost value. It must be a non-negative number nad less than 100." << endl;
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                }else {
-                    selectedStructure = new SatisfactionEnhancer(selectedStructure, boost);
-                    cout << "Satisfaction enhancer applied with a boost of " << boost << "!" << endl;
-                }
-                
-                break;
+    BasicStructure* newStructure = nullptr;
+    switch (decorationOption) {
+        case 1: {
+            float boost;
+            cout << "Enter satisfaction boost value: ";
+            cin >> boost;
 
-            case 2:
-                float effboost;
-                cout << "Enter Resource efficiency boost: ";
-                cin >> effboost;
-
-                if(cin.fail() || effboost < 0.0f || effboost >100){
-                    cout << "Invalid boost value. It must be a non-negative number nad less than 100." << endl;
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                }else{
-                    selectedStructure = new ResourceEfficiencyEnhancer(selectedStructure, effboost);
-                    cout << "Resource efficiency enhancer applied with a boost of " << effboost << "!" << endl;
-                }
-
-                break;
-
-            case 3:
-                float reduction;
-                cout << "Enter Maintencance cost reduction perscentage: ";
-                cin >> reduction;
-
-                if(cin.fail() || reduction < 0.0f || reduction > 100){
-                    cout << "Invalid reduction percentage. It must be a non-negative number nad less than 100." << endl;
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                }else {
-                    selectedStructure = new MaintenanceCostReducer(selectedStructure,reduction);
-                    cout << "Maintenance enhancer applied with a reduction of " << reduction << "!" << endl;
-                }
-                break;
-            default:
-                cout << "Invalid decoration option." << endl;
+            if (cin.fail() || boost < 0.0f || boost > 100) {
+                cout << "Invalid boost value. It must be a non-negative number and less than 100." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 return;
+            }
+
+            newStructure = dynamic_cast<BasicStructure*>(new SatisfactionEnhancer(selectedStructure, boost));
+            cout << "Satisfaction enhancer applied with a boost of " << boost << "!" << endl;
+            break;
         }
+
+        case 2: {
+            float effBoost;
+            cout << "Enter resource efficiency boost: ";
+            cin >> effBoost;
+
+            if (cin.fail() || effBoost < 0.0f || effBoost > 100) {
+                cout << "Invalid boost value. It must be a non-negative number and less than 100." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                return;
+            }
+
+            newStructure = dynamic_cast<BasicStructure*>(new ResourceEfficiencyEnhancer(selectedStructure, effBoost));
+            cout << "Resource efficiency enhancer applied with a boost of " << effBoost << "!" << endl;
+            break;
+        }
+
+        case 3: {
+            float reduction;
+            cout << "Enter maintenance cost reduction percentage: ";
+            cin >> reduction;
+
+            if (cin.fail() || reduction < 0.0f || reduction > 100) {
+                cout << "Invalid reduction percentage. It must be a non-negative number and less than 100." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                return;
+            }
+
+            newStructure = dynamic_cast<BasicStructure*>(new MaintenanceCostReducer(selectedStructure, reduction));
+            cout << "Maintenance cost reducer applied with a reduction of " << reduction << "!" << endl;
+            break;
+        }
+
+        default:
+            cout << "Invalid decoration option." << endl;
+            return;
+    }
+
+    // Remove old structure and add the new decorated structure back to the group
+    if (newStructure) {
+        arr[selectedGroupIndex]->remove(selectedStructure);
+        arr[selectedGroupIndex]->add(newStructure); // Add the new BasicStructure back to the group
+        cout << "Structure decorated and updated successfully!" << endl;
     }
 }
+
+
+
 
 
 
@@ -933,8 +963,10 @@ void editTransport(){
     switch(choice){
         case 1:
             newTransportMenu();
-            
-
+        break;
+        case 2:
+            newRouteMenu();
+        break;
     }
 
     //get user input and from there call the function required for that
@@ -947,6 +979,116 @@ void editTransport(){
     
     cout << "Enter the structure group you would like to build transport system from" << endl;
 
+}
+
+void newRouteMenu(){
+    printLines();
+    chooseFromMenu();
+    cout << "Route Menu" << endl;
+    cout << "1: Create new In-City Route" << endl;
+    cout << "2: Create new City to City Route" << endl;
+    cout << "3: View Current Routes" << endl;
+    cout << "4: Exit" << endl;
+    int choice = error(1,4);
+    switch(choice){
+        case 1:
+            createInRoute();
+    }
+}
+
+void createInRoute(){
+    printLines();
+    chooseFromMenu();
+    std::cout << "Please select Transport Type:" << std::endl;
+    std::cout << "1: Public Transport" << std::endl;
+    std::cout << "2: Train Transport" << std::endl;
+    int choice = error(1,2);
+    switch(choice){
+        case 1:{
+            int transType = choice;
+            string cityName = "";
+            BasicStructure* startB = NULL;
+            BasicStructure* endB = NULL;
+            string transName = "";
+            string routeName = "";
+            std::cout << "List of Cities: "<< std::endl;
+            printLines();
+            for(size_t i = 0; i < arr.size(); i++){
+                std::cout << i << ": " << arr[i]->getName() << std::endl;
+            }
+            printLines();
+            std::cout << "Enter City Name:" << std::endl;
+            string word = stringError();
+            printLines();
+            for(size_t i = 0; i < arr.size(); i++){
+                if(arr[i]->getName() == word){
+                    cityName = word;
+                    vector<Structure*> buildings = arr[i]->getChildren();
+                    std::cout << "List of Structures in " << arr[i]->getName() << std::endl;
+                    printLines();
+                    for(size_t i = 0; i < buildings.size(); i++){
+                        std::cout << i << ": " << buildings[i]->getName() << std::endl;
+                    }
+                    std::cout << "Enter start building: " << std::endl;
+                    string start = stringError();
+                    printLines();
+                    for(size_t i = 0; i < buildings.size(); i++){
+                        if(buildings[i]->getName() == start){
+                            startB = dynamic_cast<BasicStructure*>(buildings[i]);
+                            break;
+                        }
+                    }
+                    std::cout << "Enter end building: " << std::endl;
+                    string ending = stringError();
+                    printLines();
+                    for(size_t i = 0; i < buildings.size(); i++){
+                        if(buildings[i]->getName() == ending){
+                            endB = dynamic_cast<BasicStructure*>(buildings[i]);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+            std::cout << "List of all Public Transports: " << std::endl;
+            printLines();
+            std::cout << "Public Transports:" << std::endl;
+            for(size_t i = 0; i < PT.size(); i++){
+                std::cout << i << ": " << PT[i]->getVehicle()->getName() << std::endl;
+            }
+            std::cout << "Enter a Transport Name: " << std::endl;
+            string tName = stringError();
+            printLines();
+            for(size_t i = 0; i < PT.size(); i++){
+                if(PT[i]->getVehicle()->getName() == tName){
+                    transName = tName;
+                    break;
+                }
+            }
+            std::cout << "Enter a route name: " << std::endl;
+            routeName = stringError();
+            printLines();
+            if(transType == 0 || cityName == "" || transName == "" || routeName == "" ){
+                std::cout << "Invalid Input, please review your inputs and try again" << std::endl;
+                std::cout << "City Name: " << cityName << std::endl;
+                std::cout << "Transport Name: " << transName << std::endl;
+                std::cout << "Route Name: " << routeName << std::endl;
+                createInRoute();
+            }
+            else if(startB == NULL || endB == NULL){
+                std::cout << "Invalid Input, no such start/end building exists" << std::endl;
+                createInRoute();
+            }
+            else{
+                printLines();
+                createInCityTransportRoute(transType, cityName, startB, endB, transName, routeName);
+                std::cout << "Route created!" << std::endl;
+                newRouteMenu();
+            }
+            
+
+        }
+    }
 }
 
 string stringError(){
@@ -980,22 +1122,17 @@ int error(int min, int max){
         }
         return choice;
 }
-void newTransportMenu(){
-        printLines();
-        chooseFromMenu();
-        cout << "Transport Creation Menu" << endl;
-        cout << "1: Create new Public Transport" << endl;
-        cout << "2: Create new Train Transport" << endl;
-        cout << "3: Create new Airplane Transport" << endl;
-        cout << "4: View Current Transports" << endl;
-        cout << "5: Exit" << endl;
-        int choice = error(1,5);
-        createTransportation(choice);
-}
 
-void createTransportation(int num){
-    switch(num) {
-        case 1: {
+void createTransportation(){
+    printLines();
+    chooseFromMenu();
+    cout << "Public Transport Creation Menu" << endl;
+    cout << "1: Create Bus" << endl;
+    cout << "2: Create Taxi" << endl;
+    cout << "3: Exit" << endl;
+    int choice = error(1,3);
+    switch(choice){
+        case 1:
             printLines();
             chooseFromMenu();
             cout << "Public Transport Creation Menu" << endl;
@@ -1021,9 +1158,9 @@ void createTransportation(int num){
                 case 3:
                     editTransport();
                     break;
-            }
-            break;
+            } 
         }
+        break;
         case 2: {
             printLines();
             chooseFromMenu();
@@ -1051,8 +1188,8 @@ void createTransportation(int num){
                     editTransport();
                     break;
             }
-            break;
         }
+        break;
         case 3: {
             printLines();
             chooseFromMenu();
@@ -1080,9 +1217,36 @@ void createTransportation(int num){
                     editTransport();
                     break;
             }
-            break;
+            
+        }
+        break;
+        case 4: {
+            printLines();
+            chooseFromMenu();
+            std::cout << "Viewing Current Transports" << std::endl;
+            printLines();
+            std::cout << "Public Transports:" << std::endl;
+            for(size_t i = 0; i < PT.size(); i++){
+                std::cout << i << ": " << PT[i]->getVehicle()->getName() << std::endl;
+            }
+            printLines();
+            std::cout << "Train Transports:" << std::endl;
+            for(size_t i = 0; i < TT.size(); i++){
+                std::cout << i << ": " << TT[i]->getVehicle()->getName() << std::endl;
+            }
+            printLines();
+            std::cout << "Airplane Transports:" << std::endl;
+            for(size_t i = 0; i < AT.size(); i++){
+                std::cout << i << ": " << AT[i]->getVehicle()->getName() << std::endl;
+            }
+            newTransportMenu();
+        }
+        break;
+        case 5:{
+            editTransport();
         }
     }
+
 
 }
 
@@ -1289,7 +1453,6 @@ void addCitizenToBuildings()
                 //Add high-class citizens to structure, ask if correct
                 addCititoBuild(amountCitizens);
 
-                cout << amountCitizens << " of High-class citizens successfully added to the building\n";
 
                 delete highClassCreator;
                 break;
@@ -1325,7 +1488,6 @@ void addCitizenToBuildings()
                 //Add mid-class citizen to structure, ask if correct
                 addCititoBuild(amountCitizens);
 
-                cout << amountCitizens << " of Middle-class citizens successfully added to the building\n";
                 delete midClassCreator;
                 break;
             }
@@ -1361,7 +1523,6 @@ void addCitizenToBuildings()
                 //Add low-class citizen to structure, ask if correct
                 addCititoBuild(amountCitizens);
 
-                cout << amountCitizens << " of Low-class citizens successfully added to the building\n";
                 delete lowClassCreator;
                 break;
             }
@@ -1614,7 +1775,6 @@ void createPublicType(int type, string name){
             break;
         case 2:
             PT.push_back(new PublicTransport(new Taxi(name)));
-            std::cout << name <<" added successfully" << std::endl;
             break;
         default:
             std::cout << "Invalid Public transport type" << std::endl;
@@ -1625,15 +1785,12 @@ void createTrainType(int type, string name){
     {
         case 1:
             TT.push_back(new TrainTransport(new Metro(name)));
-            std::cout << name <<" added successfully" << std::endl;
             break;
         case 2:
             TT.push_back(new TrainTransport(new Tram(name)));
-            std::cout << name <<" added successfully" << std::endl;
             break;
         case 3:
             TT.push_back(new TrainTransport(new Freight(name)));
-            std::cout << name <<" added successfully" << std::endl;
             break;
         default:
             std::cout << "Invalid Train Transport Type" << std::endl;;
@@ -1644,11 +1801,9 @@ void createAirportType(int type, string name){
     {
         case 1:
             AT.push_back(new AirportTransport(new Passenger(name)));
-            std::cout << name <<" added successfully" << std::endl;
             break;
         case 2:
             AT.push_back(new AirportTransport(new Cargo(name)));
-            std::cout << name <<" added successfully" << std::endl;
             break;
         default:
             std::cout << "Invalid Airport Transport Type" << std::endl;;

@@ -6,7 +6,7 @@
 
 class SewageUtility : public Utilities {
 public:
-    SewageUtility();
+    SewageUtility(Structure* s);
 
     // Handles sewage-related requests; if not handled, passes it down the chain
     void processRequest(const std::string &request) override;

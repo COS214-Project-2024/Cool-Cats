@@ -322,6 +322,11 @@ void viewCity() {
                 // Print each structure's name and type
                 cout << "- " << basicStructure->getName() 
                      << " (" << basicStructure->getType() << ")" << endl;
+                cout << "\t Utilites" << endl;
+                cout << "\t PowerLeft: " << basicStructure->getKilowatts() << endl;
+                cout << "\t WaterLeft: " << basicStructure->getAvailableWater() << endl;
+                cout << "\t Sewage Amount: " << basicStructure->getSewageAmount() << endl;
+                cout << "\t Waste Amount: " << basicStructure->getWasteAmount() << endl;
             }
         }
 
@@ -341,6 +346,8 @@ StructureGroup* createCityHall(){
     //this is default created, so its done in the before the main menu
     StructureGroup * cityhallGroup = new StructureGroup("CityHallGroup");
     BasicStructure* cityHall = new BasicStructure("CityHall", 'L',100);
+    string n = "PWSB"; 
+    cityHall->addUtilities(n, cityHall);
     cityhallGroup->add(cityHall);
 
     return cityhallGroup;
@@ -682,7 +689,8 @@ void addStructure(){
     }
 
     BasicStructure* newStructure = new BasicStructure(structureName, structuretype, maxCap);
-
+    string n = "PWSB"; 
+    newStructure->addUtilities(n, newStructure);
     arr[groupIndex]->add(newStructure);
 
     CStructIterator* newIterator = arr[groupIndex]->createIterator();

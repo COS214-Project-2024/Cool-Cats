@@ -1,19 +1,5 @@
 #include "Materials.h"
+#include <iostream>
 
-Materials::Materials(ResourceMediator* mediator)
-    : Government(mediator), materialsAvailable(0), materialsUsed(0) {}
+Materials::Materials() : stock(1000) {}
 
-void Materials::supplyMaterials(double amount) {
-    materialsAvailable += amount;
-}
-
-void Materials::useMaterials(double amount) {
-    if (materialsAvailable >= amount) {
-        materialsUsed += amount;
-        materialsAvailable -= amount;
-    }
-}
-
-double Materials::getMaterialsAvailable() const {
-    return materialsAvailable;
-}

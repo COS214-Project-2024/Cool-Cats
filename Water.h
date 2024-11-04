@@ -1,20 +1,16 @@
 #ifndef WATER_H
 #define WATER_H
 
-#include "Government.h"
-
-class Water : public Government {
+class Water {
 private:
-    double waterProduced;
-    double waterConsumed;
+    int waterLiters;
 
 public:
-    Water(ResourceMediator* mediator);
-
-    void produceWater(double amount);
-    void consumeWater(double amount);
-    void storeWater(double amount);
-    double waterStored() const;
+    Water();
+    void supplyWater(int amount);
+    void produceWater(int amount);
+    void consumeWater(int amount);
+    double waterStored();
 };
 
-#endif
+#endif 

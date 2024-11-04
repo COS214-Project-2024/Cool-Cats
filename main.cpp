@@ -417,12 +417,20 @@ void editGovernment() {
     int choice;
     while (true) {
         displayMenu();
-        cin >> choice;
+        while (!(cin >> choice) || choice < 1 || choice > 7) {
+            cin.clear(); // clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
+            cout << "Invalid choice. Please select an option from the menu: ";
+        }
         switch (choice) {
             case 1: {  // Set Tax Rate
                 float taxRate;
                 cout << "Enter new tax rate (e.g., 0.15 for 15%): ";
-                cin >> taxRate;
+                while (!(cin >> taxRate) || taxRate < 0 || taxRate > 1) {
+                    cin.clear(); // clear the error flag
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
+                    cout << "Invalid tax rate. Please enter a value between 0 and 1: ";
+                }
                 government->setTaxRate(taxRate); // Update tax rate
                 TaxMemento* one = government->getTax()->createMemento();
                 government->storeMemento(one);
@@ -433,6 +441,10 @@ void editGovernment() {
                 cout << "Enter policy name (e.g., Green Energy Initiative): ";
                 cin.ignore();  
                 getline(cin, policy);
+                if (policy.empty()) {
+                    cout << "Policy name cannot be empty.\n";
+                    break;
+                }
                 auto policyCommand = make_unique<PolicyImplementationCommand>(nullptr, policy, government);
                 invoker->setCommand(move(policyCommand));
                 invoker->executeCommand();
@@ -441,7 +453,11 @@ void editGovernment() {
             case 3: {  // Allocate Government Budget
                 double amount;
                 cout << "Enter amount to allocate from budget: ";
-                cin >> amount;
+                while (!(cin >> amount) || amount < 0) {
+                    cin.clear(); // clear the error flag
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
+                    cout << "Invalid amount. Please enter a positive value: ";
+                }
                 auto budgetCommand = make_unique<BudgetAllocationCommand>(nullptr, amount, government);
                 invoker->setCommand(move(budgetCommand));
                 invoker->executeCommand();
@@ -453,12 +469,28 @@ void editGovernment() {
                 cout << "Enter project name (e.g., Residential Expansion): ";
                 cin.ignore();
                 getline(cin, projectType);
+                if (projectType.empty()) {
+                    cout << "Project name cannot be empty.\n";
+                    break;
+                }
                 cout << "Enter amount of materials required: ";
-                cin >> materialsAmount;
+                while (!(cin >> materialsAmount) || materialsAmount < 0) {
+                    cin.clear(); // clear the error flag
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
+                    cout << "Invalid amount. Please enter a positive value: ";
+                }
                 cout << "Enter amount of energy required: ";
-                cin >> energyAmount;
+                while (!(cin >> energyAmount) || energyAmount < 0) {
+                    cin.clear(); // clear the error flag
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
+                    cout << "Invalid amount. Please enter a positive value: ";
+                }
                 cout << "Enter amount of water required: ";
-                cin >> waterAmount;
+                while (!(cin >> waterAmount) || waterAmount < 0) {
+                    cin.clear(); // clear the error flag
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
+                    cout << "Invalid amount. Please enter a positive value: ";
+                }
                 resourceMediator->coordinateResources(projectType, materialsAmount, energyAmount, waterAmount);
                 break;
             }
@@ -483,7 +515,6 @@ void editGovernment() {
         }
     }
 }
-
 
 void chooseFromMenu(){
     cout << "Choose from the menu" << endl;

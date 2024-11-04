@@ -4,6 +4,8 @@
 #include "Citizen.h"
 #include "CitizenIterator.h"
 #include "Income.h"
+#include "AllCitizenIterator.h"  
+
 
 #include <iostream>
 
@@ -14,7 +16,7 @@ class LowCitizen : public Citizen{
         void vote();
         static int getLowClassCitizenCount();
         Income* getIncome();
-        CitizenIterator* createCitizenIterator();
+        AllCitizenIterator* createCitizenIterator();
         ~LowCitizen();
     
     private:

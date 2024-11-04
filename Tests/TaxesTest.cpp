@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "../government/Taxes.h"
-#include "../government/TaxMemento.h"
+#include "../Taxes.h"
+#include "../TaxMemento.h"
 
 // Helper function to check float equality with a tolerance
 bool isClose(float a, float b, float tolerance = 1e-6) {

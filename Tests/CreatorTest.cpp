@@ -1,13 +1,13 @@
 #include <gtest/gtest.h>
 
-#include "../Citizen/LowCitizenCreator.h"
-#include "../Citizen/MiddleCitizenCreator.h"
-#include "../Citizen/HighCitizenCreator.h"
-#include "../Citizen/MayorCreator.h"
-#include "../Citizen/LowCitizen.h"
-#include "../Citizen/MiddleCitizen.h"
-#include "../Citizen/HighCitizen.h"
-#include "../Citizen/Mayor.h"
+#include "../LowCitizenCreator.h"
+#include "../MiddleCitizenCreator.h"
+#include "../HighCitizenCreator.h"
+#include "../MayorCreator.h"
+#include "../LowCitizen.h"
+#include "../MiddleCitizen.h"
+#include "../HighCitizen.h"
+#include "../Mayor.h"
 
 TEST(CreatorTest, BasicLowCitizenCreation)
 {

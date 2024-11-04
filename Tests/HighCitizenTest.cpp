@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 
-#include "../Citizen/Citizen.h"
-#include "../Citizen/Mayor.h"
-#include "../Citizen/HighCitizen.h"
+#include "../Citizen.h"
+#include "../Mayor.h"
+#include "../HighCitizen.h"
 
 using namespace std;
 

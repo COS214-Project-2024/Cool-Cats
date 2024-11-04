@@ -1,5 +1,5 @@
 #include "Government.h"
-#include "ResourceMediator.h"
+#include "CityResourceMediator.h"
 #include <iostream>
 #include <algorithm>
 

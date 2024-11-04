@@ -14,7 +14,7 @@ class MiddleCitizen : public Citizen{
         void vote();
         static int getMiddleClassCitizenCount();
         Income* getIncome();
-        AllCitizenIterator* createCitizenIterator();
+        CitizenIterator* createCitizenIterator();
         ~MiddleCitizen();
     
     private:

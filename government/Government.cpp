@@ -2,7 +2,7 @@
 #include "ResourceMediator.h"
 #include <iostream>
 #include <algorithm>
-
+  //
 /// @brief Constructs a Government object with a given ResourceMediator.
 /// @param mediator A pointer to a ResourceMediator object used for managing resources. 
 Government::Government(ResourceMediator* mediator)

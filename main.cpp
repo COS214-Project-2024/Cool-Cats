@@ -1239,7 +1239,7 @@ void addCitizenToBuildings()
                 //Add high-class citizens to structure, ask if correct
                 addCititoBuild(amountCitizens);
 
-                cout << amountCitizens << " of High-class citizens successfully added to the building\n";
+                cout << "\n" << amountCitizens << " of High-class citizens successfully added to the building\n\n";
 
                 delete highClassCreator;
                 break;
@@ -1275,7 +1275,7 @@ void addCitizenToBuildings()
                 //Add mid-class citizen to structure, ask if correct
                 addCititoBuild(amountCitizens);
 
-                cout << amountCitizens << " of Middle-class citizens successfully added to the building\n";
+                cout << "\n" << amountCitizens << " of Middle-class citizens successfully added to the building\n\n";
                 delete midClassCreator;
                 break;
             }
@@ -1311,7 +1311,7 @@ void addCitizenToBuildings()
                 //Add low-class citizen to structure, ask if correct
                 addCititoBuild(amountCitizens);
 
-                cout << amountCitizens << " of Low-class citizens successfully added to the building\n";
+                cout <<  "\n" << amountCitizens << " of Low-class citizens successfully added to the building\n\n";
                 delete lowClassCreator;
                 break;
             }

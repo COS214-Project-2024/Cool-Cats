@@ -437,6 +437,7 @@ void addCititoBuild(int number) {
     cout << "Structure with the name '" << buildingName << "' not found." << endl;
 }
 
+
 void editStructureGroup(){
 
     printLines();

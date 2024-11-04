@@ -1,0 +1,2 @@
+/mnt/c/Users/atomi/Documents/GitHub/Cool-Cats/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/atomi/Documents/GitHub/Cool-Cats/build/CMakeFiles/rebuild_cache.dir

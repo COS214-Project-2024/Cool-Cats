@@ -109,7 +109,7 @@ void createRoad(const std::string& roadName, const std::string& structureGroupNa
 int structureIndex(StructureGroup* group, Structure* name);
 void createInCityTransportRoute(int TransType, const std::string& CityName, BasicStructure* starting, BasicStructure* ending, const std::string& transName, const std::string& routeName);
 void travelRoute(string routeName);
-void createTransportation();
+void createTransportation(int num);
 int error(int min, int max);
 string stringError();
 void newTransportMenu();
@@ -800,18 +800,14 @@ void decorateStructure(){
     cout << "Select a structure to decorate:" << endl;
 
     bool structureFound = false;
-    int selectedGroupIndex = -1;
-    int selectedStructureIndex = -1;
 
-    // Display available structures
-    for (int groupIndex = 0; groupIndex < arr.size(); ++groupIndex) {
-        StructureGroup* group = arr[groupIndex];
+    //avialable structures
+    for (auto* group : arr){
         if (!group) continue;
 
         CStructIterator* iterator = group->createIterator();
-        int structureIndex = 0;
 
-        for (iterator->first(); !iterator->isDone(); iterator->next(), ++structureIndex) {
+        for (iterator->first(); !iterator->isDone(); iterator->next()) {
             Structure* currentStructure = iterator->currentItem();
             BasicStructure* basicStructure = dynamic_cast<BasicStructure*>(currentStructure);
 
@@ -824,124 +820,99 @@ void decorateStructure(){
         delete iterator;
     }
 
-    if (!structureFound) {
+    if(!structureFound){
         cout << "No structures available for decoration." << endl;
         return;
     }
 
-    // Get the structure name from the user
+    //get structure from user:
     cout << "Enter the name of the structure to decorate: ";
     string buildingName;
     cin.ignore(); // Clear input buffer
     getline(cin, buildingName);
 
-    BasicStructure* selectedStructure = nullptr;
+    Structure* selectedStructure = nullptr;
 
-    // Search for the structure by name and keep track of group and structure indices
-    for (int groupIndex = 0; groupIndex < arr.size(); ++groupIndex) {
-        StructureGroup* group = arr[groupIndex];
+    for (auto* group : arr){
         if (!group) continue;
 
         CStructIterator* iterator = group->createIterator();
-        int structureIndex = 0;
 
-        for (iterator->first(); !iterator->isDone(); iterator->next(), ++structureIndex) {
+        for (iterator->first(); !iterator->isDone(); iterator->next()){
             Structure* currentStructure = iterator->currentItem();
             BasicStructure* basicStructure = dynamic_cast<BasicStructure*>(currentStructure);
 
             if (basicStructure && basicStructure->getName() == buildingName) {
                 selectedStructure = basicStructure;
-                selectedGroupIndex = groupIndex; // Save group index
-                selectedStructureIndex = structureIndex; // Save structure index
                 break;
             }
         }
 
         delete iterator;
-        if (selectedStructure) break; // Break outer loop if structure is found
+        if(selectedStructure) break; // structure found
     }
 
-    if (!selectedStructure) {
-        cout << "Structure with the name '" << buildingName << "' not found." << endl;
-        return;
-    }
+    if(!selectedStructure){
+         cout << "Select decoration type:" << endl;
+        cout << "1: Satisfaction Enhancer" << endl;
+        cout << "2: Resource Efficiency Enhancer" << endl;
+        cout << "3: Maintenance Cost Reducer" << endl;
+        int decorationOption;
+        cin >> decorationOption;
 
-    // Prompt for the decoration type
-    cout << "Select decoration type:" << endl;
-    cout << "1: Satisfaction Enhancer" << endl;
-    cout << "2: Resource Efficiency Enhancer" << endl;
-    cout << "3: Maintenance Cost Reducer" << endl;
-    int decorationOption;
-    cin >> decorationOption;
+        switch (decorationOption) {
+            case 1:
+                float boost;
+                cout << "Enter satisfaction boost value: ";
+                cin >> boost;
 
-    BasicStructure* newStructure = nullptr;
-    switch (decorationOption) {
-        case 1: {
-            float boost;
-            cout << "Enter satisfaction boost value: ";
-            cin >> boost;
+                if(cin.fail() || boost < 0.0f || boost >100){
+                    cout << "Invalid boost value. It must be a non-negative number nad less than 100." << endl;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }else {
+                    selectedStructure = new SatisfactionEnhancer(selectedStructure, boost);
+                    cout << "Satisfaction enhancer applied with a boost of " << boost << "!" << endl;
+                }
+                
+                break;
 
-            if (cin.fail() || boost < 0.0f || boost > 100) {
-                cout << "Invalid boost value. It must be a non-negative number and less than 100." << endl;
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            case 2:
+                float effboost;
+                cout << "Enter Resource efficiency boost: ";
+                cin >> effboost;
+
+                if(cin.fail() || effboost < 0.0f || effboost >100){
+                    cout << "Invalid boost value. It must be a non-negative number nad less than 100." << endl;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }else{
+                    selectedStructure = new ResourceEfficiencyEnhancer(selectedStructure, effboost);
+                    cout << "Resource efficiency enhancer applied with a boost of " << effboost << "!" << endl;
+                }
+
+                break;
+
+            case 3:
+                float reduction;
+                cout << "Enter Maintencance cost reduction perscentage: ";
+                cin >> reduction;
+
+                if(cin.fail() || reduction < 0.0f || reduction > 100){
+                    cout << "Invalid reduction percentage. It must be a non-negative number nad less than 100." << endl;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }else {
+                    selectedStructure = new MaintenanceCostReducer(selectedStructure,reduction);
+                    cout << "Maintenance enhancer applied with a reduction of " << reduction << "!" << endl;
+                }
+                break;
+            default:
+                cout << "Invalid decoration option." << endl;
                 return;
-            }
-
-            newStructure = dynamic_cast<BasicStructure*>(new SatisfactionEnhancer(selectedStructure, boost));
-            cout << "Satisfaction enhancer applied with a boost of " << boost << "!" << endl;
-            break;
         }
-
-        case 2: {
-            float effBoost;
-            cout << "Enter resource efficiency boost: ";
-            cin >> effBoost;
-
-            if (cin.fail() || effBoost < 0.0f || effBoost > 100) {
-                cout << "Invalid boost value. It must be a non-negative number and less than 100." << endl;
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                return;
-            }
-
-            newStructure = dynamic_cast<BasicStructure*>(new ResourceEfficiencyEnhancer(selectedStructure, effBoost));
-            cout << "Resource efficiency enhancer applied with a boost of " << effBoost << "!" << endl;
-            break;
-        }
-
-        case 3: {
-            float reduction;
-            cout << "Enter maintenance cost reduction percentage: ";
-            cin >> reduction;
-
-            if (cin.fail() || reduction < 0.0f || reduction > 100) {
-                cout << "Invalid reduction percentage. It must be a non-negative number and less than 100." << endl;
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                return;
-            }
-
-            newStructure = dynamic_cast<BasicStructure*>(new MaintenanceCostReducer(selectedStructure, reduction));
-            cout << "Maintenance cost reducer applied with a reduction of " << reduction << "!" << endl;
-            break;
-        }
-
-        default:
-            cout << "Invalid decoration option." << endl;
-            return;
-    }
-
-    // Remove old structure and add the new decorated structure back to the group
-    if (newStructure) {
-        arr[selectedGroupIndex]->remove(selectedStructure);
-        arr[selectedGroupIndex]->add(newStructure); // Add the new BasicStructure back to the group
-        cout << "Structure decorated and updated successfully!" << endl;
     }
 }
-
-
-
 
 
 
@@ -1122,17 +1093,22 @@ int error(int min, int max){
         }
         return choice;
 }
+void newTransportMenu(){
+        printLines();
+        chooseFromMenu();
+        cout << "Transport Creation Menu" << endl;
+        cout << "1: Create new Public Transport" << endl;
+        cout << "2: Create new Train Transport" << endl;
+        cout << "3: Create new Airplane Transport" << endl;
+        cout << "4: View Current Transports" << endl;
+        cout << "5: Exit" << endl;
+        int choice = error(1,5);
+        createTransportation(choice);
+}
 
-void createTransportation(){
-    printLines();
-    chooseFromMenu();
-    cout << "Public Transport Creation Menu" << endl;
-    cout << "1: Create Bus" << endl;
-    cout << "2: Create Taxi" << endl;
-    cout << "3: Exit" << endl;
-    int choice = error(1,3);
-    switch(choice){
-        case 1:
+void createTransportation(int num){
+    switch(num) {
+        case 1: {
             printLines();
             chooseFromMenu();
             cout << "Public Transport Creation Menu" << endl;
@@ -1246,7 +1222,6 @@ void createTransportation(){
             editTransport();
         }
     }
-
 
 }
 
@@ -1453,6 +1428,7 @@ void addCitizenToBuildings()
                 //Add high-class citizens to structure, ask if correct
                 addCititoBuild(amountCitizens);
 
+                cout << amountCitizens << " of High-class citizens successfully added to the building\n";
 
                 delete highClassCreator;
                 break;
@@ -1488,6 +1464,7 @@ void addCitizenToBuildings()
                 //Add mid-class citizen to structure, ask if correct
                 addCititoBuild(amountCitizens);
 
+                cout << amountCitizens << " of Middle-class citizens successfully added to the building\n";
                 delete midClassCreator;
                 break;
             }
@@ -1523,6 +1500,7 @@ void addCitizenToBuildings()
                 //Add low-class citizen to structure, ask if correct
                 addCititoBuild(amountCitizens);
 
+                cout << amountCitizens << " of Low-class citizens successfully added to the building\n";
                 delete lowClassCreator;
                 break;
             }
@@ -1775,6 +1753,7 @@ void createPublicType(int type, string name){
             break;
         case 2:
             PT.push_back(new PublicTransport(new Taxi(name)));
+            std::cout << name <<" added successfully" << std::endl;
             break;
         default:
             std::cout << "Invalid Public transport type" << std::endl;
@@ -1785,12 +1764,15 @@ void createTrainType(int type, string name){
     {
         case 1:
             TT.push_back(new TrainTransport(new Metro(name)));
+            std::cout << name <<" added successfully" << std::endl;
             break;
         case 2:
             TT.push_back(new TrainTransport(new Tram(name)));
+            std::cout << name <<" added successfully" << std::endl;
             break;
         case 3:
             TT.push_back(new TrainTransport(new Freight(name)));
+            std::cout << name <<" added successfully" << std::endl;
             break;
         default:
             std::cout << "Invalid Train Transport Type" << std::endl;;
@@ -1801,9 +1783,11 @@ void createAirportType(int type, string name){
     {
         case 1:
             AT.push_back(new AirportTransport(new Passenger(name)));
+            std::cout << name <<" added successfully" << std::endl;
             break;
         case 2:
             AT.push_back(new AirportTransport(new Cargo(name)));
+            std::cout << name <<" added successfully" << std::endl;
             break;
         default:
             std::cout << "Invalid Airport Transport Type" << std::endl;;

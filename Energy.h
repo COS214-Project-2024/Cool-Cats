@@ -1,18 +1,21 @@
 #ifndef ENERGY_H
 #define ENERGY_H
 
-class Energy {
+#include "Government.h"
+
+class Energy : public Government {
 private:
-    int energyUnits;
-    double energyStored;
+    double energyProduced;
     double energyConsumed;
+    double energyStored;
 
 public:
-    Energy();
-    void supplyEnergy(int amount);
-    double getEnergyStored();
+    Energy(ResourceMediator* mediator);
+    
     void produceEnergy(double amount);
     void consumeEnergy(double amount);
+    void storeEnergy(double amount);
+    double getEnergyStored() const;
 };
 
-#endif 
+#endif

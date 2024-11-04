@@ -1,13 +1,19 @@
 #ifndef MATERIALS_H
 #define MATERIALS_H
 
-class Materials {
+#include "Government.h"
+
+class Materials : public Government {
 private:
-    int stock;
+    double materialsAvailable;
+    double materialsUsed;
 
 public:
-    Materials();
-    void supplyMaterials(int amount);
+    Materials(ResourceMediator* mediator);
+    
+    void supplyMaterials(double amount);
+    void useMaterials(double amount);
+    double getMaterialsAvailable() const;
 };
 
 #endif

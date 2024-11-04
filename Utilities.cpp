@@ -1,8 +1,7 @@
 #include "Utilities.h"
-#include "BasicStructure.h"
 
-Utilities::Utilities(Structure* s){
-    struc = s;
+Utilities::Utilities(){
+
 }
 
 void Utilities::setNext(Utilities* nextHandler){
@@ -10,7 +9,6 @@ void Utilities::setNext(Utilities* nextHandler){
 }
 
 void Utilities::processRequest(const std::string& request){
-    //cout << "We got to the first in chain" << endl;
     if(next){
         next->processRequest(request);
     }

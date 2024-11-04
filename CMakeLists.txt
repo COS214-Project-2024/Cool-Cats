@@ -40,8 +40,31 @@ add_library(government
     Water.cpp
 )
 
-# Link Citizen library to government library
-target_link_libraries(government PRIVATE Citizen)
+add_library(utilities
+    Utilities.cpp
+    WasteUtility.cpp
+    WaterUtility.cpp
+    PowerUtility.cpp
+    SewageUtility.cpp
+
+
+)
+
+add_library(Buildings
+    Structure.cpp
+    BasicStructure.cpp
+    StructureGroup.cpp
+    StructureDecorator.cpp
+    StructureIterator.cpp
+    CstructIterator.cpp
+    MaintenanceCostReducer.cpp
+    ResourceEfficiencyEnhancer.cpp
+    SatisfactionEnhancer.cpp
+    )
+
+# Link the library with the City library
+target_link_libraries(citizen PRIVATE City)
+target_link_libraries(government PRIVATE City)
 
 # Define each test as an executable and link to Google Test and the appropriate libraries
 add_executable(AllCitizenIteratorTest Tests/AllCitizenIteratorTest.cpp)

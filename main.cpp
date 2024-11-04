@@ -403,6 +403,7 @@ void addCititoBuild(int number) {
     // Prompt the user to enter the name of the building to add the citizen
     cout << "Enter the name of the structure/building to add the citizen to: ";
     string buildingName;
+    cin.ignore();
     getline(cin, buildingName);
 
     // Search for the specified building by name

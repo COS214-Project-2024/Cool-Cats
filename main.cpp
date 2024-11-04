@@ -93,6 +93,7 @@ vector<TrainTransport*> TT; // To hold all the Train transport
 vector<AirportTransport*> AT; // To hold all the Air transport
 map<string, pair<vector<Road*>, vector<RoadSubject*>>> cityRoads; // To assign a road and roadSubject to a specific city group name
 map<string, vector<Transportation*>> transLines; // To hold all the transport routes
+map<string, Transportation*> transC2CLines; // To hold all the city to city transport routes
 
 void editTransport();
 
@@ -108,13 +109,19 @@ void createAirportType(int type, string name);
 void createRoad(const std::string& roadName, const std::string& structureGroupName);
 int structureIndex(StructureGroup* group, Structure* name);
 void createInCityTransportRoute(int TransType, const std::string& CityName, BasicStructure* starting, BasicStructure* ending, const std::string& transName, const std::string& routeName);
+void createC2CTransportRoute(int transType, StructureGroup* starting, StructureGroup* ending, const std::string& transName, const std::string& routeName);
+void RegularInCityTravel(int TransType, const std::string& CityName, BasicStructure* starting, BasicStructure* ending, const std::string& transName);
 void travelRoute(string routeName);
+void travelC2CRoute(string routeName);
 void createTransportation(int num);
 int error(int min, int max);
 string stringError();
+void travelInCity();
 void newTransportMenu();
 void newRouteMenu();
 void createInRoute();
+void createC2CRoute();
+void travelMenu();
 
 
 //for citizens
@@ -926,11 +933,10 @@ void editTransport(){
     cout << "Transport Menu" << endl;
     cout << "1: Create new Transport" << endl;
     cout << "2: Create new Transport Route" << endl;
-    cout << "3: View Current Routes" << endl;
-    cout << "4: Travel" << endl;
-    cout << "5: Delete Transport" << endl;
-    cout << "6: Delete Transport Route" << endl;
-    cout << "7: Exit" << endl;
+    cout << "3: Travel" << endl;
+    cout << "4: Delete Transport" << endl;
+    cout << "5: Delete Transport Route" << endl;
+    cout << "6: Exit" << endl;
     int choice = error(1,7);
     switch(choice){
         case 1:
@@ -939,20 +945,196 @@ void editTransport(){
         case 2:
             newRouteMenu();
         break;
+        case 3:
+            travelMenu();
     }
-
-    //get user input and from there call the function required for that
-    //view city has already be implemented for city groups it will still need to be implemented for structures
-
-    //we will need to get input from the user, ie from what place to what place. 
-    //three things will need to be shown here:
-        //how the observer will notify 
-        //how we use state to consider which form of transportation route to create, maybe we could use the capacity of the structure group to determine what transport options are available 
-    
-    cout << "Enter the structure group you would like to build transport system from" << endl;
 
 }
 
+void travelMenu(){
+    printLines();
+    chooseFromMenu();
+    cout << "Travel Menu" << endl;
+    cout << "1: Travel In City" << endl;
+    cout << "2: Travel Between Cities" << endl;
+    cout << "3: Travel on created Route" << endl;
+    cout << "4: Exit" << endl;
+    int choice = error(1,4);
+    switch(choice){
+        case 1:{
+            travelInCity();
+        }
+    }
+}
+void travelInCity(){
+        std::cout << "Please select Transport Type:" << std::endl;
+        std::cout << "1: Public Transport" << std::endl;
+        std::cout << "2: Train Transport" << std::endl;
+        int choice = error(1,2);
+        switch(choice){
+            case 1:{
+                int transType = choice;
+                string cityName = "";
+                BasicStructure* startB = NULL;
+                BasicStructure* endB = NULL;
+                string transName = "";
+                std::cout << "List of Cities: "<< std::endl;
+                printLines();
+                for(size_t i = 0; i < arr.size(); i++){
+                    std::cout << i << ": " << arr[i]->getName() << std::endl;
+                }
+                printLines();
+                std::cout << "Enter City Name:" << std::endl;
+                string word = stringError();
+                printLines();
+                for(size_t i = 0; i < arr.size(); i++){
+                    if(arr[i]->getName() == word){
+                        cityName = word;
+                        vector<Structure*> buildings = arr[i]->getChildren();
+                        std::cout << "List of Structures in " << arr[i]->getName() << std::endl;
+                        printLines();
+                        for(size_t i = 0; i < buildings.size(); i++){
+                            std::cout << i << ": " << buildings[i]->getName() << std::endl;
+                        }
+                        std::cout << "Enter start building: " << std::endl;
+                        string start = stringError();
+                        printLines();
+                        for(size_t i = 0; i < buildings.size(); i++){
+                            if(buildings[i]->getName() == start){
+                                startB = dynamic_cast<BasicStructure*>(buildings[i]);
+                                break;
+                            }
+                        }
+                        std::cout << "Enter end building: " << std::endl;
+                        string ending = stringError();
+                        printLines();
+                        for(size_t i = 0; i < buildings.size(); i++){
+                            if(buildings[i]->getName() == ending){
+                                endB = dynamic_cast<BasicStructure*>(buildings[i]);
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+                std::cout << "List of all Public Transports: " << std::endl;
+                printLines();
+                std::cout << "Public Transports:" << std::endl;
+                for(size_t i = 0; i < PT.size(); i++){
+                    std::cout << i << ": " << PT[i]->getVehicle()->getName() << std::endl;
+                }
+                std::cout << "Enter a Transport Name: " << std::endl;
+                string tName = stringError();
+                printLines();
+                for(size_t i = 0; i < PT.size(); i++){
+                    if(PT[i]->getVehicle()->getName() == tName){
+                        transName = tName;
+                        break;
+                    }
+                }
+                if(transType == 0 || cityName == "" || transName == "" ){
+                    std::cout << "Invalid Input, please review your inputs and try again" << std::endl;
+                    std::cout << "City Name: " << cityName << std::endl;
+                    std::cout << "Transport Name: " << transName << std::endl;
+                    travelInCity();
+                }
+                else if(startB == NULL || endB == NULL){
+                    std::cout << "Invalid Input, no such start/end building exists" << std::endl;
+                    travelInCity();
+                }
+                else{
+                    printLines();
+                    std::cout << "Traveling from: " << startB->getName() << "\n to: " << endB->getName() << std::endl;
+                    RegularInCityTravel(transType, cityName, startB, endB, transName);
+                    travelInCity();
+                }
+            }
+            break;
+            case 2:{
+                int transType = choice;
+                string cityName = "";
+                BasicStructure* startB = NULL;
+                BasicStructure* endB = NULL;
+                string transName = "";
+                string routeName = "";
+                std::cout << "List of Cities: "<< std::endl;
+                printLines();
+                for(size_t i = 0; i < arr.size(); i++){
+                    std::cout << i << ": " << arr[i]->getName() << std::endl;
+                }
+                printLines();
+                std::cout << "Enter City Name:" << std::endl;
+                string word = stringError();
+                printLines();
+                for(size_t i = 0; i < arr.size(); i++){
+                    if(arr[i]->getName() == word){
+                        cityName = word;
+                        vector<Structure*> buildings = arr[i]->getChildren();
+                        std::cout << "List of Structures in " << arr[i]->getName() << std::endl;
+                        printLines();
+                        for(size_t i = 0; i < buildings.size(); i++){
+                            std::cout << i << ": " << buildings[i]->getName() << std::endl;
+                        }
+                        std::cout << "Enter start building: " << std::endl;
+                        string start = stringError();
+                        printLines();
+                        for(size_t i = 0; i < buildings.size(); i++){
+                            if(buildings[i]->getName() == start){
+                                startB = dynamic_cast<BasicStructure*>(buildings[i]);
+                                break;
+                            }
+                        }
+                        std::cout << "Enter end building: " << std::endl;
+                        string ending = stringError();
+                        printLines();
+                        for(size_t i = 0; i < buildings.size(); i++){
+                            if(buildings[i]->getName() == ending){
+                                endB = dynamic_cast<BasicStructure*>(buildings[i]);
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+                std::cout << "List of all Train Transports: " << std::endl;
+                printLines();
+                std::cout << "Train Transports:" << std::endl;
+                for(size_t i = 0; i < TT.size(); i++){
+                    std::cout << i << ": " << TT[i]->getVehicle()->getName() << std::endl;
+                }
+                std::cout << "Enter a Transport Name: " << std::endl;
+                string tName = stringError();
+                printLines();
+                for(size_t i = 0; i < TT.size(); i++){
+                    if(TT[i]->getVehicle()->getName() == tName){
+                        transName = tName;
+                        break;
+                    }
+                }
+                std::cout << "Enter a route name: " << std::endl;
+                routeName = stringError();
+                printLines();
+                if(transType == 0 || cityName == "" || transName == "" || routeName == "" ){
+                    std::cout << "Invalid Input, please review your inputs and try again" << std::endl;
+                    std::cout << "City Name: " << cityName << std::endl;
+                    std::cout << "Transport Name: " << transName << std::endl;
+                    std::cout << "Route Name: " << routeName << std::endl;
+                    createInRoute();
+                }
+                else if(startB == NULL || endB == NULL){
+                    std::cout << "Invalid Input, no such start/end building exists" << std::endl;
+                    createInRoute();
+                }
+                else{
+                    printLines();
+                    createInCityTransportRoute(transType, cityName, startB, endB, transName, routeName);
+                    std::cout << "Route created!" << std::endl;
+                    newRouteMenu();
+                }
+            }
+            break;
+        }
+}
 void newRouteMenu(){
     printLines();
     chooseFromMenu();
@@ -965,6 +1147,164 @@ void newRouteMenu(){
     switch(choice){
         case 1:
             createInRoute();
+            break;
+        case 2:
+            createC2CRoute();
+        break;
+        case 3:
+            std::cout << "In city Routes: " << std::endl;
+            for (const auto& entry : transLines) {
+                std::cout << entry.first << std::endl;  // Print the key of transLines
+            }
+            printLines();
+            std::cout << "City to City Routes: " << std::endl;
+            for (const auto& entry : transC2CLines) {
+                std::cout << entry.first << std::endl;  // Print the key of transC2CLines
+            }
+            newRouteMenu();
+        break;
+        case 4:
+            editTransport();
+        break;
+    }
+}
+
+void createC2CRoute(){
+    printLines();
+    chooseFromMenu();
+    std::cout << "Please select Transport Type:" << std::endl;
+    std::cout << "1: Train Transport(Freight only)" << std::endl;
+    std::cout << "2: Airplane Transport" << std::endl;
+    int choice = error(1,2);
+    switch(choice){
+        case 1:{
+            StructureGroup* startB = NULL;
+            StructureGroup* endB = NULL;
+            string transName = "";
+            string routeName = "";
+            std::cout << "List of Cities: "<< std::endl;
+            printLines();
+            for(size_t i = 0; i < arr.size(); i++){
+                std::cout << i << ": " << arr[i]->getName() << std::endl;
+            }
+            printLines();
+            std::cout << "Enter Starting City:" << std::endl;
+            string word = stringError();
+            for(size_t i = 0; i < arr.size(); i++){
+                if(arr[i]->getName() == word){
+                    startB = arr[i];
+                }
+            }
+            printLines();
+            std::cout << "Enter Ending City:" << std::endl;
+            string word1 = stringError();
+            for(size_t i = 0; i < arr.size(); i++){
+                if(arr[i]->getName() == word1){
+                    endB = arr[i];
+                }
+            }
+            printLines();
+            std::cout << "List of all Freight Train Transports: " << std::endl;
+            printLines();
+            std::cout << "Freight Train Transports:" << std::endl;
+            for(size_t i = 0; i < TT.size(); i++){
+                if (dynamic_cast<Freight*>(TT[i])) {
+                    std::cout << i << ": " << TT[i]->getVehicle()->getName() << std::endl;
+                }
+            }
+            std::cout << "Enter a Transport Name: " << std::endl;
+            string tName = stringError();
+            printLines();
+            for(size_t i = 0; i < TT.size(); i++){
+                if(TT[i]->getVehicle()->getName() == tName){
+                    transName = tName;
+                    break;
+                }
+            }
+            std::cout << "Enter a route name: " << std::endl;
+            routeName = stringError();
+            printLines();
+            if(transName == "" || routeName == "" ){
+                std::cout << "Invalid Input, please review your inputs and try again" << std::endl;
+                std::cout << "Transport Name: " << transName << std::endl;
+                std::cout << "Route Name: " << routeName << std::endl;
+                createC2CRoute();
+            }
+            else if(startB == NULL || endB == NULL){
+                std::cout << "Invalid Input, no such start/end city exists" << std::endl;
+                createC2CRoute();
+            }
+            else{
+                printLines();
+                createC2CTransportRoute(choice, startB, endB, transName, routeName);
+                std::cout << "Route created!" << std::endl;
+                newRouteMenu();
+            }
+        }
+        break;
+        case 2:{
+            StructureGroup* startB = NULL;
+            StructureGroup* endB = NULL;
+            string transName = "";
+            string routeName = "";
+            std::cout << "List of Cities: "<< std::endl;
+            printLines();
+            for(size_t i = 0; i < arr.size(); i++){
+                std::cout << i << ": " << arr[i]->getName() << std::endl;
+            }
+            printLines();
+            std::cout << "Enter Starting City:" << std::endl;
+            string word1 = stringError();
+            for(size_t i = 0; i < arr.size(); i++){
+                if(arr[i]->getName() == word1){
+                    startB = arr[i];
+                }
+            }
+            printLines();
+            std::cout << "Enter Ending City:" << std::endl;
+            string word2 = stringError();
+            for(size_t i = 0; i < arr.size(); i++){
+                if(arr[i]->getName() == word2){
+                    endB = arr[i];
+                }
+            }
+            printLines();
+            std::cout << "List of all Airplane Transports: " << std::endl;
+            printLines();
+            std::cout << "Airplane Transports:" << std::endl;
+            for(size_t i = 0; i < AT.size(); i++){
+                std::cout << i << ": " << AT[i]->getVehicle()->getName() << std::endl;
+            }
+            std::cout << "Enter a Transport Name: " << std::endl;
+            string tName = stringError();
+            printLines();
+            for(size_t i = 0; i < AT.size(); i++){
+                if(AT[i]->getVehicle()->getName() == tName){
+                    transName = tName;
+                    break;
+                }
+            }
+            std::cout << "Enter a route name: " << std::endl;
+            routeName = stringError();
+            printLines();
+            if(transName == "" || routeName == "" ){
+                std::cout << "Invalid Input, please review your inputs and try again" << std::endl;
+                std::cout << "Transport Name: " << transName << std::endl;
+                std::cout << "Route Name: " << routeName << std::endl;
+                createC2CRoute();
+            }
+            else if(startB == NULL || endB == NULL){
+                std::cout << "Invalid Input, no such start/end city exists" << std::endl;
+                createC2CRoute();
+            }
+            else{
+                printLines();
+                createC2CTransportRoute(choice, startB, endB, transName, routeName);
+                std::cout << "Route created!" << std::endl;
+                newRouteMenu();
+            }
+        }
+        break;
     }
 }
 
@@ -1037,6 +1377,89 @@ void createInRoute(){
                     break;
                 }
             }
+            std::cout << "Enter a name for the route: " << std::endl;
+            routeName = stringError();
+            printLines();
+            if(transType == 0 || cityName == "" || transName == "" || routeName == "" ){
+                std::cout << "Invalid Input, please review your inputs and try again" << std::endl;
+                std::cout << "City Name: " << cityName << std::endl;
+                std::cout << "Transport Name: " << transName << std::endl;
+                std::cout << "Route Name: " << routeName << std::endl;
+                newRouteMenu();
+            }
+            else if(startB == NULL || endB == NULL){
+                std::cout << "Invalid Input, no such start/end building exists" << std::endl;
+                newRouteMenu();
+            }
+            else{
+                printLines();
+                createInCityTransportRoute(transType, cityName, startB, endB, transName, routeName);
+                std::cout << "Route created!" << std::endl;
+                newRouteMenu();
+            }
+        }
+        break;
+        case 2:{
+            int transType = choice;
+            string cityName = "";
+            BasicStructure* startB = NULL;
+            BasicStructure* endB = NULL;
+            string transName = "";
+            string routeName = "";
+            std::cout << "List of Cities: "<< std::endl;
+            printLines();
+            for(size_t i = 0; i < arr.size(); i++){
+                std::cout << i << ": " << arr[i]->getName() << std::endl;
+            }
+            printLines();
+            std::cout << "Enter City Name:" << std::endl;
+            string word = stringError();
+            printLines();
+            for(size_t i = 0; i < arr.size(); i++){
+                if(arr[i]->getName() == word){
+                    cityName = word;
+                    vector<Structure*> buildings = arr[i]->getChildren();
+                    std::cout << "List of Structures in " << arr[i]->getName() << std::endl;
+                    printLines();
+                    for(size_t i = 0; i < buildings.size(); i++){
+                        std::cout << i << ": " << buildings[i]->getName() << std::endl;
+                    }
+                    std::cout << "Enter start building: " << std::endl;
+                    string start = stringError();
+                    printLines();
+                    for(size_t i = 0; i < buildings.size(); i++){
+                        if(buildings[i]->getName() == start){
+                            startB = dynamic_cast<BasicStructure*>(buildings[i]);
+                            break;
+                        }
+                    }
+                    std::cout << "Enter end building: " << std::endl;
+                    string ending = stringError();
+                    printLines();
+                    for(size_t i = 0; i < buildings.size(); i++){
+                        if(buildings[i]->getName() == ending){
+                            endB = dynamic_cast<BasicStructure*>(buildings[i]);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+            std::cout << "List of all Train Transports: " << std::endl;
+            printLines();
+            std::cout << "Train Transports:" << std::endl;
+            for(size_t i = 0; i < TT.size(); i++){
+                std::cout << i << ": " << TT[i]->getVehicle()->getName() << std::endl;
+            }
+            std::cout << "Enter a Transport Name: " << std::endl;
+            string tName = stringError();
+            printLines();
+            for(size_t i = 0; i < TT.size(); i++){
+                if(TT[i]->getVehicle()->getName() == tName){
+                    transName = tName;
+                    break;
+                }
+            }
             std::cout << "Enter a route name: " << std::endl;
             routeName = stringError();
             printLines();
@@ -1057,9 +1480,8 @@ void createInRoute(){
                 std::cout << "Route created!" << std::endl;
                 newRouteMenu();
             }
-            
-
         }
+        break;
     }
 }
 
@@ -1922,10 +2344,148 @@ void createInCityTransportRoute(int TransType, const std::string& CityName, Basi
     }
 }
 
+void createC2CTransportRoute(int transType, StructureGroup* starting, StructureGroup* ending, const std::string& transName, const std::string& routeName) {
+    switch(transType) {
+        // Train Transport
+        case 1: {
+            for (TrainTransport* TrainTrans : TT) {
+                if (TrainTrans->getVehicle()->getName() == transName) {
+                    Road* rail = new Road("UnderWaterRail");
+                    Transportation* railObserver = new ConcreteObserver(rail, TrainTrans);
+                    transC2CLines.insert({routeName, railObserver});
+                }
+            }
+            break;
+        }
+
+        // Airplane Transport
+        case 2: {
+                for (AirportTransport* AirTrans : AT) {
+                    if (AirTrans->getVehicle()->getName() == transName) {
+                        Road* sky = new Road("Air");
+                        Transportation* skyObserver = new ConcreteObserver(sky, AirTrans);
+                        transC2CLines.insert({routeName, skyObserver});
+                    }
+                }
+            break;
+        }
+
+        default:
+            std::cout << "Incorrect Transport type" << std::endl;
+            break;
+    }
+}
+
+void RegularInCityTravel(int TransType, const std::string& CityName, BasicStructure* starting, BasicStructure* ending, const std::string& transName) {
+    switch(TransType) {
+        // Public Transport
+        case 1: {
+            for (PublicTransport* PublicTrans : PT) {
+                if (PublicTrans->getVehicle()->getName() == transName) {
+                    for (StructureGroup* Cities : arr) {
+                        if (Cities->getName() == CityName) {
+                            int startIdx = structureIndex(Cities, starting);
+                            int endIdx = structureIndex(Cities, ending);
+                            if (startIdx != -1 && endIdx != -1 && cityRoads.count(CityName)) {
+                                auto& roads = cityRoads[CityName].first;
+                                auto& roadSubjects = cityRoads[CityName].second;
+                                std::vector<Transportation*> observers;
+
+                                // Map structures to roads based on the 1-to-4 ratio
+                                int startRoadIdx = startIdx / 4;
+                                int endRoadIdx = endIdx / 4;
+
+                                if (startRoadIdx <= endRoadIdx) {
+                                    for (int i = startRoadIdx; i <= endRoadIdx; ++i) {
+                                        observers.push_back(new ConcreteObserver(roads[i], PublicTrans));
+                                        roadSubjects[i]->notify();
+                                    }
+                                } else {
+                                    for (int i = startRoadIdx; i >= endRoadIdx; --i) {
+                                        observers.push_back(new ConcreteObserver(roads[i], PublicTrans));
+                                        roadSubjects[i]->notify();
+                                    }
+                                }
+                                for(size_t i = 0; i < observers.size(); i++){
+                                    observers[i]->travel();
+                                }
+                                
+                            }
+                        } else {
+                            std::cout << "No such City name" << std::endl;
+                            return;
+                        }
+                    }
+                } else {
+                    std::cout << "No such Public Transport Name" << std::endl;
+                    return;
+                }
+            }
+            break;
+        }
+
+        // Train Transport
+        case 2: {
+            for (TrainTransport* TrainTrans : TT) {
+                if (TrainTrans->getVehicle()->getName() == transName) {
+                    for (StructureGroup* Cities : arr) {
+                        if (Cities->getName() == CityName) {
+                            int startIdx = structureIndex(Cities, starting);
+                            int endIdx = structureIndex(Cities, ending);
+
+                            if (startIdx != -1 && endIdx != -1 && cityRoads.count(CityName)) {
+                                auto& roads = cityRoads[CityName].first;
+                                auto& roadSubjects = cityRoads[CityName].second;
+                                std::vector<Transportation*> observers;
+
+                                // Map structures to roads based on the 1-to-4 ratio
+                                int startRoadIdx = startIdx / 4;
+                                int endRoadIdx = endIdx / 4;
+
+                                if (startRoadIdx <= endRoadIdx) {
+                                    for (int i = startRoadIdx; i <= endRoadIdx; ++i) {
+                                        observers.push_back(new ConcreteObserver(roads[i], TrainTrans));
+                                        roadSubjects[i]->notify();
+                                    }
+                                } else {
+                                    for (int i = startRoadIdx; i >= endRoadIdx; --i) {
+                                        observers.push_back(new ConcreteObserver(roads[i], TrainTrans));
+                                        roadSubjects[i]->notify();
+                                    }
+                                }
+                                for(size_t i = 0; i < observers.size(); i++){
+                                    observers[i]->travel();
+                                }
+                            }
+                        } else {
+                            std::cout << "No such City name" << std::endl;
+                            return;
+                        }
+                    }
+                } else {
+                    std::cout << "No such Train Transport Name" << std::endl;
+                    return;
+                }
+            }
+            break;
+        }
+
+        default:
+            std::cout << "Incorrect Transport type" << std::endl;
+            break;
+    }
+}
+
 
 void travelRoute(string routeName){
     vector<Transportation*> travelLine = transLines.find(routeName)->second;
     for(size_t i = 0; i < travelLine.size(); i++){
         travelLine[i]->travel();
     }
+}
+
+void travelC2CRoute(string routeName){
+    Transportation* travelLine = transC2CLines.find(routeName)->second;
+    travelLine->travel();
+    
 }

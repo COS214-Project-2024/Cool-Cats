@@ -323,7 +323,7 @@ void viewCity() {
                 // Print each structure's name and type
                 cout << "- " << basicStructure->getName() 
                      << " (" << basicStructure->getType() << ")" << endl;
-                cout << "\t Utilites" << endl;
+                // cout << "\t Utilites" << endl;
                 // cout << "\t PowerLeft: " << basicStructure->getKilowatts() << endl;
                 // cout << "\t WaterLeft: " << basicStructure->getAvailableWater() << endl;
                 // cout << "\t Sewage Amount: " << basicStructure->getSewageAmount() << endl;
@@ -692,7 +692,7 @@ void addStructure(){
 
     BasicStructure* newStructure = new BasicStructure(structureName, structuretype, maxCap);
     string n = "PWSB"; 
-    // newStructure->addUtilities(n, newStructure);
+    //newStructure->addUtilities(n, newStructure);
     arr[groupIndex]->add(newStructure);
 
     CStructIterator* newIterator = arr[groupIndex]->createIterator();

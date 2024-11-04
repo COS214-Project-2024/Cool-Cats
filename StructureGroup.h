@@ -24,6 +24,18 @@ class StructureGroup : public Structure
         float getResourceConsumption() override;
         float getCitizenSatisfactionImpact() override;
         CStructIterator* createIterator();
+        float getKilowatts()override{return 0;};
+        void addUtilities(string &request, Structure* s) override{};
+        float getAvailableWater()override{return 0;};
+        float getSewageAmount()override{return 0;};
+        float getWasteAmount()override{return 0;};
+
+        void setKilowatts(float kw)override{};
+        void setAvailableWater(float water)override{};
+        void setSewageAmount(float sewage)override{};
+        void setWasteAmount(float waste)override{};
+        void subTract()override{};
+        
 
         ~StructureGroup() ;
 

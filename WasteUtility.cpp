@@ -1,7 +1,7 @@
 #include "WasteUtility.h"
 
 
-WasteUtility::WasteUtility(){
+WasteUtility::WasteUtility(Structure* s) : Utilities(s){
 
 }
 

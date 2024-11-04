@@ -1,7 +1,7 @@
 #include "Utilities.h"
 
-Utilities::Utilities(){
-
+Utilities::Utilities(Structure* s){
+    struc = s;
 }
 
 void Utilities::setNext(Utilities* nextHandler){

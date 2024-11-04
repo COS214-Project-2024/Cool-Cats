@@ -4,13 +4,14 @@
 #include "Utilities.h"
 #include "Energy.h"
 #include <string>
+#include "Structure.h"
 
 class PowerUtility : public Utilities {
 private:
     Energy* energy; // Represents the energy resource // Legacy system reference
     double powerMega; // power in circulation
 public:
-    PowerUtility();
+    PowerUtility(Structure* s);
 
     // Handles power-related requests; if not handled, passes it down the chain
     void processRequest(const std::string &request) override;

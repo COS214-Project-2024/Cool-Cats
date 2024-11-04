@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/TaxesTest.dir/Tests/TaxesTest.cpp.o -o TaxesTest  lib/libgtest.a lib/libgtest_main.a libgovernment.a libCitizen.a lib/libgtest.a 

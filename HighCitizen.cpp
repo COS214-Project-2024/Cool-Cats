@@ -36,7 +36,6 @@ void HighCitizen::vote()
     }
     
     vector<Mayor*> mayors = Citizen::getMayors();
-    cout << "Mayor size: " << mayors.size() << endl;
 
     if(mayors.empty())
     {
@@ -44,10 +43,7 @@ void HighCitizen::vote()
     }
 
     int random = rand() % mayors.size();
-    cout << "Random and vote count\n";
-    cout << random << endl;
     mayors[random]->receiveVote();
-    cout << mayors[random]->getVoteCount() << endl;
 }
 
 /// @brief Static method that returns the number of active high class citizens in the city
@@ -67,7 +63,7 @@ Income* HighCitizen::getIncome()
 
 /// @brief Returns an all citizen iterator object that allows a user to iterate through all citizens, regardless of type
 /// @return An AllCitizenIterator object
-AllCitizenIterator* HighCitizen::createCitizenIterator()
+CitizenIterator* HighCitizen::createCitizenIterator()
 {
     return new AllCitizenIterator(citizens);
 }

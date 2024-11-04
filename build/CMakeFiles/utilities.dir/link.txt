@@ -1,2 +1,0 @@
-/usr/bin/ar qc libutilities.a CMakeFiles/utilities.dir/Utilities.cpp.o CMakeFiles/utilities.dir/WasteUtility.cpp.o CMakeFiles/utilities.dir/WaterUtility.cpp.o CMakeFiles/utilities.dir/PowerUtility.cpp.o CMakeFiles/utilities.dir/SewageUtility.cpp.o
-/usr/bin/ranlib libutilities.a

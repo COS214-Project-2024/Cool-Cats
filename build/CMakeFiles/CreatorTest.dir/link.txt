@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/CreatorTest.dir/Tests/CreatorTest.cpp.o -o CreatorTest  lib/libgtest.a lib/libgtest_main.a libCitizen.a lib/libgtest.a 

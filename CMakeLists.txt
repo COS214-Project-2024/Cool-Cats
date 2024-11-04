@@ -60,7 +60,7 @@ add_library(Buildings
     MaintenanceCostReducer.cpp
     ResourceEfficiencyEnhancer.cpp
     SatisfactionEnhancer.cpp
-)
+    )
 
 # Define each test as an executable and link to Google Test and the appropriate libraries
 add_executable(AllCitizenIteratorTest Tests/AllCitizenIteratorTest.cpp)

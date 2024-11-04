@@ -132,6 +132,10 @@ int getCitizenPopulation();
 void makeCitizensVote();
 void currentMayor();
 void currentSatisfaction();
+bool foundCity(string cityChoice);
+int getCityIndex(string cityChoice);
+void deleteAllCitizens();
+void deleteCitizenArr(Citizen** arr);
 
 //Global variables for Citizen
 bool citizenIntro = false;
@@ -141,8 +145,10 @@ double previousSatisfaction = 0;
 LowCitizen * SENTINEL = new LowCitizen();
 Mayor * SENTINEL_MAYOR = new Mayor();
 regex escape_characters(R"(\\[nt\\\"'])");
-bool foundCity(string cityChoice);
-int getCityIndex(string cityChoice);
+Citizen ** highClassCitizenArr = nullptr;
+Citizen **midClassCitizenArr = nullptr;
+Citizen **lowClassCitizenArr = nullptr;
+int arrayCount = 0;
 
 
 // Global variables for Government
@@ -1422,6 +1428,13 @@ void addCitizenToBuildings()
                         cout << "Invalid number of citizens added, please try again\n";
                     }
                 }
+
+                if(highClassCitizenArr != nullptr)
+                {
+                    arrayCount = amountCitizens;
+                    deleteCitizenArr(highClassCitizenArr);
+                }
+
                 Citizen** highClassCitizenArr = new Citizen*[amountCitizens];
                 Creator *highClassCreator = new HighCitizenCreator();
 
@@ -1458,6 +1471,13 @@ void addCitizenToBuildings()
                         cout << "Invalid number of citizens added, please try again\n";
                     }
                 }
+
+                if(midClassCitizenArr != nullptr)
+                {
+                    arrayCount = amountCitizens;
+                    deleteCitizenArr(midClassCitizenArr);
+                }
+
                 Citizen** midClassCitizenArr = new Citizen*[amountCitizens];
                 Creator *midClassCreator = new MiddleCitizenCreator();
 
@@ -1492,6 +1512,12 @@ void addCitizenToBuildings()
                     {
                         cout << "Invalid number of citizens added, please try again\n";
                     }
+                }
+
+                if(lowClassCitizenArr != nullptr)
+                {
+                    arrayCount = amountCitizens;
+                    deleteCitizenArr(lowClassCitizenArr);
                 }
 
                 Citizen** lowClassCitizenArr = new Citizen*[amountCitizens];
@@ -1578,6 +1604,8 @@ void addMayor(){
     cout << newMayorName << " has been created\n";
     cout << "You can make all citizens vote for a mayor by going to the 'Make citizens vote for the new mayor' option\n";
     cout << endl;
+
+    delete mc;
 }
 
 //Helper function for add citizen and add mayor
@@ -1755,6 +1783,19 @@ void currentSatisfaction()
     cout << endl;
 
     delete iterate;
+}
+void deleteAllCitizens()
+{
+    delete SENTINEL;
+    delete SENTINEL_MAYOR;
+}
+void deleteCitizenArr(Citizen **arr)
+{
+     for (int i = 0; i < arrayCount; i++) {
+        delete arr[i];
+    }
+    // Delete the citizen array itself
+    delete[] arr;
 }
 
 void createPublicType(int type, string name){

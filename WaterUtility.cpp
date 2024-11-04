@@ -1,9 +1,7 @@
 #include "WaterUtility.h"
 
 WaterUtility::WaterUtility(Structure* s) : Utilities(s){
-    storageUnits = 10000;
     capacity = 50;
-    puritylevels = 2;
 }
 
 void WaterUtility::processRequest(const std::string &request){
@@ -26,6 +24,10 @@ void WaterUtility::processRequest(const std::string &request){
 void WaterUtility::extractWater(){
     capacity += 100;
     struc->setAvailableWater(capacity);
+}
+
+int WaterUtility::getCapacity(){
+    return capacity;
 }
 
 

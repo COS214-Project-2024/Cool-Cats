@@ -93,6 +93,9 @@ target_link_libraries(TaxesTest PRIVATE gtest gtest_main government Citizen)
 add_executable(TaxMementoTest Tests/TaxMementoTest.cpp)
 target_link_libraries(TaxMementoTest PRIVATE gtest gtest_main government Citizen)
 
+add_executable(UtilitiesTest Tests/UtilitiesTest.cpp)
+target_link_libraries(UtilitiesTest PRIVATE gtest gtest_main utilities)
+
 # Register tests with CMake's testing tool
 add_test(NAME AllCitizenIteratorTest COMMAND AllCitizenIteratorTest)
 add_test(NAME CreatorTest COMMAND CreatorTest)
@@ -104,3 +107,5 @@ add_test(NAME MiddleCitizenTest COMMAND MiddleCitizenTest)
 add_test(NAME GovernmentTest COMMAND GovernmentTest)
 add_test(NAME TaxesTest COMMAND TaxesTest)
 add_test(NAME TaxMementoTest COMMAND TaxMementoTest)
+
+add_test(NAME UtilitiesTest COMMAND UtilitiesTest)

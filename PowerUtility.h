@@ -17,6 +17,8 @@ public:
 
     // Additional power-specific methods
     void generatePower();
+
+    double getPowerMega();
 };
 
 #endif

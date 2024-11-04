@@ -21,6 +21,7 @@ void PowerUtility::processRequest(const std::string& request){
         //cout << "going on to next" << endl;
         next->processRequest(request);
     }
+    
 
 }
 
@@ -30,5 +31,10 @@ void PowerUtility::generatePower(){
     powerMega += 50;
     struc->setKilowatts(powerMega);
 }
+
+double PowerUtility::getPowerMega(){
+    return powerMega;
+}
+
 
 

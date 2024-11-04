@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/GovernmentTest.dir/Tests/GovernmentTest.cpp.o -o GovernmentTest  lib/libgtest.a lib/libgtest_main.a libgovernment.a libCitizen.a lib/libgtest.a 

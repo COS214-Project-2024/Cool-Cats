@@ -10,7 +10,6 @@ private:
     double storageUnits; // Storage units for water
     Water* water;        // Represents water resource
     int capacity;
-    int puritylevels;
 
 public:
     WaterUtility(Structure* s);
@@ -18,6 +17,8 @@ public:
     // Handles water-related requests; if not handled, passes it down the chain
     void processRequest(const std::string &request) override;
     void extractWater();
+    int getCapacity();
+
     // Additional water-specific methods
 
 };

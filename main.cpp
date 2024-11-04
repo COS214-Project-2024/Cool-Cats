@@ -65,6 +65,19 @@
 #include <limits>
 #include <regex>
 
+// Government includes
+#include "Government.h"
+#include "GovernmentInvoker.h"
+#include "TaxationCommand.h"
+#include "PolicyImplementationCommand.h"
+#include "Materials.h"
+#include "Energy.h"
+#include "Water.h"
+#include "CityResourceMediator.h"
+#include "Taxes.h"
+#include "TaxMemento.h"
+#include "BudgetAllocationCommand.h"
+
 using namespace std;
 
 //main menu
@@ -132,7 +145,13 @@ bool foundCity(string cityChoice);
 int getCityIndex(string cityChoice);
 
 
-//other
+// Global variables for Government
+Government* government;
+GovernmentInvoker* invoker;
+Materials* materials;
+CityResourceMediator* resourceMediator;
+Energy* energy;
+Water* water;
 
 void errorMessage();
 CStructIterator* createIteratorForGroup(StructureGroup* s );
@@ -147,6 +166,8 @@ void createGovernment();
 
 void editTransport();
 void printLines();
+void editGovernment();
+
 
 
 vector<StructureGroup*> arr; // this keeps track of all the stucture groups that have been created
@@ -261,7 +282,7 @@ void mainMenu() {
                 break;
 
             case 6:
-                // Call editGovernment function
+                editGovernment();
                 break;
 
             case 7:
@@ -354,9 +375,98 @@ StructureGroup* createCityHall(){
     return cityhallGroup;
 }
 
-void createGovernment(){
-    
+void createGovernment() {
+    resourceMediator = new CityResourceMediator();
+    government = new Government(resourceMediator);
+    invoker = new GovernmentInvoker();
+    materials = new Materials();
+    energy = new Energy();
+    water = new Water();
 }
+
+void displayMenu() {
+    cout << "\nCity Builder Simulation Menu:\n";
+    cout << "1. Set Tax Rate\n";
+    cout << "2. Implement Policy\n";
+    cout << "3. Allocate Government Budget\n";
+    cout << "4. Coordinate Resources for a Project\n";
+    cout << "5. Collect Taxes\n";
+    cout << "6. Restore Taxes to previous\n";
+    cout << "7. Exit\n";
+    cout << "Enter your choice: ";
+}
+
+void editGovernment() {
+    int choice;
+    while (true) {
+        displayMenu();
+        cin >> choice;
+        switch (choice) {
+            case 1: {  // Set Tax Rate
+                float taxRate;
+                cout << "Enter new tax rate (e.g., 0.15 for 15%): ";
+                cin >> taxRate;
+                government->setTaxRate(taxRate); // Update tax rate
+                TaxMemento* one = government->getTax()->createMemento();
+                government->storeMemento(one);
+                break;
+            }
+            case 2: {  // Implement Policy
+                string policy;
+                cout << "Enter policy name (e.g., Green Energy Initiative): ";
+                cin.ignore();  
+                getline(cin, policy);
+                auto policyCommand = make_unique<PolicyImplementationCommand>(nullptr, policy, government);
+                invoker->setCommand(move(policyCommand));
+                invoker->executeCommand();
+                break;
+            }
+            case 3: {  // Allocate Government Budget
+                double amount;
+                cout << "Enter amount to allocate from budget: ";
+                cin >> amount;
+                auto budgetCommand = make_unique<BudgetAllocationCommand>(nullptr, amount, government);
+                invoker->setCommand(move(budgetCommand));
+                invoker->executeCommand();
+                break;
+            }
+            case 4: {  // Coordinate Resources for a Project
+                string projectType;
+                int materialsAmount, energyAmount, waterAmount;
+                cout << "Enter project name (e.g., Residential Expansion): ";
+                cin.ignore();
+                getline(cin, projectType);
+                cout << "Enter amount of materials required: ";
+                cin >> materialsAmount;
+                cout << "Enter amount of energy required: ";
+                cin >> energyAmount;
+                cout << "Enter amount of water required: ";
+                cin >> waterAmount;
+                resourceMediator->coordinateResources(projectType, materialsAmount, energyAmount, waterAmount);
+                break;
+            }
+            case 5: {
+                AllCitizenIterator* iterate = SENTINEL->createCitizenIterator();
+                government->collection(iterate);
+                cout << "Taxes have been collected\n";
+                delete iterate;
+                break;
+            }
+            case 6: {
+                cout << "This is the current tax rate " << government->getTax()->getTaxRate() << endl;
+                government->setTaxRate(government->getMemento()->getState()->getTaxRate());
+                cout << "Taxes have been restored to " << government->getTax()->getTaxRate() << endl;
+                break;
+            }
+            case 7:
+                cout << "Exiting the government menu.\n";
+                return;
+            default:
+                cout << "Invalid choice. Please select an option from the menu.\n";
+        }
+    }
+}
+
 
 void chooseFromMenu(){
     cout << "Choose from the menu" << endl;
@@ -542,7 +652,7 @@ void removeStructureGroup(){
         delete *it;
         arr.erase(it);
 
-        cout << "Structture group \"" << name << "\" removed successfully." << endl;
+        cout << "Structure group \"" << name << "\" removed successfully." << endl;
     }else {
         cout << "No structure group found with the name \"" << name << "\"." << endl;
     }

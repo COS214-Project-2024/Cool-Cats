@@ -18,7 +18,7 @@ public:
     float getTaxRate();
     void setTaxRate(float n);
     TaxMemento* createMemento();
-    friend class TaxMemento;
+    void reinstateMemento(TaxMemento* n);
 };
 
 #endif

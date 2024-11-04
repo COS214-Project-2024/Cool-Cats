@@ -61,7 +61,7 @@ Income* LowCitizen::getIncome()
 
 /// @brief Returns an all citizen iterator object that allows a user to iterate through all citizens, regardless of type
 /// @return An AllCitizenIterator object
-CitizenIterator* LowCitizen::createCitizenIterator()
+AllCitizenIterator* LowCitizen::createCitizenIterator()
 {
     return new AllCitizenIterator(citizens);
 }

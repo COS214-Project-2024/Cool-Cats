@@ -1,18 +1,26 @@
 #ifndef CITYRESOURCEMEDIATOR_H
 #define CITYRESOURCEMEDIATOR_H
-#include "Materials.h"
-#include "Energy.h"
-#include "Water.h"
+
 #include "ResourceMediator.h"
+#include <string>
 
 class CityResourceMediator : public ResourceMediator {
 private:
-    Materials& materials;
-    Energy& energy;
-    Water& water;
+    double energyAvailable;
+    double waterAvailable;
+    double materialsAvailable;
+    double budget;
 
 public:
-    CityResourceMediator(Materials& m, Energy& e, Water& w);
+    CityResourceMediator();
+    
+    void coordinateWaterUsage(double amount);
+    void coordinateEnergyDistribution(double amount);
+    void coordinateMaterialUsage(double amount);
+    void manageBudget(double amount);
+
+    void requestResource(Government* requester, const std::string& resourceType, double amount) override;
+    void supplyResource(Government* supplier, const std::string& resourceType, double amount) override;
     void coordinateResources(const std::string& projectType, int materialsAmount, int energyAmount, int waterAmount) override;
 };
 

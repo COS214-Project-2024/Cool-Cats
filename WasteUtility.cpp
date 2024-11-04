@@ -1,20 +1,30 @@
 #include "WasteUtility.h"
 
 
-WasteUtility::WasteUtility(){
+WasteUtility::WasteUtility(Structure* s) : Utilities(s){
 
 }
 
 void WasteUtility::processRequest(const std::string& request){
-    if (request == "garbage collection") {
-        std::cout << "WasteUtility: Handling garbage collection.\n";
-    } else {
-        std::cout << "WasteUtility: Can't handle, passing the request along.\n";
-        Utilities::processRequest(request); // Pass to the next handler
+    bool condition = false;
+    for(char ch : request) {
+        if(ch == 'B'){
+            condition = true;
+        }
+    }
+    if (condition) {
+        //std::cout << "WasteUtility: Handling garbage collection.\n";
+        collectWaste();
+    }
+
+    if(next){
+        //cout << "going on to next" << endl;
+        next->processRequest(request);
     }
 }
 
 void WasteUtility::collectWaste(){
-    cout << "collecting waste" << endl;
+    struc->setWasteAmount(0);
+    //cout << "collecting waste" << endl;
 }
 

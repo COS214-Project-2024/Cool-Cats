@@ -21,6 +21,18 @@ class Structure
         virtual void remove(Structure* structure) = 0;
         virtual vector<Structure*> getChildren() = 0;
 
+        virtual void addUtilities(string &request, Structure* s) ;
+
+        virtual float getKilowatts() ;
+        virtual float getAvailableWater();
+        virtual float getSewageAmount();
+        virtual float getWasteAmount();
+
+        virtual void setKilowatts(float kw);
+        virtual void setAvailableWater(float water) ;
+        virtual void setSewageAmount(float sewage) ;
+        virtual void setWasteAmount(float waste) ;
+        virtual void subTract();
 };
 
 #endif

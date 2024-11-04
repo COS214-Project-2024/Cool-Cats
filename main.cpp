@@ -65,6 +65,19 @@
 #include <limits>
 #include <regex>
 
+// Government includes
+#include "Government.h"
+#include "GovernmentInvoker.h"
+#include "TaxationCommand.h"
+#include "PolicyImplementationCommand.h"
+#include "Materials.h"
+#include "Energy.h"
+#include "Water.h"
+#include "CityResourceMediator.h"
+#include "Taxes.h"
+#include "TaxMemento.h"
+#include "BudgetAllocationCommand.h"
+
 using namespace std;
 
 //main menu
@@ -100,9 +113,11 @@ void editTransport();
 void editTransportGroups();
 void addTransportGroups();
 void removeTransportGroups();
+
 void editTransportInGroups();
 void addTransportInGroups();
 void removeTransportInGroups();
+
 void createPublicType(int type, string name);
 void createTrainType(int type, string name);
 void createAirportType(int type, string name);
@@ -133,20 +148,32 @@ int getCitizenPopulation();
 void makeCitizensVote();
 void currentMayor();
 void currentSatisfaction();
+bool foundCity(string cityChoice);
+int getCityIndex(string cityChoice);
+void deleteAllCitizens();
+void deleteCitizenArr(Citizen** arr);
 
 //Global variables for Citizen
 bool citizenIntro = false;
 bool votedOnce = false;
 int previousPopulation = 0;
 double previousSatisfaction = 0;
-Citizen * SENTINEL = new LowCitizen();
+LowCitizen * SENTINEL = new LowCitizen();
 Mayor * SENTINEL_MAYOR = new Mayor();
 regex escape_characters(R"(\\[nt\\\"'])");
-bool foundCity(string cityChoice);
-int getCityIndex(string cityChoice);
+Citizen ** highClassCitizenArr = nullptr;
+Citizen **midClassCitizenArr = nullptr;
+Citizen **lowClassCitizenArr = nullptr;
+int arrayCount = 0;
 
 
-//other
+// Global variables for Government
+Government* government;
+GovernmentInvoker* invoker;
+Materials* materials;
+CityResourceMediator* resourceMediator;
+Energy* energy;
+Water* water;
 
 void errorMessage();
 CStructIterator* createIteratorForGroup(StructureGroup* s );
@@ -161,10 +188,18 @@ void createGovernment();
 
 void editTransport();
 void printLines();
+void editGovernment();
+
 
 
 vector<StructureGroup*> arr; // this keeps track of all the stucture groups that have been created
 vector<CStructIterator*> iteratorArr ; // this keeps track of iterators that have been created ie each structure is in a structure group and we can iterate over each structure in each structure group through this.
+vector<PublicTransport*> PT; // To hold all the Public transport
+vector<TrainTransport*> TT; // To hold all the Train transport
+vector<AirportTransport*> AT; // To hold all the Air transport
+map<string, pair<vector<Road*>, vector<RoadSubject*>>> cityRoads; // To assign a road and roadSubject to a specific city group name
+map<string, vector<Transportation*>> transLines; // To hold all the transport routes
+
 int main(){
     cout << "WELCOME TO THE COOL CATS CITY SIMULATOR" << endl;
 
@@ -269,7 +304,7 @@ void mainMenu() {
                 break;
 
             case 6:
-                // Call editGovernment function
+                editGovernment();
                 break;
 
             case 7:
@@ -331,6 +366,11 @@ void viewCity() {
                 // Print each structure's name and type
                 cout << "- " << basicStructure->getName() 
                      << " (" << basicStructure->getType() << ")" << endl;
+                cout << "\t Utilites" << endl;
+                cout << "\t PowerLeft: " << basicStructure->getKilowatts() << endl;
+                cout << "\t WaterLeft: " << basicStructure->getAvailableWater() << endl;
+                cout << "\t Sewage Amount: " << basicStructure->getSewageAmount() << endl;
+                cout << "\t Waste Amount: " << basicStructure->getWasteAmount() << endl;
             }
         }
 
@@ -350,14 +390,105 @@ StructureGroup* createCityHall(){
     //this is default created, so its done in the before the main menu
     StructureGroup * cityhallGroup = new StructureGroup("CityHallGroup");
     BasicStructure* cityHall = new BasicStructure("CityHall", 'L',100);
+    string n = "PWSB"; 
+    cityHall->addUtilities(n, cityHall);
     cityhallGroup->add(cityHall);
 
     return cityhallGroup;
 }
 
-void createGovernment(){
-    
+void createGovernment() {
+    resourceMediator = new CityResourceMediator();
+    government = new Government(resourceMediator);
+    invoker = new GovernmentInvoker();
+    materials = new Materials();
+    energy = new Energy();
+    water = new Water();
 }
+
+void displayMenu() {
+    cout << "\nCity Builder Simulation Menu:\n";
+    cout << "1. Set Tax Rate\n";
+    cout << "2. Implement Policy\n";
+    cout << "3. Allocate Government Budget\n";
+    cout << "4. Coordinate Resources for a Project\n";
+    cout << "5. Collect Taxes\n";
+    cout << "6. Restore Taxes to previous\n";
+    cout << "7. Exit\n";
+    cout << "Enter your choice: ";
+}
+
+void editGovernment() {
+    int choice;
+    while (true) {
+        displayMenu();
+        cin >> choice;
+        switch (choice) {
+            case 1: {  // Set Tax Rate
+                float taxRate;
+                cout << "Enter new tax rate (e.g., 0.15 for 15%): ";
+                cin >> taxRate;
+                government->setTaxRate(taxRate); // Update tax rate
+                TaxMemento* one = government->getTax()->createMemento();
+                government->storeMemento(one);
+                break;
+            }
+            case 2: {  // Implement Policy
+                string policy;
+                cout << "Enter policy name (e.g., Green Energy Initiative): ";
+                cin.ignore();  
+                getline(cin, policy);
+                auto policyCommand = make_unique<PolicyImplementationCommand>(nullptr, policy, government);
+                invoker->setCommand(move(policyCommand));
+                invoker->executeCommand();
+                break;
+            }
+            case 3: {  // Allocate Government Budget
+                double amount;
+                cout << "Enter amount to allocate from budget: ";
+                cin >> amount;
+                auto budgetCommand = make_unique<BudgetAllocationCommand>(nullptr, amount, government);
+                invoker->setCommand(move(budgetCommand));
+                invoker->executeCommand();
+                break;
+            }
+            case 4: {  // Coordinate Resources for a Project
+                string projectType;
+                int materialsAmount, energyAmount, waterAmount;
+                cout << "Enter project name (e.g., Residential Expansion): ";
+                cin.ignore();
+                getline(cin, projectType);
+                cout << "Enter amount of materials required: ";
+                cin >> materialsAmount;
+                cout << "Enter amount of energy required: ";
+                cin >> energyAmount;
+                cout << "Enter amount of water required: ";
+                cin >> waterAmount;
+                resourceMediator->coordinateResources(projectType, materialsAmount, energyAmount, waterAmount);
+                break;
+            }
+            case 5: {
+                AllCitizenIterator* iterate = SENTINEL->createCitizenIterator();
+                government->collection(iterate);
+                cout << "Taxes have been collected\n";
+                delete iterate;
+                break;
+            }
+            case 6: {
+                cout << "This is the current tax rate " << government->getTax()->getTaxRate() << endl;
+                government->setTaxRate(government->getMemento()->getState()->getTaxRate());
+                cout << "Taxes have been restored to " << government->getTax()->getTaxRate() << endl;
+                break;
+            }
+            case 7:
+                cout << "Exiting the government menu.\n";
+                return;
+            default:
+                cout << "Invalid choice. Please select an option from the menu.\n";
+        }
+    }
+}
+
 
 void chooseFromMenu(){
     cout << "Choose from the menu" << endl;
@@ -543,7 +674,7 @@ void removeStructureGroup(){
         delete *it;
         arr.erase(it);
 
-        cout << "Structture group \"" << name << "\" removed successfully." << endl;
+        cout << "Structure group \"" << name << "\" removed successfully." << endl;
     }else {
         cout << "No structure group found with the name \"" << name << "\"." << endl;
     }
@@ -692,7 +823,8 @@ void addStructure(){
     }
 
     BasicStructure* newStructure = new BasicStructure(structureName, structuretype, maxCap);
-
+    string n = "PWSB"; 
+    newStructure->addUtilities(n, newStructure);
     arr[groupIndex]->add(newStructure);
 
     CStructIterator* newIterator = arr[groupIndex]->createIterator();
@@ -808,14 +940,18 @@ void decorateStructure(){
     cout << "Select a structure to decorate:" << endl;
 
     bool structureFound = false;
+    int selectedGroupIndex = -1;
+    int selectedStructureIndex = -1;
 
-    //avialable structures
-    for (auto* group : arr){
+    // Display available structures
+    for (int groupIndex = 0; groupIndex < arr.size(); ++groupIndex) {
+        StructureGroup* group = arr[groupIndex];
         if (!group) continue;
 
         CStructIterator* iterator = group->createIterator();
+        int structureIndex = 0;
 
-        for (iterator->first(); !iterator->isDone(); iterator->next()) {
+        for (iterator->first(); !iterator->isDone(); iterator->next(), ++structureIndex) {
             Structure* currentStructure = iterator->currentItem();
             BasicStructure* basicStructure = dynamic_cast<BasicStructure*>(currentStructure);
 
@@ -828,100 +964,121 @@ void decorateStructure(){
         delete iterator;
     }
 
-    if(!structureFound){
+    if (!structureFound) {
         cout << "No structures available for decoration." << endl;
         return;
     }
 
-    //get structure from user:
+    // Get the structure name from the user
     cout << "Enter the name of the structure to decorate: ";
     string buildingName;
     cin.ignore(); // Clear input buffer
     getline(cin, buildingName);
 
-    Structure* selectedStructure = nullptr;
+    BasicStructure* selectedStructure = nullptr;
 
-    for (auto* group : arr){
+    // Search for the structure by name and keep track of group and structure indices
+    for (int groupIndex = 0; groupIndex < arr.size(); ++groupIndex) {
+        StructureGroup* group = arr[groupIndex];
         if (!group) continue;
 
         CStructIterator* iterator = group->createIterator();
+        int structureIndex = 0;
 
-        for (iterator->first(); !iterator->isDone(); iterator->next()){
+        for (iterator->first(); !iterator->isDone(); iterator->next(), ++structureIndex) {
             Structure* currentStructure = iterator->currentItem();
             BasicStructure* basicStructure = dynamic_cast<BasicStructure*>(currentStructure);
 
             if (basicStructure && basicStructure->getName() == buildingName) {
                 selectedStructure = basicStructure;
+                selectedGroupIndex = groupIndex; // Save group index
+                selectedStructureIndex = structureIndex; // Save structure index
                 break;
             }
         }
 
         delete iterator;
-        if(selectedStructure) break; // structure found
+        if (selectedStructure) break; // Break outer loop if structure is found
     }
 
-    if(!selectedStructure){
-         cout << "Select decoration type:" << endl;
-        cout << "1: Satisfaction Enhancer" << endl;
-        cout << "2: Resource Efficiency Enhancer" << endl;
-        cout << "3: Maintenance Cost Reducer" << endl;
-        int decorationOption;
-        cin >> decorationOption;
+    if (!selectedStructure) {
+        cout << "Structure with the name '" << buildingName << "' not found." << endl;
+        return;
+    }
 
-        switch (decorationOption) {
-            case 1:
-                float boost;
-                cout << "Enter satisfaction boost value: ";
-                cin >> boost;
+    // Prompt for the decoration type
+    cout << "Select decoration type:" << endl;
+    cout << "1: Satisfaction Enhancer" << endl;
+    cout << "2: Resource Efficiency Enhancer" << endl;
+    cout << "3: Maintenance Cost Reducer" << endl;
+    int decorationOption;
+    cin >> decorationOption;
 
-                if(cin.fail() || boost < 0.0f || boost >100){
-                    cout << "Invalid boost value. It must be a non-negative number nad less than 100." << endl;
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                }else {
-                    selectedStructure = new SatisfactionEnhancer(selectedStructure, boost);
-                    cout << "Satisfaction enhancer applied with a boost of " << boost << "!" << endl;
-                }
-                
-                break;
+    BasicStructure* newStructure = nullptr;
+    switch (decorationOption) {
+        case 1: {
+            float boost;
+            cout << "Enter satisfaction boost value: ";
+            cin >> boost;
 
-            case 2:
-                float effboost;
-                cout << "Enter Resource efficiency boost: ";
-                cin >> effboost;
-
-                if(cin.fail() || effboost < 0.0f || effboost >100){
-                    cout << "Invalid boost value. It must be a non-negative number nad less than 100." << endl;
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                }else{
-                    selectedStructure = new ResourceEfficiencyEnhancer(selectedStructure, effboost);
-                    cout << "Resource efficiency enhancer applied with a boost of " << effboost << "!" << endl;
-                }
-
-                break;
-
-            case 3:
-                float reduction;
-                cout << "Enter Maintencance cost reduction perscentage: ";
-                cin >> reduction;
-
-                if(cin.fail() || reduction < 0.0f || reduction > 100){
-                    cout << "Invalid reduction percentage. It must be a non-negative number nad less than 100." << endl;
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                }else {
-                    selectedStructure = new MaintenanceCostReducer(selectedStructure,reduction);
-                    cout << "Maintenance enhancer applied with a reduction of " << reduction << "!" << endl;
-                }
-                break;
-            default:
-                cout << "Invalid decoration option." << endl;
+            if (cin.fail() || boost < 0.0f || boost > 100) {
+                cout << "Invalid boost value. It must be a non-negative number and less than 100." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 return;
+            }
+
+            newStructure = dynamic_cast<BasicStructure*>(new SatisfactionEnhancer(selectedStructure, boost));
+            cout << "Satisfaction enhancer applied with a boost of " << boost << "!" << endl;
+            break;
         }
+
+        case 2: {
+            float effBoost;
+            cout << "Enter resource efficiency boost: ";
+            cin >> effBoost;
+
+            if (cin.fail() || effBoost < 0.0f || effBoost > 100) {
+                cout << "Invalid boost value. It must be a non-negative number and less than 100." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                return;
+            }
+
+            newStructure = dynamic_cast<BasicStructure*>(new ResourceEfficiencyEnhancer(selectedStructure, effBoost));
+            cout << "Resource efficiency enhancer applied with a boost of " << effBoost << "!" << endl;
+            break;
+        }
+
+        case 3: {
+            float reduction;
+            cout << "Enter maintenance cost reduction percentage: ";
+            cin >> reduction;
+
+            if (cin.fail() || reduction < 0.0f || reduction > 100) {
+                cout << "Invalid reduction percentage. It must be a non-negative number and less than 100." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                return;
+            }
+
+            newStructure = dynamic_cast<BasicStructure*>(new MaintenanceCostReducer(selectedStructure, reduction));
+            cout << "Maintenance cost reducer applied with a reduction of " << reduction << "!" << endl;
+            break;
+        }
+
+        default:
+            cout << "Invalid decoration option." << endl;
+            return;
+    }
+
+    // Remove old structure and add the new decorated structure back to the group
+    if (newStructure) {
+        arr[selectedGroupIndex]->remove(selectedStructure);
+        arr[selectedGroupIndex]->add(newStructure); // Add the new BasicStructure back to the group
+        cout << "Structure decorated and updated successfully!" << endl;
     }
 }
-
 
 
 //Transport functions
@@ -1557,9 +1714,9 @@ void createTransportation(int num){
                 case 3:
                     editTransport();
                     break;
-            } 
+            }
+            break;
         }
-        break;
         case 2: {
             printLines();
             chooseFromMenu();
@@ -1587,8 +1744,8 @@ void createTransportation(int num){
                     editTransport();
                     break;
             }
+            break;
         }
-        break;
         case 3: {
             printLines();
             chooseFromMenu();
@@ -1616,33 +1773,7 @@ void createTransportation(int num){
                     editTransport();
                     break;
             }
-            
-        }
-        break;
-        case 4: {
-            printLines();
-            chooseFromMenu();
-            std::cout << "Viewing Current Transports" << std::endl;
-            printLines();
-            std::cout << "Public Transports:" << std::endl;
-            for(size_t i = 0; i < PT.size(); i++){
-                std::cout << i << ": " << PT[i]->getVehicle()->getName() << std::endl;
-            }
-            printLines();
-            std::cout << "Train Transports:" << std::endl;
-            for(size_t i = 0; i < TT.size(); i++){
-                std::cout << i << ": " << TT[i]->getVehicle()->getName() << std::endl;
-            }
-            printLines();
-            std::cout << "Airplane Transports:" << std::endl;
-            for(size_t i = 0; i < AT.size(); i++){
-                std::cout << i << ": " << AT[i]->getVehicle()->getName() << std::endl;
-            }
-            newTransportMenu();
-        }
-        break;
-        case 5:{
-            editTransport();
+            break;
         }
     }
 
@@ -1840,6 +1971,13 @@ void addCitizenToBuildings()
                         cout << "Invalid number of citizens added, please try again\n";
                     }
                 }
+
+                if(highClassCitizenArr != nullptr)
+                {
+                    arrayCount = amountCitizens;
+                    deleteCitizenArr(highClassCitizenArr);
+                }
+
                 Citizen** highClassCitizenArr = new Citizen*[amountCitizens];
                 Creator *highClassCreator = new HighCitizenCreator();
 
@@ -1851,7 +1989,7 @@ void addCitizenToBuildings()
                 //Add high-class citizens to structure, ask if correct
                 addCititoBuild(amountCitizens);
 
-                cout << amountCitizens << " of High-class citizens successfully added to the building\n";
+                cout << "\n" << amountCitizens << " of High-class citizens successfully added to the building\n";
 
                 delete highClassCreator;
                 break;
@@ -1876,6 +2014,13 @@ void addCitizenToBuildings()
                         cout << "Invalid number of citizens added, please try again\n";
                     }
                 }
+
+                if(midClassCitizenArr != nullptr)
+                {
+                    arrayCount = amountCitizens;
+                    deleteCitizenArr(midClassCitizenArr);
+                }
+
                 Citizen** midClassCitizenArr = new Citizen*[amountCitizens];
                 Creator *midClassCreator = new MiddleCitizenCreator();
 
@@ -1887,7 +2032,7 @@ void addCitizenToBuildings()
                 //Add mid-class citizen to structure, ask if correct
                 addCititoBuild(amountCitizens);
 
-                cout << amountCitizens << " of Middle-class citizens successfully added to the building\n";
+                cout << "\n" << amountCitizens << " of Middle-class citizens successfully added to the building\n";
                 delete midClassCreator;
                 break;
             }
@@ -1912,6 +2057,12 @@ void addCitizenToBuildings()
                     }
                 }
 
+                if(lowClassCitizenArr != nullptr)
+                {
+                    arrayCount = amountCitizens;
+                    deleteCitizenArr(lowClassCitizenArr);
+                }
+
                 Citizen** lowClassCitizenArr = new Citizen*[amountCitizens];
                 Creator *lowClassCreator = new LowCitizenCreator();
 
@@ -1923,7 +2074,7 @@ void addCitizenToBuildings()
                 //Add low-class citizen to structure, ask if correct
                 addCititoBuild(amountCitizens);
 
-                cout << amountCitizens << " of Low-class citizens successfully added to the building\n";
+                cout <<  "\n" << amountCitizens << " of Low-class citizens successfully added to the building\n";
                 delete lowClassCreator;
                 break;
             }
@@ -1975,26 +2126,29 @@ void addMayor(){
     //Create actual mayor
     string newMayorName = "";
     cout << "Enter the name of the mayor\n";
-    cin >> newMayorName;
 
-    while(newMayorName == " " || regex_search(newMayorName, escape_characters))
+    while(true)
     {
-        if(!(cin >> newMayorName))
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        getline(cin, newMayorName);
+
+        if(newMayorName == " " || regex_search(newMayorName, escape_characters))
         {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid name inputted, please try again\n";
+            cout << "Invalid name entered, please try again\n";
+            continue;    
         }
-        
+        break;
     }
 
     MayorCreator *mc = new MayorCreator();
-    Citizen *newMayor = mc->specificCitizenOperation("employed", 70, arr[indexArea], newMayorName);
+    mc->specificCitizenOperation("employed", 70, arr[indexArea], newMayorName);
 
     cout << endl;
     cout << newMayorName << " has been created\n";
     cout << "You can make all citizens vote for a mayor by going to the 'Make citizens vote for the new mayor' option\n";
     cout << endl;
+
+    delete mc;
 }
 
 //Helper function for add citizen and add mayor
@@ -2050,13 +2204,17 @@ void makeCitizensVote()
         return;
     }
     votedOnce = true;
-    CitizenIterator* iterate = SENTINEL->createCitizenIterator();
+    AllCitizenIterator* iterate = SENTINEL->createCitizenIterator();
+    int textIndex = 0;
 
     while(!iterate->isDone())
     {
         iterate->currentItem()->vote();
         iterate->next();
+        textIndex++;
     }
+
+    cout << "Iterated through: " << textIndex << endl;
 
     int seeMayorResult;
     cout << "All citizens have now voted for their choice of mayor, Press 1 to see the results, press 2 to return\n";
@@ -2097,9 +2255,12 @@ void currentMayor()
     bool noVotes = false;
     for(Mayor* m : mayors)
     {
+        cout << m->getMayorName() << endl;
+        cout << m->getVoteCount() << endl;
         if(m->getVoteCount() > 0)
         {
             noVotes = true;
+            cout << "noVotes changed\n";
             break;
         }
     }
@@ -2165,6 +2326,19 @@ void currentSatisfaction()
     cout << endl;
 
     delete iterate;
+}
+void deleteAllCitizens()
+{
+    delete SENTINEL;
+    delete SENTINEL_MAYOR;
+}
+void deleteCitizenArr(Citizen **arr)
+{
+     for (int i = 0; i < arrayCount; i++) {
+        delete arr[i];
+    }
+    // Delete the citizen array itself
+    delete[] arr;
 }
 
 void createPublicType(int type, string name){

@@ -11,9 +11,9 @@ class UtilitiesTest : public ::testing::Test {
 protected:
     Structure* structure;
     Utilities* wasteUtility;
-    Utilities* waterUtility;
-    Utilities* sewageUtility;
-    Utilities* powerUtility;
+    WaterUtility* waterUtility;
+    SewageUtility* sewageUtility;
+    PowerUtility* powerUtility;
 
     void SetUp() override {
         BasicStructure* structure = new BasicStructure("CityHall", 'L',100);

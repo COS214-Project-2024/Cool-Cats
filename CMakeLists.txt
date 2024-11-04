@@ -40,31 +40,27 @@ add_library(government
     Water.cpp
 )
 
+# Add the source files for the Utilities library
 add_library(utilities
     Utilities.cpp
     WasteUtility.cpp
     WaterUtility.cpp
     PowerUtility.cpp
     SewageUtility.cpp
-
-
 )
 
+# Add the source files for the Buildings library
 add_library(Buildings
     Structure.cpp
     BasicStructure.cpp
     StructureGroup.cpp
     StructureDecorator.cpp
     StructureIterator.cpp
-    CstructIterator.cpp
+    CStructIterator.cpp
     MaintenanceCostReducer.cpp
     ResourceEfficiencyEnhancer.cpp
     SatisfactionEnhancer.cpp
     )
-
-# Link the library with the City library
-target_link_libraries(citizen PRIVATE City)
-target_link_libraries(government PRIVATE City)
 
 # Define each test as an executable and link to Google Test and the appropriate libraries
 add_executable(AllCitizenIteratorTest Tests/AllCitizenIteratorTest.cpp)
@@ -97,6 +93,9 @@ target_link_libraries(TaxesTest PRIVATE gtest gtest_main government Citizen)
 add_executable(TaxMementoTest Tests/TaxMementoTest.cpp)
 target_link_libraries(TaxMementoTest PRIVATE gtest gtest_main government Citizen)
 
+add_executable(UtilitiesTest Tests/UtilitiesTest.cpp)
+target_link_libraries(UtilitiesTest PRIVATE gtest gtest_main utilities)
+
 # Register tests with CMake's testing tool
 add_test(NAME AllCitizenIteratorTest COMMAND AllCitizenIteratorTest)
 add_test(NAME CreatorTest COMMAND CreatorTest)
@@ -108,3 +107,5 @@ add_test(NAME MiddleCitizenTest COMMAND MiddleCitizenTest)
 add_test(NAME GovernmentTest COMMAND GovernmentTest)
 add_test(NAME TaxesTest COMMAND TaxesTest)
 add_test(NAME TaxMementoTest COMMAND TaxMementoTest)
+
+add_test(NAME UtilitiesTest COMMAND UtilitiesTest)

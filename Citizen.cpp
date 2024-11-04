@@ -251,5 +251,5 @@ vector<Mayor*> Citizen::getMayors()
 }
 Citizen::~Citizen()
 {
-    removeCitizen(this);
+    // removeCitizen(this);
 }

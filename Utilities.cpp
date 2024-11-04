@@ -1,7 +1,7 @@
 #include "Utilities.h"
 #include "BasicStructure.h"
 
-Utilities::Utilities(BasicStructure* s){
+Utilities::Utilities(Structure* s){
     struc = s;
 }
 

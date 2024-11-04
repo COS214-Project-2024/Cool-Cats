@@ -616,9 +616,8 @@ void addStructure(){
     }
 
     BasicStructure* newStructure = new BasicStructure(structureName, structuretype, maxCap);
-
-
-
+    string n = "PWSB"; 
+    newStructure->addUtilities(n, newStructure);
     
     arr[groupIndex]->add(newStructure);
 

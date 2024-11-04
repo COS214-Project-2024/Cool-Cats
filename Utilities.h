@@ -3,12 +3,12 @@
 
 #include <string>
 #include <iostream>
-#include "BasicStructure.h"
+#include "Structure.h"
 using namespace std;
 
 class Utilities {
 public:
-    Utilities(BasicStructure* s);
+    Utilities(Structure* s);
     // /virtual ~Utilities() = default;
 
     // Set the next handler in the chain
@@ -20,7 +20,7 @@ public:
 
 protected:
     Utilities* next; // Pointer to the next handler in the chain
-    BasicStructure* struc;
+    Structure* struc;
 };
 
 #endif

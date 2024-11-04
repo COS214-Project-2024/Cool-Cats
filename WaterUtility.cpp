@@ -1,6 +1,6 @@
 #include "WaterUtility.h"
 
-WaterUtility::WaterUtility(BasicStructure* s) : Utilities(s){
+WaterUtility::WaterUtility(Structure* s) : Utilities(s){
     storageUnits = 10000;
     capacity = 50;
     puritylevels = 2;

@@ -1,7 +1,7 @@
 #include "PowerUtility.h"
 
 
-PowerUtility::PowerUtility(BasicStructure* s) : Utilities(s) {
+PowerUtility::PowerUtility(Structure* s) : Utilities(s) {
 
 }
 

@@ -41,17 +41,17 @@ class BasicStructure : public Structure {
         void remove(Structure* structure) override;
         vector<Structure*> getChildren() override;
 
-        void addUtilities(string &request, BasicStructure* s);
+        void addUtilities(string &request, Structure* s) override;
 
-        float getKilowatts();
-        float getAvailableWater();
-        float getSewageAmount();
-        float getWasteAmount();
+        float getKilowatts()override;
+        float getAvailableWater()override;
+        float getSewageAmount()override;
+        float getWasteAmount()override;
 
-        void setKilowatts(float kw);
-        void setAvailableWater(float water);
-        void setSewageAmount(float sewage);
-        void setWasteAmount(float waste);
+        void setKilowatts(float kw)override;
+        void setAvailableWater(float water)override;
+        void setSewageAmount(float sewage)override;
+        void setWasteAmount(float waste)override;
         ~BasicStructure();
 
 };

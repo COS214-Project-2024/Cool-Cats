@@ -6,7 +6,7 @@
 
 class WasteUtility : public Utilities {
 public:
-    WasteUtility(BasicStructure* s) ;
+    WasteUtility(Structure* s) ;
 
     // Handles waste-related requests; if not handled, passes it down the chain
     void processRequest(const std::string &request) override;

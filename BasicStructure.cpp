@@ -194,7 +194,7 @@ void BasicStructure::setWasteAmount(float waste) {
 }
 
 /// @brief Adds utilities to a specific building
-void BasicStructure::addUtilities(string &request, BasicStructure* s){
+void BasicStructure::addUtilities(string &request, Structure* s){
     Utilities *ut = new Utilities(s);
     Utilities *pt = new PowerUtility(s);
     Utilities *wt = new WaterUtility(s);

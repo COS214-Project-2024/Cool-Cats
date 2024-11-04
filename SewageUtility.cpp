@@ -1,19 +1,20 @@
 #include "SewageUtility.h"
 
 
-SewageUtility::SewageUtility(BasicStructure* s) : Utilities(s){
+SewageUtility::SewageUtility(Structure* s) : Utilities(s){
 
 }
 
 void SewageUtility::processRequest(const std::string& request){
     bool condition = false;
     for(char ch : request) {
-        if(ch == 'P'){
+        if(ch == 'S'){
             condition = true;
         }
     }
 
     if (condition) {
+        treatSewage();
         std::cout << "SewageUtility: Handling sewage overflow.\n";
     } 
     if(next){

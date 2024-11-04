@@ -1,0 +1,2 @@
+/usr/bin/ar qc libBuildings.a CMakeFiles/Buildings.dir/Structure.cpp.o CMakeFiles/Buildings.dir/BasicStructure.cpp.o CMakeFiles/Buildings.dir/StructureGroup.cpp.o CMakeFiles/Buildings.dir/StructureDecorator.cpp.o CMakeFiles/Buildings.dir/StructureIterator.cpp.o CMakeFiles/Buildings.dir/CStructIterator.cpp.o CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.o CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.o CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.o
+/usr/bin/ranlib libBuildings.a

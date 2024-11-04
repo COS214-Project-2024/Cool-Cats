@@ -1,0 +1,2 @@
+/usr/bin/ar qc libgovernment.a CMakeFiles/government.dir/Government.cpp.o CMakeFiles/government.dir/GovernmentInvoker.cpp.o CMakeFiles/government.dir/PolicyImplementationCommand.cpp.o CMakeFiles/government.dir/TaxationCommand.cpp.o CMakeFiles/government.dir/Taxes.cpp.o CMakeFiles/government.dir/TaxMemento.cpp.o CMakeFiles/government.dir/BudgetAllocationCommand.cpp.o CMakeFiles/government.dir/CityResourceMediator.cpp.o CMakeFiles/government.dir/Energy.cpp.o CMakeFiles/government.dir/Materials.cpp.o CMakeFiles/government.dir/Water.cpp.o
+/usr/bin/ranlib libgovernment.a

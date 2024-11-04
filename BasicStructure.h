@@ -30,9 +30,9 @@ class BasicStructure : public Structure {
 
     public:
         BasicStructure(const string& name, char Btype, int capacity);
-        void addcitizen(Citizen *c);
+        void addcitizen(int number);
         string getType();
-        void removeCitizen();
+        void removeCitizen(int number);
         string getName() override;
         float getMaintenance() override;
         float getResourceConsumption() override;

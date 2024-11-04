@@ -55,18 +55,18 @@ BasicStructure::BasicStructure(const string& name, char Btype, int capacity)
 /// @brief Adds a citizen to the structure if space allows.
 /// @param c Pointer to the Citizen to add.
 /// @throws std::invalid_argument If the citizen is null or the structure is at max capacity.
-void BasicStructure::addcitizen(Citizen* c )
+void BasicStructure::addcitizen(int number)
 {
-    if( c == NULL){
+    if( number < 0){
         throw invalid_argument("Citizen cannot be NULL"); 
     }
 
     // Check if there is enough space in the structure
-    if((numCitizen + 1) > maxCitizen ){
+    if((numCitizen + number) > maxCitizen ){
         throw invalid_argument("Structure is already full");
     }
     
-    numCitizen++;
+    numCitizen += number;
 }
 
 /// @brief Gets the type of building as a string representation.
@@ -92,12 +92,17 @@ string BasicStructure::getType()
     default:
         break;
     }
+    return "";
 }
 
 /// @brief Removes a citizen from the structure, decrementing the count.
-void BasicStructure::removeCitizen()
+void BasicStructure::removeCitizen(int number)
 {
-    numCitizen--;
+    if((numCitizen -= number) < 0){
+        throw invalid_argument("amount to be removed is more than amount of citizens in building");  // Throw an error if the number of citizens to be removed is negative
+    }else{
+        numCitizen -= number; // Decrement the number of citizens in the building
+    }
 }
 
 /// @brief Throws an exception because BasicStructure is a leaf node and cannot contain children.

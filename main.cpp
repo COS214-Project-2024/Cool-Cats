@@ -2285,6 +2285,7 @@ void currentMayor()
     for(Mayor* m : electedMayors)
     {
         cout << m->getMayorName() << " is the mayor for " << m->getHome()->getName() << " with " << m->getVoteCount() << " votes." << endl;
+        cout << endl;
     }
 
     Citizen::resetVote();
@@ -2300,7 +2301,7 @@ void currentSatisfaction()
     }
 
     double currSatisfaction = 0;
-    CitizenIterator *iterate = SENTINEL_MAYOR->createCitizenIterator();
+    AllCitizenIterator *iterate = SENTINEL->createCitizenIterator();
     
     while(!iterate->isDone())
     {

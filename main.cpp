@@ -403,6 +403,7 @@ void addCititoBuild(int number) {
     // Prompt the user to enter the name of the building to add the citizen
     cout << "Enter the name of the structure/building to add the citizen to: ";
     string buildingName;
+    cin.ignore();
     getline(cin, buildingName);
 
     // Search for the specified building by name
@@ -1063,22 +1064,6 @@ void addCitizenToBuildings()
 
     printLines();
 
-    string cityChoice;
-    viewCity();
-    cout << "Enter the area you would like to add citizens to\n";
-
-    cin >> cityChoice;
-
-    while(!foundCity(cityChoice))
-    {
-        if(!(cin >> cityChoice))
-        {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid choice inputted, please try again\n";
-        }
-    }
-
     //Ask user which type of citizens they would like to add
     while(true)
     {
@@ -1200,9 +1185,9 @@ void addCitizenToBuildings()
                 {
                     lowClassCitizenArr[i] = lowClassCreator->specificCitizenOperation("employed", 55, nullptr);
 
-                    //Add low-class citizen to structure, ask if correct
-                    addCititoBuild(amountCitizens);
                 }
+                //Add low-class citizen to structure, ask if correct
+                addCititoBuild(amountCitizens);
 
                 cout << amountCitizens << " of Low-class citizens successfully added to the building\n";
                 delete lowClassCreator;
@@ -1230,15 +1215,23 @@ void addMayor(){
 
     //get user input
     //validate that the area is there, consult view city to see how 
-    cin >> cityChoice;
 
-    while(!foundCity(cityChoice))
+    while(true)
     {
-        if(!(cin >> cityChoice))
+        cin >> cityChoice;
+        if(cin.fail())
         {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid choice inputted, please try again\n";
+            cout << "Invalid area inputted, please try again\n";
+        }
+        else if(!foundCity(cityChoice))
+        {
+            cout << "Invalid area inputted, please try again\n";
+        }
+        else
+        {
+            break;
         }
     }
 
@@ -1283,9 +1276,19 @@ bool foundCity(string city)
 
     for(StructureGroup* g : arr)
     {
-        cout << g->getName() << endl;
         if(city == g->getName())
         {
+            vector<Structure*> checkStructure = g->getChildren();
+
+            if(checkStructure.empty())
+            {
+                cout << "There are no structures in this group, please try again with a different structure.\n";
+                return false;
+            }
+            else
+            {
+                cout << checkStructure[0]->getName() << endl;
+            }
             return true;
         }
     }

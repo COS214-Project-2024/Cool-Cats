@@ -194,11 +194,6 @@ void editGovernment();
 
 vector<StructureGroup*> arr; // this keeps track of all the stucture groups that have been created
 vector<CStructIterator*> iteratorArr ; // this keeps track of iterators that have been created ie each structure is in a structure group and we can iterate over each structure in each structure group through this.
-vector<PublicTransport*> PT; // To hold all the Public transport
-vector<TrainTransport*> TT; // To hold all the Train transport
-vector<AirportTransport*> AT; // To hold all the Air transport
-map<string, pair<vector<Road*>, vector<RoadSubject*>>> cityRoads; // To assign a road and roadSubject to a specific city group name
-map<string, vector<Transportation*>> transLines; // To hold all the transport routes
 
 int main(){
     cout << "WELCOME TO THE COOL CATS CITY SIMULATOR" << endl;

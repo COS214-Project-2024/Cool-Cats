@@ -803,7 +803,7 @@ void decorateStructure(){
     int selectedStructureIndex = -1;
 
     // Display available structures
-    for (int groupIndex = 0; groupIndex < arr.size(); ++groupIndex) {
+    for (size_t groupIndex = 0; groupIndex < arr.size(); ++groupIndex) {
         StructureGroup* group = arr[groupIndex];
         if (!group) continue;
 
@@ -837,7 +837,7 @@ void decorateStructure(){
     BasicStructure* selectedStructure = nullptr;
 
     // Search for the structure by name and keep track of group and structure indices
-    for (int groupIndex = 0; groupIndex < arr.size(); ++groupIndex) {
+    for (size_t groupIndex = 0; groupIndex < arr.size(); ++groupIndex) {
         StructureGroup* group = arr[groupIndex];
         if (!group) continue;
 
@@ -1447,7 +1447,6 @@ void makeCitizensVote()
         iterate->next();
     }
 
-    cout << "Iterated through: " << textIndex << endl;
 
     int seeMayorResult;
     cout << "All citizens have now voted for their choice of mayor, Press 1 to see the results, press 2 to return\n";

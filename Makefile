@@ -8,9 +8,7 @@ OBJS = PowerUtility.o main.o SewageUtility.o Utilities.o WasteUtility.o WaterUti
        BasicStructure.o CStructIterator.o MaintenanceCostReducer.o ResourceEfficiencyEnhancer.o \
        SatisfactionEnhancer.o StructureDecorator.o StructureGroup.o AllCitizenIterator.o Citizen.o \
        CitizenIterator.o Creator.o HighCitizen.o HighCitizenCreator.o Income.o LowCitizen.o LowCitizenCreator.o \
-       MainCitizen.o Mayor.o MayorCreator.o MayorIterator.o MiddleCitizen.o MiddleCitizenCreator.o \
-       Government.o GovernmentInvoker.o TaxationCommand.o PolicyImplementationCommand.o Budget.o \
-       BudgetAllocationCommand.o Taxes.o TaxMemento.o Structure.o
+       MainCitizen.o Mayor.o MayorCreator.o MayorIterator.o MiddleCitizen.o MiddleCitizenCreator.o
 
 $(TARGET): $(OBJS)
 	$(CXX) $(CFLAGS) $(OBJS) -o $(TARGET)

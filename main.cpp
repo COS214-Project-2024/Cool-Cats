@@ -1127,9 +1127,9 @@ void addCitizenToBuildings()
                 {
                     highClassCitizenArr[i] = highClassCreator->specificCitizenOperation("employed", 75, nullptr);
 
-                    //Add high-class citizens to structure, ask if correct
-                    addCititoBuild(highClassCitizenArr[i]);
                 }
+                //Add high-class citizens to structure, ask if correct
+                addCititoBuild(amountCitizens);
 
                 cout << amountCitizens << " of High-class citizens successfully added to the building\n";
 
@@ -1163,9 +1163,9 @@ void addCitizenToBuildings()
                 {
                     midClassCitizenArr[i] = midClassCreator->specificCitizenOperation("employed", 65, nullptr);
 
-                    //Add mid-class citizen to structure, ask if correct
-                    addCititoBuild(midClassCitizenArr[i]);
                 }
+                //Add mid-class citizen to structure, ask if correct
+                addCititoBuild(amountCitizens);
 
                 cout << amountCitizens << " of Middle-class citizens successfully added to the building\n";
                 delete midClassCreator;
@@ -1200,7 +1200,7 @@ void addCitizenToBuildings()
                     lowClassCitizenArr[i] = lowClassCreator->specificCitizenOperation("employed", 55, nullptr);
 
                     //Add low-class citizen to structure, ask if correct
-                    addCititoBuild(lowClassCitizenArr[i]);
+                    addCititoBuild(amountCitizens);
                 }
 
                 cout << amountCitizens << " of Low-class citizens successfully added to the building\n";

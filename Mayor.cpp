@@ -91,7 +91,7 @@ void Mayor::resetVoteCount()
     vector<Mayor*> mayors = getMayors();
     for(Mayor* m : mayors)
     {
-        m.->voteCount = 0;
+        m->voteCount = 0;
     }
 }
 

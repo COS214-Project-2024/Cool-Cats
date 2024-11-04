@@ -37,3 +37,7 @@ Structure* CStructIterator::currentItem()
     }
     return nullptr; // iterator is done
 }
+CStructIterator::~CStructIterator()
+{
+    
+}

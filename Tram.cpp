@@ -29,7 +29,7 @@ void Tram::setCapacity(int cap){
 /// @brief Sets the maximum capacity of the tram.
 /// @param cap The maximum capacity to be set.
 void Tram::setMaxCapacity(int cap){
-    tif(cap < 0 || cap > 200){
+    if(cap < 0 || cap > 200){
         std::cout << "Invalid Tram Size" << std::endl;
     }
     else{

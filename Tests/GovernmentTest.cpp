@@ -1,12 +1,12 @@
 #include <gtest/gtest.h>
-#include "../government/Government.h"
-#include "../government/Taxes.h"
-#include "../government/TaxMemento.h"
-#include "../government/CityResourceMediator.h"
-#include "../Citizen/AllCitizenIterator.h"
-#include "../Citizen/Citizen.h"
-#include "../Citizen/Income.h"
-#include "../Citizen/HighCitizen.h"
+#include "../Government.h"
+#include "../Taxes.h"
+#include "../TaxMemento.h"
+#include "../CityResourceMediator.h"
+#include "../AllCitizenIterator.h"
+#include "../Citizen.h"
+#include "../Income.h"
+#include "../HighCitizen.h"
 
 // Test fixture for Government class
 class GovernmentTest : public ::testing::Test {

@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "../government/Taxes.h"
-#include "../government/TaxMemento.h"
+#include "../Taxes.h"
+#include "../TaxMemento.h"
 
 // Test fixture for TaxMemento class
 class TaxMementoTest : public ::testing::Test {

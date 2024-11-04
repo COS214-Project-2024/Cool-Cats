@@ -1,10 +1,10 @@
 #include <gtest/gtest.h>
-#include "../Citizen/Citizen.h"
-#include "../Citizen/AllCitizenIterator.h"
-#include "../Citizen/Mayor.h"
-#include "../Citizen/HighCitizen.h"
-#include "../Citizen/MiddleCitizen.h"
-#include "../Citizen/LowCitizen.h"
+#include "../Citizen.h"
+#include "../AllCitizenIterator.h"
+#include "../Mayor.h"
+#include "../HighCitizen.h"
+#include "../MiddleCitizen.h"
+#include "../LowCitizen.h"
 
 class CitizenIteratorTest : public ::testing::Test {
     protected:

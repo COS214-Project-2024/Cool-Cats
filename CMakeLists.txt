@@ -7,7 +7,7 @@ add_subdirectory(googletest)
 # Enable testing for this project
 enable_testing()
 
-# Add the source files for your project
+# Add the source files for the Citizen library
 add_library(Citizen
     AllCitizenIterator.cpp 
     CitizenIterator.cpp
@@ -23,7 +23,9 @@ add_library(Citizen
     MayorIterator.cpp 
     MiddleCitizen.cpp 
     MiddleCitizenCreator.cpp
-    )
+)
+
+# Add the source files for the Government library
 add_library(government
     Government.cpp
     GovernmentInvoker.cpp
@@ -36,7 +38,7 @@ add_library(government
     Energy.cpp
     Materials.cpp
     Water.cpp
-    )
+)
 
 add_library(utilities
     Utilities.cpp
@@ -52,7 +54,7 @@ add_library(utilities
 target_link_libraries(citizen PRIVATE City)
 target_link_libraries(government PRIVATE City)
 
-# Define each test as an executable and link to Google Test
+# Define each test as an executable and link to Google Test and the appropriate libraries
 add_executable(AllCitizenIteratorTest Tests/AllCitizenIteratorTest.cpp)
 target_link_libraries(AllCitizenIteratorTest PRIVATE gtest gtest_main Citizen)
 
@@ -75,13 +77,13 @@ add_executable(MiddleCitizenTest Tests/MiddleCitizenTest.cpp)
 target_link_libraries(MiddleCitizenTest PRIVATE gtest gtest_main Citizen)
 
 add_executable(GovernmentTest Tests/GovernmentTest.cpp)
-target_link_libraries(GovernmentTest PRIVATE gtest gtest_main government)
+target_link_libraries(GovernmentTest PRIVATE gtest gtest_main government Citizen)
 
 add_executable(TaxesTest Tests/TaxesTest.cpp)
-target_link_libraries(TaxesTest PRIVATE gtest gtest_main government)
+target_link_libraries(TaxesTest PRIVATE gtest gtest_main government Citizen)
 
 add_executable(TaxMementoTest Tests/TaxMementoTest.cpp)
-target_link_libraries(TaxMementoTest PRIVATE gtest gtest_main government)
+target_link_libraries(TaxMementoTest PRIVATE gtest gtest_main government Citizen)
 
 # Register tests with CMake's testing tool
 add_test(NAME AllCitizenIteratorTest COMMAND AllCitizenIteratorTest)

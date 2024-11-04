@@ -1,7 +1,10 @@
 #include <iostream>   // Include input-output stream library
 #include <string>
 #include <vector>
-
+#include <limits>
+#include <regex>
+#include <array>
+#include <map>
 
 #include "Structure.h"
 #include "StructureGroup.h"
@@ -29,12 +32,6 @@
 #include "MiddleCitizen.h"
 #include "MiddleCitizenCreator.h"
 
-#include <iostream>
-#include <vector>
-#include <array>
-#include <map>
-
-
 #include "RoadSubject.h"
 #include "Road.h"
 #include "RoadState.h"
@@ -60,10 +57,6 @@
 #include "AirVehicle.h"
 #include "Passenger.h"
 #include "Cargo.h"
-
-
-#include <limits>
-#include <regex>
 
 // Government includes
 #include "Government.h"
@@ -146,6 +139,8 @@ int getCitizenPopulation();
 void makeCitizensVote();
 void currentMayor();
 void currentSatisfaction();
+bool foundCity(string cityChoice);
+int getCityIndex(string cityChoice);
 
 //Global variables for Citizen
 bool citizenIntro = false;
@@ -155,8 +150,6 @@ double previousSatisfaction = 0;
 LowCitizen * SENTINEL = new LowCitizen();
 Mayor * SENTINEL_MAYOR = new Mayor();
 regex escape_characters(R"(\\[nt\\\"'])");
-bool foundCity(string cityChoice);
-int getCityIndex(string cityChoice);
 
 // Global variables for Government
 Government* government;
@@ -2130,12 +2123,15 @@ void addMayor(){
     }
 
     MayorCreator *mc = new MayorCreator();
-    Citizen *newMayor = mc->specificCitizenOperation("employed", 70, arr[indexArea], newMayorName);
+    mc->specificCitizenOperation("employed", 70, arr[indexArea], newMayorName);
+
 
     cout << endl;
     cout << newMayorName << " has been created\n";
     cout << "You can make all citizens vote for a mayor by going to the 'Make citizens vote for the new mayor' option\n";
     cout << endl;
+
+    delete mc;
 }
 
 //Helper function for add citizen and add mayor

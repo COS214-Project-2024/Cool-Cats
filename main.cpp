@@ -1281,6 +1281,7 @@ bool foundCity(string city)
 
     for(StructureGroup* g : arr)
     {
+        cout << g->getName() << endl;
         if(city == g->getName())
         {
             return true;

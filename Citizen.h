@@ -5,6 +5,7 @@
 #include <string>
 
 #include "Structure.h"
+#include "Income.h"
 // #include "PopulationMemento"
 
 class Mayor;

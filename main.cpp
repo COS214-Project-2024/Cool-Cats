@@ -1446,8 +1446,6 @@ void makeCitizensVote()
         iterate->next();
     }
 
-    cout << "Iterated through: " << textIndex << endl;
-
     int seeMayorResult;
     cout << "All citizens have now voted for their choice of mayor, Press 1 to see the results, press 2 to return\n";
     cin >> seeMayorResult;

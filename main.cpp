@@ -798,14 +798,18 @@ void decorateStructure(){
     cout << "Select a structure to decorate:" << endl;
 
     bool structureFound = false;
+    int selectedGroupIndex = -1;
+    int selectedStructureIndex = -1;
 
-    //avialable structures
-    for (auto* group : arr){
+    // Display available structures
+    for (int groupIndex = 0; groupIndex < arr.size(); ++groupIndex) {
+        StructureGroup* group = arr[groupIndex];
         if (!group) continue;
 
         CStructIterator* iterator = group->createIterator();
+        int structureIndex = 0;
 
-        for (iterator->first(); !iterator->isDone(); iterator->next()) {
+        for (iterator->first(); !iterator->isDone(); iterator->next(), ++structureIndex) {
             Structure* currentStructure = iterator->currentItem();
             BasicStructure* basicStructure = dynamic_cast<BasicStructure*>(currentStructure);
 
@@ -818,99 +822,124 @@ void decorateStructure(){
         delete iterator;
     }
 
-    if(!structureFound){
+    if (!structureFound) {
         cout << "No structures available for decoration." << endl;
         return;
     }
 
-    //get structure from user:
+    // Get the structure name from the user
     cout << "Enter the name of the structure to decorate: ";
     string buildingName;
     cin.ignore(); // Clear input buffer
     getline(cin, buildingName);
 
-    Structure* selectedStructure = nullptr;
+    BasicStructure* selectedStructure = nullptr;
 
-    for (auto* group : arr){
+    // Search for the structure by name and keep track of group and structure indices
+    for (int groupIndex = 0; groupIndex < arr.size(); ++groupIndex) {
+        StructureGroup* group = arr[groupIndex];
         if (!group) continue;
 
         CStructIterator* iterator = group->createIterator();
+        int structureIndex = 0;
 
-        for (iterator->first(); !iterator->isDone(); iterator->next()){
+        for (iterator->first(); !iterator->isDone(); iterator->next(), ++structureIndex) {
             Structure* currentStructure = iterator->currentItem();
             BasicStructure* basicStructure = dynamic_cast<BasicStructure*>(currentStructure);
 
             if (basicStructure && basicStructure->getName() == buildingName) {
                 selectedStructure = basicStructure;
+                selectedGroupIndex = groupIndex; // Save group index
+                selectedStructureIndex = structureIndex; // Save structure index
                 break;
             }
         }
 
         delete iterator;
-        if(selectedStructure) break; // structure found
+        if (selectedStructure) break; // Break outer loop if structure is found
     }
 
-    if(!selectedStructure){
-         cout << "Select decoration type:" << endl;
-        cout << "1: Satisfaction Enhancer" << endl;
-        cout << "2: Resource Efficiency Enhancer" << endl;
-        cout << "3: Maintenance Cost Reducer" << endl;
-        int decorationOption;
-        cin >> decorationOption;
+    if (!selectedStructure) {
+        cout << "Structure with the name '" << buildingName << "' not found." << endl;
+        return;
+    }
 
-        switch (decorationOption) {
-            case 1:
-                float boost;
-                cout << "Enter satisfaction boost value: ";
-                cin >> boost;
+    // Prompt for the decoration type
+    cout << "Select decoration type:" << endl;
+    cout << "1: Satisfaction Enhancer" << endl;
+    cout << "2: Resource Efficiency Enhancer" << endl;
+    cout << "3: Maintenance Cost Reducer" << endl;
+    int decorationOption;
+    cin >> decorationOption;
 
-                if(cin.fail() || boost < 0.0f || boost >100){
-                    cout << "Invalid boost value. It must be a non-negative number nad less than 100." << endl;
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                }else {
-                    selectedStructure = new SatisfactionEnhancer(selectedStructure, boost);
-                    cout << "Satisfaction enhancer applied with a boost of " << boost << "!" << endl;
-                }
-                
-                break;
+    BasicStructure* newStructure = nullptr;
+    switch (decorationOption) {
+        case 1: {
+            float boost;
+            cout << "Enter satisfaction boost value: ";
+            cin >> boost;
 
-            case 2:
-                float effboost;
-                cout << "Enter Resource efficiency boost: ";
-                cin >> effboost;
-
-                if(cin.fail() || effboost < 0.0f || effboost >100){
-                    cout << "Invalid boost value. It must be a non-negative number nad less than 100." << endl;
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                }else{
-                    selectedStructure = new ResourceEfficiencyEnhancer(selectedStructure, effboost);
-                    cout << "Resource efficiency enhancer applied with a boost of " << effboost << "!" << endl;
-                }
-
-                break;
-
-            case 3:
-                float reduction;
-                cout << "Enter Maintencance cost reduction perscentage: ";
-                cin >> reduction;
-
-                if(cin.fail() || reduction < 0.0f || reduction > 100){
-                    cout << "Invalid reduction percentage. It must be a non-negative number nad less than 100." << endl;
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                }else {
-                    selectedStructure = new MaintenanceCostReducer(selectedStructure,reduction);
-                    cout << "Maintenance enhancer applied with a reduction of " << reduction << "!" << endl;
-                }
-                break;
-            default:
-                cout << "Invalid decoration option." << endl;
+            if (cin.fail() || boost < 0.0f || boost > 100) {
+                cout << "Invalid boost value. It must be a non-negative number and less than 100." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 return;
+            }
+
+            newStructure = dynamic_cast<BasicStructure*>(new SatisfactionEnhancer(selectedStructure, boost));
+            cout << "Satisfaction enhancer applied with a boost of " << boost << "!" << endl;
+            break;
         }
+
+        case 2: {
+            float effBoost;
+            cout << "Enter resource efficiency boost: ";
+            cin >> effBoost;
+
+            if (cin.fail() || effBoost < 0.0f || effBoost > 100) {
+                cout << "Invalid boost value. It must be a non-negative number and less than 100." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                return;
+            }
+
+            newStructure = dynamic_cast<BasicStructure*>(new ResourceEfficiencyEnhancer(selectedStructure, effBoost));
+            cout << "Resource efficiency enhancer applied with a boost of " << effBoost << "!" << endl;
+            break;
+        }
+
+        case 3: {
+            float reduction;
+            cout << "Enter maintenance cost reduction percentage: ";
+            cin >> reduction;
+
+            if (cin.fail() || reduction < 0.0f || reduction > 100) {
+                cout << "Invalid reduction percentage. It must be a non-negative number and less than 100." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                return;
+            }
+
+            newStructure = dynamic_cast<BasicStructure*>(new MaintenanceCostReducer(selectedStructure, reduction));
+            cout << "Maintenance cost reducer applied with a reduction of " << reduction << "!" << endl;
+            break;
+        }
+
+        default:
+            cout << "Invalid decoration option." << endl;
+            return;
+    }
+
+    // Remove old structure and add the new decorated structure back to the group
+    if (newStructure) {
+        arr[selectedGroupIndex]->remove(selectedStructure);
+        arr[selectedGroupIndex]->add(newStructure); // Add the new BasicStructure back to the group
+        cout << "Structure decorated and updated successfully!" << endl;
     }
 }
+
+
+
 
 
 

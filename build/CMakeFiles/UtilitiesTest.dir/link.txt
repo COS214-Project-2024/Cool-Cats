@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/UtilitiesTest.dir/Tests/UtilitiesTest.cpp.o -o UtilitiesTest  lib/libgtest.a lib/libgtest_main.a libutilities.a lib/libgtest.a 

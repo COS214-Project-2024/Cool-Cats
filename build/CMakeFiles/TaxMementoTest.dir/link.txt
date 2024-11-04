@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/TaxMementoTest.dir/Tests/TaxMementoTest.cpp.o -o TaxMementoTest  lib/libgtest.a lib/libgtest_main.a libgovernment.a libCitizen.a lib/libgtest.a 

@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/MayorIteratorTest.dir/Tests/MayorIteratorTest.cpp.o -o MayorIteratorTest  lib/libgtest.a lib/libgtest_main.a libCitizen.a lib/libgtest.a 

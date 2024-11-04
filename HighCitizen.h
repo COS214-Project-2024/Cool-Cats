@@ -2,7 +2,7 @@
 #define HIGHCITIZEN_H
 
 #include "Citizen.h"
-#include "AllCitizenIterator.h"
+#include "CitizenIterator.h"
 #include "Income.h"
 
 #include <iostream>
@@ -14,7 +14,7 @@ class HighCitizen : public Citizen{
         void vote();
         static int getHighClassCitizenCount();
         Income* getIncome();
-        AllCitizenIterator* createCitizenIterator();
+        CitizenIterator* createCitizenIterator();
         ~HighCitizen();
     
     private:

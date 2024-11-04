@@ -60,7 +60,7 @@ add_library(Buildings
     MaintenanceCostReducer.cpp
     ResourceEfficiencyEnhancer.cpp
     SatisfactionEnhancer.cpp
-)
+    )
 
 # Link the library with the City library
 target_link_libraries(citizen PRIVATE City)

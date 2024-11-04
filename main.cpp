@@ -1523,7 +1523,7 @@ void makeCitizensVote()
         return;
     }
     votedOnce = true;
-    CitizenIterator* iterate = SENTINEL->createCitizenIterator();
+    AllCitizenIterator* iterate = SENTINEL->createCitizenIterator();
     int textIndex = 0;
 
     while(!iterate->isDone())

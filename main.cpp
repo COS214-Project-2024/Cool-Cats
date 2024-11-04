@@ -125,7 +125,7 @@ bool citizenIntro = false;
 bool votedOnce = false;
 int previousPopulation = 0;
 double previousSatisfaction = 0;
-Citizen * SENTINEL = new LowCitizen();
+LowCitizen * SENTINEL = new LowCitizen();
 Mayor * SENTINEL_MAYOR = new Mayor();
 regex escape_characters(R"(\\[nt\\\"'])");
 bool foundCity(string cityChoice);
@@ -1297,7 +1297,7 @@ void addCitizenToBuildings()
                 //Add high-class citizens to structure, ask if correct
                 addCititoBuild(amountCitizens);
 
-                cout << amountCitizens << " of High-class citizens successfully added to the building\n";
+                cout << "\n" << amountCitizens << " of High-class citizens successfully added to the building\n";
 
                 delete highClassCreator;
                 break;
@@ -1333,7 +1333,7 @@ void addCitizenToBuildings()
                 //Add mid-class citizen to structure, ask if correct
                 addCititoBuild(amountCitizens);
 
-                cout << amountCitizens << " of Middle-class citizens successfully added to the building\n";
+                cout << "\n" << amountCitizens << " of Middle-class citizens successfully added to the building\n";
                 delete midClassCreator;
                 break;
             }
@@ -1369,7 +1369,7 @@ void addCitizenToBuildings()
                 //Add low-class citizen to structure, ask if correct
                 addCititoBuild(amountCitizens);
 
-                cout << amountCitizens << " of Low-class citizens successfully added to the building\n";
+                cout <<  "\n" << amountCitizens << " of Low-class citizens successfully added to the building\n";
                 delete lowClassCreator;
                 break;
             }
@@ -1436,7 +1436,7 @@ void addMayor(){
     }
 
     MayorCreator *mc = new MayorCreator();
-    Citizen *newMayor = mc->specificCitizenOperation("employed", 70, arr[indexArea], newMayorName);
+    mc->specificCitizenOperation("employed", 70, arr[indexArea], newMayorName);
 
     cout << endl;
     cout << newMayorName << " has been created\n";
@@ -1498,12 +1498,16 @@ void makeCitizensVote()
     }
     votedOnce = true;
     CitizenIterator* iterate = SENTINEL->createCitizenIterator();
+    int textIndex = 0;
 
     while(!iterate->isDone())
     {
         iterate->currentItem()->vote();
         iterate->next();
+        textIndex++;
     }
+
+    cout << "Iterated through: " << textIndex << endl;
 
     int seeMayorResult;
     cout << "All citizens have now voted for their choice of mayor, Press 1 to see the results, press 2 to return\n";
@@ -1544,9 +1548,12 @@ void currentMayor()
     bool noVotes = false;
     for(Mayor* m : mayors)
     {
+        cout << m->getMayorName() << endl;
+        cout << m->getVoteCount() << endl;
         if(m->getVoteCount() > 0)
         {
             noVotes = true;
+            cout << "noVotes changed\n";
             break;
         }
     }

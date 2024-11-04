@@ -75,7 +75,7 @@ void Mayor::receiveVote()
 /// @brief Does nothing as mayors are not allowed to vote
 void Mayor::vote()
 {
-    
+    cout << "not supposed to be here\n";
 }
 
 /// @brief Returns the number of votes a mayor has received from different citizens

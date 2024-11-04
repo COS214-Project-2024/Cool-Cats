@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 
-#include "../Citizen/Citizen.h"
-#include "../Citizen/Mayor.h"
-#include "../Citizen/LowCitizen.h"
+#include "../Citizen.h"
+#include "../Mayor.h"
+#include "../LowCitizen.h"
 
 //Default and parameterized constructor tested in MayorTest
 TEST(LowCitizenTest, Vote)

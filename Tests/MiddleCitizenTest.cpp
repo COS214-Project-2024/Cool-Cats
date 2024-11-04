@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 
-#include "../Citizen/Citizen.h"
-#include "../Citizen/Mayor.h"
-#include "../Citizen/MiddleCitizen.h"
+#include "../Citizen.h"
+#include "../Mayor.h"
+#include "../MiddleCitizen.h"
 
 TEST(MiddleCitizenTest, Vote)
 {

@@ -1257,9 +1257,6 @@ void addMayor(){
     MayorCreator *mc = new MayorCreator();
     Citizen *newMayor = mc->specificCitizenOperation("employed", 70, arr[indexArea], newMayorName);
 
-    //Ask if we want to add a mayor to a citizen
-    // addCititoBuild(newMayor);
-
     cout << endl;
     cout << newMayorName << " has been created\n";
     cout << "You can make all citizens vote for a mayor by going to the 'Make citizens vote for the new mayor' option\n";
@@ -1278,17 +1275,6 @@ bool foundCity(string city)
     {
         if(city == g->getName())
         {
-            vector<Structure*> checkStructure = g->getChildren();
-
-            if(checkStructure.empty())
-            {
-                cout << "There are no structures in this group, please try again with a different structure.\n";
-                return false;
-            }
-            else
-            {
-                cout << checkStructure[0]->getName() << endl;
-            }
             return true;
         }
     }

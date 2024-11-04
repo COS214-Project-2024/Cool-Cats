@@ -613,12 +613,11 @@ void addStructure(){
         cout << i << ": " << arr[i]->getName() << endl;
     }
 
-    int groupIndex;
+    size_t groupIndex;
     cout << "Enter the index of the Structure group: ";
-    while ( !(cin >> groupIndex) || groupIndex < 0 || static_cast<int>(arr.size())) {
+    while ( !(cin >> groupIndex) || groupIndex < 0 || groupIndex >= arr.size()) {
         cout << "Invalid input. Please enter a valid group index. " << endl;
         cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
 
     string structureName;
@@ -715,9 +714,9 @@ void removeStructure(){
         cout << i << ": " << arr[i]->getName() << endl;
     }
 
-    int groupIndex;
+    size_t groupIndex;
     cout << "Enter the index of the StructureGroup: ";
-    while (!(cin >> groupIndex) || groupIndex < 0 || groupIndex >= static_cast<int>(arr.size())) {
+    while (!(cin >> groupIndex) || groupIndex < 0 || groupIndex >= arr.size()) {
         cout << "Invalid input. Please enter a valid index." << endl;
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');

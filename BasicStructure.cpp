@@ -44,11 +44,6 @@ BasicStructure::BasicStructure(const string& name, char Btype, int capacity)
     default:
         break;
     }
-
-    kilowatts = 0;
-    availableWater = 0;
-    sewageThere = 100;
-    wasteThere = 100;
 }
 
 
@@ -155,77 +150,4 @@ float BasicStructure::getCitizenSatisfactionImpact() {
 /// @brief Destructor for BasicStructure.
 BasicStructure::~BasicStructure(){
     // No resources to deallocate
-}
-
-
-/// @return get kilowatts
-float BasicStructure::getKilowatts() {
-    return kilowatts;
-}
-
-/// @brief  Setter for kilowatts
-void BasicStructure::setKilowatts(float kw) {
-    kilowatts = kw;
-}
-
-/// @return  Getter for availableWater
-float BasicStructure::getAvailableWater() {
-    return availableWater;
-}
-
-/// @brief Setter for availableWater
-void BasicStructure::setAvailableWater(float water) {
-    availableWater = water;
-}
-
-/// @return  Getter for sewageAmount
-float BasicStructure::getSewageAmount() {
-    return sewageThere;
-}
-
-/// @brief Setter for sewageAmount
-void BasicStructure::setSewageAmount(float sewage) {
-    sewageThere = sewage;
-}
-
-/// @brief Getter for wasteAmount
-float BasicStructure::getWasteAmount() {
-    return wasteThere;
-}
-
-/// @brief Setter for wasteAmount
-void BasicStructure::setWasteAmount(float waste) {
-    wasteThere = waste;
-    // No resources to deallocate
-}
-
-/// @brief Adds utilities to a specific building
-void BasicStructure::addUtilities(string &request, Structure* s){
-    Utilities *ut = new Utilities(s);
-    Utilities *pt = new PowerUtility(s);
-    Utilities *wt = new WaterUtility(s);
-    Utilities *wst = new WasteUtility(s);
-    Utilities *st = new SewageUtility(s);
-    ut->setNext(pt);
-    pt->setNext(wt);
-    wt->setNext(wst);
-    wst->setNext(st);
-    ut->processRequest(request);
-}
-
-void BasicStructure::subTract(){
-    if(kilowatts < 50){
-        kilowatts = 0;
-    }
-    else{
-        kilowatts = kilowatts - 50;
-    }
-    if(availableWater < 50){
-        availableWater = 0;
-    }
-    else{
-        availableWater = availableWater - 50;
-    }
-    sewageThere += 50;
-    wasteThere += 50;
 }

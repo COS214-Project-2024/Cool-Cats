@@ -105,9 +105,8 @@ void createRoad(const std::string& roadName, const std::string& structureGroupNa
 int structureIndex(StructureGroup* group, Structure* name);
 void createInCityTransportRoute(int TransType, string CityName, BasicStructure* starting, BasicStructure* ending, string transName, string routeName);
 void travelRoute(string routeName);
-void createTransportation(int num);
+void createTransportation();
 int error(int min, int max);
-void newTransportMenu();
 
 
 //for citizens
@@ -125,7 +124,7 @@ bool citizenIntro = false;
 bool votedOnce = false;
 int previousPopulation = 0;
 double previousSatisfaction = 0;
-LowCitizen * SENTINEL = new LowCitizen();
+Citizen * SENTINEL = new LowCitizen();
 Mayor * SENTINEL_MAYOR = new Mayor();
 regex escape_characters(R"(\\[nt\\\"'])");
 bool foundCity(string cityChoice);
@@ -323,11 +322,6 @@ void viewCity() {
                 // Print each structure's name and type
                 cout << "- " << basicStructure->getName() 
                      << " (" << basicStructure->getType() << ")" << endl;
-                cout << "\t Utilites" << endl;
-                cout << "\t PowerLeft: " << basicStructure->getKilowatts() << endl;
-                cout << "\t WaterLeft: " << basicStructure->getAvailableWater() << endl;
-                cout << "\t Sewage Amount: " << basicStructure->getSewageAmount() << endl;
-                cout << "\t Waste Amount: " << basicStructure->getWasteAmount() << endl;
             }
         }
 
@@ -347,8 +341,6 @@ StructureGroup* createCityHall(){
     //this is default created, so its done in the before the main menu
     StructureGroup * cityhallGroup = new StructureGroup("CityHallGroup");
     BasicStructure* cityHall = new BasicStructure("CityHall", 'L',100);
-    string n = "PWSB"; 
-    cityHall->addUtilities(n, cityHall);
     cityhallGroup->add(cityHall);
 
     return cityhallGroup;
@@ -690,8 +682,7 @@ void addStructure(){
     }
 
     BasicStructure* newStructure = new BasicStructure(structureName, structuretype, maxCap);
-    string n = "PWSB"; 
-    newStructure->addUtilities(n, newStructure);
+
     arr[groupIndex]->add(newStructure);
 
     CStructIterator* newIterator = arr[groupIndex]->createIterator();
@@ -969,8 +960,15 @@ void editTransport(){
     int choice = error(1,7);
     switch(choice){
         case 1:
-            newTransportMenu();
-            
+            printLines();
+            chooseFromMenu();
+            cout << "Transport Creation Menu" << endl;
+            cout << "1: Create new Public Transport" << endl;
+            cout << "2: Create new Train Transport" << endl;
+            cout << "3: Create new Airplane Transport" << endl;
+            cout << "4: View Current Transports" << endl;
+            cout << "5: Exit" << endl;
+            createTransportation();
 
     }
 
@@ -1017,109 +1015,24 @@ int error(int min, int max){
         }
         return choice;
 }
-void newTransportMenu(){
-        printLines();
-        chooseFromMenu();
-        cout << "Transport Creation Menu" << endl;
-        cout << "1: Create new Public Transport" << endl;
-        cout << "2: Create new Train Transport" << endl;
-        cout << "3: Create new Airplane Transport" << endl;
-        cout << "4: View Current Transports" << endl;
-        cout << "5: Exit" << endl;
-        int choice = error(1,5);
-        createTransportation(choice);
-}
 
-void createTransportation(int num){
-    switch(num) {
-        case 1: {
+void createTransportation(){
+    printLines();
+    chooseFromMenu();
+    cout << "Public Transport Creation Menu" << endl;
+    cout << "1: Create Bus" << endl;
+    cout << "2: Create Taxi" << endl;
+    cout << "3: Exit" << endl;
+    int choice = error(1,3);
+    switch(choice){
+        case 1:
             printLines();
             chooseFromMenu();
-            cout << "Public Transport Creation Menu" << endl;
-            cout << "1: Create Bus" << endl;
-            cout << "2: Create Taxi" << endl;
-            cout << "3: Exit" << endl;
-            int publicChoice = error(1, 3);
-            switch(publicChoice) {
-                case 1:
-                    printLines();
-                    chooseFromMenu();
-                    std::cout << "Please provide a Bus name: " << std::endl;
-                    createPublicType(1, stringError());
-                    newTransportMenu();
-                    break;
-                case 2:
-                    printLines();
-                    chooseFromMenu();
-                    std::cout << "Please provide a Taxi name: " << std::endl;
-                    createPublicType(2, stringError());
-                    newTransportMenu();
-                    break;
-                case 3:
-                    editTransport();
-                    break;
-            }
-            break;
-        }
-        case 2: {
-            printLines();
-            chooseFromMenu();
-            cout << "Train Transport Creation Menu" << endl;
-            cout << "1: Create Metro" << endl;
-            cout << "2: Create Freight" << endl;
-            cout << "3: Exit" << endl;
-            int trainChoice = error(1, 3);
-            switch(trainChoice) {
-                case 1:
-                    printLines();
-                    chooseFromMenu();
-                    std::cout << "Please provide a Metro name: " << std::endl;
-                    createTrainType(1, stringError());
-                    newTransportMenu();
-                    break;
-                case 2:
-                    printLines();
-                    chooseFromMenu();
-                    std::cout << "Please provide a Freight name: " << std::endl;
-                    createTrainType(3, stringError());
-                    newTransportMenu();
-                    break;
-                case 3:
-                    editTransport();
-                    break;
-            }
-            break;
-        }
-        case 3: {
-            printLines();
-            chooseFromMenu();
-            cout << "Airplane Transport Creation Menu" << endl;
-            cout << "1: Create Passenger Plane" << endl;
-            cout << "2: Create Cargo Plane" << endl;
-            cout << "3: Exit" << endl;
-            int airChoice = error(1, 3);
-            switch(airChoice) {
-                case 1:
-                    printLines();
-                    chooseFromMenu();
-                    std::cout << "Please provide a Passenger Plane name: " << std::endl;
-                    createAirportType(1, stringError());
-                    newTransportMenu();
-                    break;
-                case 2:
-                    printLines();
-                    chooseFromMenu();
-                    std::cout << "Please provide a Cargo name: " << std::endl;
-                    createAirportType(2, stringError());
-                    newTransportMenu();
-                    break;
-                case 3:
-                    editTransport();
-                    break;
-            }
-            break;
-        }
+            std::cout << "Please provide a Bus name: " << std::endl;
+            createPublicType(1, stringError());
+            createTransportation();
     }
+
 
 }
 
@@ -1450,22 +1363,21 @@ void addMayor(){
     //Create actual mayor
     string newMayorName = "";
     cout << "Enter the name of the mayor\n";
+    cin >> newMayorName;
 
-    while(true)
+    while(newMayorName == " " || regex_search(newMayorName, escape_characters))
     {
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        getline(cin, newMayorName);
-
-        if(newMayorName == " " || regex_search(newMayorName, escape_characters))
+        if(!(cin >> newMayorName))
         {
-            cout << "Invalid name entered, please try again\n";
-            continue;    
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid name inputted, please try again\n";
         }
-        break;
+        
     }
 
     MayorCreator *mc = new MayorCreator();
-    mc->specificCitizenOperation("employed", 70, arr[indexArea], newMayorName);
+    Citizen *newMayor = mc->specificCitizenOperation("employed", 70, arr[indexArea], newMayorName);
 
     cout << endl;
     cout << newMayorName << " has been created\n";
@@ -1527,13 +1439,11 @@ void makeCitizensVote()
     }
     votedOnce = true;
     CitizenIterator* iterate = SENTINEL->createCitizenIterator();
-    int textIndex = 0;
 
     while(!iterate->isDone())
     {
         iterate->currentItem()->vote();
         iterate->next();
-        textIndex++;
     }
 
     cout << "Iterated through: " << textIndex << endl;
@@ -1577,12 +1487,9 @@ void currentMayor()
     bool noVotes = false;
     for(Mayor* m : mayors)
     {
-        cout << m->getMayorName() << endl;
-        cout << m->getVoteCount() << endl;
         if(m->getVoteCount() > 0)
         {
             noVotes = true;
-            cout << "noVotes changed\n";
             break;
         }
     }
@@ -1659,7 +1566,7 @@ void createPublicType(int type, string name){
             break;
         case 2:
             PT.push_back(new PublicTransport(new Taxi(name)));
-            std::cout << name <<" added successfully" << std::endl;
+            std::cout << "Added Successfully" << std::endl;
             break;
         default:
             std::cout << "Invalid Public transport type" << std::endl;
@@ -1670,15 +1577,15 @@ void createTrainType(int type, string name){
     {
         case 1:
             TT.push_back(new TrainTransport(new Metro(name)));
-            std::cout << name <<" added successfully" << std::endl;
+            std::cout << "Added Successfully" << std::endl;
             break;
         case 2:
             TT.push_back(new TrainTransport(new Tram(name)));
-            std::cout << name <<" added successfully" << std::endl;
+            std::cout << "Added Successfully" << std::endl;
             break;
         case 3:
             TT.push_back(new TrainTransport(new Freight(name)));
-            std::cout << name <<" added successfully" << std::endl;
+            std::cout << "Added Successfully" << std::endl;
             break;
         default:
             std::cout << "Invalid Train Transport Type" << std::endl;;
@@ -1689,11 +1596,11 @@ void createAirportType(int type, string name){
     {
         case 1:
             AT.push_back(new AirportTransport(new Passenger(name)));
-            std::cout << name <<" added successfully" << std::endl;
+            std::cout << "Added Successfully" << std::endl;
             break;
         case 2:
             AT.push_back(new AirportTransport(new Cargo(name)));
-            std::cout << name <<" added successfully" << std::endl;
+            std::cout << "Added Successfully" << std::endl;
             break;
         default:
             std::cout << "Invalid Airport Transport Type" << std::endl;;

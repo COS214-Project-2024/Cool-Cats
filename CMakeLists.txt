@@ -40,23 +40,23 @@ add_library(government
     Water.cpp
 )
 
-# Add the source files for the Utilities library
 add_library(utilities
     Utilities.cpp
     WasteUtility.cpp
     WaterUtility.cpp
     PowerUtility.cpp
     SewageUtility.cpp
+
+
 )
 
-# Add the source files for the Buildings library
 add_library(Buildings
     Structure.cpp
     BasicStructure.cpp
     StructureGroup.cpp
     StructureDecorator.cpp
     StructureIterator.cpp
-    CStructIterator.cpp
+    CstructIterator.cpp
     MaintenanceCostReducer.cpp
     ResourceEfficiencyEnhancer.cpp
     SatisfactionEnhancer.cpp

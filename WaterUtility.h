@@ -12,7 +12,7 @@ private:
     int capacity;
 
 public:
-    WaterUtility(Structure* s);
+    WaterUtility();
 
     // Handles water-related requests; if not handled, passes it down the chain
     void processRequest(const std::string &request) override;
@@ -20,7 +20,9 @@ public:
     int getCapacity();
 
     // Additional water-specific methods
-
+    void purifyWater();
+    void manageDistribution(const std::string &buildingType, int amount);
+    void checkPipeIntegrity();
 };
 
 #endif

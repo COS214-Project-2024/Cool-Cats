@@ -593,6 +593,8 @@ void editStructure(){
 
         case 5:
             decorateStructure();
+            editStructure();
+
             break;
 
         default:

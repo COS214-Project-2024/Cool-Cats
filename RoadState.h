@@ -11,6 +11,7 @@ class RoadState
     public:
         virtual bool request() = 0;
 
+
 };
 
 #endif

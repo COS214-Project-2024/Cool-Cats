@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include"../Citizen/AllCitizenIterator.h"
+#include"AllCitizenIterator.h"
 #include "ResourceMediator.h"
 #include "TaxMemento.h"
 

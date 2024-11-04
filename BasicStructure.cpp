@@ -87,6 +87,7 @@ string BasicStructure::getType()
     default:
         break;
     }
+    return "";
 }
 
 /// @brief Removes a citizen from the structure, decrementing the count.

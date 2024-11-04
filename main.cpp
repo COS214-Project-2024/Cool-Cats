@@ -324,10 +324,10 @@ void viewCity() {
                 cout << "- " << basicStructure->getName() 
                      << " (" << basicStructure->getType() << ")" << endl;
                 cout << "\t Utilites" << endl;
-                cout << "\t PowerLeft: " << basicStructure->getKilowatts() << endl;
-                cout << "\t WaterLeft: " << basicStructure->getAvailableWater() << endl;
-                cout << "\t Sewage Amount: " << basicStructure->getSewageAmount() << endl;
-                cout << "\t Waste Amount: " << basicStructure->getWasteAmount() << endl;
+                // cout << "\t PowerLeft: " << basicStructure->getKilowatts() << endl;
+                // cout << "\t WaterLeft: " << basicStructure->getAvailableWater() << endl;
+                // cout << "\t Sewage Amount: " << basicStructure->getSewageAmount() << endl;
+                // cout << "\t Waste Amount: " << basicStructure->getWasteAmount() << endl;
             }
         }
 
@@ -348,7 +348,7 @@ StructureGroup* createCityHall(){
     StructureGroup * cityhallGroup = new StructureGroup("CityHallGroup");
     BasicStructure* cityHall = new BasicStructure("CityHall", 'L',100);
     string n = "PWSB"; 
-    cityHall->addUtilities(n, cityHall);
+    // cityHall->addUtilities(n, cityHall);
     cityhallGroup->add(cityHall);
 
     return cityhallGroup;
@@ -692,7 +692,7 @@ void addStructure(){
 
     BasicStructure* newStructure = new BasicStructure(structureName, structuretype, maxCap);
     string n = "PWSB"; 
-    newStructure->addUtilities(n, newStructure);
+    // newStructure->addUtilities(n, newStructure);
     arr[groupIndex]->add(newStructure);
 
     CStructIterator* newIterator = arr[groupIndex]->createIterator();
@@ -1523,7 +1523,7 @@ void makeCitizensVote()
         return;
     }
     votedOnce = true;
-    CitizenIterator* iterate = SENTINEL->createCitizenIterator();
+    AllCitizenIterator* iterate = SENTINEL->createCitizenIterator();
     int textIndex = 0;
 
     while(!iterate->isDone())

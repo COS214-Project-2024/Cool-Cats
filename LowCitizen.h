@@ -2,7 +2,6 @@
 #define LOWCITIZEN_H
 
 #include "Citizen.h"
-#include "CitizenIterator.h"
 #include "Income.h"
 #include "AllCitizenIterator.h"  
 

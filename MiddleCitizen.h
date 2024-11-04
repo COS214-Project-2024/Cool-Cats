@@ -2,7 +2,7 @@
 #define MIDDLECITIZEN_H
 
 #include "Citizen.h"
-#include "CitizenIterator.h"
+#include "AllCitizenIterator.h"
 #include "Income.h"
 
 #include <iostream>

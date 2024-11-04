@@ -38,6 +38,18 @@ add_library(government
     Water.cpp
     )
 
+add_library(Buildings
+    Structure.cpp
+    BasicStructure.cpp
+    StructureGroup.cpp
+    StructureDecorator.cpp
+    StructureIterator.cpp
+    CstructIterator.cpp
+    MaintenanceCostReducer.cpp
+    ResourceEfficiencyEnhancer.cpp
+    SatisfactionEnhancer.cpp
+    )
+
 # Link the library with the City library
 target_link_libraries(citizen PRIVATE City)
 target_link_libraries(government PRIVATE City)

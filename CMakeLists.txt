@@ -62,6 +62,10 @@ add_library(Buildings
     SatisfactionEnhancer.cpp
 )
 
+# Link the library with the City library
+target_link_libraries(citizen PRIVATE City)
+target_link_libraries(government PRIVATE City)
+
 # Define each test as an executable and link to Google Test and the appropriate libraries
 add_executable(AllCitizenIteratorTest Tests/AllCitizenIteratorTest.cpp)
 target_link_libraries(AllCitizenIteratorTest PRIVATE gtest gtest_main Citizen)

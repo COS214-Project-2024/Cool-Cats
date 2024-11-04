@@ -12,9 +12,7 @@ public:
     void processRequest(const std::string &request) override;
 
     // Additional sewage-specific methods
-    void collectSewage(const std::string &area);
     void treatSewage();
-    void monitorSystem();
 };
 
 #endif

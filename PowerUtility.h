@@ -17,7 +17,6 @@ public:
 
     // Additional power-specific methods
     void generatePower();
-    void transmitPower(double voltage, const std::string &areaType);
 };
 
 #endif

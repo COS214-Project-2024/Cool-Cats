@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats"
+CMAKE_SOURCE_DIR = "/home/sean/COS 214/Project/Cool-Cats"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build"
+CMAKE_BINARY_DIR = "/home/sean/COS 214/Project/Cool-Cats/build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/government.dir/depend.make
@@ -72,156 +72,156 @@ include CMakeFiles/government.dir/flags.make
 CMakeFiles/government.dir/Government.cpp.o: CMakeFiles/government.dir/flags.make
 CMakeFiles/government.dir/Government.cpp.o: ../Government.cpp
 CMakeFiles/government.dir/Government.cpp.o: CMakeFiles/government.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/government.dir/Government.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/Government.cpp.o -MF CMakeFiles/government.dir/Government.cpp.o.d -o CMakeFiles/government.dir/Government.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Government.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/government.dir/Government.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/Government.cpp.o -MF CMakeFiles/government.dir/Government.cpp.o.d -o CMakeFiles/government.dir/Government.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/Government.cpp"
 
 CMakeFiles/government.dir/Government.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/government.dir/Government.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Government.cpp" > CMakeFiles/government.dir/Government.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/Government.cpp" > CMakeFiles/government.dir/Government.cpp.i
 
 CMakeFiles/government.dir/Government.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/government.dir/Government.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Government.cpp" -o CMakeFiles/government.dir/Government.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/Government.cpp" -o CMakeFiles/government.dir/Government.cpp.s
 
 CMakeFiles/government.dir/GovernmentInvoker.cpp.o: CMakeFiles/government.dir/flags.make
 CMakeFiles/government.dir/GovernmentInvoker.cpp.o: ../GovernmentInvoker.cpp
 CMakeFiles/government.dir/GovernmentInvoker.cpp.o: CMakeFiles/government.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/government.dir/GovernmentInvoker.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/GovernmentInvoker.cpp.o -MF CMakeFiles/government.dir/GovernmentInvoker.cpp.o.d -o CMakeFiles/government.dir/GovernmentInvoker.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/GovernmentInvoker.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/government.dir/GovernmentInvoker.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/GovernmentInvoker.cpp.o -MF CMakeFiles/government.dir/GovernmentInvoker.cpp.o.d -o CMakeFiles/government.dir/GovernmentInvoker.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/GovernmentInvoker.cpp"
 
 CMakeFiles/government.dir/GovernmentInvoker.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/government.dir/GovernmentInvoker.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/GovernmentInvoker.cpp" > CMakeFiles/government.dir/GovernmentInvoker.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/GovernmentInvoker.cpp" > CMakeFiles/government.dir/GovernmentInvoker.cpp.i
 
 CMakeFiles/government.dir/GovernmentInvoker.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/government.dir/GovernmentInvoker.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/GovernmentInvoker.cpp" -o CMakeFiles/government.dir/GovernmentInvoker.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/GovernmentInvoker.cpp" -o CMakeFiles/government.dir/GovernmentInvoker.cpp.s
 
 CMakeFiles/government.dir/PolicyImplementationCommand.cpp.o: CMakeFiles/government.dir/flags.make
 CMakeFiles/government.dir/PolicyImplementationCommand.cpp.o: ../PolicyImplementationCommand.cpp
 CMakeFiles/government.dir/PolicyImplementationCommand.cpp.o: CMakeFiles/government.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/government.dir/PolicyImplementationCommand.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/PolicyImplementationCommand.cpp.o -MF CMakeFiles/government.dir/PolicyImplementationCommand.cpp.o.d -o CMakeFiles/government.dir/PolicyImplementationCommand.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/PolicyImplementationCommand.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/government.dir/PolicyImplementationCommand.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/PolicyImplementationCommand.cpp.o -MF CMakeFiles/government.dir/PolicyImplementationCommand.cpp.o.d -o CMakeFiles/government.dir/PolicyImplementationCommand.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/PolicyImplementationCommand.cpp"
 
 CMakeFiles/government.dir/PolicyImplementationCommand.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/government.dir/PolicyImplementationCommand.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/PolicyImplementationCommand.cpp" > CMakeFiles/government.dir/PolicyImplementationCommand.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/PolicyImplementationCommand.cpp" > CMakeFiles/government.dir/PolicyImplementationCommand.cpp.i
 
 CMakeFiles/government.dir/PolicyImplementationCommand.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/government.dir/PolicyImplementationCommand.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/PolicyImplementationCommand.cpp" -o CMakeFiles/government.dir/PolicyImplementationCommand.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/PolicyImplementationCommand.cpp" -o CMakeFiles/government.dir/PolicyImplementationCommand.cpp.s
 
 CMakeFiles/government.dir/TaxationCommand.cpp.o: CMakeFiles/government.dir/flags.make
 CMakeFiles/government.dir/TaxationCommand.cpp.o: ../TaxationCommand.cpp
 CMakeFiles/government.dir/TaxationCommand.cpp.o: CMakeFiles/government.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/government.dir/TaxationCommand.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/TaxationCommand.cpp.o -MF CMakeFiles/government.dir/TaxationCommand.cpp.o.d -o CMakeFiles/government.dir/TaxationCommand.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/TaxationCommand.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/government.dir/TaxationCommand.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/TaxationCommand.cpp.o -MF CMakeFiles/government.dir/TaxationCommand.cpp.o.d -o CMakeFiles/government.dir/TaxationCommand.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/TaxationCommand.cpp"
 
 CMakeFiles/government.dir/TaxationCommand.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/government.dir/TaxationCommand.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/TaxationCommand.cpp" > CMakeFiles/government.dir/TaxationCommand.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/TaxationCommand.cpp" > CMakeFiles/government.dir/TaxationCommand.cpp.i
 
 CMakeFiles/government.dir/TaxationCommand.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/government.dir/TaxationCommand.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/TaxationCommand.cpp" -o CMakeFiles/government.dir/TaxationCommand.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/TaxationCommand.cpp" -o CMakeFiles/government.dir/TaxationCommand.cpp.s
 
 CMakeFiles/government.dir/Taxes.cpp.o: CMakeFiles/government.dir/flags.make
 CMakeFiles/government.dir/Taxes.cpp.o: ../Taxes.cpp
 CMakeFiles/government.dir/Taxes.cpp.o: CMakeFiles/government.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/government.dir/Taxes.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/Taxes.cpp.o -MF CMakeFiles/government.dir/Taxes.cpp.o.d -o CMakeFiles/government.dir/Taxes.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Taxes.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/government.dir/Taxes.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/Taxes.cpp.o -MF CMakeFiles/government.dir/Taxes.cpp.o.d -o CMakeFiles/government.dir/Taxes.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/Taxes.cpp"
 
 CMakeFiles/government.dir/Taxes.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/government.dir/Taxes.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Taxes.cpp" > CMakeFiles/government.dir/Taxes.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/Taxes.cpp" > CMakeFiles/government.dir/Taxes.cpp.i
 
 CMakeFiles/government.dir/Taxes.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/government.dir/Taxes.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Taxes.cpp" -o CMakeFiles/government.dir/Taxes.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/Taxes.cpp" -o CMakeFiles/government.dir/Taxes.cpp.s
 
 CMakeFiles/government.dir/TaxMemento.cpp.o: CMakeFiles/government.dir/flags.make
 CMakeFiles/government.dir/TaxMemento.cpp.o: ../TaxMemento.cpp
 CMakeFiles/government.dir/TaxMemento.cpp.o: CMakeFiles/government.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/government.dir/TaxMemento.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/TaxMemento.cpp.o -MF CMakeFiles/government.dir/TaxMemento.cpp.o.d -o CMakeFiles/government.dir/TaxMemento.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/TaxMemento.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/government.dir/TaxMemento.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/TaxMemento.cpp.o -MF CMakeFiles/government.dir/TaxMemento.cpp.o.d -o CMakeFiles/government.dir/TaxMemento.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/TaxMemento.cpp"
 
 CMakeFiles/government.dir/TaxMemento.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/government.dir/TaxMemento.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/TaxMemento.cpp" > CMakeFiles/government.dir/TaxMemento.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/TaxMemento.cpp" > CMakeFiles/government.dir/TaxMemento.cpp.i
 
 CMakeFiles/government.dir/TaxMemento.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/government.dir/TaxMemento.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/TaxMemento.cpp" -o CMakeFiles/government.dir/TaxMemento.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/TaxMemento.cpp" -o CMakeFiles/government.dir/TaxMemento.cpp.s
 
 CMakeFiles/government.dir/BudgetAllocationCommand.cpp.o: CMakeFiles/government.dir/flags.make
 CMakeFiles/government.dir/BudgetAllocationCommand.cpp.o: ../BudgetAllocationCommand.cpp
 CMakeFiles/government.dir/BudgetAllocationCommand.cpp.o: CMakeFiles/government.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/government.dir/BudgetAllocationCommand.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/BudgetAllocationCommand.cpp.o -MF CMakeFiles/government.dir/BudgetAllocationCommand.cpp.o.d -o CMakeFiles/government.dir/BudgetAllocationCommand.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/BudgetAllocationCommand.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/government.dir/BudgetAllocationCommand.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/BudgetAllocationCommand.cpp.o -MF CMakeFiles/government.dir/BudgetAllocationCommand.cpp.o.d -o CMakeFiles/government.dir/BudgetAllocationCommand.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/BudgetAllocationCommand.cpp"
 
 CMakeFiles/government.dir/BudgetAllocationCommand.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/government.dir/BudgetAllocationCommand.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/BudgetAllocationCommand.cpp" > CMakeFiles/government.dir/BudgetAllocationCommand.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/BudgetAllocationCommand.cpp" > CMakeFiles/government.dir/BudgetAllocationCommand.cpp.i
 
 CMakeFiles/government.dir/BudgetAllocationCommand.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/government.dir/BudgetAllocationCommand.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/BudgetAllocationCommand.cpp" -o CMakeFiles/government.dir/BudgetAllocationCommand.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/BudgetAllocationCommand.cpp" -o CMakeFiles/government.dir/BudgetAllocationCommand.cpp.s
 
 CMakeFiles/government.dir/CityResourceMediator.cpp.o: CMakeFiles/government.dir/flags.make
 CMakeFiles/government.dir/CityResourceMediator.cpp.o: ../CityResourceMediator.cpp
 CMakeFiles/government.dir/CityResourceMediator.cpp.o: CMakeFiles/government.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/government.dir/CityResourceMediator.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/CityResourceMediator.cpp.o -MF CMakeFiles/government.dir/CityResourceMediator.cpp.o.d -o CMakeFiles/government.dir/CityResourceMediator.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/CityResourceMediator.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/government.dir/CityResourceMediator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/CityResourceMediator.cpp.o -MF CMakeFiles/government.dir/CityResourceMediator.cpp.o.d -o CMakeFiles/government.dir/CityResourceMediator.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/CityResourceMediator.cpp"
 
 CMakeFiles/government.dir/CityResourceMediator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/government.dir/CityResourceMediator.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/CityResourceMediator.cpp" > CMakeFiles/government.dir/CityResourceMediator.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/CityResourceMediator.cpp" > CMakeFiles/government.dir/CityResourceMediator.cpp.i
 
 CMakeFiles/government.dir/CityResourceMediator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/government.dir/CityResourceMediator.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/CityResourceMediator.cpp" -o CMakeFiles/government.dir/CityResourceMediator.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/CityResourceMediator.cpp" -o CMakeFiles/government.dir/CityResourceMediator.cpp.s
 
 CMakeFiles/government.dir/Energy.cpp.o: CMakeFiles/government.dir/flags.make
 CMakeFiles/government.dir/Energy.cpp.o: ../Energy.cpp
 CMakeFiles/government.dir/Energy.cpp.o: CMakeFiles/government.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/government.dir/Energy.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/Energy.cpp.o -MF CMakeFiles/government.dir/Energy.cpp.o.d -o CMakeFiles/government.dir/Energy.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Energy.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/government.dir/Energy.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/Energy.cpp.o -MF CMakeFiles/government.dir/Energy.cpp.o.d -o CMakeFiles/government.dir/Energy.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/Energy.cpp"
 
 CMakeFiles/government.dir/Energy.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/government.dir/Energy.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Energy.cpp" > CMakeFiles/government.dir/Energy.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/Energy.cpp" > CMakeFiles/government.dir/Energy.cpp.i
 
 CMakeFiles/government.dir/Energy.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/government.dir/Energy.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Energy.cpp" -o CMakeFiles/government.dir/Energy.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/Energy.cpp" -o CMakeFiles/government.dir/Energy.cpp.s
 
 CMakeFiles/government.dir/Materials.cpp.o: CMakeFiles/government.dir/flags.make
 CMakeFiles/government.dir/Materials.cpp.o: ../Materials.cpp
 CMakeFiles/government.dir/Materials.cpp.o: CMakeFiles/government.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/government.dir/Materials.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/Materials.cpp.o -MF CMakeFiles/government.dir/Materials.cpp.o.d -o CMakeFiles/government.dir/Materials.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Materials.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/government.dir/Materials.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/Materials.cpp.o -MF CMakeFiles/government.dir/Materials.cpp.o.d -o CMakeFiles/government.dir/Materials.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/Materials.cpp"
 
 CMakeFiles/government.dir/Materials.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/government.dir/Materials.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Materials.cpp" > CMakeFiles/government.dir/Materials.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/Materials.cpp" > CMakeFiles/government.dir/Materials.cpp.i
 
 CMakeFiles/government.dir/Materials.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/government.dir/Materials.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Materials.cpp" -o CMakeFiles/government.dir/Materials.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/Materials.cpp" -o CMakeFiles/government.dir/Materials.cpp.s
 
 CMakeFiles/government.dir/Water.cpp.o: CMakeFiles/government.dir/flags.make
 CMakeFiles/government.dir/Water.cpp.o: ../Water.cpp
 CMakeFiles/government.dir/Water.cpp.o: CMakeFiles/government.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/government.dir/Water.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/Water.cpp.o -MF CMakeFiles/government.dir/Water.cpp.o.d -o CMakeFiles/government.dir/Water.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Water.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/government.dir/Water.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/government.dir/Water.cpp.o -MF CMakeFiles/government.dir/Water.cpp.o.d -o CMakeFiles/government.dir/Water.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/Water.cpp"
 
 CMakeFiles/government.dir/Water.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/government.dir/Water.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Water.cpp" > CMakeFiles/government.dir/Water.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/Water.cpp" > CMakeFiles/government.dir/Water.cpp.i
 
 CMakeFiles/government.dir/Water.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/government.dir/Water.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Water.cpp" -o CMakeFiles/government.dir/Water.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/Water.cpp" -o CMakeFiles/government.dir/Water.cpp.s
 
 # Object files for target government
 government_OBJECTS = \
@@ -253,7 +253,7 @@ libgovernment.a: CMakeFiles/government.dir/Materials.cpp.o
 libgovernment.a: CMakeFiles/government.dir/Water.cpp.o
 libgovernment.a: CMakeFiles/government.dir/build.make
 libgovernment.a: CMakeFiles/government.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX static library libgovernment.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX static library libgovernment.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/government.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/government.dir/link.txt --verbose=$(VERBOSE)
 
@@ -266,6 +266,6 @@ CMakeFiles/government.dir/clean:
 .PHONY : CMakeFiles/government.dir/clean
 
 CMakeFiles/government.dir/depend:
-	cd "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles/government.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/home/sean/COS 214/Project/Cool-Cats/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/sean/COS 214/Project/Cool-Cats" "/home/sean/COS 214/Project/Cool-Cats" "/home/sean/COS 214/Project/Cool-Cats/build" "/home/sean/COS 214/Project/Cool-Cats/build" "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles/government.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/government.dir/depend
 

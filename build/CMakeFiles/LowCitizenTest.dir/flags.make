@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/googletest/googletest/include" -isystem "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/googletest/googletest"
+CXX_INCLUDES = -isystem "/home/sean/COS 214/Project/Cool-Cats/googletest/googletest/include" -isystem "/home/sean/COS 214/Project/Cool-Cats/googletest/googletest"
 
 CXX_FLAGS = 
 

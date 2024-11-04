@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats"
+CMAKE_SOURCE_DIR = "/home/sean/COS 214/Project/Cool-Cats"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build"
+CMAKE_BINARY_DIR = "/home/sean/COS 214/Project/Cool-Cats/build"
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -77,7 +77,6 @@ all: CMakeFiles/MiddleCitizenTest.dir/all
 all: CMakeFiles/GovernmentTest.dir/all
 all: CMakeFiles/TaxesTest.dir/all
 all: CMakeFiles/TaxMementoTest.dir/all
-all: CMakeFiles/UtilitiesTest.dir/all
 all: googletest/all
 .PHONY : all
 
@@ -100,7 +99,6 @@ clean: CMakeFiles/MiddleCitizenTest.dir/clean
 clean: CMakeFiles/GovernmentTest.dir/clean
 clean: CMakeFiles/TaxesTest.dir/clean
 clean: CMakeFiles/TaxMementoTest.dir/clean
-clean: CMakeFiles/UtilitiesTest.dir/clean
 clean: googletest/clean
 .PHONY : clean
 
@@ -162,14 +160,14 @@ googletest/googletest/clean: googletest/googletest/CMakeFiles/gtest_main.dir/cle
 CMakeFiles/Citizen.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Citizen.dir/build.make CMakeFiles/Citizen.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Citizen.dir/build.make CMakeFiles/Citizen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=13,14,15,16,17,18,19,20,21,22,23,24,25,26,27 "Built target Citizen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=13,14,15,16,17,18,19,20,21,22,23,24,25,26,27 "Built target Citizen"
 .PHONY : CMakeFiles/Citizen.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Citizen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 15
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Citizen.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : CMakeFiles/Citizen.dir/rule
 
 # Convenience name for target.
@@ -188,14 +186,14 @@ CMakeFiles/Citizen.dir/clean:
 CMakeFiles/government.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/government.dir/build.make CMakeFiles/government.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/government.dir/build.make CMakeFiles/government.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=52,53,54,55,56,57,58,59,60,61,62,63 "Built target government"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=50,51,52,53,54,55,56,57,58,59,60,61 "Built target government"
 .PHONY : CMakeFiles/government.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/government.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 12
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 12
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/government.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : CMakeFiles/government.dir/rule
 
 # Convenience name for target.
@@ -214,14 +212,14 @@ CMakeFiles/government.dir/clean:
 CMakeFiles/utilities.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/utilities.dir/build.make CMakeFiles/utilities.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/utilities.dir/build.make CMakeFiles/utilities.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=68,69,70,71,72,73 "Built target utilities"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=66,67,68,69,70,71 "Built target utilities"
 .PHONY : CMakeFiles/utilities.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/utilities.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 6
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/utilities.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : CMakeFiles/utilities.dir/rule
 
 # Convenience name for target.
@@ -240,14 +238,14 @@ CMakeFiles/utilities.dir/clean:
 CMakeFiles/Buildings.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Buildings.dir/build.make CMakeFiles/Buildings.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Buildings.dir/build.make CMakeFiles/Buildings.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=3,4,5,6,7,8,9,10,11,12 "Built target Buildings"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=3,4,5,6,7,8,9,10,11,12 "Built target Buildings"
 .PHONY : CMakeFiles/Buildings.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Buildings.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 10
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Buildings.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : CMakeFiles/Buildings.dir/rule
 
 # Convenience name for target.
@@ -268,14 +266,14 @@ CMakeFiles/AllCitizenIteratorTest.dir/all: googletest/googletest/CMakeFiles/gtes
 CMakeFiles/AllCitizenIteratorTest.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/AllCitizenIteratorTest.dir/build.make CMakeFiles/AllCitizenIteratorTest.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/AllCitizenIteratorTest.dir/build.make CMakeFiles/AllCitizenIteratorTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=1,2 "Built target AllCitizenIteratorTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=1,2 "Built target AllCitizenIteratorTest"
 .PHONY : CMakeFiles/AllCitizenIteratorTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/AllCitizenIteratorTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 21
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 21
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/AllCitizenIteratorTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : CMakeFiles/AllCitizenIteratorTest.dir/rule
 
 # Convenience name for target.
@@ -296,14 +294,14 @@ CMakeFiles/CreatorTest.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 CMakeFiles/CreatorTest.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CreatorTest.dir/build.make CMakeFiles/CreatorTest.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CreatorTest.dir/build.make CMakeFiles/CreatorTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=28,29 "Built target CreatorTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=28,29 "Built target CreatorTest"
 .PHONY : CMakeFiles/CreatorTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/CreatorTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 21
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 21
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/CreatorTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : CMakeFiles/CreatorTest.dir/rule
 
 # Convenience name for target.
@@ -324,14 +322,14 @@ CMakeFiles/HighCitizenTest.dir/all: googletest/googletest/CMakeFiles/gtest.dir/a
 CMakeFiles/HighCitizenTest.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/HighCitizenTest.dir/build.make CMakeFiles/HighCitizenTest.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/HighCitizenTest.dir/build.make CMakeFiles/HighCitizenTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=32,33 "Built target HighCitizenTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=32,33 "Built target HighCitizenTest"
 .PHONY : CMakeFiles/HighCitizenTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/HighCitizenTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 21
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 21
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/HighCitizenTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : CMakeFiles/HighCitizenTest.dir/rule
 
 # Convenience name for target.
@@ -352,14 +350,14 @@ CMakeFiles/LowCitizenTest.dir/all: googletest/googletest/CMakeFiles/gtest.dir/al
 CMakeFiles/LowCitizenTest.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowCitizenTest.dir/build.make CMakeFiles/LowCitizenTest.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowCitizenTest.dir/build.make CMakeFiles/LowCitizenTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=34,35 "Built target LowCitizenTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=34,35 "Built target LowCitizenTest"
 .PHONY : CMakeFiles/LowCitizenTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/LowCitizenTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 21
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 21
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/LowCitizenTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : CMakeFiles/LowCitizenTest.dir/rule
 
 # Convenience name for target.
@@ -380,14 +378,14 @@ CMakeFiles/MayorIteratorTest.dir/all: googletest/googletest/CMakeFiles/gtest.dir
 CMakeFiles/MayorIteratorTest.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MayorIteratorTest.dir/build.make CMakeFiles/MayorIteratorTest.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MayorIteratorTest.dir/build.make CMakeFiles/MayorIteratorTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=36,37 "Built target MayorIteratorTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=36,37 "Built target MayorIteratorTest"
 .PHONY : CMakeFiles/MayorIteratorTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/MayorIteratorTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 21
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 21
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/MayorIteratorTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : CMakeFiles/MayorIteratorTest.dir/rule
 
 # Convenience name for target.
@@ -408,14 +406,14 @@ CMakeFiles/MayorTest.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 CMakeFiles/MayorTest.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MayorTest.dir/build.make CMakeFiles/MayorTest.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MayorTest.dir/build.make CMakeFiles/MayorTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=38,39 "Built target MayorTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=38,39 "Built target MayorTest"
 .PHONY : CMakeFiles/MayorTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/MayorTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 21
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 21
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/MayorTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : CMakeFiles/MayorTest.dir/rule
 
 # Convenience name for target.
@@ -436,14 +434,14 @@ CMakeFiles/MiddleCitizenTest.dir/all: googletest/googletest/CMakeFiles/gtest.dir
 CMakeFiles/MiddleCitizenTest.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiddleCitizenTest.dir/build.make CMakeFiles/MiddleCitizenTest.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiddleCitizenTest.dir/build.make CMakeFiles/MiddleCitizenTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=40,41 "Built target MiddleCitizenTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=40,41 "Built target MiddleCitizenTest"
 .PHONY : CMakeFiles/MiddleCitizenTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/MiddleCitizenTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 21
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 21
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/MiddleCitizenTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : CMakeFiles/MiddleCitizenTest.dir/rule
 
 # Convenience name for target.
@@ -465,14 +463,14 @@ CMakeFiles/GovernmentTest.dir/all: googletest/googletest/CMakeFiles/gtest.dir/al
 CMakeFiles/GovernmentTest.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GovernmentTest.dir/build.make CMakeFiles/GovernmentTest.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GovernmentTest.dir/build.make CMakeFiles/GovernmentTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=30,31 "Built target GovernmentTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=30,31 "Built target GovernmentTest"
 .PHONY : CMakeFiles/GovernmentTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/GovernmentTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 33
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 33
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/GovernmentTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : CMakeFiles/GovernmentTest.dir/rule
 
 # Convenience name for target.
@@ -494,14 +492,14 @@ CMakeFiles/TaxesTest.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 CMakeFiles/TaxesTest.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TaxesTest.dir/build.make CMakeFiles/TaxesTest.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TaxesTest.dir/build.make CMakeFiles/TaxesTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=44,45 "Built target TaxesTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=44,45 "Built target TaxesTest"
 .PHONY : CMakeFiles/TaxesTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/TaxesTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 33
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 33
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/TaxesTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : CMakeFiles/TaxesTest.dir/rule
 
 # Convenience name for target.
@@ -523,14 +521,14 @@ CMakeFiles/TaxMementoTest.dir/all: googletest/googletest/CMakeFiles/gtest.dir/al
 CMakeFiles/TaxMementoTest.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TaxMementoTest.dir/build.make CMakeFiles/TaxMementoTest.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TaxMementoTest.dir/build.make CMakeFiles/TaxMementoTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=42,43 "Built target TaxMementoTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=42,43 "Built target TaxMementoTest"
 .PHONY : CMakeFiles/TaxMementoTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/TaxMementoTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 33
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 33
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/TaxMementoTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : CMakeFiles/TaxMementoTest.dir/rule
 
 # Convenience name for target.
@@ -543,48 +541,20 @@ CMakeFiles/TaxMementoTest.dir/clean:
 .PHONY : CMakeFiles/TaxMementoTest.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/UtilitiesTest.dir
-
-# All Build rule for target.
-CMakeFiles/UtilitiesTest.dir/all: CMakeFiles/utilities.dir/all
-CMakeFiles/UtilitiesTest.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
-CMakeFiles/UtilitiesTest.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UtilitiesTest.dir/build.make CMakeFiles/UtilitiesTest.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UtilitiesTest.dir/build.make CMakeFiles/UtilitiesTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=46,47 "Built target UtilitiesTest"
-.PHONY : CMakeFiles/UtilitiesTest.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/UtilitiesTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 12
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/UtilitiesTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
-.PHONY : CMakeFiles/UtilitiesTest.dir/rule
-
-# Convenience name for target.
-UtilitiesTest: CMakeFiles/UtilitiesTest.dir/rule
-.PHONY : UtilitiesTest
-
-# clean rule for target.
-CMakeFiles/UtilitiesTest.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UtilitiesTest.dir/build.make CMakeFiles/UtilitiesTest.dir/clean
-.PHONY : CMakeFiles/UtilitiesTest.dir/clean
-
-#=============================================================================
 # Target rules for target googletest/googlemock/CMakeFiles/gmock.dir
 
 # All Build rule for target.
 googletest/googlemock/CMakeFiles/gmock.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f googletest/googlemock/CMakeFiles/gmock.dir/build.make googletest/googlemock/CMakeFiles/gmock.dir/depend
 	$(MAKE) $(MAKESILENT) -f googletest/googlemock/CMakeFiles/gmock.dir/build.make googletest/googlemock/CMakeFiles/gmock.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=48,49 "Built target gmock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=46,47 "Built target gmock"
 .PHONY : googletest/googlemock/CMakeFiles/gmock.dir/all
 
 # Build rule for subdir invocation for target.
 googletest/googlemock/CMakeFiles/gmock.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 4
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 googletest/googlemock/CMakeFiles/gmock.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : googletest/googlemock/CMakeFiles/gmock.dir/rule
 
 # Convenience name for target.
@@ -604,14 +574,14 @@ googletest/googlemock/CMakeFiles/gmock_main.dir/all: googletest/googlemock/CMake
 googletest/googlemock/CMakeFiles/gmock_main.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f googletest/googlemock/CMakeFiles/gmock_main.dir/build.make googletest/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) $(MAKESILENT) -f googletest/googlemock/CMakeFiles/gmock_main.dir/build.make googletest/googlemock/CMakeFiles/gmock_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=50,51 "Built target gmock_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=48,49 "Built target gmock_main"
 .PHONY : googletest/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
 googletest/googlemock/CMakeFiles/gmock_main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 6
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 googletest/googlemock/CMakeFiles/gmock_main.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : googletest/googlemock/CMakeFiles/gmock_main.dir/rule
 
 # Convenience name for target.
@@ -630,14 +600,14 @@ googletest/googlemock/CMakeFiles/gmock_main.dir/clean:
 googletest/googletest/CMakeFiles/gtest.dir/all:
 	$(MAKE) $(MAKESILENT) -f googletest/googletest/CMakeFiles/gtest.dir/build.make googletest/googletest/CMakeFiles/gtest.dir/depend
 	$(MAKE) $(MAKESILENT) -f googletest/googletest/CMakeFiles/gtest.dir/build.make googletest/googletest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=64,65 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=62,63 "Built target gtest"
 .PHONY : googletest/googletest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
 googletest/googletest/CMakeFiles/gtest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 googletest/googletest/CMakeFiles/gtest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : googletest/googletest/CMakeFiles/gtest.dir/rule
 
 # Convenience name for target.
@@ -656,14 +626,14 @@ googletest/googletest/CMakeFiles/gtest.dir/clean:
 googletest/googletest/CMakeFiles/gtest_main.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f googletest/googletest/CMakeFiles/gtest_main.dir/build.make googletest/googletest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) $(MAKESILENT) -f googletest/googletest/CMakeFiles/gtest_main.dir/build.make googletest/googletest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=66,67 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=64,65 "Built target gtest_main"
 .PHONY : googletest/googletest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
 googletest/googletest/CMakeFiles/gtest_main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 4
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 googletest/googletest/CMakeFiles/gtest_main.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : googletest/googletest/CMakeFiles/gtest_main.dir/rule
 
 # Convenience name for target.

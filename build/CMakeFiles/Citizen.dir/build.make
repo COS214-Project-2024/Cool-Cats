@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats"
+CMAKE_SOURCE_DIR = "/home/sean/COS 214/Project/Cool-Cats"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build"
+CMAKE_BINARY_DIR = "/home/sean/COS 214/Project/Cool-Cats/build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Citizen.dir/depend.make
@@ -72,198 +72,198 @@ include CMakeFiles/Citizen.dir/flags.make
 CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.o: CMakeFiles/Citizen.dir/flags.make
 CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.o: ../AllCitizenIterator.cpp
 CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.o: CMakeFiles/Citizen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.o -MF CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.o.d -o CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/AllCitizenIterator.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.o -MF CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.o.d -o CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/AllCitizenIterator.cpp"
 
 CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/AllCitizenIterator.cpp" > CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/AllCitizenIterator.cpp" > CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.i
 
 CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/AllCitizenIterator.cpp" -o CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/AllCitizenIterator.cpp" -o CMakeFiles/Citizen.dir/AllCitizenIterator.cpp.s
 
 CMakeFiles/Citizen.dir/CitizenIterator.cpp.o: CMakeFiles/Citizen.dir/flags.make
 CMakeFiles/Citizen.dir/CitizenIterator.cpp.o: ../CitizenIterator.cpp
 CMakeFiles/Citizen.dir/CitizenIterator.cpp.o: CMakeFiles/Citizen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Citizen.dir/CitizenIterator.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/CitizenIterator.cpp.o -MF CMakeFiles/Citizen.dir/CitizenIterator.cpp.o.d -o CMakeFiles/Citizen.dir/CitizenIterator.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/CitizenIterator.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Citizen.dir/CitizenIterator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/CitizenIterator.cpp.o -MF CMakeFiles/Citizen.dir/CitizenIterator.cpp.o.d -o CMakeFiles/Citizen.dir/CitizenIterator.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/CitizenIterator.cpp"
 
 CMakeFiles/Citizen.dir/CitizenIterator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Citizen.dir/CitizenIterator.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/CitizenIterator.cpp" > CMakeFiles/Citizen.dir/CitizenIterator.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/CitizenIterator.cpp" > CMakeFiles/Citizen.dir/CitizenIterator.cpp.i
 
 CMakeFiles/Citizen.dir/CitizenIterator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Citizen.dir/CitizenIterator.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/CitizenIterator.cpp" -o CMakeFiles/Citizen.dir/CitizenIterator.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/CitizenIterator.cpp" -o CMakeFiles/Citizen.dir/CitizenIterator.cpp.s
 
 CMakeFiles/Citizen.dir/Citizen.cpp.o: CMakeFiles/Citizen.dir/flags.make
 CMakeFiles/Citizen.dir/Citizen.cpp.o: ../Citizen.cpp
 CMakeFiles/Citizen.dir/Citizen.cpp.o: CMakeFiles/Citizen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Citizen.dir/Citizen.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/Citizen.cpp.o -MF CMakeFiles/Citizen.dir/Citizen.cpp.o.d -o CMakeFiles/Citizen.dir/Citizen.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Citizen.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Citizen.dir/Citizen.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/Citizen.cpp.o -MF CMakeFiles/Citizen.dir/Citizen.cpp.o.d -o CMakeFiles/Citizen.dir/Citizen.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/Citizen.cpp"
 
 CMakeFiles/Citizen.dir/Citizen.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Citizen.dir/Citizen.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Citizen.cpp" > CMakeFiles/Citizen.dir/Citizen.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/Citizen.cpp" > CMakeFiles/Citizen.dir/Citizen.cpp.i
 
 CMakeFiles/Citizen.dir/Citizen.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Citizen.dir/Citizen.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Citizen.cpp" -o CMakeFiles/Citizen.dir/Citizen.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/Citizen.cpp" -o CMakeFiles/Citizen.dir/Citizen.cpp.s
 
 CMakeFiles/Citizen.dir/Creator.cpp.o: CMakeFiles/Citizen.dir/flags.make
 CMakeFiles/Citizen.dir/Creator.cpp.o: ../Creator.cpp
 CMakeFiles/Citizen.dir/Creator.cpp.o: CMakeFiles/Citizen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Citizen.dir/Creator.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/Creator.cpp.o -MF CMakeFiles/Citizen.dir/Creator.cpp.o.d -o CMakeFiles/Citizen.dir/Creator.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Creator.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Citizen.dir/Creator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/Creator.cpp.o -MF CMakeFiles/Citizen.dir/Creator.cpp.o.d -o CMakeFiles/Citizen.dir/Creator.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/Creator.cpp"
 
 CMakeFiles/Citizen.dir/Creator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Citizen.dir/Creator.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Creator.cpp" > CMakeFiles/Citizen.dir/Creator.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/Creator.cpp" > CMakeFiles/Citizen.dir/Creator.cpp.i
 
 CMakeFiles/Citizen.dir/Creator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Citizen.dir/Creator.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Creator.cpp" -o CMakeFiles/Citizen.dir/Creator.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/Creator.cpp" -o CMakeFiles/Citizen.dir/Creator.cpp.s
 
 CMakeFiles/Citizen.dir/HighCitizen.cpp.o: CMakeFiles/Citizen.dir/flags.make
 CMakeFiles/Citizen.dir/HighCitizen.cpp.o: ../HighCitizen.cpp
 CMakeFiles/Citizen.dir/HighCitizen.cpp.o: CMakeFiles/Citizen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Citizen.dir/HighCitizen.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/HighCitizen.cpp.o -MF CMakeFiles/Citizen.dir/HighCitizen.cpp.o.d -o CMakeFiles/Citizen.dir/HighCitizen.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/HighCitizen.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Citizen.dir/HighCitizen.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/HighCitizen.cpp.o -MF CMakeFiles/Citizen.dir/HighCitizen.cpp.o.d -o CMakeFiles/Citizen.dir/HighCitizen.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/HighCitizen.cpp"
 
 CMakeFiles/Citizen.dir/HighCitizen.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Citizen.dir/HighCitizen.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/HighCitizen.cpp" > CMakeFiles/Citizen.dir/HighCitizen.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/HighCitizen.cpp" > CMakeFiles/Citizen.dir/HighCitizen.cpp.i
 
 CMakeFiles/Citizen.dir/HighCitizen.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Citizen.dir/HighCitizen.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/HighCitizen.cpp" -o CMakeFiles/Citizen.dir/HighCitizen.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/HighCitizen.cpp" -o CMakeFiles/Citizen.dir/HighCitizen.cpp.s
 
 CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.o: CMakeFiles/Citizen.dir/flags.make
 CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.o: ../HighCitizenCreator.cpp
 CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.o: CMakeFiles/Citizen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.o -MF CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.o.d -o CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/HighCitizenCreator.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.o -MF CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.o.d -o CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/HighCitizenCreator.cpp"
 
 CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/HighCitizenCreator.cpp" > CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/HighCitizenCreator.cpp" > CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.i
 
 CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/HighCitizenCreator.cpp" -o CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/HighCitizenCreator.cpp" -o CMakeFiles/Citizen.dir/HighCitizenCreator.cpp.s
 
 CMakeFiles/Citizen.dir/Income.cpp.o: CMakeFiles/Citizen.dir/flags.make
 CMakeFiles/Citizen.dir/Income.cpp.o: ../Income.cpp
 CMakeFiles/Citizen.dir/Income.cpp.o: CMakeFiles/Citizen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Citizen.dir/Income.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/Income.cpp.o -MF CMakeFiles/Citizen.dir/Income.cpp.o.d -o CMakeFiles/Citizen.dir/Income.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Income.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Citizen.dir/Income.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/Income.cpp.o -MF CMakeFiles/Citizen.dir/Income.cpp.o.d -o CMakeFiles/Citizen.dir/Income.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/Income.cpp"
 
 CMakeFiles/Citizen.dir/Income.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Citizen.dir/Income.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Income.cpp" > CMakeFiles/Citizen.dir/Income.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/Income.cpp" > CMakeFiles/Citizen.dir/Income.cpp.i
 
 CMakeFiles/Citizen.dir/Income.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Citizen.dir/Income.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Income.cpp" -o CMakeFiles/Citizen.dir/Income.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/Income.cpp" -o CMakeFiles/Citizen.dir/Income.cpp.s
 
 CMakeFiles/Citizen.dir/LowCitizen.cpp.o: CMakeFiles/Citizen.dir/flags.make
 CMakeFiles/Citizen.dir/LowCitizen.cpp.o: ../LowCitizen.cpp
 CMakeFiles/Citizen.dir/LowCitizen.cpp.o: CMakeFiles/Citizen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Citizen.dir/LowCitizen.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/LowCitizen.cpp.o -MF CMakeFiles/Citizen.dir/LowCitizen.cpp.o.d -o CMakeFiles/Citizen.dir/LowCitizen.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/LowCitizen.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Citizen.dir/LowCitizen.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/LowCitizen.cpp.o -MF CMakeFiles/Citizen.dir/LowCitizen.cpp.o.d -o CMakeFiles/Citizen.dir/LowCitizen.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/LowCitizen.cpp"
 
 CMakeFiles/Citizen.dir/LowCitizen.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Citizen.dir/LowCitizen.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/LowCitizen.cpp" > CMakeFiles/Citizen.dir/LowCitizen.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/LowCitizen.cpp" > CMakeFiles/Citizen.dir/LowCitizen.cpp.i
 
 CMakeFiles/Citizen.dir/LowCitizen.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Citizen.dir/LowCitizen.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/LowCitizen.cpp" -o CMakeFiles/Citizen.dir/LowCitizen.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/LowCitizen.cpp" -o CMakeFiles/Citizen.dir/LowCitizen.cpp.s
 
 CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.o: CMakeFiles/Citizen.dir/flags.make
 CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.o: ../LowCitizenCreator.cpp
 CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.o: CMakeFiles/Citizen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.o -MF CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.o.d -o CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/LowCitizenCreator.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.o -MF CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.o.d -o CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/LowCitizenCreator.cpp"
 
 CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/LowCitizenCreator.cpp" > CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/LowCitizenCreator.cpp" > CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.i
 
 CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/LowCitizenCreator.cpp" -o CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/LowCitizenCreator.cpp" -o CMakeFiles/Citizen.dir/LowCitizenCreator.cpp.s
 
 CMakeFiles/Citizen.dir/Mayor.cpp.o: CMakeFiles/Citizen.dir/flags.make
 CMakeFiles/Citizen.dir/Mayor.cpp.o: ../Mayor.cpp
 CMakeFiles/Citizen.dir/Mayor.cpp.o: CMakeFiles/Citizen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Citizen.dir/Mayor.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/Mayor.cpp.o -MF CMakeFiles/Citizen.dir/Mayor.cpp.o.d -o CMakeFiles/Citizen.dir/Mayor.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Mayor.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Citizen.dir/Mayor.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/Mayor.cpp.o -MF CMakeFiles/Citizen.dir/Mayor.cpp.o.d -o CMakeFiles/Citizen.dir/Mayor.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/Mayor.cpp"
 
 CMakeFiles/Citizen.dir/Mayor.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Citizen.dir/Mayor.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Mayor.cpp" > CMakeFiles/Citizen.dir/Mayor.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/Mayor.cpp" > CMakeFiles/Citizen.dir/Mayor.cpp.i
 
 CMakeFiles/Citizen.dir/Mayor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Citizen.dir/Mayor.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Mayor.cpp" -o CMakeFiles/Citizen.dir/Mayor.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/Mayor.cpp" -o CMakeFiles/Citizen.dir/Mayor.cpp.s
 
 CMakeFiles/Citizen.dir/MayorCreator.cpp.o: CMakeFiles/Citizen.dir/flags.make
 CMakeFiles/Citizen.dir/MayorCreator.cpp.o: ../MayorCreator.cpp
 CMakeFiles/Citizen.dir/MayorCreator.cpp.o: CMakeFiles/Citizen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Citizen.dir/MayorCreator.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/MayorCreator.cpp.o -MF CMakeFiles/Citizen.dir/MayorCreator.cpp.o.d -o CMakeFiles/Citizen.dir/MayorCreator.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/MayorCreator.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Citizen.dir/MayorCreator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/MayorCreator.cpp.o -MF CMakeFiles/Citizen.dir/MayorCreator.cpp.o.d -o CMakeFiles/Citizen.dir/MayorCreator.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/MayorCreator.cpp"
 
 CMakeFiles/Citizen.dir/MayorCreator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Citizen.dir/MayorCreator.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/MayorCreator.cpp" > CMakeFiles/Citizen.dir/MayorCreator.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/MayorCreator.cpp" > CMakeFiles/Citizen.dir/MayorCreator.cpp.i
 
 CMakeFiles/Citizen.dir/MayorCreator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Citizen.dir/MayorCreator.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/MayorCreator.cpp" -o CMakeFiles/Citizen.dir/MayorCreator.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/MayorCreator.cpp" -o CMakeFiles/Citizen.dir/MayorCreator.cpp.s
 
 CMakeFiles/Citizen.dir/MayorIterator.cpp.o: CMakeFiles/Citizen.dir/flags.make
 CMakeFiles/Citizen.dir/MayorIterator.cpp.o: ../MayorIterator.cpp
 CMakeFiles/Citizen.dir/MayorIterator.cpp.o: CMakeFiles/Citizen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Citizen.dir/MayorIterator.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/MayorIterator.cpp.o -MF CMakeFiles/Citizen.dir/MayorIterator.cpp.o.d -o CMakeFiles/Citizen.dir/MayorIterator.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/MayorIterator.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Citizen.dir/MayorIterator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/MayorIterator.cpp.o -MF CMakeFiles/Citizen.dir/MayorIterator.cpp.o.d -o CMakeFiles/Citizen.dir/MayorIterator.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/MayorIterator.cpp"
 
 CMakeFiles/Citizen.dir/MayorIterator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Citizen.dir/MayorIterator.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/MayorIterator.cpp" > CMakeFiles/Citizen.dir/MayorIterator.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/MayorIterator.cpp" > CMakeFiles/Citizen.dir/MayorIterator.cpp.i
 
 CMakeFiles/Citizen.dir/MayorIterator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Citizen.dir/MayorIterator.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/MayorIterator.cpp" -o CMakeFiles/Citizen.dir/MayorIterator.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/MayorIterator.cpp" -o CMakeFiles/Citizen.dir/MayorIterator.cpp.s
 
 CMakeFiles/Citizen.dir/MiddleCitizen.cpp.o: CMakeFiles/Citizen.dir/flags.make
 CMakeFiles/Citizen.dir/MiddleCitizen.cpp.o: ../MiddleCitizen.cpp
 CMakeFiles/Citizen.dir/MiddleCitizen.cpp.o: CMakeFiles/Citizen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Citizen.dir/MiddleCitizen.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/MiddleCitizen.cpp.o -MF CMakeFiles/Citizen.dir/MiddleCitizen.cpp.o.d -o CMakeFiles/Citizen.dir/MiddleCitizen.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/MiddleCitizen.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Citizen.dir/MiddleCitizen.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/MiddleCitizen.cpp.o -MF CMakeFiles/Citizen.dir/MiddleCitizen.cpp.o.d -o CMakeFiles/Citizen.dir/MiddleCitizen.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/MiddleCitizen.cpp"
 
 CMakeFiles/Citizen.dir/MiddleCitizen.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Citizen.dir/MiddleCitizen.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/MiddleCitizen.cpp" > CMakeFiles/Citizen.dir/MiddleCitizen.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/MiddleCitizen.cpp" > CMakeFiles/Citizen.dir/MiddleCitizen.cpp.i
 
 CMakeFiles/Citizen.dir/MiddleCitizen.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Citizen.dir/MiddleCitizen.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/MiddleCitizen.cpp" -o CMakeFiles/Citizen.dir/MiddleCitizen.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/MiddleCitizen.cpp" -o CMakeFiles/Citizen.dir/MiddleCitizen.cpp.s
 
 CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.o: CMakeFiles/Citizen.dir/flags.make
 CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.o: ../MiddleCitizenCreator.cpp
 CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.o: CMakeFiles/Citizen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.o -MF CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.o.d -o CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/MiddleCitizenCreator.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.o -MF CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.o.d -o CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/MiddleCitizenCreator.cpp"
 
 CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/MiddleCitizenCreator.cpp" > CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/MiddleCitizenCreator.cpp" > CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.i
 
 CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/MiddleCitizenCreator.cpp" -o CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/MiddleCitizenCreator.cpp" -o CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.s
 
 # Object files for target Citizen
 Citizen_OBJECTS = \
@@ -301,7 +301,7 @@ libCitizen.a: CMakeFiles/Citizen.dir/MiddleCitizen.cpp.o
 libCitizen.a: CMakeFiles/Citizen.dir/MiddleCitizenCreator.cpp.o
 libCitizen.a: CMakeFiles/Citizen.dir/build.make
 libCitizen.a: CMakeFiles/Citizen.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX static library libCitizen.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX static library libCitizen.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/Citizen.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Citizen.dir/link.txt --verbose=$(VERBOSE)
 
@@ -314,6 +314,6 @@ CMakeFiles/Citizen.dir/clean:
 .PHONY : CMakeFiles/Citizen.dir/clean
 
 CMakeFiles/Citizen.dir/depend:
-	cd "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles/Citizen.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/home/sean/COS 214/Project/Cool-Cats/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/sean/COS 214/Project/Cool-Cats" "/home/sean/COS 214/Project/Cool-Cats" "/home/sean/COS 214/Project/Cool-Cats/build" "/home/sean/COS 214/Project/Cool-Cats/build" "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles/Citizen.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/Citizen.dir/depend
 

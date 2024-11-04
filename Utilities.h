@@ -3,12 +3,11 @@
 
 #include <string>
 #include <iostream>
-#include "Structure.h"
 using namespace std;
 
 class Utilities {
 public:
-    Utilities(Structure* s);
+    Utilities();
     // /virtual ~Utilities() = default;
 
     // Set the next handler in the chain
@@ -16,11 +15,9 @@ public:
 
     // The method to handle requests in the chain
     virtual void processRequest(const std::string &request);
-    
 
 protected:
     Utilities* next; // Pointer to the next handler in the chain
-    Structure* struc;
 };
 
 #endif

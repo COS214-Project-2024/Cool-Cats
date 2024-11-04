@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats"
+CMAKE_SOURCE_DIR = "/home/sean/COS 214/Project/Cool-Cats"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build"
+CMAKE_BINARY_DIR = "/home/sean/COS 214/Project/Cool-Cats/build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/utilities.dir/depend.make
@@ -72,72 +72,72 @@ include CMakeFiles/utilities.dir/flags.make
 CMakeFiles/utilities.dir/Utilities.cpp.o: CMakeFiles/utilities.dir/flags.make
 CMakeFiles/utilities.dir/Utilities.cpp.o: ../Utilities.cpp
 CMakeFiles/utilities.dir/Utilities.cpp.o: CMakeFiles/utilities.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/utilities.dir/Utilities.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/utilities.dir/Utilities.cpp.o -MF CMakeFiles/utilities.dir/Utilities.cpp.o.d -o CMakeFiles/utilities.dir/Utilities.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Utilities.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/utilities.dir/Utilities.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/utilities.dir/Utilities.cpp.o -MF CMakeFiles/utilities.dir/Utilities.cpp.o.d -o CMakeFiles/utilities.dir/Utilities.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/Utilities.cpp"
 
 CMakeFiles/utilities.dir/Utilities.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utilities.dir/Utilities.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Utilities.cpp" > CMakeFiles/utilities.dir/Utilities.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/Utilities.cpp" > CMakeFiles/utilities.dir/Utilities.cpp.i
 
 CMakeFiles/utilities.dir/Utilities.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utilities.dir/Utilities.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Utilities.cpp" -o CMakeFiles/utilities.dir/Utilities.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/Utilities.cpp" -o CMakeFiles/utilities.dir/Utilities.cpp.s
 
 CMakeFiles/utilities.dir/WasteUtility.cpp.o: CMakeFiles/utilities.dir/flags.make
 CMakeFiles/utilities.dir/WasteUtility.cpp.o: ../WasteUtility.cpp
 CMakeFiles/utilities.dir/WasteUtility.cpp.o: CMakeFiles/utilities.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/utilities.dir/WasteUtility.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/utilities.dir/WasteUtility.cpp.o -MF CMakeFiles/utilities.dir/WasteUtility.cpp.o.d -o CMakeFiles/utilities.dir/WasteUtility.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/WasteUtility.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/utilities.dir/WasteUtility.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/utilities.dir/WasteUtility.cpp.o -MF CMakeFiles/utilities.dir/WasteUtility.cpp.o.d -o CMakeFiles/utilities.dir/WasteUtility.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/WasteUtility.cpp"
 
 CMakeFiles/utilities.dir/WasteUtility.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utilities.dir/WasteUtility.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/WasteUtility.cpp" > CMakeFiles/utilities.dir/WasteUtility.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/WasteUtility.cpp" > CMakeFiles/utilities.dir/WasteUtility.cpp.i
 
 CMakeFiles/utilities.dir/WasteUtility.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utilities.dir/WasteUtility.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/WasteUtility.cpp" -o CMakeFiles/utilities.dir/WasteUtility.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/WasteUtility.cpp" -o CMakeFiles/utilities.dir/WasteUtility.cpp.s
 
 CMakeFiles/utilities.dir/WaterUtility.cpp.o: CMakeFiles/utilities.dir/flags.make
 CMakeFiles/utilities.dir/WaterUtility.cpp.o: ../WaterUtility.cpp
 CMakeFiles/utilities.dir/WaterUtility.cpp.o: CMakeFiles/utilities.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/utilities.dir/WaterUtility.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/utilities.dir/WaterUtility.cpp.o -MF CMakeFiles/utilities.dir/WaterUtility.cpp.o.d -o CMakeFiles/utilities.dir/WaterUtility.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/WaterUtility.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/utilities.dir/WaterUtility.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/utilities.dir/WaterUtility.cpp.o -MF CMakeFiles/utilities.dir/WaterUtility.cpp.o.d -o CMakeFiles/utilities.dir/WaterUtility.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/WaterUtility.cpp"
 
 CMakeFiles/utilities.dir/WaterUtility.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utilities.dir/WaterUtility.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/WaterUtility.cpp" > CMakeFiles/utilities.dir/WaterUtility.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/WaterUtility.cpp" > CMakeFiles/utilities.dir/WaterUtility.cpp.i
 
 CMakeFiles/utilities.dir/WaterUtility.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utilities.dir/WaterUtility.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/WaterUtility.cpp" -o CMakeFiles/utilities.dir/WaterUtility.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/WaterUtility.cpp" -o CMakeFiles/utilities.dir/WaterUtility.cpp.s
 
 CMakeFiles/utilities.dir/PowerUtility.cpp.o: CMakeFiles/utilities.dir/flags.make
 CMakeFiles/utilities.dir/PowerUtility.cpp.o: ../PowerUtility.cpp
 CMakeFiles/utilities.dir/PowerUtility.cpp.o: CMakeFiles/utilities.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/utilities.dir/PowerUtility.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/utilities.dir/PowerUtility.cpp.o -MF CMakeFiles/utilities.dir/PowerUtility.cpp.o.d -o CMakeFiles/utilities.dir/PowerUtility.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/PowerUtility.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/utilities.dir/PowerUtility.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/utilities.dir/PowerUtility.cpp.o -MF CMakeFiles/utilities.dir/PowerUtility.cpp.o.d -o CMakeFiles/utilities.dir/PowerUtility.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/PowerUtility.cpp"
 
 CMakeFiles/utilities.dir/PowerUtility.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utilities.dir/PowerUtility.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/PowerUtility.cpp" > CMakeFiles/utilities.dir/PowerUtility.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/PowerUtility.cpp" > CMakeFiles/utilities.dir/PowerUtility.cpp.i
 
 CMakeFiles/utilities.dir/PowerUtility.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utilities.dir/PowerUtility.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/PowerUtility.cpp" -o CMakeFiles/utilities.dir/PowerUtility.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/PowerUtility.cpp" -o CMakeFiles/utilities.dir/PowerUtility.cpp.s
 
 CMakeFiles/utilities.dir/SewageUtility.cpp.o: CMakeFiles/utilities.dir/flags.make
 CMakeFiles/utilities.dir/SewageUtility.cpp.o: ../SewageUtility.cpp
 CMakeFiles/utilities.dir/SewageUtility.cpp.o: CMakeFiles/utilities.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/utilities.dir/SewageUtility.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/utilities.dir/SewageUtility.cpp.o -MF CMakeFiles/utilities.dir/SewageUtility.cpp.o.d -o CMakeFiles/utilities.dir/SewageUtility.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/SewageUtility.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/utilities.dir/SewageUtility.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/utilities.dir/SewageUtility.cpp.o -MF CMakeFiles/utilities.dir/SewageUtility.cpp.o.d -o CMakeFiles/utilities.dir/SewageUtility.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/SewageUtility.cpp"
 
 CMakeFiles/utilities.dir/SewageUtility.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utilities.dir/SewageUtility.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/SewageUtility.cpp" > CMakeFiles/utilities.dir/SewageUtility.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/SewageUtility.cpp" > CMakeFiles/utilities.dir/SewageUtility.cpp.i
 
 CMakeFiles/utilities.dir/SewageUtility.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utilities.dir/SewageUtility.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/SewageUtility.cpp" -o CMakeFiles/utilities.dir/SewageUtility.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/SewageUtility.cpp" -o CMakeFiles/utilities.dir/SewageUtility.cpp.s
 
 # Object files for target utilities
 utilities_OBJECTS = \
@@ -157,7 +157,7 @@ libutilities.a: CMakeFiles/utilities.dir/PowerUtility.cpp.o
 libutilities.a: CMakeFiles/utilities.dir/SewageUtility.cpp.o
 libutilities.a: CMakeFiles/utilities.dir/build.make
 libutilities.a: CMakeFiles/utilities.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libutilities.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libutilities.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/utilities.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/utilities.dir/link.txt --verbose=$(VERBOSE)
 
@@ -170,6 +170,6 @@ CMakeFiles/utilities.dir/clean:
 .PHONY : CMakeFiles/utilities.dir/clean
 
 CMakeFiles/utilities.dir/depend:
-	cd "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles/utilities.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/home/sean/COS 214/Project/Cool-Cats/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/sean/COS 214/Project/Cool-Cats" "/home/sean/COS 214/Project/Cool-Cats" "/home/sean/COS 214/Project/Cool-Cats/build" "/home/sean/COS 214/Project/Cool-Cats/build" "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles/utilities.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/utilities.dir/depend
 

@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats
+# Install script for directory: /home/sean/COS 214/Project/Cool-Cats
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/googletest/cmake_install.cmake")
+  include("/home/sean/COS 214/Project/Cool-Cats/build/googletest/cmake_install.cmake")
 
 endif()
 
@@ -56,5 +56,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/sean/COS 214/Project/Cool-Cats/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

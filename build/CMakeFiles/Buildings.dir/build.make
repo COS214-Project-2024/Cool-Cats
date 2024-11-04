@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats"
+CMAKE_SOURCE_DIR = "/home/sean/COS 214/Project/Cool-Cats"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build"
+CMAKE_BINARY_DIR = "/home/sean/COS 214/Project/Cool-Cats/build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Buildings.dir/depend.make
@@ -72,128 +72,128 @@ include CMakeFiles/Buildings.dir/flags.make
 CMakeFiles/Buildings.dir/Structure.cpp.o: CMakeFiles/Buildings.dir/flags.make
 CMakeFiles/Buildings.dir/Structure.cpp.o: ../Structure.cpp
 CMakeFiles/Buildings.dir/Structure.cpp.o: CMakeFiles/Buildings.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Buildings.dir/Structure.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Buildings.dir/Structure.cpp.o -MF CMakeFiles/Buildings.dir/Structure.cpp.o.d -o CMakeFiles/Buildings.dir/Structure.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Structure.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Buildings.dir/Structure.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Buildings.dir/Structure.cpp.o -MF CMakeFiles/Buildings.dir/Structure.cpp.o.d -o CMakeFiles/Buildings.dir/Structure.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/Structure.cpp"
 
 CMakeFiles/Buildings.dir/Structure.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Buildings.dir/Structure.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Structure.cpp" > CMakeFiles/Buildings.dir/Structure.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/Structure.cpp" > CMakeFiles/Buildings.dir/Structure.cpp.i
 
 CMakeFiles/Buildings.dir/Structure.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Buildings.dir/Structure.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/Structure.cpp" -o CMakeFiles/Buildings.dir/Structure.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/Structure.cpp" -o CMakeFiles/Buildings.dir/Structure.cpp.s
 
 CMakeFiles/Buildings.dir/BasicStructure.cpp.o: CMakeFiles/Buildings.dir/flags.make
 CMakeFiles/Buildings.dir/BasicStructure.cpp.o: ../BasicStructure.cpp
 CMakeFiles/Buildings.dir/BasicStructure.cpp.o: CMakeFiles/Buildings.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Buildings.dir/BasicStructure.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Buildings.dir/BasicStructure.cpp.o -MF CMakeFiles/Buildings.dir/BasicStructure.cpp.o.d -o CMakeFiles/Buildings.dir/BasicStructure.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/BasicStructure.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Buildings.dir/BasicStructure.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Buildings.dir/BasicStructure.cpp.o -MF CMakeFiles/Buildings.dir/BasicStructure.cpp.o.d -o CMakeFiles/Buildings.dir/BasicStructure.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/BasicStructure.cpp"
 
 CMakeFiles/Buildings.dir/BasicStructure.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Buildings.dir/BasicStructure.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/BasicStructure.cpp" > CMakeFiles/Buildings.dir/BasicStructure.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/BasicStructure.cpp" > CMakeFiles/Buildings.dir/BasicStructure.cpp.i
 
 CMakeFiles/Buildings.dir/BasicStructure.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Buildings.dir/BasicStructure.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/BasicStructure.cpp" -o CMakeFiles/Buildings.dir/BasicStructure.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/BasicStructure.cpp" -o CMakeFiles/Buildings.dir/BasicStructure.cpp.s
 
 CMakeFiles/Buildings.dir/StructureGroup.cpp.o: CMakeFiles/Buildings.dir/flags.make
 CMakeFiles/Buildings.dir/StructureGroup.cpp.o: ../StructureGroup.cpp
 CMakeFiles/Buildings.dir/StructureGroup.cpp.o: CMakeFiles/Buildings.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Buildings.dir/StructureGroup.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Buildings.dir/StructureGroup.cpp.o -MF CMakeFiles/Buildings.dir/StructureGroup.cpp.o.d -o CMakeFiles/Buildings.dir/StructureGroup.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/StructureGroup.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Buildings.dir/StructureGroup.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Buildings.dir/StructureGroup.cpp.o -MF CMakeFiles/Buildings.dir/StructureGroup.cpp.o.d -o CMakeFiles/Buildings.dir/StructureGroup.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/StructureGroup.cpp"
 
 CMakeFiles/Buildings.dir/StructureGroup.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Buildings.dir/StructureGroup.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/StructureGroup.cpp" > CMakeFiles/Buildings.dir/StructureGroup.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/StructureGroup.cpp" > CMakeFiles/Buildings.dir/StructureGroup.cpp.i
 
 CMakeFiles/Buildings.dir/StructureGroup.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Buildings.dir/StructureGroup.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/StructureGroup.cpp" -o CMakeFiles/Buildings.dir/StructureGroup.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/StructureGroup.cpp" -o CMakeFiles/Buildings.dir/StructureGroup.cpp.s
 
 CMakeFiles/Buildings.dir/StructureDecorator.cpp.o: CMakeFiles/Buildings.dir/flags.make
 CMakeFiles/Buildings.dir/StructureDecorator.cpp.o: ../StructureDecorator.cpp
 CMakeFiles/Buildings.dir/StructureDecorator.cpp.o: CMakeFiles/Buildings.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Buildings.dir/StructureDecorator.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Buildings.dir/StructureDecorator.cpp.o -MF CMakeFiles/Buildings.dir/StructureDecorator.cpp.o.d -o CMakeFiles/Buildings.dir/StructureDecorator.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/StructureDecorator.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Buildings.dir/StructureDecorator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Buildings.dir/StructureDecorator.cpp.o -MF CMakeFiles/Buildings.dir/StructureDecorator.cpp.o.d -o CMakeFiles/Buildings.dir/StructureDecorator.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/StructureDecorator.cpp"
 
 CMakeFiles/Buildings.dir/StructureDecorator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Buildings.dir/StructureDecorator.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/StructureDecorator.cpp" > CMakeFiles/Buildings.dir/StructureDecorator.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/StructureDecorator.cpp" > CMakeFiles/Buildings.dir/StructureDecorator.cpp.i
 
 CMakeFiles/Buildings.dir/StructureDecorator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Buildings.dir/StructureDecorator.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/StructureDecorator.cpp" -o CMakeFiles/Buildings.dir/StructureDecorator.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/StructureDecorator.cpp" -o CMakeFiles/Buildings.dir/StructureDecorator.cpp.s
 
 CMakeFiles/Buildings.dir/StructureIterator.cpp.o: CMakeFiles/Buildings.dir/flags.make
 CMakeFiles/Buildings.dir/StructureIterator.cpp.o: ../StructureIterator.cpp
 CMakeFiles/Buildings.dir/StructureIterator.cpp.o: CMakeFiles/Buildings.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Buildings.dir/StructureIterator.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Buildings.dir/StructureIterator.cpp.o -MF CMakeFiles/Buildings.dir/StructureIterator.cpp.o.d -o CMakeFiles/Buildings.dir/StructureIterator.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/StructureIterator.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Buildings.dir/StructureIterator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Buildings.dir/StructureIterator.cpp.o -MF CMakeFiles/Buildings.dir/StructureIterator.cpp.o.d -o CMakeFiles/Buildings.dir/StructureIterator.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/StructureIterator.cpp"
 
 CMakeFiles/Buildings.dir/StructureIterator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Buildings.dir/StructureIterator.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/StructureIterator.cpp" > CMakeFiles/Buildings.dir/StructureIterator.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/StructureIterator.cpp" > CMakeFiles/Buildings.dir/StructureIterator.cpp.i
 
 CMakeFiles/Buildings.dir/StructureIterator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Buildings.dir/StructureIterator.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/StructureIterator.cpp" -o CMakeFiles/Buildings.dir/StructureIterator.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/StructureIterator.cpp" -o CMakeFiles/Buildings.dir/StructureIterator.cpp.s
 
 CMakeFiles/Buildings.dir/CStructIterator.cpp.o: CMakeFiles/Buildings.dir/flags.make
 CMakeFiles/Buildings.dir/CStructIterator.cpp.o: ../CStructIterator.cpp
 CMakeFiles/Buildings.dir/CStructIterator.cpp.o: CMakeFiles/Buildings.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Buildings.dir/CStructIterator.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Buildings.dir/CStructIterator.cpp.o -MF CMakeFiles/Buildings.dir/CStructIterator.cpp.o.d -o CMakeFiles/Buildings.dir/CStructIterator.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/CStructIterator.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Buildings.dir/CStructIterator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Buildings.dir/CStructIterator.cpp.o -MF CMakeFiles/Buildings.dir/CStructIterator.cpp.o.d -o CMakeFiles/Buildings.dir/CStructIterator.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/CStructIterator.cpp"
 
 CMakeFiles/Buildings.dir/CStructIterator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Buildings.dir/CStructIterator.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/CStructIterator.cpp" > CMakeFiles/Buildings.dir/CStructIterator.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/CStructIterator.cpp" > CMakeFiles/Buildings.dir/CStructIterator.cpp.i
 
 CMakeFiles/Buildings.dir/CStructIterator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Buildings.dir/CStructIterator.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/CStructIterator.cpp" -o CMakeFiles/Buildings.dir/CStructIterator.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/CStructIterator.cpp" -o CMakeFiles/Buildings.dir/CStructIterator.cpp.s
 
 CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.o: CMakeFiles/Buildings.dir/flags.make
 CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.o: ../MaintenanceCostReducer.cpp
 CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.o: CMakeFiles/Buildings.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.o -MF CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.o.d -o CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/MaintenanceCostReducer.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.o -MF CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.o.d -o CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/MaintenanceCostReducer.cpp"
 
 CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/MaintenanceCostReducer.cpp" > CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/MaintenanceCostReducer.cpp" > CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.i
 
 CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/MaintenanceCostReducer.cpp" -o CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/MaintenanceCostReducer.cpp" -o CMakeFiles/Buildings.dir/MaintenanceCostReducer.cpp.s
 
 CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.o: CMakeFiles/Buildings.dir/flags.make
 CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.o: ../ResourceEfficiencyEnhancer.cpp
 CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.o: CMakeFiles/Buildings.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.o -MF CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.o.d -o CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/ResourceEfficiencyEnhancer.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.o -MF CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.o.d -o CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/ResourceEfficiencyEnhancer.cpp"
 
 CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/ResourceEfficiencyEnhancer.cpp" > CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/ResourceEfficiencyEnhancer.cpp" > CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.i
 
 CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/ResourceEfficiencyEnhancer.cpp" -o CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/ResourceEfficiencyEnhancer.cpp" -o CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.s
 
 CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.o: CMakeFiles/Buildings.dir/flags.make
 CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.o: ../SatisfactionEnhancer.cpp
 CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.o: CMakeFiles/Buildings.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.o -MF CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.o.d -o CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.o -c "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/SatisfactionEnhancer.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.o -MF CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.o.d -o CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.o -c "/home/sean/COS 214/Project/Cool-Cats/SatisfactionEnhancer.cpp"
 
 CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/SatisfactionEnhancer.cpp" > CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sean/COS 214/Project/Cool-Cats/SatisfactionEnhancer.cpp" > CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.i
 
 CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/SatisfactionEnhancer.cpp" -o CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sean/COS 214/Project/Cool-Cats/SatisfactionEnhancer.cpp" -o CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.s
 
 # Object files for target Buildings
 Buildings_OBJECTS = \
@@ -221,7 +221,7 @@ libBuildings.a: CMakeFiles/Buildings.dir/ResourceEfficiencyEnhancer.cpp.o
 libBuildings.a: CMakeFiles/Buildings.dir/SatisfactionEnhancer.cpp.o
 libBuildings.a: CMakeFiles/Buildings.dir/build.make
 libBuildings.a: CMakeFiles/Buildings.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX static library libBuildings.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX static library libBuildings.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/Buildings.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Buildings.dir/link.txt --verbose=$(VERBOSE)
 
@@ -234,6 +234,6 @@ CMakeFiles/Buildings.dir/clean:
 .PHONY : CMakeFiles/Buildings.dir/clean
 
 CMakeFiles/Buildings.dir/depend:
-	cd "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles/Buildings.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/home/sean/COS 214/Project/Cool-Cats/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/sean/COS 214/Project/Cool-Cats" "/home/sean/COS 214/Project/Cool-Cats" "/home/sean/COS 214/Project/Cool-Cats/build" "/home/sean/COS 214/Project/Cool-Cats/build" "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles/Buildings.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/Buildings.dir/depend
 

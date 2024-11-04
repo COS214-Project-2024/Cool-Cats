@@ -196,6 +196,13 @@ void Citizen::setEmploymentStatus(string employment)
 /// @brief Determines the mayor based on the mayor with the highest votes 
 void Citizen::determineMayor()
 { 
+    //Reset mayor vote count for next election
+    vector<Mayor*> allMayors = getMayors();
+    for(Mayor* m : allMayors)
+    {
+        m->resetVoteCount();
+    }
+    
     int maxVote = 0;
     Mayor* candidate = nullptr;
     Mayor *currMayor = nullptr;
@@ -223,13 +230,6 @@ void Citizen::determineMayor()
     if(currMayor != nullptr)
     {
         currMayor->setElectionStatus(false);
-    }
-
-    //Reset mayor vote count for next election
-    vector<Mayor*> allMayors = getMayors();
-    for(Mayor* m : allMayors)
-    {
-        m->resetVoteCount();
     }
 }
 

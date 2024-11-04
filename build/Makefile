@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats"
+CMAKE_SOURCE_DIR = "/home/sean/COS 214/Project/Cool-Cats"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build"
+CMAKE_BINARY_DIR = "/home/sean/COS 214/Project/Cool-Cats/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,9 +142,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" "/home/sean/COS 214/Project/Cool-Cats/build//CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/User/OneDrive/Desktop/School/Semester 2/COS214/project/Cool-Cats/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sean/COS 214/Project/Cool-Cats/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -352,19 +352,6 @@ TaxMementoTest: cmake_check_build_system
 TaxMementoTest/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TaxMementoTest.dir/build.make CMakeFiles/TaxMementoTest.dir/build
 .PHONY : TaxMementoTest/fast
-
-#=============================================================================
-# Target rules for targets named UtilitiesTest
-
-# Build rule for target.
-UtilitiesTest: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 UtilitiesTest
-.PHONY : UtilitiesTest
-
-# fast build rule for target.
-UtilitiesTest/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UtilitiesTest.dir/build.make CMakeFiles/UtilitiesTest.dir/build
-.PHONY : UtilitiesTest/fast
 
 #=============================================================================
 # Target rules for targets named gmock
@@ -1498,30 +1485,6 @@ Tests/TaxesTest.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TaxesTest.dir/build.make CMakeFiles/TaxesTest.dir/Tests/TaxesTest.cpp.s
 .PHONY : Tests/TaxesTest.cpp.s
 
-Tests/UtilitiesTest.o: Tests/UtilitiesTest.cpp.o
-.PHONY : Tests/UtilitiesTest.o
-
-# target to build an object file
-Tests/UtilitiesTest.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UtilitiesTest.dir/build.make CMakeFiles/UtilitiesTest.dir/Tests/UtilitiesTest.cpp.o
-.PHONY : Tests/UtilitiesTest.cpp.o
-
-Tests/UtilitiesTest.i: Tests/UtilitiesTest.cpp.i
-.PHONY : Tests/UtilitiesTest.i
-
-# target to preprocess a source file
-Tests/UtilitiesTest.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UtilitiesTest.dir/build.make CMakeFiles/UtilitiesTest.dir/Tests/UtilitiesTest.cpp.i
-.PHONY : Tests/UtilitiesTest.cpp.i
-
-Tests/UtilitiesTest.s: Tests/UtilitiesTest.cpp.s
-.PHONY : Tests/UtilitiesTest.s
-
-# target to generate assembly for a file
-Tests/UtilitiesTest.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UtilitiesTest.dir/build.make CMakeFiles/UtilitiesTest.dir/Tests/UtilitiesTest.cpp.s
-.PHONY : Tests/UtilitiesTest.cpp.s
-
 Utilities.o: Utilities.cpp.o
 .PHONY : Utilities.o
 
@@ -1643,7 +1606,6 @@ help:
 	@echo "... MiddleCitizenTest"
 	@echo "... TaxMementoTest"
 	@echo "... TaxesTest"
-	@echo "... UtilitiesTest"
 	@echo "... gmock"
 	@echo "... gmock_main"
 	@echo "... government"
@@ -1785,9 +1747,6 @@ help:
 	@echo "... Tests/TaxesTest.o"
 	@echo "... Tests/TaxesTest.i"
 	@echo "... Tests/TaxesTest.s"
-	@echo "... Tests/UtilitiesTest.o"
-	@echo "... Tests/UtilitiesTest.i"
-	@echo "... Tests/UtilitiesTest.s"
 	@echo "... Utilities.o"
 	@echo "... Utilities.i"
 	@echo "... Utilities.s"

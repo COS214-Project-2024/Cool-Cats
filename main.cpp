@@ -1334,17 +1334,18 @@ void addMayor(){
     //Create actual mayor
     string newMayorName = "";
     cout << "Enter the name of the mayor\n";
-    cin >> newMayorName;
 
-    while(newMayorName == " " || regex_search(newMayorName, escape_characters))
+    while(true)
     {
-        if(!(cin >> newMayorName))
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        getline(cin, newMayorName);
+
+        if(newMayorName == " " || regex_search(newMayorName, escape_characters))
         {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid name inputted, please try again\n";
+            cout << "Invalid name entered, please try again\n";
+            continue;    
         }
-        
+        break;
     }
 
     MayorCreator *mc = new MayorCreator();

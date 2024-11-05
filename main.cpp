@@ -169,6 +169,7 @@ void viewCity();
 StructureGroup* createCityHall();
 
 void createGovernment();
+void editGovernment();
 
 
 
@@ -244,12 +245,11 @@ void mainMenu() {
         cout << "4 : Exit" << endl;
         cout << "5 : Edit Transport" << endl;
         cout << "6 : Edit Government" << endl;
-        cout << "7 : Add Utilities" << endl;
-        cout << "8 : Add Citizens" << endl;
+        cout << "7 : Add Citizens" << endl;
         cout << "Select NUMBER: ";
 
         //validate user input
-        while (!(cin >> option) || option < 1 || option > 8) {
+        while (!(cin >> option) || option < 1 || option > 7) {
             cout << "Invalid input. Please enter a number between 1 and 8." << endl;
             cin.clear();  // Clear the error 
             cin.ignore(numeric_limits<streamsize>::max(), '\n');  // invalid input
@@ -283,13 +283,10 @@ void mainMenu() {
 
             case 6:
                 // Call editGovernment function
+                editGovernment();
                 break;
 
             case 7:
-                // Call addUtilities function
-                break;
-
-            case 8:
                 addCitizens();
                 break;
 

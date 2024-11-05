@@ -10,7 +10,9 @@ Needs to have to run our project:
     Right click and Open Terminal
     (WSL must be installed for this) Type into the command line "WSL" and hit enter
     After WSL opens, type "code ." and wait for your preferred IDE to start wsl
-    After it starts, open the IDE terminal and type "make run" 
+    After it starts, open the IDE terminal and type "make run"
+
+2.1 To run the Doxygen follow the steps in point 2 but instead of the "System" folder, go into the "docs" folder and in the terminal type "doxygen" and wait
 
 3. The game is terminal based, follow the prompts in the terminal to play
 

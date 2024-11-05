@@ -2407,15 +2407,11 @@ void addMayor(){
     cout << newMayorName << " has been created\n";
     cout << "You can make all citizens vote for a mayor by going to the 'Make citizens vote for the new mayor' option\n";
     cout << endl;
-<<<<<<< Updated upstream
 
     cin.clear();
     // cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     delete mc;
-=======
-    
->>>>>>> Stashed changes
 }
 
 //Helper function for add citizen and add mayor

@@ -412,8 +412,8 @@ void editGovernment() {
                     cout << "Invalid tax rate. Please enter a value between 0 and 1: ";
                 }
                 government->setTaxRate(taxRate); // Update tax rate
-                TaxMemento* one = government->getTax()->createMemento();
-                government->storeMemento(one);
+                //TaxMemento* one = government->getTax()->createMemento();
+               // government->storeMemento(one);
                 break;
             }
             case 2: {  // Implement Policy
@@ -485,12 +485,15 @@ void editGovernment() {
                     std::cout << "Current tax rate: " << government->getTax()->getTaxRate() << std::endl;
 
                     TaxMemento* previousMemento = government->getMemento();
-                    if (previousMemento) {
-                        government->setTaxRate(previousMemento->getState()->getTaxRate());
+                    TaxMemento* previousMemento1 = government->getMemento();
+                    if (previousMemento1) {
+                        government->setTaxRate(previousMemento1->getState()->getTaxRate());
                         std::cout << "Tax rate restored to: " << government->getTax()->getTaxRate() << std::endl;
                     }
 
-                    delete previousMemento;  // Clean up after restoration
+                    delete previousMemento;
+                    delete previousMemento1;
+                // Clean up after restoration
                     break;
                 }
             case 7:

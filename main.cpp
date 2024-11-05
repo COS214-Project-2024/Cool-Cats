@@ -508,7 +508,7 @@ void chooseFromMenu(){
 
 
 
-//building funcitons
+//building funcitonsd
 
 //function to add citizen to building:
 void addCititoBuild(int number) {

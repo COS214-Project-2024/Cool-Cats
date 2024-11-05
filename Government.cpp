@@ -32,8 +32,12 @@ Government::~Government()
 
 /// @brief Sets a new tax rate and updates the budget accordingly.
 /// @param newRate The new tax rate to be set.
-void Government::setTaxRate(float newRate)
-{
+void Government::setTaxRate(float newRate) {
+    // Store the current rate before updating
+    TaxMemento* currentMemento = tax->createMemento();
+    storeMemento(currentMemento);
+
+    // Set new tax rate
     tax->setTaxRate(newRate);
     std::cout << "Tax rate set to: " << tax->getTaxRate() << std::endl;
     budget += tax->getTaxRate() * 1000;
@@ -139,21 +143,20 @@ Taxes *Government::getTax()
 
 /// @brief Stores a TaxMemento object for later retrieval.
 /// @param One A pointer to the TaxMemento object to store.
-void Government::storeMemento(TaxMemento *One)
-{
-    if (One)
-    {
+void Government::storeMemento(TaxMemento* One) {
+    if (One) {
         taxMementos.push_back(One);
     }
 }
 
 /// @brief Retrieves the most recently stored TaxMemento.
 /// @return A pointer to the most recent TaxMemento, or nullptr if none exist.
-TaxMemento *Government::getMemento()
-{
-    if (taxMementos.empty())
-    {
+TaxMemento* Government::getMemento() {
+    if (taxMementos.empty()) {
+        std::cout << "No previous tax rate found.\n";
         return nullptr;
     }
-    return taxMementos.back();
+    TaxMemento* lastMemento = taxMementos.back();
+    taxMementos.pop_back();  // Remove last memento after restoration
+    return lastMemento;
 }

@@ -482,12 +482,17 @@ void editGovernment() {
                 break;
             }
             case 6: {
-                cout << "This is the current tax rate " << government->getTax()->getTaxRate() << endl;
-                government->getMemento();
-                government->setTaxRate(government->getMemento()->getState()->getTaxRate());
-                cout << "Taxes have been restored to " << government->getTax()->getTaxRate() << endl;
-                break;
-            }
+                    std::cout << "Current tax rate: " << government->getTax()->getTaxRate() << std::endl;
+
+                    TaxMemento* previousMemento = government->getMemento();
+                    if (previousMemento) {
+                        government->setTaxRate(previousMemento->getState()->getTaxRate());
+                        std::cout << "Tax rate restored to: " << government->getTax()->getTaxRate() << std::endl;
+                    }
+
+                    delete previousMemento;  // Clean up after restoration
+                    break;
+                }
             case 7:
                 cout << "Exiting the government menu.\n";
                 mainMenu();
@@ -2682,8 +2687,6 @@ void createInCityTransportRoute(int TransType, const std::string& CityName, Basi
                                 auto& roads = cityRoads[CityName].first;
                                 auto& roadSubjects = cityRoads[CityName].second;
                                 std::vector<Transportation*> observers;
-
-                                // Map structures to roads based on the 1-to-4 ratio
                                 int startRoadIdx = startIdx / 4;
                                 int endRoadIdx = endIdx / 4;
 

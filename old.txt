@@ -1,3 +1,261 @@
+#include <iostream>
+#include <vector>
+#include <cctype>
+#include <algorithm>
+#include <typeinfo>
+
+#include "Citizen.h"
+#include "Mayor.h"
+#include "HighCitizen.h"
+#include "MiddleCitizen.h"
+#include "LowCitizen.h"
+
+using namespace std;
+
+vector<Citizen*> Citizen::citizens;
+
+/// @brief Creates a new basic citizen object, with the citizen being unemployed, have a satisfaction of 50 and no home, automatically adds the citizen to the citizens vector
+Citizen::Citizen() 
+{ 
+    employmentStatus = "Unemployed";
+    satisfaction = 50;
+    home = nullptr;
+    addCitizen(this);
+}
+
+//Helper function
+bool isValidService(const string& service)
+{
+    return std::all_of(service.begin(), service.end(), [](char c) {
+        return std::isalnum(c) || c == '-' || c == ' ';
+    });
+}
+
+/// @brief Creates a new citizen object, automatically adds the citizen to the citizens vector
+/// @param employmentStatus The employment status of the citizen, can only be 'unemployed', 'employed', 'self-employed'
+/// @param satisfaction The overall satisfaction the citizen has with the city, can only be a value between 0 and 100
+/// @param home The structure where the citizen lives
+Citizen::Citizen(string employmentStatus, double satisfaction, Structure* home)
+{
+    if(!isValidService(employmentStatus))
+    {
+        this->employmentStatus = " ";
+    }
+    else if(employmentStatus != "unemployed" && employmentStatus != "employed" && employmentStatus != "self-employed")
+    {
+        this->employmentStatus = " ";
+    }
+    else
+    {
+        this->employmentStatus = employmentStatus;
+    }
+
+    if(satisfaction < 0 || satisfaction > 100)
+    {
+        this->satisfaction = 50;
+    }
+    else
+    {
+        this->satisfaction = satisfaction;
+    }
+    this->home = home;
+
+    addCitizen(this);
+}
+
+/// @brief Adds a new Citizen to a hierarchy of citizens
+/// @param newCitizen The new citizen to be added into the array
+void Citizen::addCitizen(Citizen* newCitizen)
+{
+    if(newCitizen != nullptr)
+    {
+        citizens.push_back(newCitizen);
+    }
+}
+
+/// @brief Removes a citizen if its in the hierarchy of citizens
+/// @param target The citizen to be removed
+void Citizen::removeCitizen(Citizen* target)
+{
+    if(target != nullptr)
+    {
+        auto it = std::remove_if(citizens.begin(), citizens.end(), [target](const Citizen* ptr){
+            return ptr == target;
+        });
+
+        citizens.erase(it);
+    }
+}
+/// @brief Returns the number of citizens registered to the city, includes mayors, high class citizens, middle class citizens and low class citizens 
+/// @return The total population of the city
+int Citizen::getPopulationCount()
+{
+    int numMayors = Mayor::getMayorCount();
+    int highClass = HighCitizen::getHighClassCitizenCount();
+    int middleClass = MiddleCitizen::getMiddleClassCitizenCount();
+    int lowClass = LowCitizen::getLowClassCitizenCount();
+
+    return (numMayors+highClass+middleClass+lowClass);
+}
+
+/// @brief Adds a new service to the list of services the specific citizen can do
+/// @param newService The new service to be added to the list
+void Citizen::addService(string newService)
+{   
+    if(!isValidService(newService))
+    {
+        return;
+    }
+    services.push_back(newService);
+}   
+/// @brief Removes a service, if it exists, from the list of services a specific citizen can do
+/// @param oldService the old service that was preexistent in the list
+void Citizen::removeService(string oldService)
+{
+    if(!isValidService(oldService))
+    {
+        return;
+    }
+
+    for(auto s = services.begin(); s != services.end();)
+    {
+        if(*s == oldService)
+        {
+            services.erase(s);
+            return;
+        }
+        s++;
+    }
+}
+
+/// @brief Returns the list of services that a citizen provides
+/// @return the vector array of services
+vector<string> Citizen::getServices()
+{
+    return services;
+}
+
+/// @brief Returns the current home of the citizen
+/// @return a shared pointer to the Structure object
+Structure* Citizen::getHome()
+{
+    return home;
+}
+
+/// @brief Moves where the citizen lives to a different structure, Creates a deep copy of the new home
+/// @param newHome The new Structure where the citizen will live
+void Citizen::moveHomes(Structure* newHome)
+{
+    if(newHome != nullptr)
+    {
+        home = newHome;
+    }
+}
+
+/// @brief Returns the current satisfaction of the citizen with the city overall, factors that influence satisfaction include tax, policies and budge allocation set by the government 
+/// @return the satisfaction of the citizen
+double Citizen::getSatisfaction()
+{
+    return satisfaction;
+}
+
+/// @brief Changes the satisfaction of the citizen, to a new satisfaction number. Satisfaction can only be a number between 0 and 100
+/// @param satisfaction the new satisfaction number of the citizen
+void Citizen::setSatisfaction(double satisfaction)
+{
+    if(satisfaction < 0 || satisfaction > 100)
+    {
+        return;
+    }
+    this->satisfaction = satisfaction;
+}
+
+/// @brief Returns the current employment status of the citizen
+/// @return the employment status, can be either 'unemployed', 'employed' or 'self-employed'
+string Citizen::getEmploymentStatus()
+{
+    return employmentStatus;
+}
+
+/// @brief Changes the employment status of the citizen to a new employment status 
+/// @param employment the new employment status, can only be either 'unemployed', 'employed' or 'self-employed'
+void Citizen::setEmploymentStatus(string employment)
+{
+    if(!isValidService(employment))
+    {
+        return;
+    }
+
+    if(employment != "unemployed" && employment != "employed" && employment != "self-employed")
+    {
+        return;
+    }
+    this->employmentStatus = employment;
+}
+
+/// @brief Determines the mayor based on the mayor with the highest votes 
+void Citizen::determineMayor()
+{ 
+    int maxVote = 0;
+    Mayor* candidate = nullptr;
+    Mayor *currMayor = nullptr;
+
+    for(Citizen* m : citizens)
+    {
+        Mayor* c =  dynamic_cast<Mayor*>(m);
+
+        if(c && c->getVoteCount() > maxVote)
+        {
+            maxVote = c->getVoteCount();
+            candidate = c;
+        }
+        else if(c && c->getElectionStatus())
+        {
+            currMayor = c;
+        }
+    }
+
+    if(candidate != nullptr)
+    {
+        candidate->setElectionStatus(true);
+    }
+    
+    if(currMayor != nullptr)
+    {
+        currMayor->setElectionStatus(false);
+    }
+}
+
+/// @brief Reset's the mayor vote count for next election
+void Citizen::resetVote()
+{
+    vector<Mayor*> allMayors = getMayors();
+    for(Mayor* m : allMayors)
+    {
+        m->resetVoteCount();
+    }
+}
+/// @brief Helper method for derived classes, used to get all active mayors of the city
+/// @return vector of all active mayors
+vector<Mayor*> Citizen::getMayors()
+{
+    vector<Mayor*> mayors;
+    for(Citizen* c : citizens)
+    {
+        Mayor *m = dynamic_cast<Mayor*>(c);
+
+        if(m)
+        {
+            mayors.push_back(m);
+        }
+    }
+    return mayors;
+}
+Citizen::~Citizen()
+{
+    // removeCitizen(this);
+}
+
 #include <iostream>   // Include input-output stream library
 #include <string>
 #include <vector>
@@ -128,8 +386,6 @@ void newRouteMenu();
 void createInRoute();
 void createC2CRoute();
 void travelMenu();
-void deleteTransportMenu();
-void deleteTRoute();
 
 
 //for citizens
@@ -505,7 +761,7 @@ void chooseFromMenu(){
 
 
 
-//building funcitonsd
+//building funcitons
 
 //function to add citizen to building:
 void addCititoBuild(int number) {
@@ -1074,288 +1330,22 @@ void editTransport(){
     cout << "Transport Menu" << endl;
     cout << "1: Create new Transport" << endl;
     cout << "2: Create new Transport Route" << endl;
-    cout << "3: Delete Transport" << endl;
-    cout << "4: Delete Transport Route" << endl;
-    cout << "5: Exit" << endl;
+    cout << "3: Travel" << endl;
+    cout << "4: Delete Transport" << endl;
+    cout << "5: Delete Transport Route" << endl;
+    cout << "6: Exit" << endl;
     int choice = error(1,7);
     switch(choice){
         case 1:
             newTransportMenu();
-            break;
+        break;
         case 2:
             newRouteMenu();
-            break;
+        break;
         case 3:
-            deleteTransportMenu();
-            break;
-        case 4:
-            deleteTRoute();
-            break;
-        case 5:
-            mainMenu();
-            break;
+            travelMenu();
     }
 
-}
-
-void deleteTRoute(){
-    printLines();
-    chooseFromMenu();
-    std::cout << "Select route to delete" << std::endl;
-    cout << "1: In City Route" << endl;
-    cout << "2: City to City Route" << endl;
-    cout << "3: Exit" << endl;
-    int choice = error(1,3);
-    switch(choice){
-        case 1:{
-            printLines();
-            string toBeDeleted = "";
-            std::cout << "In city Routes: " << std::endl;
-            printLines();
-            for (const auto& entry : transLines) {
-                std::cout << entry.first << std::endl;  // Print the key of transLines
-            }
-            printLines();
-            std::cout << "Please select what Route to delete" << std::endl;
-            string word = stringError();
-            for (const auto& entry : transLines) {
-                if(entry.first == word){
-                    toBeDeleted = word;
-                    break;
-                }
-            }
-            printLines();
-            if(toBeDeleted != ""){
-                printLines();
-                std::cout << "Are you sure you want to delete " << toBeDeleted  << "(1-Yes/2-Cancel)?" << std::endl;
-                std::cout << "This cannot be undone" << std::endl;
-                int confirm = error(1,2);
-                switch(confirm){
-                    case 1:{
-                        for (auto* transport : transLines[toBeDeleted]) {
-                            delete transport;
-                        }
-                        transLines[toBeDeleted].clear(); 
-                        transLines.erase(toBeDeleted);
-                        std::cout << "Deletion Successful" << std::endl;
-                        deleteTRoute();
-                    }
-                    break;
-                    case 2:{
-                        std::cout << "Cancelled Deletion" << std::endl;
-                        deleteTRoute();
-                    }
-                    break;
-                }
-            }
-            else{
-                std::cout << "Route Doesn't Exist" << std::endl;
-                deleteTRoute();
-            }
-        }
-        break;
-        case 2:{
-            printLines();
-            string toBeDeleted = "";
-            std::cout << "City to City Routes: " << std::endl;
-            printLines();
-            for (const auto& entry : transC2CLines) {
-                std::cout << entry.first << std::endl;  // Print the key of transLines
-            }
-            printLines();
-            std::cout << "Please select what Route to delete" << std::endl;
-            string word = stringError();
-            for (const auto& entry : transC2CLines) {
-                if(entry.first == word){
-                    toBeDeleted = word;
-                    break;
-                }
-            }
-            printLines();
-            if(toBeDeleted != ""){
-                printLines();
-                std::cout << "Are you sure you want to delete " << toBeDeleted  << "(1-Yes/2-Cancel)?" << std::endl;
-                std::cout << "This cannot be undone" << std::endl;
-                int confirm = error(1,2);
-                switch(confirm){
-                    case 1:{
-                        delete transC2CLines[toBeDeleted];
-                        // Erase the entry from the map
-                        transC2CLines.erase(toBeDeleted);
-
-                        std::cout << "Deletion Successful" << std::endl;
-                        deleteTRoute();  // Assuming you want to repeat the route deletion process
-                    }
-                    break;
-                    case 2:{
-                        std::cout << "Cancelled Deletion" << std::endl;
-                        deleteTRoute();
-                    }
-                    break;
-                }
-            }
-            else{
-                std::cout << "Route Doesn't Exist" << std::endl;
-                deleteTRoute();
-            }
-        }
-        break;
-        case 3:{
-            editTransport();
-        }
-    }
-}
-
-void deleteTransportMenu(){
-    printLines();
-    chooseFromMenu();
-    cout << "Delete Transport Menu" << endl;
-    cout << "1: Delete Public Transport" << endl;
-    cout << "2: Delete Train Transport" << endl;
-    cout << "3: Delete Air Transport" << endl;
-    cout << "4: Exit" << endl;
-    int choice = error(1,4);
-    switch(choice){
-        case 1:{
-            std::cout << "Viewing Current Public Transports" << std::endl;
-            printLines();
-            std::cout << "Public Transports:" << std::endl;
-            for(size_t i = 0; i < PT.size(); i++){
-                std::cout << i << ": " << PT[i]->getVehicle()->getName() << std::endl;
-            }
-            std::cout << "Please select which Transport to delete:" << std::endl;
-            string del = stringError();
-            PublicTransport* toBeDeleted = NULL;
-            int index = 0;
-            for(size_t i = 0; i < PT.size(); i++){
-                if(PT[i]->getVehicle()->getName() == del){
-                    toBeDeleted = PT[i];
-                    index = i;
-                    break;
-                }
-            }
-            if(toBeDeleted != NULL){
-                printLines();
-                std::cout << "Are you sure you want to delete (1-Yes/2-Cancel)?" << toBeDeleted->getVehicle()->getName() << std::endl;
-                std::cout << "This cannot be undone" << std::endl;
-                std::cout << "This also negates any travel routes associated to this mode of transport" << std::endl;
-                int confirm = error(1,2);
-                switch(confirm){
-                    case 1:{
-                        delete toBeDeleted;
-                        PT.erase(PT.begin() + index);
-                        std::cout << "Deletion Successful" << std::endl;
-                        deleteTransportMenu();
-                    }
-                    break;
-                    case 2:{
-                        std::cout << "Cancelled Deletion" << std::endl;
-                        deleteTransportMenu();
-                    }
-                    break;
-                }
-            }
-            else{
-                std::cout << "Transport Doesn't Exist" << std::endl;
-                deleteTransportMenu();
-            }
-        }
-        break;
-        case 2:{
-            std::cout << "Viewing Current Train Transports" << std::endl;
-            printLines();
-            std::cout << "Train Transports:" << std::endl;
-            for(size_t i = 0; i < TT.size(); i++){
-                std::cout << i << ": " << TT[i]->getVehicle()->getName() << std::endl;
-            }
-            std::cout << "Please select which Transport to delete:" << std::endl;
-            string del = stringError();
-            TrainTransport* toBeDeleted = NULL;
-            int index = 0;
-            for(size_t i = 0; i < TT.size(); i++){
-                if(TT[i]->getVehicle()->getName() == del){
-                    toBeDeleted = TT[i];
-                    index = i;
-                    break;
-                }
-            }
-            if(toBeDeleted != NULL){
-                printLines();
-                std::cout << "Are you sure you want to delete (1-Yes/2-Cancel)?" << toBeDeleted->getVehicle()->getName() << std::endl;
-                std::cout << "This cannot be undone" << std::endl;
-                std::cout << "This also negates any travel routes associated to this mode of transport" << std::endl;
-                int confirm = error(1,2);
-                switch(confirm){
-                    case 1:{
-                        delete toBeDeleted;
-                        TT.erase(TT.begin() + index);
-                        std::cout << "Deletion Successful" << std::endl;
-                        deleteTransportMenu();
-                    }
-                    break;
-                    case 2:{
-                        std::cout << "Cancelled Deletion" << std::endl;
-                        deleteTransportMenu();
-                    }
-                    break;
-                }
-            }
-            else{
-                std::cout << "Transport Doesn't Exist" << std::endl;
-                deleteTransportMenu();
-            }
-        }
-        break;
-        case 3: {
-            std::cout << "Viewing Current Airplane Transports" << std::endl;
-            printLines();
-            std::cout << "Airplane Transports:" << std::endl;
-            for(size_t i = 0; i < AT.size(); i++){
-                std::cout << i << ": " << AT[i]->getVehicle()->getName() << std::endl;
-            }
-            std::cout << "Please select which Transport to delete:" << std::endl;
-            string del = stringError();
-            AirportTransport* toBeDeleted = NULL;
-            int index = 0;
-            for(size_t i = 0; i < AT.size(); i++){
-                if(AT[i]->getVehicle()->getName() == del){
-                    toBeDeleted = AT[i];
-                    index = i;
-                    break;
-                }
-            }
-            if(toBeDeleted != NULL){
-                printLines();
-                std::cout << "Are you sure you want to delete (1-Yes/2-Cancel)?" << toBeDeleted->getVehicle()->getName() << std::endl;
-                std::cout << "This cannot be undone" << std::endl;
-                std::cout << "This also negates any travel routes associated to this mode of transport" << std::endl;
-                int confirm = error(1,2);
-                switch(confirm){
-                    case 1:{
-                        delete toBeDeleted;
-                        AT.erase(AT.begin() + index);
-                        std::cout << "Deletion Successful" << std::endl;
-                        deleteTransportMenu();
-                    }
-                    break;
-                    case 2:{
-                        std::cout << "Cancelled Deletion" << std::endl;
-                        deleteTransportMenu();
-                    }
-                    break;
-                }
-            }
-            else{
-                std::cout << "Transport Doesn't Exist" << std::endl;
-                deleteTransportMenu();
-            }
-        }
-        break;
-        case 4:
-            editTransport();
-            break; 
- 
-    }   
 }
 
 void travelMenu(){
@@ -1559,7 +1549,6 @@ void newRouteMenu(){
             createC2CRoute();
         break;
         case 3:
-            printLines();
             std::cout << "In city Routes: " << std::endl;
             for (const auto& entry : transLines) {
                 std::cout << entry.first << std::endl;  // Print the key of transLines
@@ -1902,7 +1891,7 @@ string stringError(){
         if (!word.empty() && std::regex_match(word, validNamePattern)) {
             break; // Valid road name; exit loop
         }
-        std::cout << "Invalid name. Please enter a valid name (letters, numbers only):" << std::endl;
+        std::cout << "Invalid name. Please enter a valid name (letters, numbers, and spaces only):" << std::endl;
         std::cin.clear();
         std::cin >> word;
     }
@@ -2909,3 +2898,17 @@ void travelC2CRoute(string routeName){
     travelLine->travel();
     
 }
+# Team-6
+Welcome to the Cool Cats City Builder, here we provide an interactive game to the users where they can manage and customize their own city But first, lets start from the beginning
+
+1. clone our github repository main branch: git clone https://github.com/COS214-Project-2024/Cool-Cats.git
+
+2. Have all cpp and h files be in the same folder, else you have to change the include paths (trust me, its takes a while)
+
+3. make and run the make file to start the game, the first-time compilation will take a while, this game will go on until the government runs out of budget, instructions and tutorials are included while you are running which explains the systems we have implemented and how it works
+
+4. To end the game, go back to the first screen and just Exit
+
+5. (Optional) If you want to run our unit tests you have to first clone the google test repository, so 3.1 git clone https://github.com/google/googletest.git 3.2 Use our CmakeList.txt file 3.3 Create or use our folder can build 3.4 All of our existing tests will be in the Tests folder, please note, some of us had our own unit tests in our own branches, so if you want to run those tests you may have to pull them from their respective branches 3.5 run the commands: cmake .. cmake --build . ctest Then you will see all our tests run (and hopefully pass)
+
+6. Sit back and enjoy, We all hope you have fun testing and running our city builder, change and add code if you want to if you want to customize anything, just please dont push it :)

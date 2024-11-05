@@ -29,6 +29,7 @@ class Citizen
         virtual void vote() = 0;
         virtual Income* getIncome() = 0;
         static void determineMayor();
+        static void resetVote();
         static std::vector<Mayor*> getMayors();
         virtual CitizenIterator* createCitizenIterator() = 0;
         // PopulationMemento* createMemento();

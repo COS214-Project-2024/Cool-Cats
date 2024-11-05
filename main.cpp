@@ -128,6 +128,8 @@ void newRouteMenu();
 void createInRoute();
 void createC2CRoute();
 void travelMenu();
+void deleteTransportMenu();
+void deleteTRoute();
 
 
 //for citizens
@@ -1072,22 +1074,288 @@ void editTransport(){
     cout << "Transport Menu" << endl;
     cout << "1: Create new Transport" << endl;
     cout << "2: Create new Transport Route" << endl;
-    cout << "3: Travel" << endl;
-    cout << "4: Delete Transport" << endl;
-    cout << "5: Delete Transport Route" << endl;
-    cout << "6: Exit" << endl;
+    cout << "3: Delete Transport" << endl;
+    cout << "4: Delete Transport Route" << endl;
+    cout << "5: Exit" << endl;
     int choice = error(1,7);
     switch(choice){
         case 1:
             newTransportMenu();
-        break;
+            break;
         case 2:
             newRouteMenu();
-        break;
+            break;
         case 3:
-            travelMenu();
+            deleteTransportMenu();
+            break;
+        case 4:
+            deleteTRoute();
+            break;
+        case 5:
+            mainMenu();
+            break;
     }
 
+}
+
+void deleteTRoute(){
+    printLines();
+    chooseFromMenu();
+    std::cout << "Select route to delete" << std::endl;
+    cout << "1: In City Route" << endl;
+    cout << "2: City to City Route" << endl;
+    cout << "3: Exit" << endl;
+    int choice = error(1,3);
+    switch(choice){
+        case 1:{
+            printLines();
+            string toBeDeleted = "";
+            std::cout << "In city Routes: " << std::endl;
+            printLines();
+            for (const auto& entry : transLines) {
+                std::cout << entry.first << std::endl;  // Print the key of transLines
+            }
+            printLines();
+            std::cout << "Please select what Route to delete" << std::endl;
+            string word = stringError();
+            for (const auto& entry : transLines) {
+                if(entry.first == word){
+                    toBeDeleted = word;
+                    break;
+                }
+            }
+            printLines();
+            if(toBeDeleted != ""){
+                printLines();
+                std::cout << "Are you sure you want to delete " << toBeDeleted  << "(1-Yes/2-Cancel)?" << std::endl;
+                std::cout << "This cannot be undone" << std::endl;
+                int confirm = error(1,2);
+                switch(confirm){
+                    case 1:{
+                        for (auto* transport : transLines[toBeDeleted]) {
+                            delete transport;
+                        }
+                        transLines[toBeDeleted].clear(); 
+                        transLines.erase(toBeDeleted);
+                        std::cout << "Deletion Successful" << std::endl;
+                        deleteTRoute();
+                    }
+                    break;
+                    case 2:{
+                        std::cout << "Cancelled Deletion" << std::endl;
+                        deleteTRoute();
+                    }
+                    break;
+                }
+            }
+            else{
+                std::cout << "Route Doesn't Exist" << std::endl;
+                deleteTRoute();
+            }
+        }
+        break;
+        case 2:{
+            printLines();
+            string toBeDeleted = "";
+            std::cout << "City to City Routes: " << std::endl;
+            printLines();
+            for (const auto& entry : transC2CLines) {
+                std::cout << entry.first << std::endl;  // Print the key of transLines
+            }
+            printLines();
+            std::cout << "Please select what Route to delete" << std::endl;
+            string word = stringError();
+            for (const auto& entry : transC2CLines) {
+                if(entry.first == word){
+                    toBeDeleted = word;
+                    break;
+                }
+            }
+            printLines();
+            if(toBeDeleted != ""){
+                printLines();
+                std::cout << "Are you sure you want to delete " << toBeDeleted  << "(1-Yes/2-Cancel)?" << std::endl;
+                std::cout << "This cannot be undone" << std::endl;
+                int confirm = error(1,2);
+                switch(confirm){
+                    case 1:{
+                        delete transC2CLines[toBeDeleted];
+                        // Erase the entry from the map
+                        transC2CLines.erase(toBeDeleted);
+
+                        std::cout << "Deletion Successful" << std::endl;
+                        deleteTRoute();  // Assuming you want to repeat the route deletion process
+                    }
+                    break;
+                    case 2:{
+                        std::cout << "Cancelled Deletion" << std::endl;
+                        deleteTRoute();
+                    }
+                    break;
+                }
+            }
+            else{
+                std::cout << "Route Doesn't Exist" << std::endl;
+                deleteTRoute();
+            }
+        }
+        break;
+        case 3:{
+            editTransport();
+        }
+    }
+}
+
+void deleteTransportMenu(){
+    printLines();
+    chooseFromMenu();
+    cout << "Delete Transport Menu" << endl;
+    cout << "1: Delete Public Transport" << endl;
+    cout << "2: Delete Train Transport" << endl;
+    cout << "3: Delete Air Transport" << endl;
+    cout << "4: Exit" << endl;
+    int choice = error(1,4);
+    switch(choice){
+        case 1:{
+            std::cout << "Viewing Current Public Transports" << std::endl;
+            printLines();
+            std::cout << "Public Transports:" << std::endl;
+            for(size_t i = 0; i < PT.size(); i++){
+                std::cout << i << ": " << PT[i]->getVehicle()->getName() << std::endl;
+            }
+            std::cout << "Please select which Transport to delete:" << std::endl;
+            string del = stringError();
+            PublicTransport* toBeDeleted = NULL;
+            int index = 0;
+            for(size_t i = 0; i < PT.size(); i++){
+                if(PT[i]->getVehicle()->getName() == del){
+                    toBeDeleted = PT[i];
+                    index = i;
+                    break;
+                }
+            }
+            if(toBeDeleted != NULL){
+                printLines();
+                std::cout << "Are you sure you want to delete (1-Yes/2-Cancel)?" << toBeDeleted->getVehicle()->getName() << std::endl;
+                std::cout << "This cannot be undone" << std::endl;
+                std::cout << "This also negates any travel routes associated to this mode of transport" << std::endl;
+                int confirm = error(1,2);
+                switch(confirm){
+                    case 1:{
+                        delete toBeDeleted;
+                        PT.erase(PT.begin() + index);
+                        std::cout << "Deletion Successful" << std::endl;
+                        deleteTransportMenu();
+                    }
+                    break;
+                    case 2:{
+                        std::cout << "Cancelled Deletion" << std::endl;
+                        deleteTransportMenu();
+                    }
+                    break;
+                }
+            }
+            else{
+                std::cout << "Transport Doesn't Exist" << std::endl;
+                deleteTransportMenu();
+            }
+        }
+        break;
+        case 2:{
+            std::cout << "Viewing Current Train Transports" << std::endl;
+            printLines();
+            std::cout << "Train Transports:" << std::endl;
+            for(size_t i = 0; i < TT.size(); i++){
+                std::cout << i << ": " << TT[i]->getVehicle()->getName() << std::endl;
+            }
+            std::cout << "Please select which Transport to delete:" << std::endl;
+            string del = stringError();
+            TrainTransport* toBeDeleted = NULL;
+            int index = 0;
+            for(size_t i = 0; i < TT.size(); i++){
+                if(TT[i]->getVehicle()->getName() == del){
+                    toBeDeleted = TT[i];
+                    index = i;
+                    break;
+                }
+            }
+            if(toBeDeleted != NULL){
+                printLines();
+                std::cout << "Are you sure you want to delete (1-Yes/2-Cancel)?" << toBeDeleted->getVehicle()->getName() << std::endl;
+                std::cout << "This cannot be undone" << std::endl;
+                std::cout << "This also negates any travel routes associated to this mode of transport" << std::endl;
+                int confirm = error(1,2);
+                switch(confirm){
+                    case 1:{
+                        delete toBeDeleted;
+                        TT.erase(TT.begin() + index);
+                        std::cout << "Deletion Successful" << std::endl;
+                        deleteTransportMenu();
+                    }
+                    break;
+                    case 2:{
+                        std::cout << "Cancelled Deletion" << std::endl;
+                        deleteTransportMenu();
+                    }
+                    break;
+                }
+            }
+            else{
+                std::cout << "Transport Doesn't Exist" << std::endl;
+                deleteTransportMenu();
+            }
+        }
+        break;
+        case 3: {
+            std::cout << "Viewing Current Airplane Transports" << std::endl;
+            printLines();
+            std::cout << "Airplane Transports:" << std::endl;
+            for(size_t i = 0; i < AT.size(); i++){
+                std::cout << i << ": " << AT[i]->getVehicle()->getName() << std::endl;
+            }
+            std::cout << "Please select which Transport to delete:" << std::endl;
+            string del = stringError();
+            AirportTransport* toBeDeleted = NULL;
+            int index = 0;
+            for(size_t i = 0; i < AT.size(); i++){
+                if(AT[i]->getVehicle()->getName() == del){
+                    toBeDeleted = AT[i];
+                    index = i;
+                    break;
+                }
+            }
+            if(toBeDeleted != NULL){
+                printLines();
+                std::cout << "Are you sure you want to delete (1-Yes/2-Cancel)?" << toBeDeleted->getVehicle()->getName() << std::endl;
+                std::cout << "This cannot be undone" << std::endl;
+                std::cout << "This also negates any travel routes associated to this mode of transport" << std::endl;
+                int confirm = error(1,2);
+                switch(confirm){
+                    case 1:{
+                        delete toBeDeleted;
+                        AT.erase(AT.begin() + index);
+                        std::cout << "Deletion Successful" << std::endl;
+                        deleteTransportMenu();
+                    }
+                    break;
+                    case 2:{
+                        std::cout << "Cancelled Deletion" << std::endl;
+                        deleteTransportMenu();
+                    }
+                    break;
+                }
+            }
+            else{
+                std::cout << "Transport Doesn't Exist" << std::endl;
+                deleteTransportMenu();
+            }
+        }
+        break;
+        case 4:
+            editTransport();
+            break; 
+ 
+    }   
 }
 
 void travelMenu(){
@@ -1291,6 +1559,7 @@ void newRouteMenu(){
             createC2CRoute();
         break;
         case 3:
+            printLines();
             std::cout << "In city Routes: " << std::endl;
             for (const auto& entry : transLines) {
                 std::cout << entry.first << std::endl;  // Print the key of transLines
@@ -1633,7 +1902,7 @@ string stringError(){
         if (!word.empty() && std::regex_match(word, validNamePattern)) {
             break; // Valid road name; exit loop
         }
-        std::cout << "Invalid name. Please enter a valid name (letters, numbers, and spaces only):" << std::endl;
+        std::cout << "Invalid name. Please enter a valid name (letters, numbers only):" << std::endl;
         std::cin.clear();
         std::cin >> word;
     }
@@ -2138,11 +2407,15 @@ void addMayor(){
     cout << newMayorName << " has been created\n";
     cout << "You can make all citizens vote for a mayor by going to the 'Make citizens vote for the new mayor' option\n";
     cout << endl;
+<<<<<<< Updated upstream
 
     cin.clear();
     // cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     delete mc;
+=======
+    
+>>>>>>> Stashed changes
 }
 
 //Helper function for add citizen and add mayor

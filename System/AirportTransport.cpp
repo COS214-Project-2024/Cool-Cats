@@ -13,7 +13,7 @@ AirportTransport::~AirportTransport() {
 
 /// @brief Initiates travel using the associated air vehicle, displaying the vehicle's name.
 void AirportTransport::travel(){
-    cout << "Traveling with " << this->vehicle->getName() << endl;
+    cout << "Flying with " << this->vehicle->getName() << endl;
 }
 
 /// @brief Retrieves the AirVehicle associated with this AirportTransport.

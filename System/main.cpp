@@ -102,21 +102,14 @@ map<string, vector<Transportation*>> transLines; // To hold all the transport ro
 map<string, Transportation*> transC2CLines; // To hold all the city to city transport routes
 
 void editTransport();
-
-void editTransportGroups();
-void addTransportGroups();
-void removeTransportGroups();
-void editTransportInGroups();
-void addTransportInGroups();
-void removeTransportInGroups();
-void createPublicType(int type, string name);
-void createTrainType(int type, string name);
-void createAirportType(int type, string name);
-void createRoad(const std::string& roadName, const std::string& structureGroupName);
-int structureIndex(StructureGroup* group, Structure* name);
-void createInCityTransportRoute(int TransType, const std::string& CityName, BasicStructure* starting, BasicStructure* ending, const std::string& transName, const std::string& routeName);
-void createC2CTransportRoute(int transType, StructureGroup* starting, StructureGroup* ending, const std::string& transName, const std::string& routeName);
-void RegularInCityTravel(int TransType, const std::string& CityName, BasicStructure* starting, BasicStructure* ending, const std::string& transName);
+void createPublicType(int type, string name); //Creating a Public Vehicle
+void createTrainType(int type, string name); //Creating a Train Vehicle
+void createAirportType(int type, string name); //Creating a Airport Vehicle
+void createRoad(const std::string& roadName, const std::string& structureGroupName); //Creates Road
+int structureIndex(StructureGroup* group, Structure* name); //Gets the index of a structure in a structureGroup
+void createInCityTransportRoute(int TransType, const std::string& CityName, BasicStructure* starting, BasicStructure* ending, const std::string& transName, const std::string& routeName); // Creates a route between two structrues in the same structure group
+void createC2CTransportRoute(int transType, StructureGroup* starting, StructureGroup* ending, const std::string& transName, const std::string& routeName); // Creates a route between two StructureGroups
+void RegularInCityTravel(int TransType, const std::string& CityName, BasicStructure* starting, BasicStructure* ending, const std::string& transName); // Travels down the rout
 void travelRoute(string routeName);
 void travelC2CRoute(string routeName);
 void createTransportation(int num);
@@ -1083,7 +1076,8 @@ void editTransport(){
     cout << "2: Create new Transport Route" << endl;
     cout << "3: Delete Transport" << endl;
     cout << "4: Delete Transport Route" << endl;
-    cout << "5: Exit" << endl;
+    std::cout << "5: Travel Created Route" << std::endl;
+    cout << "6: Exit" << endl;
     int choice = error(1,7);
     switch(choice){
         case 1:
@@ -1099,6 +1093,8 @@ void editTransport(){
             deleteTRoute();
             break;
         case 5:
+            travelMenu();
+        case 6:
             mainMenu();
             break;
     }
@@ -1365,189 +1361,78 @@ void deleteTransportMenu(){
     }   
 }
 
+
 void travelMenu(){
-    printLines();
-    chooseFromMenu();
-    cout << "Travel Menu" << endl;
-    cout << "1: Travel In City" << endl;
-    cout << "2: Travel Between Cities" << endl;
-    cout << "3: Travel on created Route" << endl;
-    cout << "4: Exit" << endl;
-    int choice = error(1,4);
-    switch(choice){
-        case 1:{
-            travelInCity();
-        }
-    }
-}
-void travelInCity(){
-        std::cout << "Please select Transport Type:" << std::endl;
-        std::cout << "1: Public Transport" << std::endl;
-        std::cout << "2: Train Transport" << std::endl;
-        int choice = error(1,2);
+        printLines();
+        chooseFromMenu();
+        std::cout << "Please select Route Type:" << std::endl;
+        std::cout << "1: In City" << std::endl;
+        std::cout << "2: City to City" << std::endl;
+        std::cout << "3: Exit" << std::endl;
+        int choice = error(1,3);
         switch(choice){
             case 1:{
-                int transType = choice;
-                string cityName = "";
-                BasicStructure* startB = NULL;
-                BasicStructure* endB = NULL;
-                string transName = "";
-                std::cout << "List of Cities: "<< std::endl;
                 printLines();
-                for(size_t i = 0; i < arr.size(); i++){
-                    std::cout << i << ": " << arr[i]->getName() << std::endl;
+                string toBeTraveled = "";
+                std::cout << "In city Routes: " << std::endl;
+                printLines();
+                for (const auto& entry : transLines) {
+                    std::cout << entry.first << std::endl;  // Print the key of transLines
                 }
                 printLines();
-                std::cout << "Enter City Name:" << std::endl;
+                std::cout << "Please select what Route to Travel" << std::endl;
                 string word = stringError();
-                printLines();
-                for(size_t i = 0; i < arr.size(); i++){
-                    if(arr[i]->getName() == word){
-                        cityName = word;
-                        vector<Structure*> buildings = arr[i]->getChildren();
-                        std::cout << "List of Structures in " << arr[i]->getName() << std::endl;
-                        printLines();
-                        for(size_t i = 0; i < buildings.size(); i++){
-                            std::cout << i << ": " << buildings[i]->getName() << std::endl;
-                        }
-                        std::cout << "Enter start building: " << std::endl;
-                        string start = stringError();
-                        printLines();
-                        for(size_t i = 0; i < buildings.size(); i++){
-                            if(buildings[i]->getName() == start){
-                                startB = dynamic_cast<BasicStructure*>(buildings[i]);
-                                break;
-                            }
-                        }
-                        std::cout << "Enter end building: " << std::endl;
-                        string ending = stringError();
-                        printLines();
-                        for(size_t i = 0; i < buildings.size(); i++){
-                            if(buildings[i]->getName() == ending){
-                                endB = dynamic_cast<BasicStructure*>(buildings[i]);
-                                break;
-                            }
-                        }
+                for (const auto& entry : transLines) {
+                    if(entry.first == word){
+                        toBeTraveled = word;
                         break;
                     }
                 }
-                std::cout << "List of all Public Transports: " << std::endl;
-                printLines();
-                std::cout << "Public Transports:" << std::endl;
-                for(size_t i = 0; i < PT.size(); i++){
-                    std::cout << i << ": " << PT[i]->getVehicle()->getName() << std::endl;
-                }
-                std::cout << "Enter a Transport Name: " << std::endl;
-                string tName = stringError();
-                printLines();
-                for(size_t i = 0; i < PT.size(); i++){
-                    if(PT[i]->getVehicle()->getName() == tName){
-                        transName = tName;
-                        break;
-                    }
-                }
-                if(transType == 0 || cityName == "" || transName == "" ){
-                    std::cout << "Invalid Input, please review your inputs and try again" << std::endl;
-                    std::cout << "City Name: " << cityName << std::endl;
-                    std::cout << "Transport Name: " << transName << std::endl;
-                    travelInCity();
-                }
-                else if(startB == NULL || endB == NULL){
-                    std::cout << "Invalid Input, no such start/end building exists" << std::endl;
-                    travelInCity();
+                if(toBeTraveled == ""){
+                    std::cout << "Invalid Route" << std::endl;
+                    travelMenu();
                 }
                 else{
-                    printLines();
-                    std::cout << "Traveling from: " << startB->getName() << "\n to: " << endB->getName() << std::endl;
-                    RegularInCityTravel(transType, cityName, startB, endB, transName);
-                    travelInCity();
+                    travelRoute(toBeTraveled);
+                    travelMenu();
                 }
+                printLines();
+            }
+        break;
+        case 2:{
+                printLines();
+                string toBeTraveled = "";
+                std::cout << "City to City Routes: " << std::endl;
+                printLines();
+                for (const auto& entry : transC2CLines) {
+                    std::cout << entry.first << std::endl;  // Print the key of transLines
+                }
+                printLines();
+                std::cout << "Please select what Route to Travel" << std::endl;
+                string word = stringError();
+                for (const auto& entry : transC2CLines) {
+                    if(entry.first == word){
+                        toBeTraveled = word;
+                        break;
+                    }
+                }
+                if(toBeTraveled == ""){
+                    std::cout << "Invalid Route" << std::endl;
+                    travelMenu();
+                }
+                else{
+                    travelC2CRoute(toBeTraveled);
+                    travelMenu();
+                }
+                printLines();
             }
             break;
-            case 2:{
-                int transType = choice;
-                string cityName = "";
-                BasicStructure* startB = NULL;
-                BasicStructure* endB = NULL;
-                string transName = "";
-                string routeName = "";
-                std::cout << "List of Cities: "<< std::endl;
-                printLines();
-                for(size_t i = 0; i < arr.size(); i++){
-                    std::cout << i << ": " << arr[i]->getName() << std::endl;
-                }
-                printLines();
-                std::cout << "Enter City Name:" << std::endl;
-                string word = stringError();
-                printLines();
-                for(size_t i = 0; i < arr.size(); i++){
-                    if(arr[i]->getName() == word){
-                        cityName = word;
-                        vector<Structure*> buildings = arr[i]->getChildren();
-                        std::cout << "List of Structures in " << arr[i]->getName() << std::endl;
-                        printLines();
-                        for(size_t i = 0; i < buildings.size(); i++){
-                            std::cout << i << ": " << buildings[i]->getName() << std::endl;
-                        }
-                        std::cout << "Enter start building: " << std::endl;
-                        string start = stringError();
-                        printLines();
-                        for(size_t i = 0; i < buildings.size(); i++){
-                            if(buildings[i]->getName() == start){
-                                startB = dynamic_cast<BasicStructure*>(buildings[i]);
-                                break;
-                            }
-                        }
-                        std::cout << "Enter end building: " << std::endl;
-                        string ending = stringError();
-                        printLines();
-                        for(size_t i = 0; i < buildings.size(); i++){
-                            if(buildings[i]->getName() == ending){
-                                endB = dynamic_cast<BasicStructure*>(buildings[i]);
-                                break;
-                            }
-                        }
-                        break;
-                    }
-                }
-                std::cout << "List of all Train Transports: " << std::endl;
-                printLines();
-                std::cout << "Train Transports:" << std::endl;
-                for(size_t i = 0; i < TT.size(); i++){
-                    std::cout << i << ": " << TT[i]->getVehicle()->getName() << std::endl;
-                }
-                std::cout << "Enter a Transport Name: " << std::endl;
-                string tName = stringError();
-                printLines();
-                for(size_t i = 0; i < TT.size(); i++){
-                    if(TT[i]->getVehicle()->getName() == tName){
-                        transName = tName;
-                        break;
-                    }
-                }
-                std::cout << "Enter a route name: " << std::endl;
-                routeName = stringError();
-                printLines();
-                if(transType == 0 || cityName == "" || transName == "" || routeName == "" ){
-                    std::cout << "Invalid Input, please review your inputs and try again" << std::endl;
-                    std::cout << "City Name: " << cityName << std::endl;
-                    std::cout << "Transport Name: " << transName << std::endl;
-                    std::cout << "Route Name: " << routeName << std::endl;
-                    createInRoute();
-                }
-                else if(startB == NULL || endB == NULL){
-                    std::cout << "Invalid Input, no such start/end building exists" << std::endl;
-                    createInRoute();
-                }
-                else{
-                    printLines();
-                    createInCityTransportRoute(transType, cityName, startB, endB, transName, routeName);
-                    std::cout << "Route created!" << std::endl;
-                    newRouteMenu();
-                }
+            case 3:{
+                editTransport();
             }
             break;
         }
+        
 }
 void newRouteMenu(){
     printLines();
@@ -1590,7 +1475,8 @@ void createC2CRoute(){
     std::cout << "Please select Transport Type:" << std::endl;
     std::cout << "1: Train Transport(Freight only)" << std::endl;
     std::cout << "2: Airplane Transport" << std::endl;
-    int choice = error(1,2);
+    std::cout << "3: Exit" << std::endl;
+    int choice = error(1,3);
     switch(choice){
         case 1:{
             StructureGroup* startB = NULL;
@@ -1720,6 +1606,9 @@ void createC2CRoute(){
             }
         }
         break;
+        case 3:{
+
+        }
     }
 }
 
@@ -1729,7 +1618,8 @@ void createInRoute(){
     std::cout << "Please select Transport Type:" << std::endl;
     std::cout << "1: Public Transport" << std::endl;
     std::cout << "2: Train Transport" << std::endl;
-    int choice = error(1,2);
+    std::cout << "3: Exit" << std::endl;
+    int choice = error(1,3);
     switch(choice){
         case 1:{
             int transType = choice;
@@ -1897,6 +1787,9 @@ void createInRoute(){
             }
         }
         break;
+        case 3:{
+            newRouteMenu();
+        }
     }
 }
 
@@ -2063,59 +1956,8 @@ void createTransportation(int num){
 
 }
 
-void editTransportGroups(){
-    //this will be between groups
-    printLines();
-    void chooseFromMenu();
-    cout << "1: Add Transport from one area to another" << endl;
-    cout << "2: Remove Transport from one area to another" << endl;
-    cout << "3: Return" << endl;
-    
 
 
-}
-
-void addTransportGroups(){
-    printLines();
-    //you might need to create a global tuple that will keep track of all these transport systems that we will be adding
-    //you could have one for between groups and another for inbetween areas
-    cout << "Enter the area you would like to add a transport system to" << endl;
-
-    // get this input
-    //validate that it is part of the structture. You can use a for loop to loop through the StructuresGroup array called "arr" and use the get name to check if the input is in that group
-    //if not tell the user 
-    //if yes continue
-
-    cout << "Enter the structure group you would like to build a transport system to" << endl;
-    //same user input validation
-
-    //since its between groups you can use flight and railway 
-    //add to the tuple
-    
-}
-
-void removeTransportGroups(){
-    printLines();
-    //similar to add except remove at the end
-}
-
-void editTransportInGroups(){
-    //similar to edit transport groups 
-}
-
-void addTransportInGroups(){
-    //get structre group
-    //check if structure group is there
-    //get structure from.
-    //check if its there 
-    //get structure to 
-    //check if its there
-    //add to tuple
-}
-
-void removeTransportInGroups(){
-    //similar to add except remove
-}
 
 
 //Add citizen

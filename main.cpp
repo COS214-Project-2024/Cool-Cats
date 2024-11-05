@@ -175,6 +175,7 @@ void editGovernment();
 
 void editTransport();
 void printLines();
+void editGovernment();
 
 
 vector<StructureGroup*> arr; // this keeps track of all the stucture groups that have been created
@@ -282,7 +283,6 @@ void mainMenu() {
                 break;
 
             case 6:
-                // Call editGovernment function
                 editGovernment();
                 break;
 
@@ -483,13 +483,15 @@ void editGovernment() {
             }
             case 6: {
                 cout << "This is the current tax rate " << government->getTax()->getTaxRate() << endl;
+                government->getMemento();
                 government->setTaxRate(government->getMemento()->getState()->getTaxRate());
                 cout << "Taxes have been restored to " << government->getTax()->getTaxRate() << endl;
                 break;
             }
             case 7:
                 cout << "Exiting the government menu.\n";
-                return;
+                mainMenu();
+                break;
             default:
                 cout << "Invalid choice. Please select an option from the menu.\n";
         }
